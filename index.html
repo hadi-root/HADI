@@ -1,29 +1,41 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="HADI — Developer, Creator and Builder. Explore projects, skills, goals and digital work."
+    content="HADI — Developer, Creator and Builder. Explore projects, skills and digital work."
   >
 
   <meta
     name="keywords"
-    content="HADI, developer, web developer, creator, builder, ROOT HUB, ROOT OS, ROOT TERMINAL HUB"
+    content="HADI, developer, web developer, programmer, ROOT HUB, ROOT OS, ROOT TERMINAL HUB"
   >
 
   <meta name="author" content="HADI">
   <meta name="theme-color" content="#050505">
 
-  <meta property="og:title" content="HADI — Developer Portfolio">
+  <meta
+    property="og:title"
+    content="HADI — Developer Portfolio"
+  >
+
   <meta
     property="og:description"
-    content="Developer. Creator. Builder. Explore HADI's projects, skills and digital work."
+    content="Developer. Creator. Builder."
   >
-  <meta property="og:type" content="website">
+
+  <meta
+    property="og:type"
+    content="website"
+  >
 
   <title>HADI — Developer Portfolio</title>
 
@@ -36,19 +48,27 @@
   <div id="loader" aria-label="Loading portfolio">
     <div class="loader-content">
       <div class="loader-logo">HADI</div>
-      <div class="loader-subtitle">Developer • Creator • Builder</div>
+      <div class="loader-subtitle">
+        Developer • Creator • Builder
+      </div>
       <div class="loader-line"></div>
     </div>
   </div>
 
-  <div class="background-glow" aria-hidden="true"></div>
+  <!-- BACKGROUND -->
+  <div class="background-glow"></div>
+  <div class="grid-background"></div>
 
   <!-- HEADER -->
   <header id="header">
 
     <nav class="nav" aria-label="Main navigation">
 
-      <a href="#home" class="logo" aria-label="HADI Home">
+      <a
+        href="#home"
+        class="logo"
+        aria-label="HADI Home"
+      >
         HADI
       </a>
 
@@ -65,11 +85,25 @@
 
       <ul class="nav-links" id="navLinks">
 
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a href="#home">Home</a>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
 
       </ul>
 
@@ -79,54 +113,64 @@
 
   <main>
 
-    <!-- ==================================================
-         HERO
-    =================================================== -->
-
+    <!-- HERO -->
     <section class="hero" id="home">
+
+      <div class="hero-orbit orbit-one"></div>
+      <div class="hero-orbit orbit-two"></div>
 
       <div class="hero-content">
 
         <div class="hero-tag">
-          <span class="status-dot" aria-hidden="true"></span>
+          <span class="status-dot"></span>
           Building & Exploring
         </div>
 
+        <p class="hero-small">
+          DIGITAL CREATOR / DEVELOPER
+        </p>
+
         <h1>HADI</h1>
 
-        <h2>Developer. Creator. Builder.</h2>
+        <h2>
+          Developer. Creator. Builder.
+        </h2>
 
-        <p>
-          I build digital experiences, experiment with technology,
-          and turn ideas into real projects.
+        <p class="hero-description">
+          I build digital experiences, experiment
+          with technology, and turn ideas into
+          real projects.
         </p>
 
         <div class="hero-buttons">
 
-          <a href="#projects" class="btn btn-primary">
+          <a
+            href="#projects"
+            class="btn btn-primary"
+          >
             Explore Projects
+            <span>→</span>
           </a>
 
-          <a href="#contact" class="btn btn-secondary">
+          <a
+            href="#contact"
+            class="btn btn-secondary"
+          >
             Contact Me
           </a>
 
         </div>
 
-      </div>
+        <div class="hero-scroll">
+          <span></span>
+          Scroll to explore
+        </div>
 
-      <div class="hero-scroll" aria-hidden="true">
-        <span></span>
-        Scroll to explore
       </div>
 
     </section>
 
-
-    <!-- ==================================================
-         ABOUT
-    =================================================== -->
-
+    <!-- ABOUT -->
     <section id="about">
 
       <div class="section-label reveal">
@@ -139,27 +183,22 @@
       </h2>
 
       <p class="section-description reveal">
-        A professional look at who I am, how I think,
-        what I'm focused on and where I want to go.
+        A look at who I am, what I enjoy building,
+        and the mindset behind my projects.
       </p>
 
       <div class="about-grid">
 
-        <!-- PROFILE CARD -->
-
-        <aside class="about-profile reveal">
+        <!-- PROFILE -->
+        <div class="about-profile reveal">
 
           <div class="profile-top">
-
-            <div class="profile-symbol" aria-hidden="true">
-              H
-            </div>
+            <div class="profile-symbol">H</div>
 
             <div class="profile-status">
               <span></span>
-              Available for ideas
+              Available
             </div>
-
           </div>
 
           <div class="profile-name">
@@ -170,10 +209,9 @@
             Developer & Creator
           </div>
 
-          <p class="profile-bio">
+          <div class="profile-line">
             Curious by nature. Builder by choice.
-            Always learning, experimenting and creating.
-          </p>
+          </div>
 
           <div class="profile-details">
 
@@ -184,21 +222,14 @@
 
             <div>
               <span>Approach</span>
-              <strong>Learn → Build → Improve</strong>
-            </div>
-
-            <div>
-              <span>Mindset</span>
-              <strong>Keep Exploring</strong>
+              <strong>Learn • Build • Improve</strong>
             </div>
 
           </div>
 
-        </aside>
+        </div>
 
-
-        <!-- PROFESSIONAL PROFILE -->
-
+        <!-- ABOUT CONTENT -->
         <div class="about-content">
 
           <div class="about-intro reveal">
@@ -207,73 +238,56 @@
           </div>
 
           <p class="about-text reveal">
-            I'm HADI, a developer and technology enthusiast
-            interested in software, web development and
-            creating useful digital experiences.
+            I'm HADI, a developer and technology
+            enthusiast interested in software,
+            web development and creating useful
+            digital experiences.
           </p>
 
           <p class="about-text reveal">
-            I enjoy learning how technology works,
-            experimenting with different tools and
-            transforming ideas into projects that can
-            actually be used and explored.
+            My approach is simple:
+            learn, experiment, build, improve
+            and repeat. Every project is an
+            opportunity to understand something
+            new and push my skills further.
           </p>
 
-          <div class="profile-sections">
+          <div class="about-cards">
 
-            <div class="profile-section reveal">
-              <span class="profile-section-number">01</span>
-
-              <div>
-                <h3>Developer Mindset</h3>
-                <p>
-                  I approach development through curiosity,
-                  experimentation, problem solving and
-                  continuous improvement.
-                </p>
-              </div>
+            <div class="about-card reveal">
+              <span class="card-number">01</span>
+              <h3>Learn</h3>
+              <p>
+                Exploring new technologies,
+                tools and development concepts.
+              </p>
             </div>
 
-
-            <div class="profile-section reveal">
-              <span class="profile-section-number">02</span>
-
-              <div>
-                <h3>Current Focus</h3>
-                <p>
-                  Improving my web development skills,
-                  exploring software concepts and building
-                  practical digital projects.
-                </p>
-              </div>
+            <div class="about-card reveal">
+              <span class="card-number">02</span>
+              <h3>Build</h3>
+              <p>
+                Turning ideas into functional
+                websites and digital projects.
+              </p>
             </div>
 
-
-            <div class="profile-section reveal">
-              <span class="profile-section-number">03</span>
-
-              <div>
-                <h3>Goals</h3>
-                <p>
-                  Keep learning, build better projects,
-                  understand technology deeply and grow
-                  into a strong developer.
-                </p>
-              </div>
+            <div class="about-card reveal">
+              <span class="card-number">03</span>
+              <h3>Experiment</h3>
+              <p>
+                Testing ideas and discovering
+                better ways to solve problems.
+              </p>
             </div>
 
-
-            <div class="profile-section reveal">
-              <span class="profile-section-number">04</span>
-
-              <div>
-                <h3>Strengths</h3>
-                <p>
-                  Curiosity, persistence, creativity,
-                  willingness to experiment and the
-                  desire to keep improving.
-                </p>
-              </div>
+            <div class="about-card reveal">
+              <span class="card-number">04</span>
+              <h3>Improve</h3>
+              <p>
+                Refining projects and developing
+                technical skills.
+              </p>
             </div>
 
           </div>
@@ -284,11 +298,7 @@
 
     </section>
 
-
-    <!-- ==================================================
-         SKILLS
-    =================================================== -->
-
+    <!-- SKILLS -->
     <section id="skills">
 
       <div class="section-label reveal">
@@ -296,30 +306,24 @@
       </div>
 
       <h2 class="section-title reveal">
-        Tools I use<br>
-        to build.
+        Tools of<br>
+        the craft.
       </h2>
 
       <p class="section-description reveal">
-        A growing collection of technologies, development
-        skills and tools I'm learning and working with.
+        Technologies and areas I'm exploring
+        while building digital projects.
       </p>
 
-      <div class="skill-categories">
-
-        <!-- WEB -->
+      <div class="skills-categories">
 
         <div class="skill-category reveal">
 
-          <div class="skill-category-head">
-            <span>01</span>
-            <h3>Web Development</h3>
+          <div class="skill-category-number">
+            01
           </div>
 
-          <p>
-            Building responsive websites and interactive
-            digital experiences.
-          </p>
+          <h3>Web</h3>
 
           <div class="skills-wrapper">
 
@@ -327,84 +331,45 @@
             <span class="skill">CSS</span>
             <span class="skill">JavaScript</span>
             <span class="skill">Responsive Design</span>
+            <span class="skill">UI Design</span>
 
           </div>
 
         </div>
 
-
-        <!-- PROGRAMMING -->
-
         <div class="skill-category reveal">
 
-          <div class="skill-category-head">
-            <span>02</span>
-            <h3>Programming</h3>
+          <div class="skill-category-number">
+            02
           </div>
 
-          <p>
-            Exploring programming concepts, logic and
-            software development.
-          </p>
+          <h3>Programming</h3>
 
           <div class="skills-wrapper">
 
             <span class="skill">JavaScript</span>
             <span class="skill">Problem Solving</span>
             <span class="skill">Logic</span>
-            <span class="skill">Software Concepts</span>
+            <span class="skill">Development</span>
 
           </div>
 
         </div>
 
-
-        <!-- TOOLS -->
-
         <div class="skill-category reveal">
 
-          <div class="skill-category-head">
-            <span>03</span>
-            <h3>Tools & Platforms</h3>
+          <div class="skill-category-number">
+            03
           </div>
 
-          <p>
-            Tools and platforms used to build, manage
-            and publish projects.
-          </p>
+          <h3>Tools & Platforms</h3>
 
           <div class="skills-wrapper">
 
             <span class="skill">GitHub</span>
             <span class="skill">Git</span>
-            <span class="skill">VS Code</span>
-            <span class="skill">GitHub Pages</span>
-
-          </div>
-
-        </div>
-
-
-        <!-- INTERESTS -->
-
-        <div class="skill-category reveal">
-
-          <div class="skill-category-head">
-            <span>04</span>
-            <h3>Interests</h3>
-          </div>
-
-          <p>
-            Areas of technology that I enjoy exploring
-            and learning about.
-          </p>
-
-          <div class="skills-wrapper">
-
-            <span class="skill">Technology</span>
-            <span class="skill">UI Design</span>
-            <span class="skill">Web Design</span>
-            <span class="skill">Innovation</span>
+            <span class="skill">Web Hosting</span>
+            <span class="skill">Developer Tools</span>
 
           </div>
 
@@ -414,11 +379,7 @@
 
     </section>
 
-
-    <!-- ==================================================
-         PROJECTS
-    =================================================== -->
-
+    <!-- PROJECTS -->
     <section id="projects">
 
       <div class="projects-head">
@@ -435,8 +396,8 @@
           </h2>
 
           <p class="section-description reveal">
-            Projects, experiments and digital work created
-            while learning and exploring technology.
+            A collection of projects, experiments
+            and digital work I've created.
           </p>
 
         </div>
@@ -447,38 +408,38 @@
 
       </div>
 
-
       <div class="projects-grid">
 
-
         <!-- ROOT HUB -->
-
         <article class="project-card reveal">
 
-          <div class="project-visual" aria-hidden="true">
-            <span>&gt;_</span>
-          </div>
+          <div class="project-glow"></div>
 
-          <div class="project-number">
-            PROJECT / 01
+          <div class="project-top">
+            <span class="project-number">
+              PROJECT / 01
+            </span>
+
+            <span class="project-arrow">
+              ↗
+            </span>
           </div>
 
           <div class="project-content">
 
-            <div class="project-heading">
-              <h3 class="project-title">
-                ROOT HUB
-              </h3>
-
-              <span class="project-status">
-                Live
-              </span>
+            <div class="project-icon">
+              RH
             </div>
 
+            <h3 class="project-title">
+              ROOT HUB
+            </h3>
+
             <p class="project-description">
-              A technology-focused project created as
-              part of my exploration of development,
-              digital experiences and creative ideas.
+              A technology-focused digital project
+              created as part of my exploration of
+              development, digital experiences and
+              creative ideas.
             </p>
 
             <div class="project-tags">
@@ -513,37 +474,36 @@
 
         </article>
 
-
         <!-- ROOT OS -->
-
         <article class="project-card reveal">
 
-          <div class="project-visual" aria-hidden="true">
-            <span>ROOT_OS</span>
-          </div>
+          <div class="project-glow"></div>
 
-          <div class="project-number">
-            PROJECT / 02
+          <div class="project-top">
+            <span class="project-number">
+              PROJECT / 02
+            </span>
+
+            <span class="project-arrow">
+              ↗
+            </span>
           </div>
 
           <div class="project-content">
 
-            <div class="project-heading">
-
-              <h3 class="project-title">
-                ROOT OS
-              </h3>
-
-              <span class="project-status">
-                Live
-              </span>
-
+            <div class="project-icon">
+              OS
             </div>
+
+            <h3 class="project-title">
+              ROOT OS
+            </h3>
 
             <p class="project-description">
               An experimental operating-system-inspired
-              interface focused on digital design,
-              interaction and software concepts.
+              project focused on creating a unique
+              digital interface and exploring software
+              design.
             </p>
 
             <div class="project-tags">
@@ -578,37 +538,36 @@
 
         </article>
 
-
         <!-- ROOT TERMINAL HUB -->
+        <article class="project-card reveal project-wide">
 
-        <article class="project-card reveal">
+          <div class="project-glow"></div>
 
-          <div class="project-visual" aria-hidden="true">
-            <span>root@hadi:~$</span>
-          </div>
+          <div class="project-top">
+            <span class="project-number">
+              PROJECT / 03
+            </span>
 
-          <div class="project-number">
-            PROJECT / 03
+            <span class="project-arrow">
+              ↗
+            </span>
           </div>
 
           <div class="project-content">
 
-            <div class="project-heading">
-
-              <h3 class="project-title">
-                ROOT TERMINAL HUB
-              </h3>
-
-              <span class="project-status">
-                Live
-              </span>
-
+            <div class="project-icon">
+              RT
             </div>
 
+            <h3 class="project-title">
+              ROOT TERMINAL HUB
+            </h3>
+
             <p class="project-description">
-              A terminal-inspired technology experience
-              built around development, digital tools
-              and a collection of creative work.
+              A terminal-inspired technology and
+              development experience built around
+              digital tools, experimentation and
+              development work.
             </p>
 
             <div class="project-tags">
@@ -648,12 +607,11 @@
 
     </section>
 
-
-    <!-- ==================================================
-         CONTACT
-    =================================================== -->
-
-    <section id="contact" class="contact-section">
+    <!-- CONTACT -->
+    <section
+      id="contact"
+      class="contact-section"
+    >
 
       <div class="section-label reveal">
         04 / Contact
@@ -664,59 +622,52 @@
       </h2>
 
       <p class="section-description reveal">
-        Interested in my work, want to discuss an idea,
-        or simply want to connect? You can find me here.
+        Interested in my work, want to discuss
+        an idea, or simply want to connect?
+        You can find me here.
       </p>
 
       <div class="contact-box reveal">
 
-        <div class="contact-copy">
+        <div class="contact-heading">
 
           <span class="contact-kicker">
-            HAVE AN IDEA?
+            OPEN TO CONNECTIONS
           </span>
 
           <h3>
+            Have an idea?<br>
             Let's talk.
           </h3>
 
           <p>
-            Whether you want to explore a project,
-            share an idea or simply connect,
-            these are the best ways to reach me.
+            The easiest way to reach me is through
+            email or one of my developer and
+            social profiles.
           </p>
 
         </div>
 
-
         <div class="contact-grid">
 
           <!-- EMAIL -->
-
           <a
             href="mailto:hadivga@gmail.com"
             class="contact-card"
           >
 
-            <div class="contact-icon" aria-hidden="true">
-              @
-            </div>
+            <div class="contact-icon">@</div>
 
             <div class="contact-info">
-
               <span>Email</span>
-
-              <strong>
-                hadivga@gmail.com
-              </strong>
-
+              <strong>hadivga@gmail.com</strong>
             </div>
+
+            <span class="contact-arrow">↗</span>
 
           </a>
 
-
           <!-- GITHUB -->
-
           <a
             href="https://github.com/hadi-root"
             target="_blank"
@@ -724,25 +675,20 @@
             class="contact-card"
           >
 
-            <div class="contact-icon" aria-hidden="true">
+            <div class="contact-icon">
               &lt;/&gt;
             </div>
 
             <div class="contact-info">
-
               <span>GitHub</span>
-
-              <strong>
-                github.com/hadi-root
-              </strong>
-
+              <strong>github.com/hadi-root</strong>
             </div>
+
+            <span class="contact-arrow">↗</span>
 
           </a>
 
-
           <!-- INSTAGRAM 1 -->
-
           <a
             href="https://www.instagram.com/hadi_bin_yoosuf/"
             target="_blank"
@@ -750,25 +696,18 @@
             class="contact-card"
           >
 
-            <div class="contact-icon" aria-hidden="true">
-              ◎
-            </div>
+            <div class="contact-icon">◎</div>
 
             <div class="contact-info">
-
               <span>Instagram</span>
-
-              <strong>
-                @hadi_bin_yoosuf
-              </strong>
-
+              <strong>@hadi_bin_yoosuf</strong>
             </div>
+
+            <span class="contact-arrow">↗</span>
 
           </a>
 
-
           <!-- INSTAGRAM 2 -->
-
           <a
             href="https://www.instagram.com/the_real_toolkit/"
             target="_blank"
@@ -776,19 +715,14 @@
             class="contact-card"
           >
 
-            <div class="contact-icon" aria-hidden="true">
-              ◎
-            </div>
+            <div class="contact-icon">◎</div>
 
             <div class="contact-info">
-
               <span>Instagram</span>
-
-              <strong>
-                @the_real_toolkit
-              </strong>
-
+              <strong>@the_real_toolkit</strong>
             </div>
+
+            <span class="contact-arrow">↗</span>
 
           </a>
 
@@ -800,49 +734,65 @@
 
   </main>
 
-
   <!-- FOOTER -->
-
   <footer>
 
     <div class="footer-main">
 
-      <div class="footer-brand">
+      <a
+        href="#home"
+        class="footer-logo"
+      >
         HADI
-      </div>
+      </a>
 
       <p>
-        Developer • Creator • Builder
+        Developer. Creator. Builder.
       </p>
 
     </div>
 
+    <div class="footer-status">
+      <span class="footer-status-dot"></span>
+      <span>Building & Exploring</span>
+    </div>
+
     <div class="footer-links">
 
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a
+        href="https://github.com/hadi-root"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+
+      <a
+        href="https://www.instagram.com/hadi_bin_yoosuf/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @hadi_bin_yoosuf
+      </a>
+
+      <a
+        href="https://www.instagram.com/the_real_toolkit/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @the_real_toolkit
+      </a>
 
     </div>
 
     <div class="footer-bottom">
-
-      <span>
-        © 2026 HADI. Built with code.
-      </span>
-
-      <span class="footer-status">
-        <i></i>
-        Portfolio Online
-      </span>
-
+      © 2026 HADI. Built with code.
     </div>
 
   </footer>
-
 
   <script src="script.js"></script>
 
 </body>
 </html>
+```
