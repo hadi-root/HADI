@@ -12,12 +12,12 @@
 
   <meta
     name="description"
-    content="HADI — Developer, Creator and Builder. Explore projects, skills and digital work."
+    content="HADI — Developer, Creator and Builder. Explore projects, experiments, skills and digital work."
   >
 
   <meta
-    name="theme-color"
-    content="#050505"
+    name="keywords"
+    content="HADI, developer, web developer, creator, builder, ROOT HUB, ROOT OS, ROOT Terminal Hub, portfolio"
   >
 
   <meta
@@ -25,11 +25,36 @@
     content="HADI"
   >
 
-  <title>HADI — Developer Portfolio</title>
+  <meta
+    name="robots"
+    content="index, follow"
+  >
 
-  <!-- =====================================================
-       STYLESHEET
-  ====================================================== -->
+  <meta
+    name="theme-color"
+    content="#050505"
+  >
+
+  <!-- Open Graph -->
+
+  <meta
+    property="og:title"
+    content="HADI — Developer Portfolio"
+  >
+
+  <meta
+    property="og:description"
+    content="Developer. Creator. Builder. Explore HADI's projects and digital work."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <title>
+    HADI — Developer Portfolio
+  </title>
 
   <link
     rel="stylesheet"
@@ -43,7 +68,19 @@
 
 
   <!-- =====================================================
-       INTRO LOADER
+       ACCESSIBILITY
+  ====================================================== -->
+
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    Skip to content
+  </a>
+
+
+  <!-- =====================================================
+       LOADER
   ====================================================== -->
 
   <div
@@ -63,20 +100,41 @@
 
       <div class="loader-line"></div>
 
+      <div class="loader-status">
+        INITIALIZING PORTFOLIO...
+      </div>
+
     </div>
 
   </div>
 
 
   <!-- =====================================================
-       BACKGROUND
+       ANIMATED BACKGROUND
   ====================================================== -->
 
-  <div class="background-glow"></div>
+  <div
+    class="background-system"
+    aria-hidden="true"
+  >
+
+    <div class="background-grid"></div>
+
+    <div class="background-glow glow-one"></div>
+
+    <div class="background-glow glow-two"></div>
+
+    <div class="background-glow glow-three"></div>
+
+    <div class="particles"></div>
+
+    <div class="scanlines"></div>
+
+  </div>
 
 
   <!-- =====================================================
-       HEADER / NAVIGATION
+       HEADER
   ====================================================== -->
 
   <header id="header">
@@ -144,10 +202,10 @@
 
 
   <!-- =====================================================
-       MAIN CONTENT
+       MAIN
   ====================================================== -->
 
-  <main>
+  <main id="main-content">
 
 
     <!-- ===================================================
@@ -157,9 +215,11 @@
     <section
       class="hero"
       id="home"
+      aria-labelledby="hero-title"
     >
 
       <div class="hero-content">
+
 
         <div class="hero-tag">
 
@@ -173,7 +233,12 @@
         </div>
 
 
-        <h1>
+        <div class="hero-eyebrow">
+          DIGITAL CREATOR / DEVELOPER
+        </div>
+
+
+        <h1 id="hero-title">
           HADI
         </h1>
 
@@ -197,6 +262,7 @@
             class="btn btn-primary"
           >
             Explore Projects
+            <span aria-hidden="true">→</span>
           </a>
 
 
@@ -209,6 +275,57 @@
 
         </div>
 
+
+        <div class="hero-meta">
+
+          <div>
+            <span class="meta-label">
+              STATUS
+            </span>
+
+            <strong>
+              Building
+            </strong>
+          </div>
+
+
+          <div>
+            <span class="meta-label">
+              FOCUS
+            </span>
+
+            <strong>
+              Technology
+            </strong>
+          </div>
+
+
+          <div>
+            <span class="meta-label">
+              PROJECTS
+            </span>
+
+            <strong>
+              03+
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="hero-scroll"
+        aria-hidden="true"
+      >
+
+        <span>
+          SCROLL
+        </span>
+
+        <div class="scroll-line"></div>
+
       </div>
 
     </section>
@@ -218,14 +335,20 @@
          ABOUT
     ==================================================== -->
 
-    <section id="about">
+    <section
+      id="about"
+      aria-labelledby="about-title"
+    >
 
       <div class="section-label reveal">
         01 / About
       </div>
 
 
-      <h2 class="section-title reveal">
+      <h2
+        class="section-title reveal"
+        id="about-title"
+      >
         More than<br>
         just code.
       </h2>
@@ -239,8 +362,6 @@
 
       <div class="about-grid">
 
-
-        <!-- PROFILE -->
 
         <div class="about-profile reveal">
 
@@ -266,12 +387,20 @@
             Curious by nature. Builder by choice.
           </div>
 
+
+          <div class="profile-status">
+
+            <span class="status-dot"></span>
+
+            Available for ideas
+
+          </div>
+
         </div>
 
 
-        <!-- ABOUT CONTENT -->
-
         <div class="about-content">
+
 
           <div class="about-intro reveal">
             I like turning ideas into things
@@ -301,8 +430,12 @@
 
             <div class="about-card reveal">
 
+              <span class="card-number">
+                01
+              </span>
+
               <h3>
-                01 — Learn
+                Learn
               </h3>
 
               <p>
@@ -315,8 +448,12 @@
 
             <div class="about-card reveal">
 
+              <span class="card-number">
+                02
+              </span>
+
               <h3>
-                02 — Build
+                Build
               </h3>
 
               <p>
@@ -329,8 +466,12 @@
 
             <div class="about-card reveal">
 
+              <span class="card-number">
+                03
+              </span>
+
               <h3>
-                03 — Experiment
+                Experiment
               </h3>
 
               <p>
@@ -343,13 +484,17 @@
 
             <div class="about-card reveal">
 
+              <span class="card-number">
+                04
+              </span>
+
               <h3>
-                04 — Improve
+                Improve
               </h3>
 
               <p>
                 Refining projects and developing
-                my technical skills.
+                technical skills.
               </p>
 
             </div>
@@ -362,9 +507,7 @@
       </div>
 
 
-      <!-- =================================================
-           SKILLS
-      ================================================== -->
+      <!-- SKILLS -->
 
       <div class="skills-section">
 
@@ -380,36 +523,29 @@
             HTML
           </span>
 
-
           <span class="skill reveal">
             CSS
           </span>
-
 
           <span class="skill reveal">
             JavaScript
           </span>
 
-
           <span class="skill reveal">
             Web Development
           </span>
-
 
           <span class="skill reveal">
             GitHub
           </span>
 
-
           <span class="skill reveal">
             UI Design
           </span>
 
-
           <span class="skill reveal">
             Problem Solving
           </span>
-
 
           <span class="skill reveal">
             Technology
@@ -427,7 +563,10 @@
          PROJECTS
     ==================================================== -->
 
-    <section id="projects">
+    <section
+      id="projects"
+      aria-labelledby="projects-title"
+    >
 
 
       <div class="projects-head">
@@ -439,7 +578,10 @@
           </div>
 
 
-          <h2 class="section-title reveal">
+          <h2
+            class="section-title reveal"
+            id="projects-title"
+          >
             Things I've<br>
             built.
           </h2>
@@ -454,7 +596,13 @@
 
 
         <div class="projects-count reveal">
-          03 Projects
+
+          <span>
+            03
+          </span>
+
+          PROJECTS
+
         </div>
 
       </div>
@@ -463,49 +611,67 @@
       <div class="projects-grid">
 
 
-        <!-- =================================================
-             ROOT HUB
-        ================================================== -->
+        <!-- ROOT HUB -->
 
-        <article class="project-card reveal">
+        <article
+          class="project-card reveal"
+          data-project="root-hub"
+        >
 
-          <div>
+          <div class="project-visual">
 
-            <div class="project-number">
-              PROJECT / 01
-            </div>
+            <span class="visual-symbol">
+              RH
+            </span>
+
+            <span class="project-status">
+              LIVE
+            </span>
+
+          </div>
 
 
-            <div class="project-content">
+          <div class="project-number">
+            PROJECT / 01
+          </div>
+
+
+          <div class="project-content">
+
+            <div class="project-heading">
 
               <h3 class="project-title">
                 ROOT HUB
               </h3>
 
+              <span class="project-arrow">
+                ↗
+              </span>
 
-              <p class="project-description">
-                A technology-focused project created
-                as part of my ongoing exploration of
-                development, digital experiences and
-                creative ideas.
-              </p>
+            </div>
 
 
-              <div class="project-tags">
+            <p class="project-description">
+              A technology-focused project created
+              as part of my ongoing exploration of
+              development, digital experiences and
+              creative ideas.
+            </p>
 
-                <span class="project-tag">
-                  Web
-                </span>
 
-                <span class="project-tag">
-                  Development
-                </span>
+            <div class="project-tags">
 
-                <span class="project-tag">
-                  GitHub
-                </span>
+              <span class="project-tag">
+                Web
+              </span>
 
-              </div>
+              <span class="project-tag">
+                Development
+              </span>
+
+              <span class="project-tag">
+                GitHub
+              </span>
 
             </div>
 
@@ -521,7 +687,8 @@
               class="project-btn live"
               aria-label="Open ROOT HUB live website"
             >
-              ◉ Live Website
+              <span>◉</span>
+              Live Website
             </a>
 
 
@@ -532,7 +699,8 @@
               class="project-btn"
               aria-label="Open ROOT HUB GitHub repository"
             >
-              &lt;/&gt; GitHub
+              &lt;/&gt;
+              GitHub
             </a>
 
           </div>
@@ -540,49 +708,67 @@
         </article>
 
 
-        <!-- =================================================
-             ROOT OS
-        ================================================== -->
+        <!-- ROOT OS -->
 
-        <article class="project-card reveal">
+        <article
+          class="project-card reveal"
+          data-project="root-os"
+        >
 
-          <div>
+          <div class="project-visual">
 
-            <div class="project-number">
-              PROJECT / 02
-            </div>
+            <span class="visual-symbol">
+              OS
+            </span>
+
+            <span class="project-status">
+              LIVE
+            </span>
+
+          </div>
 
 
-            <div class="project-content">
+          <div class="project-number">
+            PROJECT / 02
+          </div>
+
+
+          <div class="project-content">
+
+            <div class="project-heading">
 
               <h3 class="project-title">
                 ROOT OS
               </h3>
 
+              <span class="project-arrow">
+                ↗
+              </span>
 
-              <p class="project-description">
-                An experimental operating-system-inspired
-                project focused on creating a unique
-                digital interface and exploring software
-                design.
-              </p>
+            </div>
 
 
-              <div class="project-tags">
+            <p class="project-description">
+              An experimental operating-system-inspired
+              project focused on creating a unique
+              digital interface and exploring software
+              design.
+            </p>
 
-                <span class="project-tag">
-                  OS Concept
-                </span>
 
-                <span class="project-tag">
-                  UI
-                </span>
+            <div class="project-tags">
 
-                <span class="project-tag">
-                  Development
-                </span>
+              <span class="project-tag">
+                OS Concept
+              </span>
 
-              </div>
+              <span class="project-tag">
+                UI
+              </span>
+
+              <span class="project-tag">
+                Development
+              </span>
 
             </div>
 
@@ -598,7 +784,8 @@
               class="project-btn live"
               aria-label="Open ROOT OS live website"
             >
-              ◉ Live Website
+              <span>◉</span>
+              Live Website
             </a>
 
 
@@ -609,7 +796,8 @@
               class="project-btn"
               aria-label="Open ROOT OS GitHub repository"
             >
-              &lt;/&gt; GitHub
+              &lt;/&gt;
+              GitHub
             </a>
 
           </div>
@@ -617,53 +805,71 @@
         </article>
 
 
-        <!-- =================================================
-             ROOT TERMINAL HUB
-        ================================================== -->
+        <!-- ROOT TERMINAL HUB -->
 
-        <article class="project-card reveal">
+        <article
+          class="project-card reveal project-featured"
+          data-project="root-terminal"
+        >
 
-          <div>
+          <div class="project-visual">
 
-            <div class="project-number">
-              PROJECT / 03
-            </div>
+            <span class="visual-symbol">
+              &gt;_
+            </span>
+
+            <span class="project-status">
+              LIVE
+            </span>
+
+          </div>
 
 
-            <div class="project-content">
+          <div class="project-number">
+            PROJECT / 03
+          </div>
+
+
+          <div class="project-content">
+
+            <div class="project-heading">
 
               <h3 class="project-title">
                 ROOT TERMINAL HUB
               </h3>
 
+              <span class="project-arrow">
+                ↗
+              </span>
 
-              <p class="project-description">
-                A technology and development-focused
-                project built around a terminal-inspired
-                digital experience and a collection of
-                development work.
-              </p>
+            </div>
 
 
-              <div class="project-tags">
+            <p class="project-description">
+              A technology and development-focused
+              project built around a terminal-inspired
+              digital experience and a collection of
+              development work.
+            </p>
 
-                <span class="project-tag">
-                  Web
-                </span>
 
-                <span class="project-tag">
-                  Terminal
-                </span>
+            <div class="project-tags">
 
-                <span class="project-tag">
-                  JavaScript
-                </span>
+              <span class="project-tag">
+                Web
+              </span>
 
-                <span class="project-tag">
-                  GitHub
-                </span>
+              <span class="project-tag">
+                Terminal
+              </span>
 
-              </div>
+              <span class="project-tag">
+                JavaScript
+              </span>
+
+              <span class="project-tag">
+                GitHub
+              </span>
 
             </div>
 
@@ -679,7 +885,8 @@
               class="project-btn live"
               aria-label="Open ROOT TERMINAL HUB live website"
             >
-              ◉ Live Website
+              <span>◉</span>
+              Live Website
             </a>
 
 
@@ -690,7 +897,8 @@
               class="project-btn"
               aria-label="Open ROOT TERMINAL HUB GitHub repository"
             >
-              &lt;/&gt; GitHub
+              &lt;/&gt;
+              GitHub
             </a>
 
           </div>
@@ -710,6 +918,7 @@
     <section
       id="contact"
       class="contact-section"
+      aria-labelledby="contact-title"
     >
 
       <div class="section-label reveal">
@@ -717,7 +926,10 @@
       </div>
 
 
-      <h2 class="section-title reveal">
+      <h2
+        class="section-title reveal"
+        id="contact-title"
+      >
         Let's connect.
       </h2>
 
@@ -731,17 +943,33 @@
 
       <div class="contact-box reveal">
 
-        <h3>
-          Have an idea?<br>
-          Let's talk.
-        </h3>
+        <div class="contact-header">
+
+          <div>
+
+            <h3>
+              Have an idea?<br>
+              Let's talk.
+            </h3>
+
+            <p>
+              The easiest way to reach me is through
+              email or one of my developer and
+              social profiles.
+            </p>
+
+          </div>
 
 
-        <p>
-          The easiest way to reach me is through
-          email or one of my developer and
-          social profiles.
-        </p>
+          <div class="contact-status">
+
+            <span class="status-dot"></span>
+
+            OPEN TO CONNECT
+
+          </div>
+
+        </div>
 
 
         <div class="contact-grid">
@@ -752,6 +980,7 @@
           <a
             href="mailto:hadivga@gmail.com"
             class="contact-card"
+            aria-label="Send email to HADI"
           >
 
             <div
@@ -774,6 +1003,13 @@
 
             </div>
 
+            <span
+              class="contact-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
           </a>
 
 
@@ -784,6 +1020,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
+            aria-label="Open HADI GitHub profile"
           >
 
             <div
@@ -806,6 +1043,13 @@
 
             </div>
 
+            <span
+              class="contact-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
           </a>
 
 
@@ -816,6 +1060,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
+            aria-label="Open HADI Instagram profile"
           >
 
             <div
@@ -838,6 +1083,13 @@
 
             </div>
 
+            <span
+              class="contact-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
           </a>
 
 
@@ -848,6 +1100,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
+            aria-label="Open The Real Toolkit Instagram profile"
           >
 
             <div
@@ -870,6 +1123,13 @@
 
             </div>
 
+            <span
+              class="contact-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
           </a>
 
 
@@ -878,6 +1138,7 @@
       </div>
 
     </section>
+
 
   </main>
 
@@ -888,44 +1149,93 @@
 
   <footer>
 
-    <div>
-      © 2026 HADI. Built with code.
+    <div class="footer-main">
+
+      <div class="footer-brand">
+
+        <a
+          href="#home"
+          class="footer-logo"
+        >
+          HADI
+        </a>
+
+        <p>
+          Building Code. Creating Tomorrow.
+        </p>
+
+      </div>
+
+
+      <div class="footer-status">
+
+        <span class="status-dot"></span>
+
+        <span>
+          Portfolio Online
+        </span>
+
+      </div>
+
     </div>
 
 
-    <div class="footer-links">
+    <div class="footer-bottom">
+
+      <div>
+
+        ©
+        <span id="currentYear">
+          2026
+        </span>
+        HADI. Built with code.
+
+      </div>
 
 
-      <a
-        href="https://github.com/hadi-root"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
+      <div class="footer-links">
 
+        <a href="#home">
+          Home
+        </a>
 
-      <a
-        href="https://www.instagram.com/hadi_bin_yoosuf/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @hadi_bin_yoosuf
-      </a>
+        <a href="#about">
+          About
+        </a>
 
+        <a href="#projects">
+          Projects
+        </a>
 
-      <a
-        href="https://www.instagram.com/the_real_toolkit/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @the_real_toolkit
-      </a>
+        <a href="#contact">
+          Contact
+        </a>
 
+        <a
+          href="https://github.com/hadi-root"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+      </div>
 
     </div>
 
   </footer>
+
+
+  <!-- BACK TO TOP -->
+
+  <button
+    id="backToTop"
+    class="back-to-top"
+    type="button"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
 
 
   <!-- =====================================================
