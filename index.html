@@ -770,114 +770,624 @@ button {
 
 
 /* =========================================================
-   ABOUT
+   ADVANCED ABOUT
 ========================================================= */
 
-.about-grid {
+.about-intro {
     display: grid;
 
     grid-template-columns:
-        .75fr 1.25fr;
+        .78fr 1.22fr;
 
     gap: 80px;
+
+    margin-bottom: 70px;
 }
 
-.about-card {
-    margin-top: 35px;
+.about-profile-card {
+    position: relative;
 
-    padding: 28px;
+    overflow: hidden;
+
+    min-height: 360px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
 
     border:
         1px solid var(--border);
 
-    border-radius: 18px;
+    border-radius: 20px;
 
     background:
-        rgba(255,255,255,.025);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
 }
 
-.about-icon {
-    width: 68px;
-    height: 68px;
+.about-profile-card::before {
+    content: "H";
+
+    position: absolute;
+
+    right: -25px;
+    bottom: -70px;
+
+    color: rgba(255,255,255,.025);
+
+    font-size: 270px;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    pointer-events: none;
+}
+
+.profile-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.profile-avatar {
+    width: 76px;
+    height: 76px;
 
     display: grid;
     place-items: center;
 
-    margin-bottom: 24px;
+    border:
+        1px solid rgba(255,255,255,.13);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151a20,
+            #080a0d
+        );
+
+    color: #dfe4e8;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+}
+
+.profile-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 11px;
 
     border:
         1px solid var(--border);
 
-    border-radius: 16px;
+    border-radius: 999px;
 
-    color: #b9c1ca;
+    color: var(--muted);
 
     font-family:
         "Courier New",
         monospace;
+
+    font-size: 8px;
+
+    text-transform: uppercase;
 }
 
-.about-card h3 {
-    margin-bottom: 8px;
+.profile-status-dot {
+    width: 6px;
+    height: 6px;
 
-    font-size: 20px;
+    border-radius: 50%;
+
+    background: #d9dee3;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.4);
 }
 
-.about-card p {
+.profile-bottom {
+    position: relative;
+
+    z-index: 2;
+}
+
+.profile-name {
+    font-size: 42px;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 900;
+}
+
+.profile-role {
+    margin-top: 8px;
+
+    color: #808a95;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+}
+
+.profile-location {
+    margin-top: 25px;
+
+    color: #626c77;
+
+    font-size: 10px;
+}
+
+.about-copy {
+    padding-top: 8px;
+}
+
+.about-copy .label {
+    margin-bottom: 18px;
+}
+
+.about-copy h3 {
+    max-width: 650px;
+
+    font-size:
+        clamp(28px,4vw,48px);
+
+    line-height: 1.03;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 800;
+}
+
+.about-copy h3 span {
+    color: #727c87;
+}
+
+.about-copy p {
+    max-width: 650px;
+
+    margin-top: 24px;
+
     color: var(--muted);
 
-    font-size: 12px;
+    font-size: 14px;
 
-    line-height: 1.7;
+    line-height: 1.95;
 }
 
-.about-content p {
-    margin-bottom: 21px;
-
-    color: #b8c0c9;
-
-    font-size: 16px;
-
-    line-height: 1.9;
-}
-
-.about-values {
+.about-highlight {
     display: grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+        repeat(3,1fr);
 
-    gap: 11px;
+    gap: 9px;
 
     margin-top: 32px;
 }
 
-.value-card {
-    padding: 19px;
+.highlight-box {
+    padding: 17px;
 
     border:
         1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     background:
         rgba(255,255,255,.02);
 }
 
-.value-card strong {
+.highlight-number {
+    font-size: 22px;
+
+    font-weight: 850;
+
+    letter-spacing: -1px;
+}
+
+.highlight-label {
+    margin-top: 5px;
+
+    color: var(--dim);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ABOUT PROFILE GRID
+========================================================= */
+
+.about-dashboard {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 14px;
+}
+
+.about-panel {
+    padding: 28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.022);
+}
+
+.about-panel-wide {
+    grid-column: 1 / -1;
+}
+
+.panel-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.panel-title {
+    font-size: 15px;
+
+    font-weight: 750;
+}
+
+.panel-code {
+    color: var(--dim);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   JOURNEY TIMELINE
+========================================================= */
+
+.timeline {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: 7px;
+    bottom: 8px;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            #626c77,
+            rgba(255,255,255,.04)
+        );
+}
+
+.timeline-item {
+    position: relative;
+
+    padding-left: 30px;
+
+    padding-bottom: 27px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+
+    left: 0;
+    top: 5px;
+
+    width: 11px;
+    height: 11px;
+
+    border:
+        2px solid #080a0d;
+
+    border-radius: 50%;
+
+    background: #aab2ba;
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.12);
+}
+
+.timeline-item.active .timeline-dot {
+    background: #f0f2f4;
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,.25);
+}
+
+.timeline-date {
+    color: var(--dim);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.timeline-title {
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.timeline-text {
+    max-width: 480px;
+
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FOCUS PANEL
+========================================================= */
+
+.focus-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.focus-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 14px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.018);
+}
+
+.focus-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 8px;
+
+    color: #9aa4ae;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+}
+
+.focus-item strong {
     display: block;
 
-    margin-bottom: 7px;
+    font-size: 11px;
+}
+
+.focus-item span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--dim);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.philosophy {
+    display: grid;
+
+    grid-template-columns:
+        .75fr 1.25fr;
+
+    gap: 40px;
+
+    align-items: center;
+}
+
+.philosophy-quote {
+    font-size:
+        clamp(25px,4vw,42px);
+
+    line-height: 1.08;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+}
+
+.philosophy-quote span {
+    color: #69737e;
+}
+
+.philosophy-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 9px;
+}
+
+.philosophy-item {
+    min-height: 120px;
+
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,.018);
+}
+
+.philosophy-number {
+    color: var(--dim);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+}
+
+.philosophy-item h4 {
+    margin-top: 18px;
 
     font-size: 12px;
 }
 
-.value-card span {
+.philosophy-item p {
+    margin-top: 6px;
+
     color: var(--muted);
 
-    font-size: 11px;
+    font-size: 9px;
 
-    line-height: 1.5;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   GOALS
+========================================================= */
+
+.goal-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 9px;
+}
+
+.goal {
+    padding: 19px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.018);
+}
+
+.goal-number {
+    color: var(--dim);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+}
+
+.goal h4 {
+    margin-top: 18px;
+
+    font-size: 12px;
+}
+
+.goal p {
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    line-height: 1.65;
 }
 
 
@@ -908,11 +1418,6 @@ button {
 
     white-space: nowrap;
 }
-
-
-/* =========================================================
-   PROJECT STATISTICS
-========================================================= */
 
 .project-stats {
     display: grid;
@@ -971,11 +1476,6 @@ button {
 
     text-transform: uppercase;
 }
-
-
-/* =========================================================
-   PROJECT FILTERS
-========================================================= */
 
 .project-filter-bar {
     display: flex;
@@ -1046,11 +1546,6 @@ button {
 
     border-color: #f1f3f5;
 }
-
-
-/* =========================================================
-   FEATURED PROJECT
-========================================================= */
 
 .featured-project {
     position: relative;
@@ -1156,11 +1651,6 @@ button {
         0 0 9px rgba(255,255,255,.5);
 }
 
-
-/* =========================================================
-   PROJECT CONTENT
-========================================================= */
-
 .featured-content {
     display: grid;
 
@@ -1245,11 +1735,6 @@ button {
     line-height: 1.9;
 }
 
-
-/* =========================================================
-   STACK
-========================================================= */
-
 .stack-title {
     margin-top: 29px;
 
@@ -1295,11 +1780,6 @@ button {
 
     font-size: 8px;
 }
-
-
-/* =========================================================
-   PROJECT ACTIONS
-========================================================= */
 
 .featured-actions {
     display: flex;
@@ -1357,11 +1837,6 @@ button {
     color: #050608;
 }
 
-
-/* =========================================================
-   PROJECT METRICS
-========================================================= */
-
 .project-metrics {
     display: grid;
 
@@ -1408,11 +1883,6 @@ button {
 
     font-weight: 650;
 }
-
-
-/* =========================================================
-   PROJECT PREVIEW
-========================================================= */
 
 .featured-preview {
     position: relative;
@@ -1658,11 +2128,6 @@ button {
     line-height: 2.1;
 }
 
-
-/* =========================================================
-   PROJECT DETAILS
-========================================================= */
-
 .project-details {
     display: grid;
 
@@ -1705,11 +2170,6 @@ button {
 
     font-size: 10px;
 }
-
-
-/* =========================================================
-   FUTURE PROJECT
-========================================================= */
 
 .next-project {
     margin-top: 17px;
@@ -1804,6 +2264,10 @@ button {
     letter-spacing: 1px;
 
     text-transform: uppercase;
+}
+
+.project-hidden {
+    display: none !important;
 }
 
 
@@ -2128,15 +2592,6 @@ footer {
 
 
 /* =========================================================
-   PROJECT FILTER ANIMATION
-========================================================= */
-
-.project-hidden {
-    display: none !important;
-}
-
-
-/* =========================================================
    RESPONSIVE
 ========================================================= */
 
@@ -2172,10 +2627,24 @@ footer {
         justify-content: center;
     }
 
-    .about-grid {
+    .about-intro {
         grid-template-columns: 1fr;
 
         gap: 45px;
+    }
+
+    .about-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .about-panel-wide {
+        grid-column: auto;
+    }
+
+    .philosophy {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
     }
 
     .featured-content {
@@ -2272,7 +2741,23 @@ footer {
         letter-spacing: -2.5px;
     }
 
-    .about-values {
+    .about-highlight {
+        grid-template-columns: 1fr;
+    }
+
+    .about-profile-card {
+        min-height: 310px;
+    }
+
+    .about-copy h3 {
+        letter-spacing: -1.5px;
+    }
+
+    .philosophy-list {
+        grid-template-columns: 1fr;
+    }
+
+    .goal-grid {
         grid-template-columns: 1fr;
     }
 
@@ -2370,6 +2855,10 @@ footer {
         padding: 22px;
 
         font-size: 9px;
+    }
+
+    .profile-name {
+        font-size: 34px;
     }
 
     .project-stats {
@@ -2477,27 +2966,19 @@ footer {
             <ul class="nav-links">
 
                 <li>
-                    <a href="#home">
-                        Home
-                    </a>
+                    <a href="#home">Home</a>
                 </li>
 
                 <li>
-                    <a href="#about">
-                        About
-                    </a>
+                    <a href="#about">About</a>
                 </li>
 
                 <li>
-                    <a href="#projects">
-                        Projects
-                    </a>
+                    <a href="#projects">Projects</a>
                 </li>
 
                 <li>
-                    <a href="#skills">
-                        Skills
-                    </a>
+                    <a href="#skills">Skills</a>
                 </li>
 
                 <li>
@@ -2530,32 +3011,18 @@ footer {
 
 <div class="mobile-menu" id="mobileMenu">
 
-    <a href="#home">
-        Home
-    </a>
+    <a href="#home">Home</a>
 
-    <a href="#about">
-        About
-    </a>
+    <a href="#about">About</a>
 
-    <a href="#projects">
-        Projects
-    </a>
+    <a href="#projects">Projects</a>
 
-    <a href="#skills">
-        Skills
-    </a>
+    <a href="#skills">Skills</a>
 
-    <a href="#contact">
-        Contact
-    </a>
+    <a href="#contact">Contact</a>
 
 </div>
 
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
 
 <main>
 
@@ -2593,13 +3060,9 @@ footer {
         <div class="hero-role">
 
             Developer
-
             <span>•</span>
-
             Builder
-
             <span>•</span>
-
             Learner
 
         </div>
@@ -2654,7 +3117,6 @@ footer {
             <div class="terminal-body">
 
                 <div>
-
                     <span class="terminal-prompt">
                         hadi@web:~$
                     </span>
@@ -2662,7 +3124,6 @@ footer {
                     <span class="terminal-command">
                         whoami
                     </span>
-
                 </div>
 
                 <div class="terminal-output">
@@ -2671,9 +3132,7 @@ footer {
 
                 <div class="terminal-space"></div>
 
-
                 <div>
-
                     <span class="terminal-prompt">
                         hadi@web:~$
                     </span>
@@ -2681,7 +3140,6 @@ footer {
                     <span class="terminal-command">
                         project
                     </span>
-
                 </div>
 
                 <div class="terminal-output">
@@ -2690,9 +3148,7 @@ footer {
 
                 <div class="terminal-space"></div>
 
-
                 <div>
-
                     <span class="terminal-prompt">
                         hadi@web:~$
                     </span>
@@ -2700,7 +3156,6 @@ footer {
                     <span class="terminal-command">
                         status
                     </span>
-
                 </div>
 
                 <div class="terminal-output">
@@ -2709,9 +3164,7 @@ footer {
 
                 <div class="terminal-space"></div>
 
-
                 <div>
-
                     <span class="terminal-prompt">
                         hadi@web:~$
                     </span>
@@ -2719,7 +3172,6 @@ footer {
                     <span class="terminal-command">
                         mission
                     </span>
-
                 </div>
 
                 <div class="terminal-output">
@@ -2736,15 +3188,12 @@ footer {
 
                 <div class="terminal-space"></div>
 
-
                 <div>
-
                     <span class="terminal-prompt">
                         hadi@web:~$
                     </span>
 
                     <span class="cursor"></span>
-
                 </div>
 
             </div>
@@ -2766,129 +3215,544 @@ footer {
 
 
 <!-- =========================================================
-     ABOUT
+     ADVANCED ABOUT SECTION
 ========================================================= -->
 
 <section class="section" id="about">
 
 <div class="container">
 
-<div class="about-grid">
+
+<div class="about-intro">
 
 
-<div>
+    <!-- PROFILE CARD -->
 
-    <span class="label">
-        01 / Identity
-    </span>
+    <div class="about-profile-card reveal">
 
-    <h2 class="section-title">
-        This is<br>
-        HADI.
-    </h2>
+        <div class="profile-top">
 
+            <div class="profile-avatar">
+                H
+            </div>
 
-    <div class="about-card reveal">
+            <div class="profile-status">
 
-        <div class="about-icon">
-            &lt;/&gt;
+                <span class="profile-status-dot"></span>
+
+                Building
+
+            </div>
+
         </div>
+
+
+        <div class="profile-bottom">
+
+            <div class="profile-name">
+                HADI<span class="dim">.</span>
+            </div>
+
+            <div class="profile-role">
+                DEVELOPER / BUILDER / LEARNER
+            </div>
+
+            <div class="profile-location">
+                &gt; DIGITAL BUILDER
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INTRODUCTION -->
+
+    <div class="about-copy">
+
+        <span class="label">
+            01 / Identity
+        </span>
+
 
         <h3>
-            Developer Mindset
+            I'm building my path
+            through <span>code.</span>
         </h3>
 
+
         <p>
-            Curious about technology, interested in
-            building things and always looking for the
-            next problem to solve.
+            I'm HADI — a developer and technology enthusiast
+            focused on learning by building. Rather than only
+            studying how technology works, I like turning what
+            I learn into actual projects.
         </p>
 
-    </div>
 
-</div>
-
-
-<div class="about-content">
-
-    <span class="label">
-        About
-    </span>
-
-    <p>
-        I'm HADI — a developer, builder and learner
-        interested in creating useful digital experiences.
-    </p>
-
-    <p>
-        I enjoy taking an idea, breaking it down,
-        learning what is needed and turning it into
-        a working project.
-    </p>
-
-    <p>
-        This portfolio is a record of that journey:
-        projects I've built, technologies I'm exploring
-        and things I'm learning along the way.
-    </p>
+        <p>
+            My journey is still developing. Every project gives
+            me another opportunity to understand something new,
+            improve my problem-solving skills and become a
+            better builder.
+        </p>
 
 
-    <div class="about-values">
+        <div class="about-highlight">
 
-        <div class="value-card reveal">
+            <div class="highlight-box">
 
-            <strong>
-                Build
-            </strong>
+                <div class="highlight-number">
+                    01
+                </div>
 
-            <span>
-                Turn ideas into real projects.
-            </span>
+                <div class="highlight-label">
+                    Live Project
+                </div>
 
-        </div>
-
-
-        <div class="value-card reveal">
-
-            <strong>
-                Learn
-            </strong>
-
-            <span>
-                Keep exploring new technologies.
-            </span>
-
-        </div>
+            </div>
 
 
-        <div class="value-card reveal">
+            <div class="highlight-box">
 
-            <strong>
-                Solve
-            </strong>
+                <div class="highlight-number">
+                    ∞
+                </div>
 
-            <span>
-                Approach problems with curiosity.
-            </span>
+                <div class="highlight-label">
+                    Ideas
+                </div>
 
-        </div>
+            </div>
 
 
-        <div class="value-card reveal">
+            <div class="highlight-box">
 
-            <strong>
-                Improve
-            </strong>
+                <div class="highlight-number">
+                    24/7
+                </div>
 
-            <span>
-                Make every project better than the last.
-            </span>
+                <div class="highlight-label">
+                    Curiosity
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
 </div>
+
+
+<!-- =====================================================
+     ABOUT DASHBOARD
+====================================================== -->
+
+<div class="about-dashboard">
+
+
+    <!-- JOURNEY -->
+
+    <div class="about-panel reveal">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                My Journey
+            </div>
+
+            <div class="panel-code">
+                JOURNEY.LOG
+            </div>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item">
+
+                <span class="timeline-dot"></span>
+
+                <div class="timeline-date">
+                    PHASE 01
+                </div>
+
+                <div class="timeline-title">
+                    Curiosity
+                </div>
+
+                <div class="timeline-text">
+                    Started exploring technology and
+                    understanding how digital systems work.
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <span class="timeline-dot"></span>
+
+                <div class="timeline-date">
+                    PHASE 02
+                </div>
+
+                <div class="timeline-title">
+                    Learning to Build
+                </div>
+
+                <div class="timeline-text">
+                    Began learning web technologies and
+                    experimenting with code.
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item active">
+
+                <span class="timeline-dot"></span>
+
+                <div class="timeline-date">
+                    CURRENT
+                </div>
+
+                <div class="timeline-title">
+                    Building Real Projects
+                </div>
+
+                <div class="timeline-text">
+                    Creating, deploying and improving real
+                    projects such as ROOT Terminal Hub.
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <span class="timeline-dot"></span>
+
+                <div class="timeline-date">
+                    NEXT
+                </div>
+
+                <div class="timeline-title">
+                    Bigger Builds
+                </div>
+
+                <div class="timeline-text">
+                    Continue developing stronger technical
+                    skills and building more ambitious projects.
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- CURRENT FOCUS -->
+
+    <div class="about-panel reveal">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                Current Focus
+            </div>
+
+            <div class="panel-code">
+                FOCUS.SYS
+            </div>
+
+        </div>
+
+
+        <div class="focus-list">
+
+
+            <div class="focus-item">
+
+                <div class="focus-icon">
+                    WEB
+                </div>
+
+                <div>
+
+                    <strong>
+                        Web Development
+                    </strong>
+
+                    <span>
+                        Building modern responsive websites
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="focus-item">
+
+                <div class="focus-icon">
+                    JS
+                </div>
+
+                <div>
+
+                    <strong>
+                        JavaScript
+                    </strong>
+
+                    <span>
+                        Learning interactive web development
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="focus-item">
+
+                <div class="focus-icon">
+                    GIT
+                </div>
+
+                <div>
+
+                    <strong>
+                        Git & GitHub
+                    </strong>
+
+                    <span>
+                        Version control and project publishing
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="focus-item">
+
+                <div class="focus-icon">
+                    UI
+                </div>
+
+                <div>
+
+                    <strong>
+                        Interface Design
+                    </strong>
+
+                    <span>
+                        Creating clean digital experiences
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- PHILOSOPHY -->
+
+    <div class="about-panel about-panel-wide reveal">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                Developer Philosophy
+            </div>
+
+            <div class="panel-code">
+                MINDSET.TXT
+            </div>
+
+        </div>
+
+
+        <div class="philosophy">
+
+
+            <div class="philosophy-quote">
+
+                Learn it.<br>
+                Build it.<br>
+                <span>Improve it.</span>
+
+            </div>
+
+
+            <div class="philosophy-list">
+
+
+                <div class="philosophy-item">
+
+                    <div class="philosophy-number">
+                        01
+                    </div>
+
+                    <h4>
+                        Curiosity
+                    </h4>
+
+                    <p>
+                        Ask questions and explore how
+                        things work.
+                    </p>
+
+                </div>
+
+
+                <div class="philosophy-item">
+
+                    <div class="philosophy-number">
+                        02
+                    </div>
+
+                    <h4>
+                        Practice
+                    </h4>
+
+                    <p>
+                        Turn knowledge into practical
+                        experience.
+                    </p>
+
+                </div>
+
+
+                <div class="philosophy-item">
+
+                    <div class="philosophy-number">
+                        03
+                    </div>
+
+                    <h4>
+                        Experiment
+                    </h4>
+
+                    <p>
+                        Try different approaches and
+                        learn from the result.
+                    </p>
+
+                </div>
+
+
+                <div class="philosophy-item">
+
+                    <div class="philosophy-number">
+                        04
+                    </div>
+
+                    <h4>
+                        Improve
+                    </h4>
+
+                    <p>
+                        Every version should be better
+                        than the previous one.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GOALS -->
+
+    <div class="about-panel about-panel-wide reveal">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                Where I'm Going
+            </div>
+
+            <div class="panel-code">
+                ROADMAP.LOG
+            </div>
+
+        </div>
+
+
+        <div class="goal-grid">
+
+
+            <div class="goal">
+
+                <div class="goal-number">
+                    GOAL / 01
+                </div>
+
+                <h4>
+                    Stronger Foundations
+                </h4>
+
+                <p>
+                    Build a solid understanding of
+                    programming and web technologies.
+                </p>
+
+            </div>
+
+
+            <div class="goal">
+
+                <div class="goal-number">
+                    GOAL / 02
+                </div>
+
+                <h4>
+                    Bigger Projects
+                </h4>
+
+                <p>
+                    Move from small experiments toward
+                    more advanced real-world projects.
+                </p>
+
+            </div>
+
+
+            <div class="goal">
+
+                <div class="goal-number">
+                    GOAL / 03
+                </div>
+
+                <h4>
+                    Keep Creating
+                </h4>
+
+                <p>
+                    Build consistently and document the
+                    journey through actual work.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 
 </div>
@@ -2935,76 +3799,44 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     PROJECT STATISTICS
-====================================================== -->
-
 <div class="project-stats">
 
     <div class="project-stat">
-
-        <div class="project-stat-number">
-            01
-        </div>
-
+        <div class="project-stat-number">01</div>
         <div class="project-stat-label">
             Completed Project
         </div>
-
     </div>
 
-
     <div class="project-stat">
-
-        <div class="project-stat-number">
-            01
-        </div>
-
+        <div class="project-stat-number">01</div>
         <div class="project-stat-label">
             Live Project
         </div>
-
     </div>
 
-
     <div class="project-stat">
-
-        <div class="project-stat-number">
-            05+
-        </div>
-
+        <div class="project-stat-number">05+</div>
         <div class="project-stat-label">
             Technologies
         </div>
-
     </div>
 
-
     <div class="project-stat">
-
-        <div class="project-stat-number">
-            ∞
-        </div>
-
+        <div class="project-stat-number">∞</div>
         <div class="project-stat-label">
             Ideas Ahead
         </div>
-
     </div>
 
 </div>
 
-
-<!-- =====================================================
-     FILTERS
-====================================================== -->
 
 <div class="project-filter-bar">
 
     <div class="project-filter-title">
         Filter Projects
     </div>
-
 
     <div class="project-filters">
 
@@ -3041,15 +3873,10 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     FEATURED PROJECT
-====================================================== -->
-
 <article
     class="featured-project reveal project-item"
     data-category="web live github"
 >
-
 
 <div class="project-toolbar">
 
@@ -3065,7 +3892,6 @@ footer {
 
     </div>
 
-
     <div class="toolbar-status">
 
         <span class="toolbar-status-dot"></span>
@@ -3080,12 +3906,7 @@ footer {
 <div class="featured-content">
 
 
-<!-- =====================================================
-     PROJECT INFORMATION
-====================================================== -->
-
 <div class="featured-info">
-
 
 <div>
 
@@ -3093,25 +3914,20 @@ footer {
         001 — FEATURED PROJECT
     </div>
 
-
     <div class="featured-category">
         Web Development
     </div>
-
 
     <h3 class="featured-title">
         ROOT<br>
         Terminal Hub<span class="dim">.</span>
     </h3>
 
-
     <div class="featured-subtitle">
         Technology • Web • Digital Systems
     </div>
 
-
     <p class="featured-description">
-
         ROOT Terminal Hub is a technology-focused
         web project built around a terminal-inspired
         visual experience.
@@ -3121,78 +3937,37 @@ footer {
         It represents an early step in building and
         publishing a real web project from idea to
         live deployment.
-
     </p>
-
 
     <div class="stack-title">
         TECHNOLOGY
     </div>
 
-
     <div class="stack">
 
-        <span class="stack-item">
-            HTML
-        </span>
-
-        <span class="stack-item">
-            CSS
-        </span>
-
-        <span class="stack-item">
-            JavaScript
-        </span>
-
-        <span class="stack-item">
-            Git
-        </span>
-
-        <span class="stack-item">
-            GitHub
-        </span>
+        <span class="stack-item">HTML</span>
+        <span class="stack-item">CSS</span>
+        <span class="stack-item">JavaScript</span>
+        <span class="stack-item">Git</span>
+        <span class="stack-item">GitHub</span>
 
     </div>
-
 
     <div class="project-metrics">
 
         <div class="metric">
-
-            <div class="metric-label">
-                Type
-            </div>
-
-            <div class="metric-value">
-                Web
-            </div>
-
+            <div class="metric-label">Type</div>
+            <div class="metric-value">Web</div>
         </div>
 
-
         <div class="metric">
-
-            <div class="metric-label">
-                Status
-            </div>
-
-            <div class="metric-value">
-                Live
-            </div>
-
+            <div class="metric-label">Status</div>
+            <div class="metric-value">Live</div>
         </div>
 
-
         <div class="metric">
-
-            <div class="metric-label">
-                Source
-            </div>
-
-            <div class="metric-value">
-                GitHub
-            </div>
-
+            <div class="metric-label">Source</div>
+            <div class="metric-value">GitHub</div>
         </div>
 
     </div>
@@ -3211,7 +3986,6 @@ footer {
         Open Live Website ↗
     </a>
 
-
     <a
         href="https://github.com/hadi-root/root-terminal-portal"
         target="_blank"
@@ -3223,18 +3997,12 @@ footer {
 
 </div>
 
-
 </div>
 
-
-<!-- =====================================================
-     PROJECT PREVIEW
-====================================================== -->
 
 <div class="featured-preview">
 
     <div class="preview-grid"></div>
-
 
     <div class="browser">
 
@@ -3263,21 +4031,17 @@ footer {
 
             </div>
 
-
             <div class="preview-status">
                 SYSTEM / ONLINE
             </div>
-
 
             <div class="preview-title">
                 ROOT<span class="dim">.</span>
             </div>
 
-
             <div class="preview-line"></div>
 
             <div class="preview-line short"></div>
-
 
             <div class="preview-terminal">
 
@@ -3298,10 +4062,6 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     PROJECT DETAILS
-====================================================== -->
-
 <div class="project-details">
 
     <div class="detail">
@@ -3316,7 +4076,6 @@ footer {
 
     </div>
 
-
     <div class="detail">
 
         <div class="detail-label">
@@ -3328,7 +4087,6 @@ footer {
         </div>
 
     </div>
-
 
     <div class="detail">
 
@@ -3347,10 +4105,6 @@ footer {
 </article>
 
 
-<!-- =====================================================
-     NEXT PROJECT
-====================================================== -->
-
 <div class="next-project reveal">
 
     <div class="next-project-left">
@@ -3358,7 +4112,6 @@ footer {
         <div class="next-project-icon">
             +
         </div>
-
 
         <div>
 
@@ -3378,7 +4131,6 @@ footer {
         </div>
 
     </div>
-
 
     <span class="dim">
         →
@@ -3442,17 +4194,9 @@ footer {
 
             <div class="skill-tags">
 
-                <span class="skill-tag">
-                    HTML
-                </span>
-
-                <span class="skill-tag">
-                    CSS
-                </span>
-
-                <span class="skill-tag">
-                    JavaScript
-                </span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
 
             </div>
 
@@ -3484,17 +4228,9 @@ footer {
 
             <div class="skill-tags">
 
-                <span class="skill-tag">
-                    Git
-                </span>
-
-                <span class="skill-tag">
-                    GitHub
-                </span>
-
-                <span class="skill-tag">
-                    Repositories
-                </span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">Repositories</span>
 
             </div>
 
@@ -3564,17 +4300,9 @@ footer {
 
             <div class="skill-tags">
 
-                <span class="skill-tag">
-                    UI
-                </span>
-
-                <span class="skill-tag">
-                    Responsive Design
-                </span>
-
-                <span class="skill-tag">
-                    Layout
-                </span>
+                <span class="skill-tag">UI</span>
+                <span class="skill-tag">Responsive Design</span>
+                <span class="skill-tag">Layout</span>
 
             </div>
 
@@ -3599,7 +4327,6 @@ footer {
                 </p>
 
             </div>
-
 
             <div class="learning-list">
 
