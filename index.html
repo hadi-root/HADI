@@ -1115,14 +1115,6 @@
                 var(--border-hover);
         }
 
-        .project-link.disabled {
-            color: #626d7b;
-
-            cursor: default;
-
-            pointer-events: none;
-        }
-
         /* =========================
            SKILLS
         ========================== */
@@ -1932,25 +1924,11 @@
         id="mobileMenu"
     >
 
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#about">
-            About
-        </a>
-
-        <a href="#projects">
-            Projects
-        </a>
-
-        <a href="#skills">
-            Skills
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
 
     </div>
 
@@ -1961,9 +1939,7 @@
 
     <main>
 
-        <!-- =========================
-             HOME
-        ========================== -->
+        <!-- HOME -->
 
         <section
             class="hero"
@@ -1981,13 +1957,9 @@
                 </div>
 
                 <h1>
-
                     Build.<br>
-
                     Create.<br>
-
                     <span>Innovate.</span>
-
                 </h1>
 
                 <p class="hero-description">
@@ -2143,9 +2115,7 @@
         </section>
 
 
-        <!-- =========================
-             QUICK INFO
-        ========================== -->
+        <!-- QUICK INFO -->
 
         <section class="section quick-section">
 
@@ -2207,9 +2177,7 @@
         </section>
 
 
-        <!-- =========================
-             ABOUT
-        ========================== -->
+        <!-- ABOUT -->
 
         <section
             class="section about-section"
@@ -2335,9 +2303,7 @@
         </section>
 
 
-        <!-- =========================
-             PROJECTS
-        ========================== -->
+        <!-- PROJECTS -->
 
         <section
             class="section projects-section"
@@ -2374,7 +2340,7 @@
             <div class="projects-grid">
 
 
-                <!-- PROJECT 01 -->
+                <!-- ROOT TERMINAL HUB -->
 
                 <article class="project-card reveal">
 
@@ -2432,15 +2398,19 @@
                         <div class="project-links">
 
                             <a
-                                href="#"
-                                class="project-link disabled"
+                                href="https://root-terminal-hub.onrender.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
                             >
                                 Live Demo ↗
                             </a>
 
                             <a
-                                href="#"
-                                class="project-link disabled"
+                                href="https://github.com/hadi-root/root-terminal-portal"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
                             >
                                 GitHub ↗
                             </a>
@@ -2452,7 +2422,7 @@
                 </article>
 
 
-                <!-- PROJECT 02 -->
+                <!-- NEXT PROJECT -->
 
                 <article class="project-card reveal">
 
@@ -2501,7 +2471,7 @@
 
                         <div class="project-links">
 
-                            <span class="project-link disabled">
+                            <span class="project-link">
                                 In Development
                             </span>
 
@@ -2516,9 +2486,7 @@
         </section>
 
 
-        <!-- =========================
-             SKILLS
-        ========================== -->
+        <!-- SKILLS -->
 
         <section
             class="section skills-section"
@@ -2590,10 +2558,12 @@
                             </span>
 
                             <div class="skill-bar">
+
                                 <div
                                     class="skill-fill"
                                     data-width="90%"
                                 ></div>
+
                             </div>
 
                             <span class="skill-percent">
@@ -2610,10 +2580,12 @@
                             </span>
 
                             <div class="skill-bar">
+
                                 <div
                                     class="skill-fill"
                                     data-width="85%"
                                 ></div>
+
                             </div>
 
                             <span class="skill-percent">
@@ -2630,10 +2602,12 @@
                             </span>
 
                             <div class="skill-bar">
+
                                 <div
                                     class="skill-fill"
                                     data-width="70%"
                                 ></div>
+
                             </div>
 
                             <span class="skill-percent">
@@ -2683,10 +2657,12 @@
                             </span>
 
                             <div class="skill-bar">
+
                                 <div
                                     class="skill-fill"
                                     data-width="75%"
                                 ></div>
+
                             </div>
 
                             <span class="skill-percent">
@@ -2703,10 +2679,12 @@
                             </span>
 
                             <div class="skill-bar">
+
                                 <div
                                     class="skill-fill"
                                     data-width="80%"
                                 ></div>
+
                             </div>
 
                             <span class="skill-percent">
@@ -2723,10 +2701,12 @@
                             </span>
 
                             <div class="skill-bar">
+
                                 <div
                                     class="skill-fill"
                                     data-width="70%"
                                 ></div>
+
                             </div>
 
                             <span class="skill-percent">
@@ -2897,9 +2877,7 @@
         </section>
 
 
-        <!-- =========================
-             CONTACT
-        ========================== -->
+        <!-- CONTACT -->
 
         <section
             class="section contact-section"
@@ -2949,9 +2927,7 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -2974,15 +2950,11 @@
     </footer>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    <!-- JAVASCRIPT -->
 
     <script>
 
-        /* =========================
-           MOBILE MENU
-        ========================== */
+        /* MOBILE MENU */
 
         const menuButton =
             document.getElementById("menuButton");
@@ -3025,9 +2997,7 @@
             });
 
 
-        /* =========================
-           REVEAL ANIMATION
-        ========================== */
+        /* REVEAL ANIMATION */
 
         const revealElements =
             document.querySelectorAll(".reveal");
@@ -3069,9 +3039,7 @@
         });
 
 
-        /* =========================
-           SKILL BAR ANIMATION
-        ========================== */
+        /* SKILL BAR ANIMATION */
 
         const skillBars =
             document.querySelectorAll(".skill-fill");
@@ -3088,10 +3056,9 @@
                         ) {
 
                             const width =
-                                entry.target
-                                    .getAttribute(
-                                        "data-width"
-                                    );
+                                entry.target.getAttribute(
+                                    "data-width"
+                                );
 
                             entry.target.style.width =
                                 width;
@@ -3118,9 +3085,7 @@
         });
 
 
-        /* =========================
-           NAVBAR SCROLL
-        ========================== */
+        /* NAVBAR SCROLL */
 
         const navbar =
             document.querySelector(".navbar");
