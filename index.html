@@ -552,7 +552,7 @@
     }
 
     .project-card {
-      min-height: 360px;
+      min-height: 380px;
 
       border: 1px solid var(--line);
 
@@ -579,20 +579,25 @@
       position: relative;
     }
 
+    .project-card:nth-child(3) {
+      grid-column: 1 / -1;
+      min-height: 330px;
+    }
+
     .project-card::before {
       content: "";
 
       position: absolute;
 
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
 
       border-radius: 50%;
 
       background: rgba(255,255,255,0.04);
 
-      top: -100px;
-      right: -100px;
+      top: -110px;
+      right: -110px;
 
       transition: 0.5s ease;
     }
@@ -630,7 +635,7 @@
     .project-description {
       color: var(--muted);
 
-      max-width: 500px;
+      max-width: 650px;
 
       font-size: 0.92rem;
     }
@@ -658,6 +663,10 @@
     }
 
     .project-link {
+      position: relative;
+
+      z-index: 2;
+
       margin-top: 25px;
 
       color: white;
@@ -669,6 +678,8 @@
       align-items: center;
 
       gap: 8px;
+
+      width: fit-content;
     }
 
     .project-link:hover {
@@ -825,6 +836,8 @@
       display: flex;
 
       gap: 20px;
+
+      flex-wrap: wrap;
     }
 
     .footer-links a:hover {
@@ -919,6 +932,10 @@
 
       .projects-grid {
         grid-template-columns: 1fr;
+      }
+
+      .project-card:nth-child(3) {
+        grid-column: auto;
       }
 
       .contact-box {
@@ -1336,7 +1353,7 @@
 
 
         <div class="projects-count reveal">
-          Selected Projects
+          03 Projects
         </div>
 
 
@@ -1348,7 +1365,7 @@
 
 
         <!-- =====================================================
-             PROJECT 01
+             PROJECT 01 — ROOT HUB
         ===================================================== -->
 
         <article class="project-card reveal">
@@ -1364,14 +1381,14 @@
             <div class="project-content">
 
               <h3 class="project-title">
-                ROOT Terminal Hub
+                ROOT HUB
               </h3>
 
 
               <p class="project-description">
-                A technology-focused web project built as a
-                digital space for exploring development,
-                projects and experiments.
+                A technology-focused project created as part of
+                my ongoing exploration of development, digital
+                experiences and creative ideas.
               </p>
 
 
@@ -1382,15 +1399,11 @@
                 </span>
 
                 <span class="project-tag">
-                  HTML
+                  Development
                 </span>
 
                 <span class="project-tag">
-                  CSS
-                </span>
-
-                <span class="project-tag">
-                  JavaScript
+                  GitHub
                 </span>
 
               </div>
@@ -1401,12 +1414,12 @@
 
 
           <a
-            href="https://root-terminal-hub.onrender.com/"
+            href="https://github.com/hadi-root/root-hub"
             target="_blank"
             rel="noopener noreferrer"
             class="project-link"
           >
-            View Live Project →
+            View Project →
           </a>
 
 
@@ -1415,7 +1428,7 @@
 
 
         <!-- =====================================================
-             PROJECT 02
+             PROJECT 02 — ROOT OS
         ===================================================== -->
 
         <article class="project-card reveal">
@@ -1431,29 +1444,97 @@
             <div class="project-content">
 
               <h3 class="project-title">
-                ROOT Terminal Portal
+                ROOT OS
               </h3>
 
 
               <p class="project-description">
-                A GitHub-hosted development project created as
-                part of my ongoing work with web technologies
-                and digital interfaces.
+                An experimental operating-system-inspired
+                project focused on creating a unique digital
+                interface and exploring the possibilities of
+                software design.
               </p>
 
 
               <div class="project-tags">
 
                 <span class="project-tag">
-                  GitHub
+                  OS Concept
+                </span>
+
+                <span class="project-tag">
+                  UI
                 </span>
 
                 <span class="project-tag">
                   Development
                 </span>
 
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <a
+            href="https://github.com/hadi-root/root-os"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            View Project →
+          </a>
+
+
+        </article>
+
+
+
+        <!-- =====================================================
+             PROJECT 03 — ROOT TERMINAL HUB
+        ===================================================== -->
+
+        <article class="project-card reveal">
+
+
+          <div>
+
+            <div class="project-number">
+              PROJECT / 03
+            </div>
+
+
+            <div class="project-content">
+
+              <h3 class="project-title">
+                ROOT TERMINAL HUB
+              </h3>
+
+
+              <p class="project-description">
+                A technology and development-focused project
+                built around a terminal-inspired digital
+                experience and a collection of development work.
+              </p>
+
+
+              <div class="project-tags">
+
                 <span class="project-tag">
                   Web
+                </span>
+
+                <span class="project-tag">
+                  Terminal
+                </span>
+
+                <span class="project-tag">
+                  JavaScript
+                </span>
+
+                <span class="project-tag">
+                  GitHub
                 </span>
 
               </div>
@@ -1469,7 +1550,7 @@
             rel="noopener noreferrer"
             class="project-link"
           >
-            View Repository →
+            View Project →
           </a>
 
 
@@ -1693,7 +1774,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        Instagram
+        @hadi_bin_yoosuf
       </a>
 
 
@@ -1702,7 +1783,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        The Real Toolkit
+        @the_real_toolkit
       </a>
 
 
