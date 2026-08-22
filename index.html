@@ -49,16 +49,10 @@
     }
 
     body {
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-
       line-height: 1.6;
-
       overflow-x: hidden;
     }
 
@@ -91,44 +85,33 @@
 
     header {
       position: fixed;
-
       top: 0;
       left: 0;
-
       width: 100%;
-
       z-index: 1000;
 
-      background:
-        rgba(5,5,5,0.82);
+      background: rgba(5,5,5,0.82);
 
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
 
-      border-bottom:
-        1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav {
       width: min(92%, var(--max-width));
-
       height: 76px;
-
       margin: auto;
 
       display: flex;
-
       align-items: center;
       justify-content: space-between;
     }
 
     .logo {
       font-size: 1.5rem;
-
       font-weight: 900;
-
       letter-spacing: 4px;
-
       transition: 0.3s ease;
     }
 
@@ -138,17 +121,13 @@
 
     .nav-links {
       display: flex;
-
       gap: 30px;
-
       list-style: none;
     }
 
     .nav-links a {
       color: #aaa;
-
       font-size: 0.92rem;
-
       transition: 0.3s ease;
     }
 
@@ -160,9 +139,7 @@
       display: none;
 
       background: transparent;
-
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       color: white;
 
@@ -177,14 +154,12 @@
 
 
     /* =========================================================
-       GENERAL SECTIONS
+       GENERAL
     ========================================================= */
 
     section {
       width: min(92%, var(--max-width));
-
       margin: auto;
-
       padding: 110px 0;
     }
 
@@ -201,8 +176,7 @@
     }
 
     .section-title {
-      font-size:
-        clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
 
       line-height: 1.05;
 
@@ -253,8 +227,7 @@
 
       padding: 8px 13px;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       border-radius: 30px;
 
@@ -264,8 +237,7 @@
 
       margin-bottom: 25px;
 
-      background:
-        rgba(255,255,255,0.025);
+      background: rgba(255,255,255,0.025);
     }
 
     .status-dot {
@@ -276,13 +248,11 @@
 
       background: white;
 
-      box-shadow:
-        0 0 10px white;
+      box-shadow: 0 0 10px white;
     }
 
     .hero h1 {
-      font-size:
-        clamp(4rem, 12vw, 9rem);
+      font-size: clamp(4rem, 12vw, 9rem);
 
       line-height: 0.85;
 
@@ -294,8 +264,7 @@
     }
 
     .hero h2 {
-      font-size:
-        clamp(1.2rem, 3vw, 2rem);
+      font-size: clamp(1.2rem, 3vw, 2rem);
 
       color: #c8c8c8;
 
@@ -327,8 +296,7 @@
 
       border-radius: 9px;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       transition: 0.3s ease;
 
@@ -376,8 +344,7 @@
     .about-grid {
       display: grid;
 
-      grid-template-columns:
-        1fr 1.5fr;
+      grid-template-columns: 1fr 1.5fr;
 
       gap: 70px;
 
@@ -387,15 +354,13 @@
     }
 
     .about-profile {
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
-      background:
-        linear-gradient(
-          145deg,
-          #111,
-          #080808
-        );
+      background: linear-gradient(
+        145deg,
+        #111,
+        #080808
+      );
 
       padding: 35px;
 
@@ -415,8 +380,7 @@
       align-items: center;
       justify-content: center;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       border-radius: 50%;
 
@@ -442,8 +406,7 @@
     }
 
     .profile-line {
-      border-top:
-        1px solid var(--line);
+      border-top: 1px solid var(--line);
 
       padding-top: 20px;
 
@@ -461,8 +424,7 @@
     }
 
     .about-intro {
-      font-size:
-        clamp(1.5rem, 3vw, 2.2rem);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
 
       line-height: 1.3;
 
@@ -480,15 +442,13 @@
     .about-cards {
       display: grid;
 
-      grid-template-columns:
-        repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
 
       gap: 15px;
     }
 
     .about-card {
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       background: var(--card);
 
@@ -535,8 +495,7 @@
     .skill {
       padding: 11px 17px;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       border-radius: 30px;
 
@@ -587,8 +546,7 @@
     .projects-grid {
       display: grid;
 
-      grid-template-columns:
-        repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
 
       gap: 20px;
     }
@@ -596,15 +554,13 @@
     .project-card {
       min-height: 360px;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
-      background:
-        linear-gradient(
-          145deg,
-          #111,
-          #080808
-        );
+      background: linear-gradient(
+        145deg,
+        #111,
+        #080808
+      );
 
       border-radius: 18px;
 
@@ -633,8 +589,7 @@
 
       border-radius: 50%;
 
-      background:
-        rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.04);
 
       top: -100px;
       right: -100px;
@@ -645,8 +600,7 @@
     .project-card:hover {
       transform: translateY(-8px);
 
-      border-color:
-        rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.22);
     }
 
     .project-card:hover::before {
@@ -692,8 +646,7 @@
     }
 
     .project-tag {
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       padding: 5px 9px;
 
@@ -734,8 +687,7 @@
     .contact-box {
       margin-top: 50px;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       border-radius: 22px;
 
@@ -755,8 +707,7 @@
     }
 
     .contact-box h3 {
-      font-size:
-        clamp(2rem, 5vw, 4rem);
+      font-size: clamp(2rem, 5vw, 4rem);
 
       line-height: 1;
 
@@ -776,8 +727,7 @@
     .contact-grid {
       display: grid;
 
-      grid-template-columns:
-        repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
 
       gap: 14px;
     }
@@ -789,11 +739,9 @@
 
       gap: 17px;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
-      background:
-        rgba(255,255,255,0.025);
+      background: rgba(255,255,255,0.025);
 
       padding: 20px;
 
@@ -803,8 +751,7 @@
     }
 
     .contact-card:hover {
-      background:
-        rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.07);
 
       transform: translateY(-4px);
     }
@@ -820,8 +767,7 @@
       align-items: center;
       justify-content: center;
 
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
 
       border-radius: 10px;
 
@@ -860,8 +806,7 @@
 
       margin: auto;
 
-      border-top:
-        1px solid var(--line);
+      border-top: 1px solid var(--line);
 
       padding: 28px 0;
 
@@ -894,8 +839,7 @@
     .reveal {
       opacity: 0;
 
-      transform:
-        translateY(25px);
+      transform: translateY(25px);
 
       transition:
         opacity 0.7s ease,
@@ -905,8 +849,7 @@
     .reveal.visible {
       opacity: 1;
 
-      transform:
-        translateY(0);
+      transform: translateY(0);
     }
 
 
@@ -935,11 +878,9 @@
 
         width: 100%;
 
-        background:
-          rgba(5,5,5,0.97);
+        background: rgba(5,5,5,0.97);
 
-        border-bottom:
-          1px solid var(--line);
+        border-bottom: 1px solid var(--line);
 
         padding: 20px 4%;
 
@@ -1650,7 +1591,39 @@
 
 
           <!-- ===================================================
-               THE REAL TOOLKIT INSTAGRAM
+               INSTAGRAM — HADI BIN YOOUSUF
+          =================================================== -->
+
+          <a
+            href="https://www.instagram.com/hadi_bin_yoosuf/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+
+            <div class="contact-icon">
+              ◎
+            </div>
+
+
+            <div class="contact-info">
+
+              <span>
+                Instagram
+              </span>
+
+              <strong>
+                @hadi_bin_yoosuf
+              </strong>
+
+            </div>
+
+          </a>
+
+
+
+          <!-- ===================================================
+               INSTAGRAM — THE REAL TOOLKIT
           =================================================== -->
 
           <a
@@ -1716,11 +1689,20 @@
 
 
       <a
-        href="https://www.instagram.com/the_real_toolkit/"
+        href="https://www.instagram.com/hadi_bin_yoosuf/"
         target="_blank"
         rel="noopener noreferrer"
       >
         Instagram
+      </a>
+
+
+      <a
+        href="https://www.instagram.com/the_real_toolkit/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        The Real Toolkit
       </a>
 
 
