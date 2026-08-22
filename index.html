@@ -2,132 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <!-- =====================================================
-       SEO
-  ====================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
-    content="HADI — Developer, Creator and Builder. Explore projects, skills and digital work including ROOT HUB, ROOT OS and ROOT TERMINAL HUB."
+    content="HADI — Developer, Creator and Builder. Explore projects, skills and digital work."
   >
 
-  <meta
-    name="keywords"
-    content="HADI, developer, creator, builder, web development, ROOT HUB, ROOT OS, ROOT TERMINAL HUB, GitHub, portfolio"
-  >
+  <meta name="theme-color" content="#050505">
 
-  <meta
-    name="author"
-    content="HADI"
-  >
-
-  <meta
-    name="robots"
-    content="index, follow"
-  >
-
-  <link
-    rel="canonical"
-    href="https://root-terminal-hub.onrender.com/"
-  >
-
-  <!-- =====================================================
-       THEME
-  ====================================================== -->
-
-  <meta
-    name="theme-color"
-    content="#050505"
-  >
-
-  <meta
-    name="color-scheme"
-    content="dark"
-  >
-
-  <!-- =====================================================
-       OPEN GRAPH
-  ====================================================== -->
-
-  <meta
-    property="og:type"
-    content="website"
-  >
-
-  <meta
-    property="og:title"
-    content="HADI — Developer Portfolio"
-  >
-
-  <meta
-    property="og:description"
-    content="Developer. Creator. Builder. Explore HADI's projects, experiments and digital work."
-  >
-
-  <meta
-    property="og:url"
-    content="https://root-terminal-hub.onrender.com/"
-  >
-
-  <meta
-    property="og:site_name"
-    content="HADI"
-  >
-
-  <!-- =====================================================
-       TWITTER / SOCIAL
-  ====================================================== -->
-
-  <meta
-    name="twitter:card"
-    content="summary"
-  >
-
-  <meta
-    name="twitter:title"
-    content="HADI — Developer Portfolio"
-  >
-
-  <meta
-    name="twitter:description"
-    content="Developer. Creator. Builder."
-  >
-
-  <!-- =====================================================
-       PERFORMANCE
-  ====================================================== -->
-
-  <meta
-    http-equiv="X-UA-Compatible"
-    content="IE=edge"
-  >
-
-  <title>
-    HADI — Developer Portfolio
-  </title>
-
+  <title>HADI — Developer Portfolio</title>
 
   <style>
-
     /* =====================================================
        RESET
     ===================================================== */
 
-    *,
-    *::before,
-    *::after {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
-
 
     :root {
       --bg: #050505;
@@ -148,112 +44,59 @@
       --max-width: 1180px;
     }
 
-
     html {
       background: var(--bg);
       overflow-x: hidden;
     }
 
-
     body {
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-
       line-height: 1.6;
-
       overflow-x: hidden;
-
-      min-height: 100vh;
-
-      text-rendering: optimizeLegibility;
-
-      -webkit-font-smoothing: antialiased;
     }
-
 
     body::-webkit-scrollbar {
       width: 8px;
     }
 
-
     body::-webkit-scrollbar-track {
       background: #050505;
     }
-
 
     body::-webkit-scrollbar-thumb {
       background: #292929;
       border-radius: 20px;
     }
 
-
     body.loading {
       overflow: hidden;
     }
-
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
-
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-
     button {
       font-family: inherit;
     }
 
-
     /* =====================================================
-       ACCESSIBILITY
-    ===================================================== */
-
-    :focus-visible {
-      outline: 2px solid white;
-      outline-offset: 4px;
-    }
-
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-
-    /* =====================================================
-       INTRO LOADER
+       LOADER
     ===================================================== */
 
     #loader {
       position: fixed;
       inset: 0;
-
       z-index: 9999;
 
       background: #050505;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       flex-direction: column;
 
       transition:
@@ -261,13 +104,11 @@
         visibility 0.7s ease;
     }
 
-
     #loader.hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
-
 
     .loader-content {
       text-align: center;
@@ -278,41 +119,24 @@
         forwards;
     }
 
-
     @keyframes loaderContentIn {
-
       from {
         opacity: 0;
-        transform:
-          translateY(25px)
-          scale(0.96);
+        transform: translateY(25px) scale(0.96);
       }
 
       to {
         opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
+        transform: translateY(0) scale(1);
       }
-
     }
 
-
     .loader-logo {
-      font-size:
-        clamp(3.5rem, 12vw, 7rem);
-
+      font-size: clamp(3.5rem, 12vw, 7rem);
       font-weight: 900;
-
-      letter-spacing:
-        clamp(5px, 1.5vw, 12px);
-
+      letter-spacing: clamp(5px, 1.5vw, 12px);
       line-height: 1;
-
-      margin-left:
-        clamp(5px, 1.5vw, 12px);
-
-      position: relative;
+      margin-left: clamp(5px, 1.5vw, 12px);
 
       animation:
         loaderLogoPulse 2s
@@ -320,9 +144,7 @@
         infinite;
     }
 
-
     @keyframes loaderLogoPulse {
-
       0%, 100% {
         opacity: 0.75;
         transform: scale(1);
@@ -332,37 +154,27 @@
         opacity: 1;
         transform: scale(1.025);
       }
-
     }
-
 
     .loader-subtitle {
       color: #777;
-
       font-size: 0.72rem;
-
       text-transform: uppercase;
-
       letter-spacing: 4px;
-
       margin-top: 18px;
     }
-
 
     .loader-line {
       width: 150px;
       height: 1px;
 
-      background:
-        rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.12);
 
       margin: 30px auto 0;
 
       overflow: hidden;
-
       position: relative;
     }
-
 
     .loader-line::after {
       content: "";
@@ -383,9 +195,7 @@
         infinite;
     }
 
-
     @keyframes loadingLine {
-
       0% {
         left: -100%;
       }
@@ -397,9 +207,7 @@
       100% {
         left: 100%;
       }
-
     }
-
 
     /* =====================================================
        BACKGROUND
@@ -415,7 +223,6 @@
 
       overflow: hidden;
     }
-
 
     .background-glow::before,
     .background-glow::after {
@@ -440,12 +247,10 @@
         infinite alternate;
     }
 
-
     .background-glow::before {
       top: 5%;
       left: -180px;
     }
-
 
     .background-glow::after {
       right: -180px;
@@ -454,9 +259,7 @@
       animation-delay: -5s;
     }
 
-
     @keyframes floatingGlow {
-
       from {
         transform:
           translate3d(0,0,0)
@@ -468,9 +271,7 @@
           translate3d(100px,70px,0)
           scale(1.25);
       }
-
     }
-
 
     /* =====================================================
        HEADER
@@ -502,7 +303,6 @@
         0.35s ease;
     }
 
-
     header.scrolled {
       background:
         rgba(5,5,5,0.92);
@@ -510,7 +310,6 @@
       border-bottom-color:
         var(--line);
     }
-
 
     .nav {
       width:
@@ -526,7 +325,6 @@
       justify-content: space-between;
     }
 
-
     .logo {
       font-size: 1.5rem;
 
@@ -538,14 +336,12 @@
         0.3s ease;
     }
 
-
     .logo:hover {
       opacity: 0.6;
 
       transform:
         translateX(3px);
     }
-
 
     .nav-links {
       display: flex;
@@ -554,7 +350,6 @@
 
       list-style: none;
     }
-
 
     .nav-links a {
       position: relative;
@@ -566,7 +361,6 @@
       transition:
         color 0.3s ease;
     }
-
 
     .nav-links a::after {
       content: "";
@@ -585,16 +379,13 @@
         width 0.3s ease;
     }
 
-
     .nav-links a:hover {
       color: white;
     }
 
-
     .nav-links a:hover::after {
       width: 100%;
     }
-
 
     .menu-btn {
       display: none;
@@ -619,12 +410,10 @@
         0.3s ease;
     }
 
-
     .menu-btn:hover {
       background: white;
       color: black;
     }
-
 
     /* =====================================================
        GLOBAL
@@ -639,7 +428,6 @@
       padding: 110px 0;
     }
 
-
     .section-label {
       color: #777;
 
@@ -652,7 +440,6 @@
       margin-bottom: 12px;
     }
 
-
     .section-title {
       font-size:
         clamp(2.2rem, 5vw, 3.8rem);
@@ -664,7 +451,6 @@
       margin-bottom: 20px;
     }
 
-
     .section-description {
       color: var(--muted);
 
@@ -672,7 +458,6 @@
 
       font-size: 1rem;
     }
-
 
     /* =====================================================
        BUTTONS
@@ -706,7 +491,6 @@
       cursor: pointer;
     }
 
-
     .btn::before {
       content: "";
 
@@ -732,11 +516,9 @@
         left 0.6s ease;
     }
 
-
     .btn:hover::before {
       left: 140%;
     }
-
 
     .btn-primary {
       background: white;
@@ -746,7 +528,6 @@
       border-color: white;
     }
 
-
     .btn-primary:hover {
       transform:
         translateY(-4px);
@@ -754,13 +535,11 @@
       background: #ddd;
     }
 
-
     .btn-secondary {
       color: white;
 
       background: #0c0c0c;
     }
-
 
     .btn-secondary:hover {
       background: #181818;
@@ -768,7 +547,6 @@
       transform:
         translateY(-4px);
     }
-
 
     /* =====================================================
        HERO
@@ -791,11 +569,9 @@
       position: relative;
     }
 
-
     .hero-content {
       max-width: 850px;
     }
-
 
     .hero-tag {
       display: inline-flex;
@@ -827,9 +603,7 @@
       opacity: 0;
     }
 
-
     @keyframes heroTagIn {
-
       from {
         opacity: 0;
         transform:
@@ -841,9 +615,7 @@
         transform:
           translateY(0);
       }
-
     }
-
 
     .status-dot {
       width: 7px;
@@ -862,9 +634,7 @@
         infinite;
     }
 
-
     @keyframes pulseDot {
-
       0%,100% {
         opacity: 0.45;
         transform: scale(0.85);
@@ -874,9 +644,7 @@
         opacity: 1;
         transform: scale(1.2);
       }
-
     }
-
 
     .hero h1 {
       font-size:
@@ -899,9 +667,7 @@
       opacity: 0;
     }
 
-
     @keyframes heroTitleIn {
-
       from {
         opacity: 0;
 
@@ -917,9 +683,7 @@
           translateY(0)
           scale(1);
       }
-
     }
-
 
     .hero h2 {
       font-size:
@@ -938,7 +702,6 @@
       opacity: 0;
     }
 
-
     .hero p {
       max-width: 650px;
 
@@ -952,7 +715,6 @@
 
       opacity: 0;
     }
-
 
     .hero-buttons {
       display: flex;
@@ -970,9 +732,7 @@
       opacity: 0;
     }
 
-
     @keyframes fadeUp {
-
       from {
         opacity: 0;
 
@@ -986,9 +746,7 @@
         transform:
           translateY(0);
       }
-
     }
-
 
     /* =====================================================
        ABOUT
@@ -1006,7 +764,6 @@
 
       align-items: start;
     }
-
 
     .about-profile {
       border:
@@ -1031,7 +788,6 @@
         0.4s ease;
     }
 
-
     .about-profile:hover {
       transform:
         translateY(-6px);
@@ -1039,7 +795,6 @@
       border-color:
         var(--line-hover);
     }
-
 
     .profile-symbol {
       width: 85px;
@@ -1065,13 +820,11 @@
         0.5s ease;
     }
 
-
     .about-profile:hover
     .profile-symbol {
       transform:
         rotate(360deg);
     }
-
 
     .profile-name {
       font-size: 2rem;
@@ -1081,13 +834,11 @@
       margin-bottom: 5px;
     }
 
-
     .profile-role {
       color: #888;
 
       margin-bottom: 25px;
     }
-
 
     .profile-line {
       border-top:
@@ -1100,7 +851,6 @@
       font-size: 0.9rem;
     }
 
-
     .about-content {
       display: flex;
 
@@ -1108,7 +858,6 @@
 
       gap: 30px;
     }
-
 
     .about-intro {
       font-size:
@@ -1119,7 +868,6 @@
       color: #eee;
     }
 
-
     .about-text {
       color: var(--muted);
 
@@ -1127,7 +875,6 @@
 
       max-width: 720px;
     }
-
 
     .about-cards {
       display: grid;
@@ -1137,7 +884,6 @@
 
       gap: 15px;
     }
-
 
     .about-card {
       border:
@@ -1153,7 +899,6 @@
         0.35s ease;
     }
 
-
     .about-card:hover {
       transform:
         translateY(-7px);
@@ -1165,20 +910,17 @@
         var(--line-hover);
     }
 
-
     .about-card h3 {
       margin-bottom: 8px;
 
       font-size: 1rem;
     }
 
-
     .about-card p {
       color: var(--muted);
 
       font-size: 0.88rem;
     }
-
 
     /* =====================================================
        SKILLS
@@ -1193,7 +935,6 @@
 
       gap: 10px;
     }
-
 
     .skill {
       padding:
@@ -1214,7 +955,6 @@
         0.3s ease;
     }
 
-
     .skill:hover {
       color: black;
 
@@ -1227,9 +967,8 @@
         scale(1.03);
     }
 
-
     /* =====================================================
-       PROJECTS
+       PROJECTS HEADER
     ===================================================== */
 
     .projects-head {
@@ -1242,9 +981,8 @@
 
       align-items: end;
 
-      margin-bottom: 45px;
+      margin-bottom: 30px;
     }
-
 
     .projects-count {
       color: #777;
@@ -1254,6 +992,72 @@
       white-space: nowrap;
     }
 
+    /* =====================================================
+       PROJECT FILTER
+    ===================================================== */
+
+    .project-filters {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-bottom: 35px;
+
+      padding: 6px;
+
+      width: fit-content;
+
+      max-width: 100%;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.025);
+
+      border-radius: 12px;
+    }
+
+    .filter-btn {
+      border: 1px solid transparent;
+
+      background: transparent;
+
+      color: #888;
+
+      padding:
+        9px 16px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-size: 0.78rem;
+
+      transition:
+        0.3s ease;
+    }
+
+    .filter-btn:hover {
+      color: white;
+
+      background:
+        rgba(255,255,255,0.06);
+    }
+
+    .filter-btn.active {
+      color: black;
+
+      background: white;
+
+      border-color: white;
+    }
+
+    /* =====================================================
+       PROJECTS GRID
+    ===================================================== */
 
     .projects-grid {
       display: grid;
@@ -1262,8 +1066,10 @@
         repeat(2, 1fr);
 
       gap: 20px;
-    }
 
+      transition:
+        0.3s ease;
+    }
 
     .project-card {
       min-height: 390px;
@@ -1291,20 +1097,19 @@
       transition:
         transform 0.45s
         cubic-bezier(.16,1,.3,1),
-        border-color 0.3s ease;
+        border-color 0.3s ease,
+        opacity 0.35s ease;
 
       overflow: hidden;
 
       position: relative;
     }
 
-
     .project-card:nth-child(3) {
       grid-column: 1 / -1;
 
       min-height: 350px;
     }
-
 
     .project-card::before {
       content: "";
@@ -1325,7 +1130,6 @@
       transition:
         0.6s ease;
     }
-
 
     .project-card::after {
       content: "";
@@ -1351,7 +1155,6 @@
       pointer-events: none;
     }
 
-
     .project-card:hover {
       transform:
         translateY(-10px)
@@ -1361,18 +1164,19 @@
         var(--line-hover);
     }
 
-
     .project-card:hover::before {
       transform:
         scale(1.5);
     }
-
 
     .project-card:hover::after {
       transform:
         translateX(100%);
     }
 
+    .project-card.filter-hidden {
+      display: none;
+    }
 
     .project-number {
       color: #666;
@@ -1386,13 +1190,37 @@
       z-index: 1;
     }
 
+    .project-category {
+      display: inline-flex;
+
+      margin-top: 12px;
+
+      padding:
+        5px 9px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 5px;
+
+      color: #777;
+
+      font-size: 0.67rem;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+
+      position: relative;
+
+      z-index: 1;
+    }
 
     .project-content {
       position: relative;
 
       z-index: 1;
     }
-
 
     .project-title {
       font-size: 2rem;
@@ -1404,13 +1232,11 @@
         0.3s ease;
     }
 
-
     .project-card:hover
     .project-title {
       transform:
         translateX(5px);
     }
-
 
     .project-description {
       color: var(--muted);
@@ -1419,7 +1245,6 @@
 
       font-size: 0.92rem;
     }
-
 
     .project-tags {
       display: flex;
@@ -1430,7 +1255,6 @@
 
       margin-top: 20px;
     }
-
 
     .project-tag {
       border:
@@ -1444,8 +1268,18 @@
       color: #888;
 
       font-size: 0.7rem;
+
+      transition:
+        0.25s ease;
     }
 
+    .project-card:hover
+    .project-tag {
+      border-color:
+        rgba(255,255,255,0.18);
+
+      color: #aaa;
+    }
 
     .project-actions {
       position: relative;
@@ -1460,7 +1294,6 @@
 
       margin-top: 30px;
     }
-
 
     .project-btn {
       padding:
@@ -1483,7 +1316,6 @@
         0.3s ease;
     }
 
-
     .project-btn:hover {
       transform:
         translateY(-4px);
@@ -1495,7 +1327,6 @@
       border-color: white;
     }
 
-
     .project-btn.live {
       background: white;
 
@@ -1504,11 +1335,41 @@
       border-color: white;
     }
 
-
     .project-btn.live:hover {
       background: #ddd;
     }
 
+    /* =====================================================
+       PROJECT FILTER ANIMATION
+    ===================================================== */
+
+    .projects-grid.filtering .project-card {
+      opacity: 0;
+      transform: translateY(15px) scale(0.98);
+    }
+
+    .projects-grid.filter-complete .project-card {
+      animation:
+        projectAppear 0.45s
+        cubic-bezier(.16,1,.3,1)
+        both;
+    }
+
+    @keyframes projectAppear {
+      from {
+        opacity: 0;
+        transform:
+          translateY(20px)
+          scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+    }
 
     /* =====================================================
        CONTACT
@@ -1517,7 +1378,6 @@
     .contact-section {
       padding-bottom: 70px;
     }
-
 
     .contact-box {
       margin-top: 50px;
@@ -1545,12 +1405,10 @@
         0.4s ease;
     }
 
-
     .contact-box:hover {
       border-color:
         var(--line-hover);
     }
-
 
     .contact-box h3 {
       font-size:
@@ -1563,7 +1421,6 @@
       letter-spacing: -2px;
     }
 
-
     .contact-box > p {
       color: var(--muted);
 
@@ -1571,7 +1428,6 @@
 
       margin-bottom: 35px;
     }
-
 
     .contact-grid {
       display: grid;
@@ -1581,7 +1437,6 @@
 
       gap: 14px;
     }
-
 
     .contact-card {
       display: flex;
@@ -1604,7 +1459,6 @@
         0.35s ease;
     }
 
-
     .contact-card:hover {
       background:
         rgba(255,255,255,0.07);
@@ -1615,7 +1469,6 @@
       border-color:
         var(--line-hover);
     }
-
 
     .contact-icon {
       width: 43px;
@@ -1639,7 +1492,6 @@
         0.3s ease;
     }
 
-
     .contact-card:hover
     .contact-icon {
       background: white;
@@ -1650,7 +1502,6 @@
         rotate(-5deg)
         scale(1.08);
     }
-
 
     .contact-info span {
       display: block;
@@ -1666,7 +1517,6 @@
       margin-bottom: 3px;
     }
 
-
     .contact-info strong {
       font-size: 0.9rem;
 
@@ -1674,7 +1524,6 @@
 
       word-break: break-word;
     }
-
 
     /* =====================================================
        FOOTER
@@ -1703,7 +1552,6 @@
       font-size: 0.8rem;
     }
 
-
     .footer-links {
       display: flex;
 
@@ -1712,17 +1560,14 @@
       flex-wrap: wrap;
     }
 
-
     .footer-links a {
       transition:
         0.3s ease;
     }
 
-
     .footer-links a:hover {
       color: white;
     }
-
 
     /* =====================================================
        SCROLL REVEAL
@@ -1740,14 +1585,12 @@
         cubic-bezier(.16,1,.3,1);
     }
 
-
     .reveal.visible {
       opacity: 1;
 
       transform:
         translateY(0);
     }
-
 
     /* =====================================================
        MOBILE
@@ -1759,11 +1602,9 @@
         height: 68px;
       }
 
-
       .menu-btn {
         display: block;
       }
-
 
       .nav-links {
         display: none;
@@ -1788,7 +1629,6 @@
         gap: 20px;
       }
 
-
       .nav-links.active {
         display: flex;
 
@@ -1796,30 +1636,23 @@
           mobileMenuIn 0.3s ease;
       }
 
-
       @keyframes mobileMenuIn {
-
         from {
           opacity: 0;
-
           transform:
             translateY(-10px);
         }
 
         to {
           opacity: 1;
-
           transform:
             translateY(0);
         }
-
       }
-
 
       .nav-links a {
         font-size: 1rem;
       }
-
 
       .hero {
         min-height: 92vh;
@@ -1827,11 +1660,9 @@
         padding-top: 90px;
       }
 
-
       .hero h1 {
         letter-spacing: -4px;
       }
-
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -1839,16 +1670,13 @@
         gap: 35px;
       }
 
-
       .about-profile {
         position: static;
       }
 
-
       .projects-head {
         display: block;
       }
-
 
       .projects-count {
         display: block;
@@ -1856,39 +1684,49 @@
         margin-top: 15px;
       }
 
+      .project-filters {
+        width: 100%;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        scrollbar-width: none;
+      }
+
+      .project-filters::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-btn {
+        white-space: nowrap;
+      }
 
       .projects-grid {
         grid-template-columns: 1fr;
       }
 
-
       .project-card:nth-child(3) {
         grid-column: auto;
       }
 
-
       .project-card {
         min-height: 360px;
       }
-
 
       .contact-box {
         padding:
           35px 28px;
       }
 
-
       .contact-grid {
         grid-template-columns: 1fr;
       }
 
-
       footer {
         flex-direction: column;
       }
-
     }
-
 
     /* =====================================================
        SMALL MOBILE
@@ -1901,11 +1739,9 @@
           80px 0;
       }
 
-
       .hero {
         min-height: 90vh;
       }
-
 
       .hero h1 {
         font-size: 4rem;
@@ -1913,16 +1749,13 @@
         letter-spacing: -4px;
       }
 
-
       .hero h2 {
         font-size: 1.25rem;
       }
 
-
       .hero p {
         font-size: 0.95rem;
       }
-
 
       .hero-buttons {
         flex-direction: column;
@@ -1930,16 +1763,13 @@
         align-items: stretch;
       }
 
-
       .hero-buttons .btn {
         width: 100%;
       }
 
-
       .about-cards {
         grid-template-columns: 1fr;
       }
-
 
       .project-card {
         min-height: 350px;
@@ -1947,16 +1777,13 @@
         padding: 24px;
       }
 
-
       .project-title {
         font-size: 1.7rem;
       }
 
-
       .project-actions {
         flex-direction: column;
       }
-
 
       .project-btn {
         width: 100%;
@@ -1964,35 +1791,28 @@
         justify-content: center;
       }
 
-
       .contact-box {
         padding:
           28px 20px;
       }
 
-
       .contact-box h3 {
         font-size: 2.4rem;
       }
 
-
       .contact-card {
         padding: 16px;
       }
-
 
       footer {
         padding:
           25px 0;
       }
 
-
       .footer-links {
         gap: 14px;
       }
-
     }
-
 
     /* =====================================================
        REDUCED MOTION
@@ -2003,7 +1823,6 @@
       *,
       *::before,
       *::after {
-
         animation-duration:
           0.01ms !important;
 
@@ -2017,35 +1836,27 @@
           auto !important;
       }
 
-
       .reveal {
         opacity: 1;
 
         transform: none;
       }
 
-
       #loader {
         transition: none;
       }
-
     }
 
   </style>
 </head>
 
-
 <body class="loading">
 
-
   <!-- =====================================================
-       INTRO LOADER
+       LOADER
   ===================================================== -->
 
-  <div
-    id="loader"
-    aria-hidden="true"
-  >
+  <div id="loader">
 
     <div class="loader-content">
 
@@ -2063,14 +1874,7 @@
 
   </div>
 
-
-  <!-- BACKGROUND -->
-
-  <div
-    class="background-glow"
-    aria-hidden="true"
-  ></div>
-
+  <div class="background-glow"></div>
 
   <!-- =====================================================
        HEADER
@@ -2078,36 +1882,22 @@
 
   <header id="header">
 
-    <nav
-      class="nav"
-      aria-label="Main navigation"
-    >
+    <nav class="nav">
 
-      <a
-        href="#home"
-        class="logo"
-        aria-label="HADI home"
-      >
+      <a href="#home" class="logo">
         HADI
       </a>
-
 
       <button
         class="menu-btn"
         id="menuBtn"
-        type="button"
         aria-label="Open navigation menu"
         aria-expanded="false"
-        aria-controls="navLinks"
       >
         ☰
       </button>
 
-
-      <ul
-        class="nav-links"
-        id="navLinks"
-      >
+      <ul class="nav-links" id="navLinks">
 
         <li>
           <a href="#home">
@@ -2139,54 +1929,41 @@
 
   </header>
 
-
   <!-- =====================================================
        MAIN
   ===================================================== -->
 
   <main>
 
-
     <!-- ===================================================
          HERO
     =================================================== -->
 
-    <section
-      class="hero"
-      id="home"
-      aria-labelledby="hero-title"
-    >
+    <section class="hero" id="home">
 
       <div class="hero-content">
 
         <div class="hero-tag">
 
-          <span
-            class="status-dot"
-            aria-hidden="true"
-          ></span>
+          <span class="status-dot"></span>
 
           Building & Exploring
 
         </div>
 
-
-        <h1 id="hero-title">
+        <h1>
           HADI
         </h1>
-
 
         <h2>
           Developer. Creator. Builder.
         </h2>
-
 
         <p>
           I build digital experiences, experiment
           with technology, and turn ideas into
           real projects.
         </p>
-
 
         <div class="hero-buttons">
 
@@ -2196,7 +1973,6 @@
           >
             Explore Projects
           </a>
-
 
           <a
             href="#contact"
@@ -2211,45 +1987,31 @@
 
     </section>
 
-
     <!-- ===================================================
          ABOUT
     =================================================== -->
 
-    <section
-      id="about"
-      aria-labelledby="about-title"
-    >
+    <section id="about">
 
       <div class="section-label reveal">
         01 / About
       </div>
 
-
-      <h2
-        class="section-title reveal"
-        id="about-title"
-      >
+      <h2 class="section-title reveal">
         More than<br>
         just code.
       </h2>
-
 
       <p class="section-description reveal">
         A look at who I am, what I enjoy building,
         and the mindset behind my projects.
       </p>
 
-
       <div class="about-grid">
-
 
         <div class="about-profile reveal">
 
-          <div
-            class="profile-symbol"
-            aria-hidden="true"
-          >
+          <div class="profile-symbol">
             H
           </div>
 
@@ -2267,14 +2029,12 @@
 
         </div>
 
-
         <div class="about-content">
 
           <div class="about-intro reveal">
             I like turning ideas into things
             that actually work.
           </div>
-
 
           <p class="about-text reveal">
             I'm HADI, a developer and technology
@@ -2283,7 +2043,6 @@
             digital experiences.
           </p>
 
-
           <p class="about-text reveal">
             My approach is simple:
             learn, experiment, build, improve
@@ -2291,7 +2050,6 @@
             opportunity to understand something
             new and push my skills further.
           </p>
-
 
           <div class="about-cards">
 
@@ -2308,7 +2066,6 @@
 
             </div>
 
-
             <div class="about-card reveal">
 
               <h3>
@@ -2322,7 +2079,6 @@
 
             </div>
 
-
             <div class="about-card reveal">
 
               <h3>
@@ -2335,7 +2091,6 @@
               </p>
 
             </div>
-
 
             <div class="about-card reveal">
 
@@ -2356,15 +2111,11 @@
 
       </div>
 
-
-      <!-- SKILLS -->
-
       <div style="margin-top:90px;">
 
         <div class="section-label reveal">
           Skills & Interests
         </div>
-
 
         <div class="skills-wrapper">
 
@@ -2406,15 +2157,11 @@
 
     </section>
 
-
     <!-- ===================================================
          PROJECTS
     =================================================== -->
 
-    <section
-      id="projects"
-      aria-labelledby="projects-title"
-    >
+    <section id="projects">
 
       <div class="projects-head">
 
@@ -2424,42 +2171,90 @@
             02 / Projects
           </div>
 
-
-          <h2
-            class="section-title reveal"
-            id="projects-title"
-          >
+          <h2 class="section-title reveal">
             Things I've<br>
             built.
           </h2>
 
-
           <p class="section-description reveal">
-            A collection of projects, experiments
-            and digital work I've created.
+            Explore my projects by category.
+            Each project represents something
+            I've built, tested or explored.
           </p>
 
         </div>
 
-
         <div
           class="projects-count reveal"
-          aria-label="Three projects"
+          id="projectCount"
         >
           03 Projects
         </div>
 
       </div>
 
+      <!-- =================================================
+           PROJECT FILTERS
+      ================================================= -->
 
-      <div class="projects-grid">
+      <div class="project-filters reveal">
 
+        <button
+          class="filter-btn active"
+          data-filter="all"
+          type="button"
+        >
+          All
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="web"
+          type="button"
+        >
+          Web
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="ui"
+          type="button"
+        >
+          UI / Design
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="experiment"
+          type="button"
+        >
+          Experiments
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="terminal"
+          type="button"
+        >
+          Terminal
+        </button>
+
+      </div>
+
+      <!-- =================================================
+           PROJECT GRID
+      ================================================= -->
+
+      <div
+        class="projects-grid"
+        id="projectsGrid"
+      >
 
         <!-- ROOT HUB -->
 
         <article
           class="project-card reveal"
-          aria-labelledby="root-hub-title"
+          data-category="web"
         >
 
           <div>
@@ -2468,16 +2263,15 @@
               PROJECT / 01
             </div>
 
+            <div class="project-category">
+              Web
+            </div>
 
             <div class="project-content">
 
-              <h3
-                class="project-title"
-                id="root-hub-title"
-              >
+              <h3 class="project-title">
                 ROOT HUB
               </h3>
-
 
               <p class="project-description">
                 A technology-focused project created
@@ -2486,15 +2280,18 @@
                 creative ideas.
               </p>
 
-
               <div class="project-tags">
 
                 <span class="project-tag">
-                  Web
+                  HTML
                 </span>
 
                 <span class="project-tag">
-                  Development
+                  CSS
+                </span>
+
+                <span class="project-tag">
+                  Web
                 </span>
 
                 <span class="project-tag">
@@ -2507,7 +2304,6 @@
 
           </div>
 
-
           <div class="project-actions">
 
             <a
@@ -2515,18 +2311,15 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
-              aria-label="Open ROOT HUB live website"
             >
               ◉ Live Website
             </a>
-
 
             <a
               href="https://github.com/hadi-root/root-hub"
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
-              aria-label="Open ROOT HUB GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -2535,12 +2328,11 @@
 
         </article>
 
-
         <!-- ROOT OS -->
 
         <article
           class="project-card reveal"
-          aria-labelledby="root-os-title"
+          data-category="ui experiment"
         >
 
           <div>
@@ -2549,16 +2341,15 @@
               PROJECT / 02
             </div>
 
+            <div class="project-category">
+              UI / Experiment
+            </div>
 
             <div class="project-content">
 
-              <h3
-                class="project-title"
-                id="root-os-title"
-              >
+              <h3 class="project-title">
                 ROOT OS
               </h3>
-
 
               <p class="project-description">
                 An experimental operating-system-inspired
@@ -2567,15 +2358,18 @@
                 design.
               </p>
 
-
               <div class="project-tags">
 
                 <span class="project-tag">
-                  OS Concept
+                  UI
                 </span>
 
                 <span class="project-tag">
-                  UI
+                  JavaScript
+                </span>
+
+                <span class="project-tag">
+                  OS Concept
                 </span>
 
                 <span class="project-tag">
@@ -2588,7 +2382,6 @@
 
           </div>
 
-
           <div class="project-actions">
 
             <a
@@ -2596,18 +2389,15 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
-              aria-label="Open ROOT OS live website"
             >
               ◉ Live Website
             </a>
-
 
             <a
               href="https://github.com/hadi-root/root-os"
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
-              aria-label="Open ROOT OS GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -2616,12 +2406,11 @@
 
         </article>
 
-
         <!-- ROOT TERMINAL HUB -->
 
         <article
           class="project-card reveal"
-          aria-labelledby="root-terminal-title"
+          data-category="web terminal"
         >
 
           <div>
@@ -2630,16 +2419,15 @@
               PROJECT / 03
             </div>
 
+            <div class="project-category">
+              Web / Terminal
+            </div>
 
             <div class="project-content">
 
-              <h3
-                class="project-title"
-                id="root-terminal-title"
-              >
+              <h3 class="project-title">
                 ROOT TERMINAL HUB
               </h3>
-
 
               <p class="project-description">
                 A technology and development-focused
@@ -2647,7 +2435,6 @@
                 digital experience and a collection of
                 development work.
               </p>
-
 
               <div class="project-tags">
 
@@ -2673,7 +2460,6 @@
 
           </div>
 
-
           <div class="project-actions">
 
             <a
@@ -2681,18 +2467,15 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
-              aria-label="Open ROOT TERMINAL HUB live website"
             >
               ◉ Live Website
             </a>
-
 
             <a
               href="https://github.com/hadi-root/root-terminal-portal"
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
-              aria-label="Open ROOT TERMINAL HUB GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -2701,11 +2484,9 @@
 
         </article>
 
-
       </div>
 
     </section>
-
 
     <!-- ===================================================
          CONTACT
@@ -2714,28 +2495,21 @@
     <section
       id="contact"
       class="contact-section"
-      aria-labelledby="contact-title"
     >
 
       <div class="section-label reveal">
         03 / Contact
       </div>
 
-
-      <h2
-        class="section-title reveal"
-        id="contact-title"
-      >
+      <h2 class="section-title reveal">
         Let's connect.
       </h2>
-
 
       <p class="section-description reveal">
         Interested in my work, want to discuss
         an idea, or simply want to connect?
         You can find me here.
       </p>
-
 
       <div class="contact-box reveal">
 
@@ -2744,32 +2518,24 @@
           Let's talk.
         </h3>
 
-
         <p>
           The easiest way to reach me is through
           email or one of my developer and
           social profiles.
         </p>
 
-
         <div class="contact-grid">
-
 
           <!-- EMAIL -->
 
           <a
             href="mailto:hadivga@gmail.com"
             class="contact-card"
-            aria-label="Send email to HADI"
           >
 
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
+            <div class="contact-icon">
               @
             </div>
-
 
             <div class="contact-info">
 
@@ -2785,7 +2551,6 @@
 
           </a>
 
-
           <!-- GITHUB -->
 
           <a
@@ -2793,16 +2558,11 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
-            aria-label="Open HADI GitHub profile"
           >
 
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
+            <div class="contact-icon">
               &lt;/&gt;
             </div>
-
 
             <div class="contact-info">
 
@@ -2818,7 +2578,6 @@
 
           </a>
 
-
           <!-- INSTAGRAM 1 -->
 
           <a
@@ -2826,16 +2585,11 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
-            aria-label="Open HADI Instagram profile"
           >
 
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
+            <div class="contact-icon">
               ◎
             </div>
-
 
             <div class="contact-info">
 
@@ -2851,7 +2605,6 @@
 
           </a>
 
-
           <!-- INSTAGRAM 2 -->
 
           <a
@@ -2859,16 +2612,11 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
-            aria-label="Open The Real Toolkit Instagram"
           >
 
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
+            <div class="contact-icon">
               ◎
             </div>
-
 
             <div class="contact-info">
 
@@ -2884,7 +2632,6 @@
 
           </a>
 
-
         </div>
 
       </div>
@@ -2892,7 +2639,6 @@
     </section>
 
   </main>
-
 
   <!-- =====================================================
        FOOTER
@@ -2904,7 +2650,6 @@
       © 2026 HADI. Built with code.
     </div>
 
-
     <div class="footer-links">
 
       <a
@@ -2915,7 +2660,6 @@
         GitHub
       </a>
 
-
       <a
         href="https://www.instagram.com/hadi_bin_yoosuf/"
         target="_blank"
@@ -2923,7 +2667,6 @@
       >
         @hadi_bin_yoosuf
       </a>
-
 
       <a
         href="https://www.instagram.com/the_real_toolkit/"
@@ -2937,15 +2680,11 @@
 
   </footer>
 
-
   <!-- =====================================================
        JAVASCRIPT
   ===================================================== -->
 
   <script>
-
-    "use strict";
-
 
     /* =====================================================
        LOADER
@@ -2954,23 +2693,18 @@
     const loader =
       document.getElementById("loader");
 
-
     const prefersReducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
 
-
     function hideLoader() {
-
-      if (!loader) return;
 
       loader.classList.add("hidden");
 
       document.body.classList.remove("loading");
 
     }
-
 
     if (prefersReducedMotion) {
 
@@ -2982,31 +2716,15 @@
         "load",
         () => {
 
-          window.setTimeout(
+          setTimeout(
             hideLoader,
             900
           );
 
-        },
-        {
-          once: true
         }
       );
 
     }
-
-
-    /*
-      Fallback:
-      prevents the page from remaining locked if
-      the load event is unexpectedly delayed.
-    */
-
-    window.setTimeout(
-      hideLoader,
-      4000
-    );
-
 
     /* =====================================================
        MOBILE MENU
@@ -3015,72 +2733,31 @@
     const menuBtn =
       document.getElementById("menuBtn");
 
-
     const navLinks =
       document.getElementById("navLinks");
-
-
-    function closeMobileMenu() {
-
-      navLinks.classList.remove("active");
-
-      menuBtn.textContent = "☰";
-
-      menuBtn.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      menuBtn.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-      );
-
-    }
-
-
-    function openMobileMenu() {
-
-      navLinks.classList.add("active");
-
-      menuBtn.textContent = "✕";
-
-      menuBtn.setAttribute(
-        "aria-expanded",
-        "true"
-      );
-
-      menuBtn.setAttribute(
-        "aria-label",
-        "Close navigation menu"
-      );
-
-    }
-
 
     menuBtn.addEventListener(
       "click",
       () => {
 
         const isOpen =
-          navLinks.classList.contains("active");
+          navLinks.classList.toggle("active");
 
-        if (isOpen) {
+        menuBtn.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
 
-          closeMobileMenu();
-
-        } else {
-
-          openMobileMenu();
-
-        }
+        menuBtn.textContent =
+          isOpen
+            ? "✕"
+            : "☰";
 
       }
     );
 
-
     /* =====================================================
-       CLOSE MOBILE MENU ON LINK CLICK
+       CLOSE MOBILE MENU
     ===================================================== */
 
     document
@@ -3089,34 +2766,21 @@
 
         link.addEventListener(
           "click",
-          closeMobileMenu
+          () => {
+
+            navLinks.classList.remove("active");
+
+            menuBtn.textContent = "☰";
+
+            menuBtn.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
         );
 
       });
-
-
-    /* =====================================================
-       CLOSE MENU WHEN CLICKING OUTSIDE
-    ===================================================== */
-
-    document.addEventListener(
-      "click",
-      event => {
-
-        if (
-          window.innerWidth <= 800 &&
-          navLinks.classList.contains("active") &&
-          !navLinks.contains(event.target) &&
-          !menuBtn.contains(event.target)
-        ) {
-
-          closeMobileMenu();
-
-        }
-
-      }
-    );
-
 
     /* =====================================================
        NAVBAR SCROLL
@@ -3124,7 +2788,6 @@
 
     const header =
       document.getElementById("header");
-
 
     function updateHeader() {
 
@@ -3140,7 +2803,6 @@
 
     }
 
-
     window.addEventListener(
       "scroll",
       updateHeader,
@@ -3149,9 +2811,7 @@
       }
     );
 
-
     updateHeader();
-
 
     /* =====================================================
        SCROLL REVEAL
@@ -3160,11 +2820,7 @@
     const revealElements =
       document.querySelectorAll(".reveal");
 
-
-    if (
-      !prefersReducedMotion &&
-      "IntersectionObserver" in window
-    ) {
+    if (!prefersReducedMotion) {
 
       const revealObserver =
         new IntersectionObserver(
@@ -3199,7 +2855,6 @@
 
         );
 
-
       revealElements.forEach(
         element => {
 
@@ -3224,7 +2879,6 @@
 
     }
 
-
     /* =====================================================
        ACTIVE NAVIGATION
     ===================================================== */
@@ -3232,151 +2886,275 @@
     const sections =
       document.querySelectorAll("section");
 
-
     const navigationLinks =
       document.querySelectorAll(
         ".nav-links a"
       );
 
+    const sectionObserver =
+      new IntersectionObserver(
 
-    if (
-      "IntersectionObserver" in window
-    ) {
+        entries => {
 
-      const sectionObserver =
-        new IntersectionObserver(
+          entries.forEach(
+            entry => {
 
-          entries => {
+              if (
+                entry.isIntersecting
+              ) {
 
-            entries.forEach(
-              entry => {
+                navigationLinks
+                  .forEach(link => {
 
-                if (
-                  entry.isIntersecting
-                ) {
+                    link.style.color =
+                      "#aaa";
 
-                  navigationLinks
-                    .forEach(link => {
+                  });
 
-                      link.style.color =
-                        "#aaa";
+                const activeLink =
+                  document.querySelector(
+                    `.nav-links a[href="#${entry.target.id}"]`
+                  );
 
-                    });
+                if (activeLink) {
 
-
-                  const activeLink =
-                    document.querySelector(
-                      `.nav-links a[href="#${entry.target.id}"]`
-                    );
-
-
-                  if (activeLink) {
-
-                    activeLink.style.color =
-                      "white";
-
-                  }
+                  activeLink.style.color =
+                    "white";
 
                 }
 
               }
-            );
 
-          },
-
-          {
-            threshold: 0.35
-          }
-
-        );
-
-
-      sections.forEach(
-        section => {
-
-          sectionObserver.observe(
-            section
+            }
           );
 
+        },
+
+        {
+          threshold: 0.35
         }
+
+      );
+
+    sections.forEach(
+      section => {
+
+        sectionObserver.observe(
+          section
+        );
+
+      }
+    );
+
+    /* =====================================================
+       PROJECT FILTERING
+    ===================================================== */
+
+    const filterButtons =
+      document.querySelectorAll(
+        ".filter-btn"
+      );
+
+    const projectCards =
+      document.querySelectorAll(
+        ".project-card"
+      );
+
+    const projectsGrid =
+      document.getElementById(
+        "projectsGrid"
+      );
+
+    const projectCount =
+      document.getElementById(
+        "projectCount"
+      );
+
+    function updateProjectCount(
+      count
+    ) {
+
+      projectCount.textContent =
+        String(count).padStart(2, "0")
+        + " Project"
+        + (count === 1 ? "" : "s");
+
+    }
+
+    function filterProjects(
+      selectedFilter
+    ) {
+
+      projectsGrid.classList.add(
+        "filtering"
+      );
+
+      setTimeout(
+        () => {
+
+          let visibleCount = 0;
+
+          projectCards.forEach(
+            card => {
+
+              const categories =
+                card.dataset.category
+                  .split(" ");
+
+              const shouldShow =
+                selectedFilter === "all" ||
+                categories.includes(
+                  selectedFilter
+                );
+
+              if (shouldShow) {
+
+                card.classList.remove(
+                  "filter-hidden"
+                );
+
+                visibleCount++;
+
+              } else {
+
+                card.classList.add(
+                  "filter-hidden"
+                );
+
+              }
+
+            }
+          );
+
+          updateProjectCount(
+            visibleCount
+          );
+
+          projectsGrid.classList.remove(
+            "filtering"
+          );
+
+          projectsGrid.classList.remove(
+            "filter-complete"
+          );
+
+          void projectsGrid.offsetWidth;
+
+          projectsGrid.classList.add(
+            "filter-complete"
+          );
+
+          setTimeout(
+            () => {
+
+              projectsGrid.classList.remove(
+                "filter-complete"
+              );
+
+            },
+            500
+          );
+
+        },
+        180
       );
 
     }
 
+    filterButtons.forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            filterButtons.forEach(
+              item => {
+
+                item.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+            button.classList.add(
+              "active"
+            );
+
+            const selectedFilter =
+              button.dataset.filter;
+
+            filterProjects(
+              selectedFilter
+            );
+
+          }
+        );
+
+      }
+    );
+
+    updateProjectCount(
+      projectCards.length
+    );
 
     /* =====================================================
        DESKTOP CURSOR GLOW
     ===================================================== */
 
-    const isCoarsePointer =
-      window.matchMedia(
-        "(pointer: coarse)"
-      ).matches;
+    const cursorGlow =
+      document.createElement("div");
 
+    cursorGlow.style.position =
+      "fixed";
 
-    let cursorGlow = null;
+    cursorGlow.style.width =
+      "180px";
 
+    cursorGlow.style.height =
+      "180px";
+
+    cursorGlow.style.borderRadius =
+      "50%";
+
+    cursorGlow.style.pointerEvents =
+      "none";
+
+    cursorGlow.style.zIndex =
+      "-1";
+
+    cursorGlow.style.background =
+      "rgba(255,255,255,0.025)";
+
+    cursorGlow.style.filter =
+      "blur(45px)";
+
+    cursorGlow.style.transform =
+      "translate(-50%, -50%)";
+
+    cursorGlow.style.opacity =
+      "0";
+
+    cursorGlow.style.transition =
+      "opacity 0.3s ease";
+
+    document.body.appendChild(
+      cursorGlow
+    );
+
+    let cursorX = 0;
+    let cursorY = 0;
+
+    let glowX = 0;
+    let glowY = 0;
 
     if (
       !prefersReducedMotion &&
-      !isCoarsePointer
+      !window.matchMedia(
+        "(pointer: coarse)"
+      ).matches
     ) {
-
-      cursorGlow =
-        document.createElement("div");
-
-
-      cursorGlow.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-
-      cursorGlow.style.position =
-        "fixed";
-
-      cursorGlow.style.width =
-        "180px";
-
-      cursorGlow.style.height =
-        "180px";
-
-      cursorGlow.style.borderRadius =
-        "50%";
-
-      cursorGlow.style.pointerEvents =
-        "none";
-
-      cursorGlow.style.zIndex =
-        "-1";
-
-      cursorGlow.style.background =
-        "rgba(255,255,255,0.025)";
-
-      cursorGlow.style.filter =
-        "blur(45px)";
-
-      cursorGlow.style.transform =
-        "translate(-50%, -50%)";
-
-      cursorGlow.style.opacity =
-        "0";
-
-      cursorGlow.style.transition =
-        "opacity 0.3s ease";
-
-
-      document.body.appendChild(
-        cursorGlow
-      );
-
-
-      let cursorX = 0;
-      let cursorY = 0;
-
-      let glowX = 0;
-      let glowY = 0;
-
 
       window.addEventListener(
         "mousemove",
@@ -3397,7 +3175,6 @@
         }
       );
 
-
       function animateCursor() {
 
         glowX +=
@@ -3406,25 +3183,25 @@
         glowY +=
           (cursorY - glowY) * 0.08;
 
-
         cursorGlow.style.left =
           glowX + "px";
 
         cursorGlow.style.top =
           glowY + "px";
 
-
-        window.requestAnimationFrame(
+        requestAnimationFrame(
           animateCursor
         );
 
       }
 
-
       animateCursor();
 
-    }
+    } else {
 
+      cursorGlow.remove();
+
+    }
 
     /* =====================================================
        ESCAPE CLOSES MOBILE MENU
@@ -3438,33 +3215,20 @@
           event.key === "Escape"
         ) {
 
-          closeMobileMenu();
+          navLinks.classList.remove(
+            "active"
+          );
+
+          menuBtn.textContent =
+            "☰";
+
+          menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+          );
 
         }
 
-      }
-    );
-
-
-    /* =====================================================
-       CLOSE MENU WHEN RESIZING TO DESKTOP
-    ===================================================== */
-
-    window.addEventListener(
-      "resize",
-      () => {
-
-        if (
-          window.innerWidth > 800
-        ) {
-
-          closeMobileMenu();
-
-        }
-
-      },
-      {
-        passive: true
       }
     );
 
