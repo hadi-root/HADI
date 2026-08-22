@@ -23,7 +23,7 @@
             --surface: #0b0e12;
             --surface-2: #10141a;
             --border: rgba(255, 255, 255, 0.09);
-            --border-hover: rgba(255, 255, 255, 0.18);
+            --border-hover: rgba(255, 255, 255, 0.20);
             --text: #f5f7fa;
             --muted: #8d96a3;
             --muted-2: #68717e;
@@ -51,8 +51,8 @@
             content: "";
             position: fixed;
             inset: 0;
-            pointer-events: none;
             z-index: -2;
+            pointer-events: none;
 
             background:
                 linear-gradient(
@@ -107,9 +107,9 @@
             font: inherit;
         }
 
-        /* ==============================
+        /* =========================================
            NAVIGATION
-        ============================== */
+        ========================================= */
 
         .navbar {
             position: fixed;
@@ -152,9 +152,11 @@
         .brand {
             display: flex;
             align-items: center;
+
             gap: 11px;
 
             font-weight: 850;
+
             letter-spacing: 1px;
         }
 
@@ -242,9 +244,9 @@
             display: none;
         }
 
-        /* ==============================
+        /* =========================================
            COMMON
-        ============================== */
+        ========================================= */
 
         .container {
             width:
@@ -297,9 +299,9 @@
             font-size: 15px;
         }
 
-        /* ==============================
+        /* =========================================
            HERO
-        ============================== */
+        ========================================= */
 
         .hero {
             min-height: 100vh;
@@ -428,6 +430,7 @@
             padding: 0 18px;
 
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
@@ -470,17 +473,19 @@
                 rgba(255,255,255,0.035);
         }
 
-        /* ==============================
+        /* =========================================
            TERMINAL
-        ============================== */
+        ========================================= */
 
         .terminal-area {
             display: flex;
+
             justify-content: flex-end;
         }
 
         .terminal {
-            width: min(100%, 460px);
+            width:
+                min(100%, 460px);
 
             border:
                 1px solid var(--border);
@@ -518,6 +523,7 @@
             height: 46px;
 
             display: flex;
+
             align-items: center;
 
             gap: 7px;
@@ -660,9 +666,9 @@
             }
         }
 
-        /* ==============================
-           IDENTITY
-        ============================== */
+        /* =========================================
+           ABOUT
+        ========================================= */
 
         .identity-grid {
             display: grid;
@@ -770,14 +776,15 @@
             line-height: 1.5;
         }
 
-        /* ==============================
+        /* =========================================
            PROJECTS
-        ============================== */
+        ========================================= */
 
         .projects-heading {
             display: flex;
 
             justify-content: space-between;
+
             align-items: flex-end;
 
             gap: 30px;
@@ -795,80 +802,86 @@
             white-space: nowrap;
         }
 
-        .project-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
-        }
-
-        .project {
-            min-height: 390px;
-
-            padding: 30px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-
+        .main-project {
             position: relative;
 
             overflow: hidden;
 
+            display: grid;
+
+            grid-template-columns:
+                1.05fr 0.95fr;
+
+            min-height: 500px;
+
             border:
                 1px solid var(--border);
 
-            border-radius: 20px;
+            border-radius: 24px;
 
             background:
                 linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.045),
+                    135deg,
+                    rgba(255,255,255,0.055),
                     rgba(255,255,255,0.012)
                 );
 
             transition:
-                transform 0.35s ease,
-                border-color 0.35s ease;
+                border-color 0.35s ease,
+                transform 0.35s ease;
         }
 
-        .project:hover {
-            transform: translateY(-6px);
-
+        .main-project:hover {
             border-color:
                 var(--border-hover);
+
+            transform:
+                translateY(-5px);
         }
 
-        .project::after {
+        .main-project::before {
             content: "";
 
             position: absolute;
 
-            width: 250px;
-            height: 250px;
+            width: 500px;
+            height: 500px;
 
-            right: -130px;
-            top: -130px;
+            right: -250px;
+            top: -250px;
 
             border-radius: 50%;
 
             background:
                 rgba(255,255,255,0.035);
 
-            filter: blur(50px);
+            filter: blur(80px);
 
             pointer-events: none;
         }
 
-        .project-top {
+        .project-info {
+            position: relative;
+
+            z-index: 1;
+
+            padding: 50px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .project-status-row {
             display: flex;
 
             align-items: center;
+
             justify-content: space-between;
+
+            gap: 15px;
         }
 
         .project-number {
@@ -877,81 +890,94 @@
             font-family: monospace;
 
             font-size: 11px;
+
+            letter-spacing: 1px;
         }
 
-        .project-type {
-            padding: 6px 10px;
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 7px 11px;
 
             border:
                 1px solid var(--border);
 
             border-radius: 999px;
 
-            color: #909aa7;
+            background:
+                rgba(255,255,255,0.03);
+
+            color: #a4adb8;
 
             font-family: monospace;
 
             font-size: 9px;
         }
 
-        .project-icon {
-            width: 62px;
-            height: 62px;
+        .status-dot {
+            width: 6px;
+            height: 6px;
 
-            display: grid;
-            place-items: center;
+            border-radius: 50%;
 
-            margin-top: 38px;
+            background: #d5dbe1;
+        }
 
-            border:
-                1px solid var(--border);
+        .project-main-content {
+            margin-top: 45px;
+        }
 
-            border-radius: 15px;
+        .project-label {
+            margin-bottom: 14px;
 
-            background:
-                rgba(255,255,255,0.035);
+            color: var(--muted-2);
 
             font-family: monospace;
 
-            font-size: 19px;
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
         }
 
-        .project h3 {
+        .main-project h3 {
+            font-size:
+                clamp(38px, 5vw, 62px);
+
+            line-height: 0.95;
+
+            letter-spacing: -3px;
+        }
+
+        .main-project-description {
+            max-width: 570px;
+
             margin-top: 22px;
-
-            font-size: 25px;
-
-            letter-spacing: -0.8px;
-        }
-
-        .project-description {
-            max-width: 520px;
-
-            margin-top: 11px;
 
             color: var(--muted);
 
-            font-size: 13px;
+            font-size: 14px;
 
-            line-height: 1.75;
+            line-height: 1.85;
         }
 
-        .project-bottom {
-            margin-top: 30px;
-        }
-
-        .technologies {
+        .tech-list {
             display: flex;
 
             flex-wrap: wrap;
 
-            gap: 7px;
+            gap: 8px;
 
-            margin-bottom: 22px;
+            margin-top: 28px;
         }
 
-        .technology {
-            padding: 7px 10px;
+        .tech {
+            padding: 8px 11px;
 
             border:
                 1px solid var(--border);
@@ -961,61 +987,343 @@
             background:
                 rgba(255,255,255,0.025);
 
-            color: #9da7b3;
+            color: #a7b0bb;
 
             font-family: monospace;
 
             font-size: 9px;
         }
 
-        .project-actions {
+        .project-links {
             display: flex;
 
             flex-wrap: wrap;
 
-            gap: 9px;
+            gap: 10px;
+
+            margin-top: 35px;
         }
 
-        .project-button {
-            min-height: 39px;
+        .project-link {
+            min-height: 43px;
 
-            padding: 0 13px;
+            padding: 0 15px;
 
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
-            gap: 7px;
+            gap: 8px;
 
             border:
                 1px solid var(--border);
 
             border-radius: 9px;
 
-            background:
-                rgba(255,255,255,0.03);
-
-            color: #d2d8df;
-
             font-size: 11px;
+
+            font-weight: 650;
 
             transition:
                 background 0.25s ease,
-                border-color 0.25s ease;
+                border-color 0.25s ease,
+                transform 0.25s ease;
         }
 
-        .project-button:hover {
+        .project-link:hover {
             background:
-                rgba(255,255,255,0.08);
+                rgba(255,255,255,0.07);
 
             border-color:
                 var(--border-hover);
+
+            transform:
+                translateY(-2px);
         }
 
-        /* ==============================
+        .project-link.primary {
+            background: #f1f3f5;
+
+            color: #050608;
+        }
+
+        .project-link.primary:hover {
+            background: white;
+        }
+
+        /* Project visual */
+
+        .project-visual {
+            position: relative;
+
+            min-height: 500px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 45px;
+
+            border-left:
+                1px solid var(--border);
+
+            background:
+                rgba(0,0,0,0.16);
+        }
+
+        .browser-window {
+            width: 100%;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            background:
+                #080a0d;
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.45);
+
+            transform:
+                rotate(1deg);
+
+            transition:
+                transform 0.4s ease;
+        }
+
+        .main-project:hover .browser-window {
+            transform:
+                rotate(0deg)
+                translateY(-5px);
+        }
+
+        .browser-bar {
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 0 12px;
+
+            border-bottom:
+                1px solid var(--border);
+
+            background:
+                #0d1014;
+        }
+
+        .browser-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #69717c;
+        }
+
+        .browser-address {
+            flex: 1;
+
+            margin-left: 7px;
+
+            padding: 5px 9px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 5px;
+
+            color: #69717f;
+
+            font-family: monospace;
+
+            font-size: 7px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        .browser-content {
+            min-height: 300px;
+
+            padding: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .browser-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: #e5e9ed;
+
+            font-family: monospace;
+
+            font-size: 10px;
+
+            font-weight: bold;
+        }
+
+        .browser-brand-symbol {
+            width: 24px;
+            height: 24px;
+
+            display: grid;
+            place-items: center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 6px;
+
+            color: #9ca5b0;
+        }
+
+        .browser-hero {
+            margin-top: 35px;
+        }
+
+        .browser-small {
+            color: #606a77;
+
+            font-family: monospace;
+
+            font-size: 7px;
+
+            letter-spacing: 1px;
+        }
+
+        .browser-title {
+            margin-top: 10px;
+
+            color: #f1f3f5;
+
+            font-size: 27px;
+
+            font-weight: 850;
+
+            letter-spacing: -1px;
+        }
+
+        .browser-line {
+            width: 80%;
+
+            height: 5px;
+
+            margin-top: 13px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,0.09);
+        }
+
+        .browser-line.short {
+            width: 55%;
+        }
+
+        .browser-terminal {
+            margin-top: 25px;
+
+            padding: 13px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,0.02);
+
+            color: #737e8a;
+
+            font-family: monospace;
+
+            font-size: 7px;
+
+            line-height: 1.9;
+        }
+
+        .future-project {
+            margin-top: 18px;
+
+            min-height: 130px;
+
+            padding: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            border:
+                1px dashed rgba(255,255,255,0.13);
+
+            border-radius: 17px;
+
+            background:
+                rgba(255,255,255,0.012);
+        }
+
+        .future-project h4 {
+            font-size: 18px;
+
+            margin-bottom: 6px;
+        }
+
+        .future-project p {
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .future-symbol {
+            width: 48px;
+            height: 48px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border:
+                1px dashed rgba(255,255,255,0.18);
+
+            border-radius: 12px;
+
+            color: #68717d;
+
+            font-family: monospace;
+
+            font-size: 18px;
+        }
+
+        /* =========================================
            SKILLS
-        ============================== */
+        ========================================= */
 
         .skills-grid {
             display: grid;
@@ -1047,7 +1355,8 @@
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
+            transform:
+                translateY(-5px);
 
             border-color:
                 var(--border-hover);
@@ -1197,9 +1506,9 @@
             font-size: 10px;
         }
 
-        /* ==============================
+        /* =========================================
            CONTACT
-        ============================== */
+        ========================================= */
 
         .contact-box {
             position: relative;
@@ -1285,9 +1594,9 @@
             margin-top: 30px;
         }
 
-        /* ==============================
+        /* =========================================
            FOOTER
-        ============================== */
+        ========================================= */
 
         footer {
             padding: 35px 0;
@@ -1323,9 +1632,9 @@
             font-size: 11px;
         }
 
-        /* ==============================
-           ANIMATION
-        ============================== */
+        /* =========================================
+           REVEAL
+        ========================================= */
 
         .reveal {
             opacity: 0;
@@ -1345,9 +1654,9 @@
                 translateY(0);
         }
 
-        /* ==============================
+        /* =========================================
            RESPONSIVE
-        ============================== */
+        ========================================= */
 
         @media (max-width: 950px) {
 
@@ -1386,7 +1695,8 @@
             }
 
             .terminal:hover {
-                transform: translateY(-5px);
+                transform:
+                    translateY(-5px);
             }
 
             .identity-grid {
@@ -1395,7 +1705,19 @@
                 gap: 45px;
             }
 
-            .project-grid,
+            .main-project {
+                grid-template-columns: 1fr;
+            }
+
+            .project-visual {
+                min-height: 400px;
+
+                border-left: 0;
+
+                border-top:
+                    1px solid var(--border);
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -1513,14 +1835,26 @@
                 flex-direction: column;
             }
 
-            .project {
-                padding: 25px;
-
-                min-height: 370px;
+            .project-info {
+                padding: 30px;
             }
 
-            .skills-grid {
-                margin-top: 35px;
+            .project-visual {
+                padding: 25px;
+
+                min-height: 350px;
+            }
+
+            .main-project h3 {
+                font-size: 43px;
+
+                letter-spacing: -2px;
+            }
+
+            .future-project {
+                align-items: flex-start;
+
+                padding: 22px;
             }
 
             .learning {
@@ -1561,12 +1895,16 @@
                 font-size: 10px;
             }
 
-            .project-actions {
+            .project-links {
                 flex-direction: column;
             }
 
-            .project-button {
+            .project-link {
                 width: 100%;
+            }
+
+            .project-info {
+                padding: 25px;
             }
         }
     </style>
@@ -1574,9 +1912,9 @@
 
 <body>
 
-    <!-- ==============================
+    <!-- =========================================
          NAVIGATION
-    ============================== -->
+    ========================================= -->
 
     <header class="navbar">
 
@@ -1651,9 +1989,7 @@
     </header>
 
 
-    <!-- ==============================
-         MOBILE NAVIGATION
-    ============================== -->
+    <!-- MOBILE MENU -->
 
     <div
         class="mobile-menu"
@@ -1683,13 +2019,15 @@
     </div>
 
 
-    <!-- ==============================
+    <!-- =========================================
          MAIN
-    ============================== -->
+    ========================================= -->
 
     <main>
 
-        <!-- HERO -->
+        <!-- =====================================
+             HERO
+        ====================================== -->
 
         <section
             class="hero container"
@@ -1825,21 +2163,13 @@
                             </span>
 
                             <span class="terminal-command">
-                                focus
+                                project
                             </span>
 
                         </span>
 
                         <span class="terminal-line terminal-output">
-                            → Web Development
-                        </span>
-
-                        <span class="terminal-line terminal-output">
-                            → Applications
-                        </span>
-
-                        <span class="terminal-line terminal-output">
-                            → Technology
+                            → ROOT Terminal Hub
                         </span>
 
                         <br>
@@ -1902,7 +2232,9 @@
         </section>
 
 
-        <!-- ABOUT -->
+        <!-- =====================================
+             ABOUT
+        ====================================== -->
 
         <section
             class="section"
@@ -2040,7 +2372,9 @@
         </section>
 
 
-        <!-- PROJECTS -->
+        <!-- =====================================
+             PROJECTS
+        ====================================== -->
 
         <section
             class="section"
@@ -2062,9 +2396,9 @@
                         </h2>
 
                         <p class="section-description">
-                            Real projects and experiments
-                            created while learning and
-                            developing.
+                            A collection of real projects and
+                            experiments created while learning
+                            and developing.
                         </p>
 
                     </div>
@@ -2076,151 +2410,202 @@
                 </div>
 
 
-                <div class="project-grid">
+                <!-- MAIN PROJECT -->
 
+                <article
+                    class="main-project reveal"
+                >
 
-                    <!-- ROOT TERMINAL HUB -->
-
-                    <article
-                        class="project reveal"
-                    >
+                    <div class="project-info">
 
                         <div>
 
-                            <div class="project-top">
+                            <div class="project-status-row">
 
                                 <span class="project-number">
                                     PROJECT / 01
                                 </span>
 
-                                <span class="project-type">
-                                    WEB
-                                </span>
+                                <span class="status">
 
-                            </div>
+                                    <span class="status-dot"></span>
 
-                            <div class="project-icon">
-                                &gt;_
-                            </div>
+                                    LIVE
 
-                            <h3>
-                                ROOT Terminal Hub
-                            </h3>
-
-                            <p class="project-description">
-                                A technology-focused web project
-                                built around a terminal-inspired
-                                interface and digital development
-                                concepts.
-                            </p>
-
-                        </div>
-
-
-                        <div class="project-bottom">
-
-                            <div class="technologies">
-
-                                <span class="technology">
-                                    HTML
-                                </span>
-
-                                <span class="technology">
-                                    CSS
-                                </span>
-
-                                <span class="technology">
-                                    JavaScript
                                 </span>
 
                             </div>
 
 
-                            <div class="project-actions">
+                            <div class="project-main-content">
 
-                                <a
-                                    href="https://root-terminal-hub.onrender.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="project-button"
-                                >
-                                    Live Demo ↗
-                                </a>
+                                <div class="project-label">
+                                    Web Project
+                                </div>
 
-                                <a
-                                    href="https://github.com/hadi-root/root-terminal-portal"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="project-button"
-                                >
-                                    GitHub ↗
-                                </a>
+                                <h3>
+                                    ROOT<br>
+                                    Terminal Hub<span class="dim">.</span>
+                                </h3>
+
+                                <p class="main-project-description">
+
+                                    A technology-focused web project
+                                    built around a terminal-inspired
+                                    interface and digital development
+                                    concepts.
+
+                                    <br><br>
+
+                                    Explore the live experience or
+                                    inspect the source code on GitHub.
+
+                                </p>
+
+
+                                <div class="tech-list">
+
+                                    <span class="tech">
+                                        HTML
+                                    </span>
+
+                                    <span class="tech">
+                                        CSS
+                                    </span>
+
+                                    <span class="tech">
+                                        JavaScript
+                                    </span>
+
+                                    <span class="tech">
+                                        Web
+                                    </span>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </article>
 
+                        <div class="project-links">
 
-                    <!-- FUTURE PROJECT -->
+                            <a
+                                href="https://root-terminal-hub.onrender.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link primary"
+                            >
+                                Open Live Website
+                                ↗
+                            </a>
 
-                    <article
-                        class="project reveal"
-                    >
-
-                        <div>
-
-                            <div class="project-top">
-
-                                <span class="project-number">
-                                    PROJECT / 02
-                                </span>
-
-                                <span class="project-type">
-                                    FUTURE
-                                </span>
-
-                            </div>
-
-                            <div class="project-icon">
-                                +
-                            </div>
-
-                            <h3>
-                                Next Build
-                            </h3>
-
-                            <p class="project-description">
-                                The next project will appear here
-                                when a new idea becomes something
-                                real.
-                            </p>
+                            <a
+                                href="https://github.com/hadi-root/root-terminal-portal"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                View Source
+                                ↗
+                            </a>
 
                         </div>
 
+                    </div>
 
-                        <div class="project-bottom">
 
-                            <div class="technologies">
+                    <!-- PROJECT PREVIEW -->
 
-                                <span class="technology">
-                                    COMING SOON
-                                </span>
+                    <div class="project-visual">
+
+                        <div class="browser-window">
+
+                            <div class="browser-bar">
+
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+
+                                <div class="browser-address">
+                                    root-terminal-hub.onrender.com
+                                </div>
 
                             </div>
 
-                            <div class="project-actions">
 
-                                <span class="project-button">
-                                    In Development
-                                </span>
+                            <div class="browser-content">
+
+                                <div>
+
+                                    <div class="browser-brand">
+
+                                        <span class="browser-brand-symbol">
+                                            &gt;
+                                        </span>
+
+                                        ROOT TERMINAL HUB
+
+                                    </div>
+
+
+                                    <div class="browser-hero">
+
+                                        <div class="browser-small">
+                                            SYSTEM / ONLINE
+                                        </div>
+
+                                        <div class="browser-title">
+                                            ROOT.
+                                        </div>
+
+                                        <div class="browser-line"></div>
+
+                                        <div class="browser-line short"></div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="browser-terminal">
+
+                                    &gt; initializing root terminal...<br>
+                                    &gt; loading interface...<br>
+                                    &gt; system ready...<br>
+                                    &gt; welcome to ROOT TERMINAL HUB_
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </article>
+                    </div>
+
+                </article>
+
+
+                <!-- FUTURE PROJECT -->
+
+                <div class="future-project reveal">
+
+                    <div>
+
+                        <h4>
+                            Next Build
+                        </h4>
+
+                        <p>
+                            A new project will appear here when
+                            the next idea becomes real.
+                        </p>
+
+                    </div>
+
+                    <div class="future-symbol">
+                        +
+                    </div>
 
                 </div>
 
@@ -2229,7 +2614,9 @@
         </section>
 
 
-        <!-- SKILLS -->
+        <!-- =====================================
+             SKILLS
+        ====================================== -->
 
         <section
             class="section"
@@ -2488,7 +2875,9 @@
         </section>
 
 
-        <!-- CONTACT -->
+        <!-- =====================================
+             CONTACT
+        ====================================== -->
 
         <section
             class="section"
@@ -2511,10 +2900,9 @@
                     </h2>
 
                     <p>
-                        This section can later contain your
-                        preferred contact and social links.
-                        For now, explore the projects and
-                        follow the development journey.
+                        Explore the work, inspect the code and
+                        follow the journey as new projects are
+                        created.
                     </p>
 
                     <div class="contact-actions">
@@ -2523,16 +2911,18 @@
                             href="#projects"
                             class="button button-primary"
                         >
-                            View Projects ↗
+                            View Projects
+                            ↗
                         </a>
 
                         <a
-                            href="https://github.com/hadi-root/root-terminal-portal"
+                            href="https://github.com/hadi-root"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="button button-secondary"
                         >
-                            GitHub ↗
+                            GitHub Profile
+                            ↗
                         </a>
 
                     </div>
@@ -2546,9 +2936,9 @@
     </main>
 
 
-    <!-- ==============================
+    <!-- =========================================
          FOOTER
-    ============================== -->
+    ========================================= -->
 
     <footer>
 
@@ -2571,13 +2961,15 @@
     </footer>
 
 
-    <!-- ==============================
+    <!-- =========================================
          JAVASCRIPT
-    ============================== -->
+    ========================================= -->
 
     <script>
 
-        /* MOBILE MENU */
+        /* =====================================
+           MOBILE MENU
+        ===================================== */
 
         const menuBtn =
             document.getElementById("menuBtn");
@@ -2625,7 +3017,9 @@
             });
 
 
-        /* REVEAL ANIMATION */
+        /* =====================================
+           REVEAL ANIMATION
+        ===================================== */
 
         const revealElements =
             document.querySelectorAll(".reveal");
@@ -2673,7 +3067,9 @@
         );
 
 
-        /* NAVBAR */
+        /* =====================================
+           NAVBAR SCROLL EFFECT
+        ===================================== */
 
         const navbar =
             document.querySelector(
