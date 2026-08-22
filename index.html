@@ -23,7 +23,7 @@
             --bg-soft: #0a0d12;
             --panel: rgba(13, 17, 24, 0.72);
             --border: rgba(255, 255, 255, 0.09);
-            --border-hover: rgba(255, 255, 255, 0.18);
+            --border-hover: rgba(255, 255, 255, 0.19);
             --text: #f4f7fb;
             --muted: #8d98a8;
             --muted-light: #b6bfcb;
@@ -111,20 +111,26 @@
             left: 0;
             width: 100%;
             height: 78px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             z-index: 1000;
 
             background: rgba(5, 7, 10, 0.68);
+
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
 
             border-bottom: 1px solid rgba(255,255,255,0.06);
+
+            transition: background 0.3s ease;
         }
 
         .nav-inner {
             width: min(1180px, calc(100% - 40px));
+
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -134,6 +140,7 @@
             display: flex;
             align-items: center;
             gap: 11px;
+
             font-weight: 800;
             font-size: 18px;
             letter-spacing: 1px;
@@ -169,6 +176,7 @@
         .nav-links a {
             color: var(--muted);
             font-size: 14px;
+
             transition: color 0.25s ease;
         }
 
@@ -201,6 +209,7 @@
             border-radius: 10px;
 
             background: rgba(255,255,255,0.04);
+
             color: white;
 
             cursor: pointer;
@@ -231,15 +240,21 @@
             color: #707b89;
 
             font-family: monospace;
+
             font-size: 12px;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
         }
 
         .section-title {
             font-size: clamp(36px, 5vw, 58px);
+
             line-height: 1;
+
             letter-spacing: -2px;
+
             margin-bottom: 20px;
         }
 
@@ -249,6 +264,7 @@
             color: var(--muted);
 
             line-height: 1.8;
+
             font-size: 16px;
         }
 
@@ -266,7 +282,9 @@
             padding-top: 78px;
 
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+
+            grid-template-columns:
+                1.1fr 0.9fr;
 
             align-items: center;
 
@@ -281,7 +299,9 @@
 
         .status {
             display: inline-flex;
+
             align-items: center;
+
             gap: 9px;
 
             padding: 8px 13px;
@@ -314,6 +334,7 @@
         }
 
         @keyframes pulse {
+
             0%, 100% {
                 opacity: 1;
                 transform: scale(1);
@@ -323,10 +344,12 @@
                 opacity: 0.4;
                 transform: scale(0.75);
             }
+
         }
 
         .hero h1 {
-            font-size: clamp(60px, 8vw, 105px);
+            font-size:
+                clamp(60px, 8vw, 105px);
 
             line-height: 0.9;
 
@@ -367,6 +390,7 @@
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
             gap: 9px;
@@ -392,11 +416,13 @@
         .btn:hover {
             transform: translateY(-2px);
 
-            border-color: var(--border-hover);
+            border-color:
+                var(--border-hover);
         }
 
         .btn-primary {
             background: #f4f6f8;
+
             color: #05070a;
         }
 
@@ -405,7 +431,9 @@
         }
 
         .btn-secondary {
-            background: rgba(255,255,255,0.035);
+            background:
+                rgba(255,255,255,0.035);
+
             color: var(--text);
         }
 
@@ -415,6 +443,7 @@
 
         .terminal-wrap {
             display: flex;
+
             justify-content: flex-end;
         }
 
@@ -458,15 +487,18 @@
             height: 46px;
 
             display: flex;
+
             align-items: center;
 
             gap: 7px;
 
             padding: 0 16px;
 
-            border-bottom: 1px solid var(--border);
+            border-bottom:
+                1px solid var(--border);
 
-            background: rgba(255,255,255,0.025);
+            background:
+                rgba(255,255,255,0.025);
         }
 
         .terminal-dot {
@@ -493,7 +525,9 @@
 
             min-height: 350px;
 
-            font-family: "Courier New", monospace;
+            font-family:
+                "Courier New",
+                monospace;
 
             font-size: 13px;
 
@@ -532,6 +566,7 @@
         }
 
         @keyframes cursor {
+
             0%, 45% {
                 opacity: 1;
             }
@@ -539,6 +574,7 @@
             46%, 100% {
                 opacity: 0;
             }
+
         }
 
         /* =========================
@@ -549,12 +585,16 @@
             position: absolute;
 
             bottom: 28px;
+
             left: 50%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
 
             gap: 9px;
@@ -579,12 +619,16 @@
                     transparent
                 );
 
-            animation: scrollMove 1.7s infinite;
+            animation:
+                scrollMove 1.7s infinite;
         }
 
         @keyframes scrollMove {
+
             0% {
-                transform: translateY(-5px);
+                transform:
+                    translateY(-5px);
+
                 opacity: 0;
             }
 
@@ -593,9 +637,12 @@
             }
 
             100% {
-                transform: translateY(7px);
+                transform:
+                    translateY(7px);
+
                 opacity: 0;
             }
+
         }
 
         /* =========================
@@ -603,7 +650,8 @@
         ========================== */
 
         .quick-section {
-            padding: 0 0 130px;
+            padding:
+                0 0 130px;
         }
 
         .quick-grid {
@@ -620,7 +668,8 @@
 
             padding: 25px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             border-radius: 16px;
 
@@ -634,7 +683,8 @@
         }
 
         .quick-card:hover {
-            transform: translateY(-5px);
+            transform:
+                translateY(-5px);
 
             background:
                 rgba(255,255,255,0.045);
@@ -698,7 +748,8 @@
         .about-card {
             padding: 30px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             border-radius: 18px;
 
@@ -715,6 +766,7 @@
             height: 65px;
 
             display: grid;
+
             place-items: center;
 
             margin-bottom: 25px;
@@ -796,7 +848,287 @@
         }
 
         /* =========================
-           PLACEHOLDER SECTIONS
+           PROJECTS
+        ========================== */
+
+        .projects-section {
+            padding: 130px 0;
+
+            border-top:
+                1px solid rgba(255,255,255,0.05);
+        }
+
+        .projects-header {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 45px;
+        }
+
+        .projects-header-text {
+            max-width: 700px;
+        }
+
+        .projects-count {
+            color: #697482;
+
+            font-family: monospace;
+
+            font-size: 12px;
+
+            white-space: nowrap;
+        }
+
+        .projects-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .project-card {
+            position: relative;
+
+            min-height: 370px;
+
+            padding: 30px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            overflow: hidden;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.012)
+                );
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                background 0.35s ease;
+        }
+
+        .project-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            top: -100px;
+            right: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            filter: blur(45px);
+
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                var(--border-hover);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.06),
+                    rgba(255,255,255,0.018)
+                );
+        }
+
+        .project-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 20px;
+        }
+
+        .project-number {
+            color: #697482;
+
+            font-family: monospace;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+        }
+
+        .project-status {
+            padding: 6px 10px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 999px;
+
+            color: #9da7b3;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            font-family: monospace;
+
+            font-size: 10px;
+        }
+
+        .project-icon {
+            width: 62px;
+            height: 62px;
+
+            display: grid;
+
+            place-items: center;
+
+            margin-top: 35px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            font-family: monospace;
+
+            font-size: 20px;
+        }
+
+        .project-card h3 {
+            margin-top: 22px;
+
+            font-size: 25px;
+
+            letter-spacing: -0.7px;
+        }
+
+        .project-description {
+            margin-top: 12px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            max-width: 520px;
+        }
+
+        .project-bottom {
+            margin-top: 30px;
+        }
+
+        .tech-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-bottom: 25px;
+        }
+
+        .tech {
+            padding: 7px 10px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: #9ca6b3;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            font-family: monospace;
+
+            font-size: 10px;
+        }
+
+        .project-links {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .project-link {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            min-height: 40px;
+
+            padding: 0 14px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 9px;
+
+            color: #d6dbe1;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            font-size: 12px;
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .project-link:hover {
+            background:
+                rgba(255,255,255,0.08);
+
+            border-color:
+                var(--border-hover);
+        }
+
+        .project-link.disabled {
+            color: #626d7b;
+
+            cursor: default;
+
+            pointer-events: none;
+        }
+
+        /* =========================
+           FUTURE SECTIONS
         ========================== */
 
         .future-section {
@@ -838,7 +1170,8 @@
         }
 
         .footer-inner {
-            width: min(1180px, calc(100% - 40px));
+            width:
+                min(1180px, calc(100% - 40px));
 
             margin: auto;
 
@@ -911,7 +1244,8 @@
             }
 
             .terminal:hover {
-                transform: translateY(-5px);
+                transform:
+                    translateY(-5px);
             }
 
             .about-grid {
@@ -922,6 +1256,16 @@
 
             .about-left {
                 position: static;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-header {
+                align-items: flex-start;
+
+                flex-direction: column;
             }
         }
 
@@ -1036,6 +1380,20 @@
                 padding: 28px;
             }
 
+            .project-card {
+                min-height: 350px;
+
+                padding: 24px;
+            }
+
+            .project-card h3 {
+                font-size: 22px;
+            }
+
+            .project-links {
+                flex-wrap: wrap;
+            }
+
             .footer-inner {
                 width:
                     calc(100% - 28px);
@@ -1074,11 +1432,16 @@
         <div class="nav-inner">
 
             <a href="#home" class="logo">
+
                 <span class="logo-mark"></span>
+
                 <span>HADI</span>
+
             </a>
 
+
             <nav>
+
                 <ul class="nav-links">
 
                     <li>
@@ -1106,13 +1469,18 @@
                     </li>
 
                     <li>
-                        <a href="#contact" class="nav-contact">
+                        <a
+                            href="#contact"
+                            class="nav-contact"
+                        >
                             Contact
                         </a>
                     </li>
 
                 </ul>
+
             </nav>
+
 
             <button
                 class="menu-button"
@@ -1127,9 +1495,14 @@
     </header>
 
 
-    <!-- MOBILE MENU -->
+    <!-- =========================
+         MOBILE MENU
+    ========================== -->
 
-    <div class="mobile-menu" id="mobileMenu">
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
 
         <a href="#home">
             Home
@@ -1164,7 +1537,10 @@
              HOME
         ========================== -->
 
-        <section class="hero" id="home">
+        <section
+            class="hero"
+            id="home"
+        >
 
             <div class="hero-content">
 
@@ -1190,9 +1566,10 @@
 
                 <p class="hero-description">
 
-                    I'm HADI — a developer and technology enthusiast
-                    who enjoys turning ideas into real digital
-                    experiences, applications and experiments.
+                    I'm HADI — a developer and technology
+                    enthusiast who enjoys turning ideas into
+                    real digital experiences, applications
+                    and experiments.
 
                 </p>
 
@@ -1365,7 +1742,9 @@
              QUICK INFO
         ========================== -->
 
-        <section class="section quick-section">
+        <section
+            class="section quick-section"
+        >
 
             <div class="quick-grid">
 
@@ -1447,6 +1826,7 @@
                     <h2 class="section-title">
                         Who is HADI?
                     </h2>
+
 
                     <div class="about-card">
 
@@ -1563,25 +1943,358 @@
         ========================== -->
 
         <section
-            class="section future-section"
+            class="section projects-section"
             id="projects"
         >
 
-            <span class="section-label">
-                02 / Projects
-            </span>
+            <div class="projects-header">
 
-            <h2 class="section-title">
-                Things I've Built
-            </h2>
+                <div class="projects-header-text">
 
-            <div class="future-box">
+                    <span class="section-label">
+                        02 / Projects
+                    </span>
 
-                <p>
-                    Projects will be added here next — including
-                    ROOT Terminal Hub, SpotShare Location and
-                    future experiments.
-                </p>
+                    <h2 class="section-title">
+                        Things I've Built
+                    </h2>
+
+                    <p class="section-description">
+                        A collection of projects, experiments
+                        and digital products created while
+                        learning and building.
+                    </p>
+
+                </div>
+
+
+                <div class="projects-count">
+                    03 PROJECTS
+                </div>
+
+            </div>
+
+
+            <div class="projects-grid">
+
+
+                <!-- PROJECT 01 -->
+
+                <article class="project-card">
+
+                    <div>
+
+                        <div class="project-top">
+
+                            <span class="project-number">
+                                PROJECT / 01
+                            </span>
+
+                            <span class="project-status">
+                                WEB
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-icon">
+                            &gt;_
+                        </div>
+
+
+                        <h3>
+                            ROOT Terminal Hub
+                        </h3>
+
+
+                        <p class="project-description">
+                            A technology-focused web project
+                            built around a futuristic terminal
+                            aesthetic, digital tools and
+                            experimentation.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-bottom">
+
+                        <div class="tech-list">
+
+                            <span class="tech">
+                                HTML
+                            </span>
+
+                            <span class="tech">
+                                CSS
+                            </span>
+
+                            <span class="tech">
+                                JavaScript
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-links">
+
+                            <a
+                                href="#"
+                                class="project-link disabled"
+                                aria-disabled="true"
+                            >
+                                Live Demo ↗
+                            </a>
+
+                            <a
+                                href="#"
+                                class="project-link disabled"
+                                aria-disabled="true"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 02 -->
+
+                <article class="project-card">
+
+                    <div>
+
+                        <div class="project-top">
+
+                            <span class="project-number">
+                                PROJECT / 02
+                            </span>
+
+                            <span class="project-status">
+                                ANDROID
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-icon">
+                            GPS
+                        </div>
+
+
+                        <h3>
+                            SpotShare Location
+                        </h3>
+
+
+                        <p class="project-description">
+                            A consent-based Android location
+                            sharing application designed to
+                            let users explicitly control when
+                            their location is shared.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-bottom">
+
+                        <div class="tech-list">
+
+                            <span class="tech">
+                                Android
+                            </span>
+
+                            <span class="tech">
+                                Kotlin
+                            </span>
+
+                            <span class="tech">
+                                Firebase
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-links">
+
+                            <a
+                                href="#"
+                                class="project-link disabled"
+                                aria-disabled="true"
+                            >
+                                Live Demo ↗
+                            </a>
+
+                            <a
+                                href="#"
+                                class="project-link disabled"
+                                aria-disabled="true"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 03 -->
+
+                <article class="project-card">
+
+                    <div>
+
+                        <div class="project-top">
+
+                            <span class="project-number">
+                                PROJECT / 03
+                            </span>
+
+                            <span class="project-status">
+                                PORTFOLIO
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-icon">
+                            &lt;/&gt;
+                        </div>
+
+
+                        <h3>
+                            HADI Portfolio
+                        </h3>
+
+
+                        <p class="project-description">
+                            This portfolio website — designed
+                            to showcase projects, skills,
+                            experiments and the journey of
+                            building with technology.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-bottom">
+
+                        <div class="tech-list">
+
+                            <span class="tech">
+                                HTML
+                            </span>
+
+                            <span class="tech">
+                                CSS
+                            </span>
+
+                            <span class="tech">
+                                JavaScript
+                            </span>
+
+                            <span class="tech">
+                                GitHub Pages
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-links">
+
+                            <a
+                                href="https://hadi-root.github.io/hadi-portfolio/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                Live Demo ↗
+                            </a>
+
+                            <a
+                                href="#"
+                                class="project-link disabled"
+                                aria-disabled="true"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FUTURE PROJECT -->
+
+                <article class="project-card">
+
+                    <div>
+
+                        <div class="project-top">
+
+                            <span class="project-number">
+                                PROJECT / 04
+                            </span>
+
+                            <span class="project-status">
+                                NEXT
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-icon">
+                            +
+                        </div>
+
+
+                        <h3>
+                            Next Project
+                        </h3>
+
+
+                        <p class="project-description">
+                            The next idea is waiting to be
+                            turned into something real.
+                            This space will become another
+                            project as the portfolio grows.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-bottom">
+
+                        <div class="tech-list">
+
+                            <span class="tech">
+                                Coming Soon
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-links">
+
+                            <span
+                                class="project-link disabled"
+                            >
+                                In Development
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
 
             </div>
 
@@ -1604,6 +2317,7 @@
             <h2 class="section-title">
                 My Toolkit
             </h2>
+
 
             <div class="future-box">
 
@@ -1634,12 +2348,12 @@
                 Let's Connect.
             </h2>
 
+
             <div class="future-box">
 
                 <p>
                     Contact links and social profiles will be
-                    added here when we build the final contact
-                    section.
+                    added here in the next stage.
                 </p>
 
             </div>
@@ -1732,7 +2446,7 @@
 
         const revealElements =
             document.querySelectorAll(
-                ".quick-card, .about-card, .highlight, .future-box"
+                ".quick-card, .about-card, .highlight, .project-card, .future-box"
             );
 
 
@@ -1778,7 +2492,7 @@
 
 
         /* =========================
-           NAVBAR SCROLL EFFECT
+           NAVBAR SCROLL
         ========================== */
 
         const navbar =
