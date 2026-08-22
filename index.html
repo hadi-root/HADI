@@ -4,12 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HADI — Developer</title>
+<title>HADI — Developer & Builder</title>
 
-<meta name="description" content="HADI — Developer, builder and technology enthusiast.">
+<meta name="description" content="HADI — Developer, builder and technology enthusiast. Explore projects, skills and the journey behind the work.">
+<meta name="author" content="HADI">
 <meta name="theme-color" content="#050505">
 
+<meta property="og:title" content="HADI — Developer & Builder">
+<meta property="og:description" content="Building code. Creating tomorrow.">
+<meta property="og:type" content="website">
+
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --bg:#050505;
+    --bg-soft:#090909;
+    --card:#0b0b0b;
+    --text:#f5f5f5;
+    --muted:#777;
+    --dim:#444;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.18);
+    --ease:cubic-bezier(.2,.8,.2,1);
+}
+
 
 /* =========================================================
    RESET
@@ -26,10 +48,19 @@ html{
 }
 
 body{
-    background:#050505;
-    color:#f5f5f5;
-    font-family:Inter,Arial,Helvetica,sans-serif;
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
     overflow-x:hidden;
+}
+
+body.loading{
+    overflow:hidden;
 }
 
 body.menu-open{
@@ -52,6 +83,93 @@ button{
 
 
 /* =========================================================
+   LOADER
+========================================================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#050505;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.loader.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    width:min(360px,80%);
+}
+
+.loader-top{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:14px;
+
+    color:#555;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.loader-bar{
+    height:2px;
+
+    background:#151515;
+
+    overflow:hidden;
+}
+
+.loader-progress{
+    width:0;
+    height:100%;
+
+    background:#fff;
+
+    transition:
+        width 1.6s var(--ease);
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+.scroll-progress{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:2px;
+
+    z-index:10001;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.5);
+}
+
+
+/* =========================================================
    BACKGROUND
 ========================================================= */
 
@@ -59,21 +177,22 @@ button{
     position:fixed;
     inset:0;
     z-index:-20;
+
     overflow:hidden;
     pointer-events:none;
 
     background:
         radial-gradient(
             circle at 15% 10%,
-            rgba(255,255,255,.06),
-            transparent 27%
+            rgba(255,255,255,.055),
+            transparent 28%
         ),
         radial-gradient(
-            circle at 90% 40%,
-            rgba(255,255,255,.04),
+            circle at 90% 45%,
+            rgba(255,255,255,.035),
             transparent 30%
         ),
-        #050505;
+        var(--bg);
 }
 
 .grid{
@@ -82,25 +201,37 @@ button{
 
     background-image:
         linear-gradient(
-            rgba(255,255,255,.035) 1px,
+            rgba(255,255,255,.032) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,.035) 1px,
+            rgba(255,255,255,.032) 1px,
             transparent 1px
         );
 
     background-size:55px 55px;
 
-    opacity:.3;
+    opacity:.35;
 
     mask-image:
         linear-gradient(
             to bottom,
-            black,
+            black 0%,
             transparent 90%
         );
+}
+
+.noise{
+    position:absolute;
+    inset:-50%;
+
+    opacity:.025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+    pointer-events:none;
 }
 
 .glow{
@@ -111,27 +242,29 @@ button{
 
     border-radius:50%;
 
-    filter:blur(110px);
+    filter:blur(120px);
 
     opacity:.07;
 
-    animation:floatGlow 12s ease-in-out infinite;
+    animation:
+        glowFloat 13s ease-in-out infinite;
 }
 
 .glow.one{
-    left:-180px;
+    left:-220px;
     top:-220px;
     background:#fff;
 }
 
 .glow.two{
     right:-220px;
-    top:45%;
+    top:48%;
     background:#aaa;
-    animation-delay:-5s;
+
+    animation-delay:-6s;
 }
 
-@keyframes floatGlow{
+@keyframes glowFloat{
 
     0%,100%{
         transform:translate(0,0) scale(1);
@@ -144,7 +277,7 @@ button{
 
 
 /* =========================================================
-   NAVIGATION
+   HEADER
 ========================================================= */
 
 header{
@@ -158,57 +291,90 @@ header{
 
     padding:18px 6%;
 
-    background:rgba(5,5,5,.72);
+    background:
+        rgba(5,5,5,.62);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(22px);
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.06);
+        rgba(255,255,255,.055);
+
+    transition:
+        padding .3s ease,
+        background .3s ease;
+}
+
+header.scrolled{
+    padding-top:13px;
+    padding-bottom:13px;
+
+    background:
+        rgba(5,5,5,.88);
 }
 
 nav{
-    max-width:1300px;
+    max-width:1320px;
     margin:auto;
 
     display:flex;
-
     align-items:center;
     justify-content:space-between;
 }
 
 .logo{
-    font-size:24px;
-
-    font-weight:900;
+    font-size:23px;
+    font-weight:950;
 
     letter-spacing:5px;
 }
 
 .logo-dot{
-    color:#777;
+    color:#666;
 }
 
 .nav-links{
     display:flex;
-
     align-items:center;
-
-    gap:34px;
+    gap:31px;
 
     list-style:none;
 }
 
 .nav-links a{
-    color:#888;
+    position:relative;
 
-    font-size:13px;
+    color:#777;
+
+    font-size:12px;
 
     transition:.3s;
 }
 
-.nav-links a:hover{
+.nav-links a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:#fff;
+
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
     color:#fff;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+    width:100%;
 }
 
 .nav-contact{
@@ -216,11 +382,13 @@ nav{
 
     border:
         1px solid
-        rgba(255,255,255,.15);
+        rgba(255,255,255,.14);
 
     border-radius:30px;
+}
 
-    color:#ddd !important;
+.nav-contact::after{
+    display:none;
 }
 
 .nav-contact:hover{
@@ -254,19 +422,21 @@ nav{
 ========================================================= */
 
 .mobile-menu{
-    display:none;
-
     position:fixed;
-
     inset:0;
 
     z-index:900;
 
-    background:rgba(5,5,5,.97);
+    display:none;
+
+    padding:
+        120px 8%
+        50px;
+
+    background:
+        rgba(5,5,5,.98);
 
     backdrop-filter:blur(20px);
-
-    padding:120px 8% 50px;
 }
 
 .mobile-menu.active{
@@ -282,15 +452,18 @@ nav{
         1px solid
         rgba(255,255,255,.07);
 
-    color:#aaa;
+    color:#888;
 
-    font-size:28px;
+    font-size:29px;
 
     letter-spacing:-1px;
+
+    transition:.3s;
 }
 
 .mobile-menu a:hover{
     color:#fff;
+    padding-left:8px;
 }
 
 
@@ -302,12 +475,11 @@ nav{
     min-height:100vh;
 
     max-width:1400px;
-
     margin:auto;
 
     padding:
-        150px 6%
-        90px;
+        155px 6%
+        95px;
 
     display:grid;
 
@@ -324,15 +496,12 @@ nav{
 
 .hero-left{
     position:relative;
-
     z-index:2;
 }
 
 .hero-badge{
     display:inline-flex;
-
     align-items:center;
-
     gap:10px;
 
     padding:9px 14px;
@@ -346,14 +515,13 @@ nav{
     background:
         rgba(255,255,255,.025);
 
-    color:#888;
+    color:#777;
 
     font-family:
         "Courier New",
         monospace;
 
     font-size:10px;
-
     letter-spacing:1px;
 
     margin-bottom:30px;
@@ -368,10 +536,11 @@ nav{
     background:#fff;
 
     box-shadow:
-        0 0 14px
-        rgba(255,255,255,.9);
+        0 0 15px
+        rgba(255,255,255,.8);
 
-    animation:pulse 2s infinite;
+    animation:
+        pulse 2s infinite;
 }
 
 @keyframes pulse{
@@ -382,8 +551,8 @@ nav{
     }
 
     50%{
-        opacity:.35;
-        transform:scale(.8);
+        opacity:.3;
+        transform:scale(.75);
     }
 }
 
@@ -396,8 +565,6 @@ nav{
     letter-spacing:-12px;
 
     font-weight:950;
-
-    position:relative;
 }
 
 .hero-title-main{
@@ -406,8 +573,8 @@ nav{
     color:#f5f5f5;
 
     text-shadow:
-        0 0 60px
-        rgba(255,255,255,.05);
+        0 0 70px
+        rgba(255,255,255,.045);
 }
 
 .hero-title-outline{
@@ -433,9 +600,7 @@ nav{
     margin-top:38px;
 
     display:flex;
-
     align-items:center;
-
     gap:13px;
 
     color:#aaa;
@@ -462,13 +627,11 @@ nav{
     color:#777;
 
     font-size:16px;
-
     line-height:1.9;
 }
 
 .hero-description strong{
     color:#ddd;
-
     font-weight:500;
 }
 
@@ -476,10 +639,8 @@ nav{
     margin-top:32px;
 
     display:flex;
-
-    gap:10px;
-
     flex-wrap:wrap;
+    gap:10px;
 }
 
 .button{
@@ -488,20 +649,21 @@ nav{
     padding:0 19px;
 
     display:inline-flex;
-
     align-items:center;
-
     justify-content:center;
-
     gap:9px;
 
     border-radius:8px;
 
     font-size:12px;
-
     font-weight:700;
 
-    transition:.3s;
+    transition:
+        transform .3s var(--ease),
+        box-shadow .3s,
+        background .3s,
+        color .3s,
+        border-color .3s;
 
     cursor:pointer;
 }
@@ -520,7 +682,7 @@ nav{
 
 .button-primary:hover{
     box-shadow:
-        0 12px 30px
+        0 15px 35px
         rgba(255,255,255,.1);
 }
 
@@ -536,32 +698,23 @@ nav{
 }
 
 .button-secondary:hover{
+    color:#fff;
+
     border-color:
         rgba(255,255,255,.3);
-
-    color:#fff;
 }
-
-
-/* =========================================================
-   HERO META
-========================================================= */
 
 .hero-meta{
     margin-top:42px;
 
     display:flex;
-
     flex-wrap:wrap;
-
     gap:26px;
 }
 
 .hero-meta-item{
     display:flex;
-
     flex-direction:column;
-
     gap:5px;
 }
 
@@ -569,9 +722,7 @@ nav{
     color:#444;
 
     font-size:9px;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
 }
 
@@ -587,17 +738,18 @@ nav{
 
 
 /* =========================================================
-   HERO TERMINAL
+   TERMINAL
 ========================================================= */
 
 .hero-terminal-wrap{
     position:relative;
 
     display:flex;
-
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
+    transition:
+        transform .2s ease-out;
 }
 
 .hero-terminal-glow{
@@ -618,7 +770,6 @@ nav{
     position:relative;
 
     width:100%;
-
     max-width:520px;
 
     border:
@@ -630,7 +781,7 @@ nav{
     overflow:hidden;
 
     background:
-        rgba(8,8,8,.9);
+        rgba(8,8,8,.91);
 
     box-shadow:
         0 35px 100px
@@ -656,9 +807,7 @@ nav{
     height:48px;
 
     display:flex;
-
     align-items:center;
-
     gap:7px;
 
     padding:0 16px;
@@ -699,7 +848,6 @@ nav{
         monospace;
 
     font-size:12px;
-
     line-height:2;
 
     color:#777;
@@ -718,7 +866,7 @@ nav{
 }
 
 .terminal-value{
-    color:#8b8b8b;
+    color:#888;
 }
 
 .terminal-highlight{
@@ -735,7 +883,8 @@ nav{
 
     vertical-align:middle;
 
-    animation:blink 1s infinite;
+    animation:
+        blink 1s infinite;
 }
 
 @keyframes blink{
@@ -749,11 +898,6 @@ nav{
     }
 }
 
-
-/* =========================================================
-   TERMINAL FOOTER
-========================================================= */
-
 .terminal-footer{
     padding:14px 20px;
 
@@ -762,10 +906,8 @@ nav{
         rgba(255,255,255,.06);
 
     display:flex;
-
-    justify-content:space-between;
-
     align-items:center;
+    justify-content:space-between;
 
     color:#444;
 
@@ -778,9 +920,7 @@ nav{
 
 .terminal-status{
     display:flex;
-
     align-items:center;
-
     gap:7px;
 }
 
@@ -795,12 +935,11 @@ nav{
 
 
 /* =========================================================
-   SECTION
+   SECTIONS
 ========================================================= */
 
 section{
     max-width:1300px;
-
     margin:auto;
 
     padding:
@@ -815,9 +954,7 @@ section{
     color:#666;
 
     font-size:10px;
-
     letter-spacing:4px;
-
     text-transform:uppercase;
 
     margin-bottom:17px;
@@ -842,7 +979,6 @@ section{
     max-width:680px;
 
     font-size:15px;
-
     line-height:1.8;
 }
 
@@ -879,7 +1015,6 @@ section{
 
 .about-main-card h3{
     font-size:29px;
-
     margin-bottom:20px;
 }
 
@@ -893,14 +1028,15 @@ section{
 
 .about-right{
     display:grid;
-
     gap:22px;
 }
 
 .about-mini-card{
     padding:30px;
 
-    transition:.3s;
+    transition:
+        transform .35s,
+        border-color .35s;
 }
 
 .about-mini-card:hover{
@@ -924,7 +1060,6 @@ section{
 
 .about-mini-card h4{
     font-size:21px;
-
     margin-bottom:9px;
 }
 
@@ -932,7 +1067,6 @@ section{
     color:#666;
 
     font-size:13px;
-
     line-height:1.6;
 }
 
@@ -945,7 +1079,6 @@ section{
     margin-top:55px;
 
     display:grid;
-
     grid-template-columns:
         repeat(3,1fr);
 
@@ -966,7 +1099,10 @@ section{
     background:
         rgba(255,255,255,.018);
 
-    transition:.3s;
+    transition:
+        transform .3s,
+        background .3s,
+        border-color .3s;
 }
 
 .principle:hover{
@@ -974,6 +1110,9 @@ section{
 
     background:
         rgba(255,255,255,.04);
+
+    border-color:
+        rgba(255,255,255,.18);
 }
 
 .principle-number{
@@ -990,7 +1129,6 @@ section{
 
 .principle h3{
     font-size:21px;
-
     margin-bottom:10px;
 }
 
@@ -998,7 +1136,6 @@ section{
     color:#666;
 
     font-size:13px;
-
     line-height:1.7;
 }
 
@@ -1011,9 +1148,7 @@ section{
     margin-top:55px;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:flex-end;
 
     gap:30px;
@@ -1033,7 +1168,6 @@ section{
         monospace;
 
     font-size:11px;
-
     line-height:1.8;
 }
 
@@ -1041,9 +1175,7 @@ section{
     color:#777;
 
     font-size:10px;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
 }
 
@@ -1098,11 +1230,8 @@ section{
 
 .skill-panel-header{
     display:flex;
-
     align-items:flex-start;
-
     justify-content:space-between;
-
     gap:20px;
 }
 
@@ -1121,7 +1250,6 @@ section{
     height:40px;
 
     display:grid;
-
     place-items:center;
 
     border:
@@ -1142,7 +1270,6 @@ section{
     margin-top:45px;
 
     font-size:24px;
-
     letter-spacing:-1px;
 }
 
@@ -1152,7 +1279,6 @@ section{
     color:#666;
 
     font-size:12px;
-
     line-height:1.7;
 }
 
@@ -1160,9 +1286,7 @@ section{
     margin-top:23px;
 
     display:flex;
-
     flex-wrap:wrap;
-
     gap:7px;
 }
 
@@ -1198,7 +1322,6 @@ section{
     margin-top:25px;
 
     display:grid;
-
     gap:14px;
 }
 
@@ -1209,7 +1332,6 @@ section{
         95px 1fr 35px;
 
     align-items:center;
-
     gap:10px;
 }
 
@@ -1305,9 +1427,7 @@ section{
     color:#555;
 
     font-size:10px;
-
     letter-spacing:3px;
-
     text-transform:uppercase;
 }
 
@@ -1315,7 +1435,6 @@ section{
     margin-top:10px;
 
     font-size:25px;
-
     letter-spacing:-1px;
 }
 
@@ -1325,13 +1444,11 @@ section{
     color:#666;
 
     font-size:12px;
-
     line-height:1.7;
 }
 
 .exploring-tags{
     display:flex;
-
     flex-wrap:wrap;
 
     justify-content:flex-end;
@@ -1375,9 +1492,7 @@ section{
     margin-top:55px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     gap:20px;
@@ -1387,9 +1502,7 @@ section{
 
 .project-filters{
     display:flex;
-
     flex-wrap:wrap;
-
     gap:8px;
 }
 
@@ -1417,9 +1530,7 @@ section{
 .filter-button:hover,
 .filter-button.active{
     background:#fff;
-
     color:#000;
-
     border-color:#fff;
 }
 
@@ -1480,15 +1591,11 @@ section{
         1.1fr .9fr;
 
     gap:45px;
-
-    height:100%;
 }
 
 .featured-content{
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
 }
 
@@ -1508,9 +1615,7 @@ section{
     color:#888;
 
     font-size:10px;
-
     letter-spacing:1px;
-
     text-transform:uppercase;
 
     margin-bottom:24px;
@@ -1533,7 +1638,6 @@ section{
     color:#777;
 
     font-size:14px;
-
     line-height:1.8;
 }
 
@@ -1541,9 +1645,7 @@ section{
     margin-top:25px;
 
     display:flex;
-
     flex-wrap:wrap;
-
     gap:8px;
 }
 
@@ -1568,9 +1670,7 @@ section{
     margin-top:30px;
 
     display:flex;
-
     flex-wrap:wrap;
-
     gap:9px;
 }
 
@@ -1578,9 +1678,7 @@ section{
     position:relative;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     min-height:320px;
@@ -1598,7 +1696,6 @@ section{
 
 .preview-grid{
     position:absolute;
-
     inset:0;
 
     background-image:
@@ -1613,8 +1710,6 @@ section{
         );
 
     background-size:25px 25px;
-
-    opacity:.7;
 }
 
 .preview-terminal{
@@ -1664,9 +1759,7 @@ section{
 
 .preview-top{
     display:flex;
-
     gap:5px;
-
     margin-bottom:20px;
 }
 
@@ -1734,9 +1827,7 @@ section{
 
 .project-card-top{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
@@ -1748,7 +1839,6 @@ section{
         monospace;
 
     font-size:10px;
-
     letter-spacing:2px;
 }
 
@@ -1764,9 +1854,7 @@ section{
     border-radius:20px;
 
     font-size:9px;
-
     text-transform:uppercase;
-
     letter-spacing:1px;
 }
 
@@ -1774,7 +1862,6 @@ section{
     margin-top:70px;
 
     font-size:30px;
-
     letter-spacing:-2px;
 }
 
@@ -1784,7 +1871,6 @@ section{
     color:#6f6f6f;
 
     font-size:13px;
-
     line-height:1.75;
 }
 
@@ -1792,9 +1878,7 @@ section{
     margin-top:20px;
 
     display:flex;
-
     flex-wrap:wrap;
-
     gap:7px;
 }
 
@@ -1819,7 +1903,6 @@ section{
     bottom:30px;
 
     display:flex;
-
     gap:8px;
 }
 
@@ -1841,7 +1924,6 @@ section{
 
 .project-card-actions a:hover{
     background:#fff;
-
     color:#000;
 }
 
@@ -1849,11 +1931,8 @@ section{
     min-height:390px;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
     align-items:center;
 
     text-align:center;
@@ -1864,7 +1943,6 @@ section{
     height:65px;
 
     display:grid;
-
     place-items:center;
 
     border:
@@ -1886,13 +1964,11 @@ section{
     transform:rotate(90deg);
 
     background:#fff;
-
     color:#000;
 }
 
 .future-project h3{
     margin-top:0;
-
     font-size:27px;
 }
 
@@ -1904,7 +1980,6 @@ section{
     color:#666;
 
     font-size:13px;
-
     line-height:1.7;
 }
 
@@ -1944,7 +2019,6 @@ section{
     display:block;
 
     font-size:27px;
-
     margin-bottom:5px;
 }
 
@@ -1952,9 +2026,7 @@ section{
     color:#555;
 
     font-size:9px;
-
     letter-spacing:1.5px;
-
     text-transform:uppercase;
 }
 
@@ -1989,7 +2061,6 @@ section{
     position:absolute;
 
     left:-44px;
-
     top:4px;
 
     width:11px;
@@ -2016,7 +2087,6 @@ section{
         monospace;
 
     font-size:11px;
-
     letter-spacing:2px;
 
     margin-bottom:11px;
@@ -2024,7 +2094,6 @@ section{
 
 .timeline-item h3{
     font-size:24px;
-
     margin-bottom:10px;
 }
 
@@ -2090,9 +2159,7 @@ section{
     color:#555;
 
     font-size:10px;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
 }
 
@@ -2146,9 +2213,7 @@ section{
     margin-top:30px;
 
     display:flex;
-
     gap:10px;
-
     flex-wrap:wrap;
 }
 
@@ -2159,7 +2224,6 @@ section{
 
 footer{
     max-width:1300px;
-
     margin:auto;
 
     padding:
@@ -2172,7 +2236,6 @@ footer{
     display:flex;
 
     justify-content:space-between;
-
     align-items:center;
 
     color:#555;
@@ -2184,7 +2247,6 @@ footer{
     color:#fff;
 
     font-weight:900;
-
     letter-spacing:4px;
 }
 
@@ -2196,17 +2258,73 @@ footer{
 .reveal{
     opacity:0;
 
-    transform:translateY(25px);
+    transform:
+        translateY(28px);
 
     transition:
         opacity .8s ease,
-        transform .8s ease;
+        transform .8s var(--ease);
 }
 
 .reveal.visible{
     opacity:1;
 
-    transform:translateY(0);
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    z-index:800;
+
+    width:45px;
+    height:45px;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius:10px;
+
+    background:
+        rgba(10,10,10,.85);
+
+    color:#aaa;
+
+    cursor:pointer;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:
+        translateY(10px);
+
+    transition:.3s;
+}
+
+.back-top.show{
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateY(0);
+}
+
+.back-top:hover{
+    color:#000;
+    background:#fff;
 }
 
 
@@ -2237,7 +2355,6 @@ footer{
 
     .terminal{
         transform:none;
-
         max-width:650px;
     }
 
@@ -2294,18 +2411,19 @@ footer{
             1px solid
             rgba(255,255,255,.08);
     }
-
 }
 
 
 @media(max-width:600px){
 
     header{
-        padding:16px 5%;
+        padding:
+            16px 5%;
     }
 
     section{
-        padding:90px 5%;
+        padding:
+            90px 5%;
     }
 
     .hero{
@@ -2351,15 +2469,12 @@ footer{
 
     .skill-intro{
         align-items:flex-start;
-
         flex-direction:column;
-
         gap:10px;
     }
 
     .skill-panel{
         padding:25px;
-
         min-height:300px;
     }
 
@@ -2374,7 +2489,6 @@ footer{
 
     .featured-project{
         padding:27px;
-
         min-height:auto;
     }
 
@@ -2384,21 +2498,17 @@ footer{
 
     .project-preview{
         min-height:260px;
-
         margin-top:15px;
     }
 
     .preview-terminal{
         width:85%;
-
         padding:18px;
-
         font-size:9px;
     }
 
     .project-card{
         padding:27px;
-
         min-height:400px;
     }
 
@@ -2413,7 +2523,8 @@ footer{
     }
 
     .contact-card{
-        padding:35px 25px;
+        padding:
+            35px 25px;
     }
 
     .contact-card h3{
@@ -2425,7 +2536,8 @@ footer{
     }
 
     .stat{
-        padding:30px 15px;
+        padding:
+            30px 15px;
     }
 
     .stat strong{
@@ -2443,13 +2555,59 @@ footer{
         gap:15px;
     }
 
+    .back-top{
+        right:16px;
+        bottom:16px;
+    }
 }
 
 </style>
 </head>
 
 
-<body>
+<body class="loading">
+
+
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-inner">
+
+        <div class="loader-top">
+
+            <span>HADI.PORTFOLIO</span>
+
+            <span id="loaderPercent">
+                0%
+            </span>
+
+        </div>
+
+        <div class="loader-bar">
+
+            <div
+                class="loader-progress"
+                id="loaderProgress">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SCROLL PROGRESS
+========================================================= -->
+
+<div
+    class="scroll-progress"
+    id="scrollProgress">
+</div>
 
 
 <!-- =========================================================
@@ -2459,6 +2617,8 @@ footer{
 <div class="background">
 
     <div class="grid"></div>
+
+    <div class="noise"></div>
 
     <div class="glow one"></div>
 
@@ -2471,7 +2631,7 @@ footer{
      HEADER
 ========================================================= -->
 
-<header>
+<header id="header">
 
 <nav>
 
@@ -2483,23 +2643,33 @@ footer{
 <ul class="nav-links">
 
 <li>
-    <a href="#about">About</a>
+    <a href="#about">
+        About
+    </a>
 </li>
 
 <li>
-    <a href="#skills">Skills</a>
+    <a href="#skills">
+        Skills
+    </a>
 </li>
 
 <li>
-    <a href="#projects">Projects</a>
+    <a href="#projects">
+        Projects
+    </a>
 </li>
 
 <li>
-    <a href="#journey">Journey</a>
+    <a href="#journey">
+        Journey
+    </a>
 </li>
 
 <li>
-    <a href="#contact" class="nav-contact">
+    <a
+        href="#contact"
+        class="nav-contact">
         Contact
     </a>
 </li>
@@ -2606,13 +2776,13 @@ Developer • Builder • Technology Enthusiast
 
 I turn ideas into digital experiences,
 experiment with technology and build projects
-that help me <strong>learn, create and improve.</strong>
+that help me
+<strong>learn, create and improve.</strong>
 
 </p>
 
 
 <div class="hero-actions">
-
 
 <a
     href="#projects"
@@ -2626,7 +2796,7 @@ that help me <strong>learn, create and improve.</strong>
 <a
     href="https://github.com/hadi-root"
     target="_blank"
-    rel="noopener"
+    rel="noopener noreferrer"
     class="button button-secondary">
 
     GitHub ↗
@@ -2677,8 +2847,8 @@ that help me <strong>learn, create and improve.</strong>
 
 </div>
 
-</div>
 
+</div>
 
 </div>
 
@@ -2687,7 +2857,9 @@ that help me <strong>learn, create and improve.</strong>
      HERO TERMINAL
 ===================================================== -->
 
-<div class="hero-terminal-wrap reveal">
+<div
+    class="hero-terminal-wrap"
+    id="heroTerminal">
 
 
 <div class="hero-terminal-glow"></div>
@@ -2699,7 +2871,9 @@ that help me <strong>learn, create and improve.</strong>
 <div class="terminal-top">
 
 <span class="terminal-dot"></span>
+
 <span class="terminal-dot"></span>
+
 <span class="terminal-dot"></span>
 
 <span class="terminal-name">
@@ -2771,11 +2945,9 @@ that help me <strong>learn, create and improve.</strong>
     root-terminal-portal/
 </span>
 
-
 <span class="terminal-line terminal-value">
     web-experiments/
 </span>
-
 
 <span class="terminal-line terminal-value">
     future-projects/
@@ -2873,6 +3045,7 @@ SYSTEM READY
 ========================================================= -->
 
 <section id="about">
+
 
 <div class="section-header reveal">
 
@@ -3108,7 +3281,8 @@ $ hadi@dev:~$ skills --list<br>
 
 Loading developer toolkit...<br>
 
-Status: <strong>learning continuously</strong>
+Status:
+<strong>learning continuously</strong>
 
 </div>
 
@@ -3156,12 +3330,29 @@ and interactive web experiences.
 
 <div class="skill-list">
 
-<span class="skill-chip">HTML</span>
-<span class="skill-chip">CSS</span>
-<span class="skill-chip">JavaScript</span>
-<span class="skill-chip">Responsive Design</span>
-<span class="skill-chip">UI Design</span>
-<span class="skill-chip">Animations</span>
+<span class="skill-chip">
+    HTML
+</span>
+
+<span class="skill-chip">
+    CSS
+</span>
+
+<span class="skill-chip">
+    JavaScript
+</span>
+
+<span class="skill-chip">
+    Responsive Design
+</span>
+
+<span class="skill-chip">
+    UI Design
+</span>
+
+<span class="skill-chip">
+    Animations
+</span>
 
 </div>
 
@@ -3198,11 +3389,25 @@ software architecture.
 
 <div class="skill-list">
 
-<span class="skill-chip">Android</span>
-<span class="skill-chip">Firebase</span>
-<span class="skill-chip">APIs</span>
-<span class="skill-chip">App Architecture</span>
-<span class="skill-chip">Database Concepts</span>
+<span class="skill-chip">
+    Android
+</span>
+
+<span class="skill-chip">
+    Firebase
+</span>
+
+<span class="skill-chip">
+    APIs
+</span>
+
+<span class="skill-chip">
+    App Architecture
+</span>
+
+<span class="skill-chip">
+    Database Concepts
+</span>
 
 </div>
 
@@ -3239,11 +3444,25 @@ test and publish projects.
 
 <div class="skill-list">
 
-<span class="skill-chip">Git</span>
-<span class="skill-chip">GitHub</span>
-<span class="skill-chip">VS Code</span>
-<span class="skill-chip">GitHub Pages</span>
-<span class="skill-chip">Render</span>
+<span class="skill-chip">
+    Git
+</span>
+
+<span class="skill-chip">
+    GitHub
+</span>
+
+<span class="skill-chip">
+    VS Code
+</span>
+
+<span class="skill-chip">
+    GitHub Pages
+</span>
+
+<span class="skill-chip">
+    Render
+</span>
 
 </div>
 
@@ -3280,11 +3499,25 @@ technologies shaping the next generation.
 
 <div class="skill-list">
 
-<span class="skill-chip">AI</span>
-<span class="skill-chip">AI Tools</span>
-<span class="skill-chip">Automation</span>
-<span class="skill-chip">Prompting</span>
-<span class="skill-chip">Emerging Tech</span>
+<span class="skill-chip">
+    AI
+</span>
+
+<span class="skill-chip">
+    AI Tools
+</span>
+
+<span class="skill-chip">
+    Automation
+</span>
+
+<span class="skill-chip">
+    Prompting
+</span>
+
+<span class="skill-chip">
+    Emerging Tech
+</span>
 
 </div>
 
@@ -3293,8 +3526,12 @@ technologies shaping the next generation.
 </div>
 
 
-<div class="skill-panel reveal"
-style="margin-top:18px;min-height:auto;">
+<div
+    class="skill-panel reveal"
+    style="
+        margin-top:18px;
+        min-height:auto;
+    ">
 
 <div class="skill-panel-header">
 
@@ -3304,11 +3541,17 @@ style="margin-top:18px;min-height:auto;">
     CURRENT FOCUS
 </div>
 
-<h3 style="margin-top:20px;">
+<h3
+    style="
+        margin-top:20px;
+    ">
+
     Development Areas
+
 </h3>
 
 </div>
+
 
 <div class="skill-panel-icon">
     ↗
@@ -3329,8 +3572,8 @@ style="margin-top:18px;min-height:auto;">
 <div class="skill-meter">
 
 <div
-class="skill-meter-fill"
-style="--skill:88%;">
+    class="skill-meter-fill"
+    style="--skill:88%;">
 </div>
 
 </div>
@@ -3351,8 +3594,8 @@ style="--skill:88%;">
 <div class="skill-meter">
 
 <div
-class="skill-meter-fill"
-style="--skill:72%;">
+    class="skill-meter-fill"
+    style="--skill:72%;">
 </div>
 
 </div>
@@ -3373,8 +3616,8 @@ style="--skill:72%;">
 <div class="skill-meter">
 
 <div
-class="skill-meter-fill"
-style="--skill:78%;">
+    class="skill-meter-fill"
+    style="--skill:78%;">
 </div>
 
 </div>
@@ -3395,8 +3638,8 @@ style="--skill:78%;">
 <div class="skill-meter">
 
 <div
-class="skill-meter-fill"
-style="--skill:60%;">
+    class="skill-meter-fill"
+    style="--skill:60%;">
 </div>
 
 </div>
@@ -3501,34 +3744,34 @@ while learning and exploring technology.
 <div class="project-filters">
 
 <button
-class="filter-button active"
-data-filter="all">
+    class="filter-button active"
+    data-filter="all">
 
-All
-
-</button>
-
-<button
-class="filter-button"
-data-filter="web">
-
-Web
+    All
 
 </button>
 
 <button
-class="filter-button"
-data-filter="app">
+    class="filter-button"
+    data-filter="web">
 
-Apps
+    Web
 
 </button>
 
 <button
-class="filter-button"
-data-filter="experiment">
+    class="filter-button"
+    data-filter="app">
 
-Experiments
+    Apps
+
+</button>
+
+<button
+    class="filter-button"
+    data-filter="experiment">
+
+    Experiments
 
 </button>
 
@@ -3543,8 +3786,8 @@ Experiments
 
 
 <article
-class="featured-project reveal"
-data-category="web">
+    class="featured-project reveal"
+    data-category="web">
 
 
 <div class="featured-grid">
@@ -3605,23 +3848,23 @@ a digital identity around technology.
 <div class="featured-actions">
 
 <a
-href="https://root-terminal-hub.onrender.com/"
-target="_blank"
-rel="noopener"
-class="button button-primary">
+    href="https://root-terminal-hub.onrender.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="button button-primary">
 
-Open Live Website ↗
+    Open Live Website ↗
 
 </a>
 
 
 <a
-href="https://github.com/hadi-root/root-terminal-portal"
-target="_blank"
-rel="noopener"
-class="button button-secondary">
+    href="https://github.com/hadi-root/root-terminal-portal"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="button button-secondary">
 
-View Repository ↗
+    View Repository ↗
 
 </a>
 
@@ -3696,7 +3939,6 @@ View Repository ↗
     Initializing...
 </div>
 
-
 <div class="preview-line">
     Loading interface...
 </div>
@@ -3729,7 +3971,6 @@ View Repository ↗
 
 </div>
 
-
 </div>
 
 </article>
@@ -3739,8 +3980,8 @@ View Repository ↗
 
 
 <article
-class="project-card reveal"
-data-category="experiment">
+    class="project-card reveal"
+    data-category="experiment">
 
 
 <div class="project-card-top">
@@ -3772,10 +4013,21 @@ modern web development.
 
 <div class="project-card-tech">
 
-<span>HTML</span>
-<span>CSS</span>
-<span>JavaScript</span>
-<span>UI</span>
+<span>
+    HTML
+</span>
+
+<span>
+    CSS
+</span>
+
+<span>
+    JavaScript
+</span>
+
+<span>
+    UI
+</span>
 
 </div>
 
@@ -3792,8 +4044,8 @@ modern web development.
 
 
 <article
-class="project-card reveal"
-data-category="app">
+    class="project-card reveal"
+    data-category="app">
 
 
 <div class="project-card-top">
@@ -3825,10 +4077,21 @@ next major build begins.
 
 <div class="project-card-tech">
 
-<span>Android</span>
-<span>Firebase</span>
-<span>Mobile</span>
-<span>Software</span>
+<span>
+    Android
+</span>
+
+<span>
+    Firebase
+</span>
+
+<span>
+    Mobile
+</span>
+
+<span>
+    Software
+</span>
 
 </div>
 
@@ -3845,8 +4108,8 @@ next major build begins.
 
 
 <article
-class="project-card future-project reveal"
-data-category="web">
+    class="project-card future-project reveal"
+    data-category="web">
 
 
 <div class="future-icon">
@@ -3931,7 +4194,6 @@ portfolio grows.
 
 
 </div>
-
 
 </section>
 
@@ -4142,23 +4404,23 @@ Find my work and development journey on GitHub.
 
 
 <a
-href="https://github.com/hadi-root"
-target="_blank"
-rel="noopener"
-class="button button-primary">
+    href="https://github.com/hadi-root"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="button button-primary">
 
-GitHub ↗
+    GitHub ↗
 
 </a>
 
 
 <a
-href="https://root-terminal-hub.onrender.com/"
-target="_blank"
-rel="noopener"
-class="button button-secondary">
+    href="https://root-terminal-hub.onrender.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="button button-secondary">
 
-Root Terminal ↗
+    Root Terminal ↗
 
 </a>
 
@@ -4195,10 +4457,86 @@ Root Terminal ↗
 
 
 <!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    class="back-top"
+    id="backTop"
+    aria-label="Back to top">
+
+    ↑
+
+</button>
+
+
+<!-- =========================================================
      JAVASCRIPT
 ========================================================= -->
 
 <script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+const loader =
+    document.getElementById("loader");
+
+const loaderProgress =
+    document.getElementById("loaderProgress");
+
+const loaderPercent =
+    document.getElementById("loaderPercent");
+
+let progress = 0;
+
+const loaderInterval =
+    setInterval(() => {
+
+        progress +=
+            Math.floor(
+                Math.random() * 14
+            ) + 7;
+
+        if(progress >= 100){
+
+            progress = 100;
+
+            clearInterval(
+                loaderInterval
+            );
+
+            loaderProgress.style.width =
+                "100%";
+
+            loaderPercent.textContent =
+                "100%";
+
+            setTimeout(() => {
+
+                loader.classList.add(
+                    "hidden"
+                );
+
+                document.body.classList.remove(
+                    "loading"
+                );
+
+            },400);
+
+        }else{
+
+            loaderProgress.style.width =
+                progress + "%";
+
+            loaderPercent.textContent =
+                progress + "%";
+
+        }
+
+    },130);
+
 
 /* =========================================================
    MOBILE MENU
@@ -4215,9 +4553,13 @@ menuButton.addEventListener(
     "click",
     () => {
 
-        mobileMenu.classList.toggle("active");
+        mobileMenu.classList.toggle(
+            "active"
+        );
 
-        document.body.classList.toggle("menu-open");
+        document.body.classList.toggle(
+            "menu-open"
+        );
 
         menuButton.textContent =
             mobileMenu.classList.contains("active")
@@ -4244,7 +4586,8 @@ document
                 "menu-open"
             );
 
-            menuButton.textContent = "☰";
+            menuButton.textContent =
+                "☰";
 
         }
     );
@@ -4253,10 +4596,10 @@ document
 
 
 /* =========================================================
-   SCROLL REVEAL
+   REVEAL
 ========================================================= */
 
-const observer =
+const revealObserver =
     new IntersectionObserver(
         entries => {
 
@@ -4268,7 +4611,7 @@ const observer =
                         "visible"
                     );
 
-                    observer.unobserve(
+                    revealObserver.unobserve(
                         entry.target
                     );
 
@@ -4278,7 +4621,7 @@ const observer =
 
         },
         {
-            threshold:.12
+            threshold:.1
         }
     );
 
@@ -4287,9 +4630,176 @@ document
 .querySelectorAll(".reveal")
 .forEach(element => {
 
-    observer.observe(element);
+    revealObserver.observe(
+        element
+    );
 
 });
+
+
+/* =========================================================
+   SCROLL PROGRESS + HEADER + BACK TOP
+========================================================= */
+
+const scrollProgress =
+    document.getElementById(
+        "scrollProgress"
+    );
+
+const header =
+    document.getElementById(
+        "header"
+    );
+
+const backTop =
+    document.getElementById(
+        "backTop"
+    );
+
+
+function updateScrollUI(){
+
+    const scrollTop =
+        window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight
+        -
+        window.innerHeight;
+
+    const percentage =
+        documentHeight > 0
+            ? (scrollTop / documentHeight) * 100
+            : 0;
+
+
+    scrollProgress.style.width =
+        percentage + "%";
+
+
+    if(scrollTop > 40){
+
+        header.classList.add(
+            "scrolled"
+        );
+
+    }else{
+
+        header.classList.remove(
+            "scrolled"
+        );
+
+    }
+
+
+    if(scrollTop > 500){
+
+        backTop.classList.add(
+            "show"
+        );
+
+    }else{
+
+        backTop.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateScrollUI,
+    {
+        passive:true
+    }
+);
+
+
+backTop.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   ACTIVE NAV
+========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+
+function updateActiveNav(){
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const top =
+            section.offsetTop - 180;
+
+        if(
+            window.scrollY >= top
+        ){
+
+            current =
+                section.getAttribute(
+                    "id"
+                );
+
+        }
+
+    });
+
+
+    navLinks.forEach(link => {
+
+        link.classList.remove(
+            "active"
+        );
+
+
+        if(
+            link.getAttribute("href")
+            ===
+            "#" + current
+        ){
+
+            link.classList.add(
+                "active"
+            );
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateActiveNav,
+    {
+        passive:true
+    }
+);
 
 
 /* =========================================================
@@ -4340,7 +4850,9 @@ filterButtons.forEach(button => {
 
             if(
                 filter === "all" ||
-                featuredProject.dataset.category === filter
+                featuredProject.dataset.category
+                ===
+                filter
             ){
 
                 featuredProject.style.display =
@@ -4386,78 +4898,23 @@ filterButtons.forEach(button => {
 
 
 /* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
-
-const navLinks =
-    document.querySelectorAll(
-        ".nav-links a"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.offsetTop - 160;
-
-
-            if(
-                window.scrollY >= sectionTop
-            ){
-
-                current =
-                    section.getAttribute("id");
-
-            }
-
-        });
-
-
-        navLinks.forEach(link => {
-
-            link.style.color = "#888";
-
-
-            if(
-                link.getAttribute("href") ===
-                "#" + current
-            ){
-
-                link.style.color = "#fff";
-
-            }
-
-        });
-
-    }
-);
-
-
-/* =========================================================
-   SUBTLE HERO PARALLAX
+   HERO PARALLAX
 ========================================================= */
 
 const hero =
-    document.querySelector(".hero");
+    document.querySelector(
+        ".hero"
+    );
 
-const terminal =
-    document.querySelector(".hero-terminal-wrap");
+const terminalWrap =
+    document.getElementById(
+        "heroTerminal"
+    );
 
 
 if(
     hero &&
-    terminal &&
+    terminalWrap &&
     window.innerWidth > 1000
 ){
 
@@ -4468,18 +4925,24 @@ if(
             const rect =
                 hero.getBoundingClientRect();
 
+
             const x =
                 (event.clientX - rect.left)
-                / rect.width
-                - .5;
+                /
+                rect.width
+                -
+                .5;
+
 
             const y =
                 (event.clientY - rect.top)
-                / rect.height
-                - .5;
+                /
+                rect.height
+                -
+                .5;
 
 
-            terminal.style.transform =
+            terminalWrap.style.transform =
                 `
                 translate(
                     ${x * 8}px,
@@ -4495,7 +4958,7 @@ if(
         "mouseleave",
         () => {
 
-            terminal.style.transform =
+            terminalWrap.style.transform =
                 "";
 
         }
@@ -4505,16 +4968,62 @@ if(
 
 
 /* =========================================================
-   PAGE LOAD
+   SMOOTH ANCHOR FALLBACK
+========================================================= */
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor => {
+
+    anchor.addEventListener(
+        "click",
+        event => {
+
+            const id =
+                anchor.getAttribute(
+                    "href"
+                );
+
+            if(
+                id &&
+                id !== "#"
+            ){
+
+                const target =
+                    document.querySelector(
+                        id
+                    );
+
+                if(target){
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior:"smooth",
+                        block:"start"
+                    });
+
+                }
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   INITIAL UI
 ========================================================= */
 
 window.addEventListener(
     "load",
     () => {
 
-        document.body.classList.add(
-            "loaded"
-        );
+        updateScrollUI();
+
+        updateActiveNav();
 
     }
 );
