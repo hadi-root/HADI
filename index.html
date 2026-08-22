@@ -2,28 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <!-- =====================================================
+       SEO
+  ====================================================== -->
 
   <meta
     name="description"
-    content="HADI — Developer, Creator and Builder. Explore projects, skills and digital work."
+    content="HADI — Developer, Creator and Builder. Explore projects, skills and digital work including ROOT HUB, ROOT OS and ROOT TERMINAL HUB."
   >
 
-  <meta name="theme-color" content="#050505">
+  <meta
+    name="keywords"
+    content="HADI, developer, creator, builder, web development, ROOT HUB, ROOT OS, ROOT TERMINAL HUB, GitHub, portfolio"
+  >
 
-  <title>HADI — Developer Portfolio</title>
+  <meta
+    name="author"
+    content="HADI"
+  >
+
+  <meta
+    name="robots"
+    content="index, follow"
+  >
+
+  <link
+    rel="canonical"
+    href="https://root-terminal-hub.onrender.com/"
+  >
+
+  <!-- =====================================================
+       THEME
+  ====================================================== -->
+
+  <meta
+    name="theme-color"
+    content="#050505"
+  >
+
+  <meta
+    name="color-scheme"
+    content="dark"
+  >
+
+  <!-- =====================================================
+       OPEN GRAPH
+  ====================================================== -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:title"
+    content="HADI — Developer Portfolio"
+  >
+
+  <meta
+    property="og:description"
+    content="Developer. Creator. Builder. Explore HADI's projects, experiments and digital work."
+  >
+
+  <meta
+    property="og:url"
+    content="https://root-terminal-hub.onrender.com/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="HADI"
+  >
+
+  <!-- =====================================================
+       TWITTER / SOCIAL
+  ====================================================== -->
+
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <meta
+    name="twitter:title"
+    content="HADI — Developer Portfolio"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Developer. Creator. Builder."
+  >
+
+  <!-- =====================================================
+       PERFORMANCE
+  ====================================================== -->
+
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+
+  <title>
+    HADI — Developer Portfolio
+  </title>
+
 
   <style>
+
     /* =====================================================
        RESET
     ===================================================== */
 
-    * {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
+
 
     :root {
       --bg: #050505;
@@ -44,10 +148,12 @@
       --max-width: 1180px;
     }
 
+
     html {
       background: var(--bg);
       overflow-x: hidden;
     }
+
 
     body {
       font-family:
@@ -59,34 +165,77 @@
       color: var(--text);
 
       line-height: 1.6;
+
       overflow-x: hidden;
+
+      min-height: 100vh;
+
+      text-rendering: optimizeLegibility;
+
+      -webkit-font-smoothing: antialiased;
     }
+
 
     body::-webkit-scrollbar {
       width: 8px;
     }
 
+
     body::-webkit-scrollbar-track {
       background: #050505;
     }
+
 
     body::-webkit-scrollbar-thumb {
       background: #292929;
       border-radius: 20px;
     }
 
+
     body.loading {
       overflow: hidden;
     }
+
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
     button {
       font-family: inherit;
     }
+
+
+    /* =====================================================
+       ACCESSIBILITY
+    ===================================================== */
+
+    :focus-visible {
+      outline: 2px solid white;
+      outline-offset: 4px;
+    }
+
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
 
     /* =====================================================
        INTRO LOADER
@@ -112,11 +261,13 @@
         visibility 0.7s ease;
     }
 
+
     #loader.hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
+
 
     .loader-content {
       text-align: center;
@@ -127,7 +278,9 @@
         forwards;
     }
 
+
     @keyframes loaderContentIn {
+
       from {
         opacity: 0;
         transform:
@@ -141,7 +294,9 @@
           translateY(0)
           scale(1);
       }
+
     }
+
 
     .loader-logo {
       font-size:
@@ -165,7 +320,9 @@
         infinite;
     }
 
+
     @keyframes loaderLogoPulse {
+
       0%, 100% {
         opacity: 0.75;
         transform: scale(1);
@@ -175,7 +332,9 @@
         opacity: 1;
         transform: scale(1.025);
       }
+
     }
+
 
     .loader-subtitle {
       color: #777;
@@ -188,6 +347,7 @@
 
       margin-top: 18px;
     }
+
 
     .loader-line {
       width: 150px;
@@ -202,6 +362,7 @@
 
       position: relative;
     }
+
 
     .loader-line::after {
       content: "";
@@ -222,7 +383,9 @@
         infinite;
     }
 
+
     @keyframes loadingLine {
+
       0% {
         left: -100%;
       }
@@ -234,7 +397,9 @@
       100% {
         left: 100%;
       }
+
     }
+
 
     /* =====================================================
        BACKGROUND
@@ -250,6 +415,7 @@
 
       overflow: hidden;
     }
+
 
     .background-glow::before,
     .background-glow::after {
@@ -274,10 +440,12 @@
         infinite alternate;
     }
 
+
     .background-glow::before {
       top: 5%;
       left: -180px;
     }
+
 
     .background-glow::after {
       right: -180px;
@@ -286,7 +454,9 @@
       animation-delay: -5s;
     }
 
+
     @keyframes floatingGlow {
+
       from {
         transform:
           translate3d(0,0,0)
@@ -298,7 +468,9 @@
           translate3d(100px,70px,0)
           scale(1.25);
       }
+
     }
+
 
     /* =====================================================
        HEADER
@@ -330,6 +502,7 @@
         0.35s ease;
     }
 
+
     header.scrolled {
       background:
         rgba(5,5,5,0.92);
@@ -337,6 +510,7 @@
       border-bottom-color:
         var(--line);
     }
+
 
     .nav {
       width:
@@ -352,6 +526,7 @@
       justify-content: space-between;
     }
 
+
     .logo {
       font-size: 1.5rem;
 
@@ -363,12 +538,14 @@
         0.3s ease;
     }
 
+
     .logo:hover {
       opacity: 0.6;
 
       transform:
         translateX(3px);
     }
+
 
     .nav-links {
       display: flex;
@@ -377,6 +554,7 @@
 
       list-style: none;
     }
+
 
     .nav-links a {
       position: relative;
@@ -388,6 +566,7 @@
       transition:
         color 0.3s ease;
     }
+
 
     .nav-links a::after {
       content: "";
@@ -406,13 +585,16 @@
         width 0.3s ease;
     }
 
+
     .nav-links a:hover {
       color: white;
     }
 
+
     .nav-links a:hover::after {
       width: 100%;
     }
+
 
     .menu-btn {
       display: none;
@@ -437,10 +619,12 @@
         0.3s ease;
     }
 
+
     .menu-btn:hover {
       background: white;
       color: black;
     }
+
 
     /* =====================================================
        GLOBAL
@@ -455,6 +639,7 @@
       padding: 110px 0;
     }
 
+
     .section-label {
       color: #777;
 
@@ -467,6 +652,7 @@
       margin-bottom: 12px;
     }
 
+
     .section-title {
       font-size:
         clamp(2.2rem, 5vw, 3.8rem);
@@ -478,6 +664,7 @@
       margin-bottom: 20px;
     }
 
+
     .section-description {
       color: var(--muted);
 
@@ -485,6 +672,7 @@
 
       font-size: 1rem;
     }
+
 
     /* =====================================================
        BUTTONS
@@ -518,6 +706,7 @@
       cursor: pointer;
     }
 
+
     .btn::before {
       content: "";
 
@@ -543,9 +732,11 @@
         left 0.6s ease;
     }
 
+
     .btn:hover::before {
       left: 140%;
     }
+
 
     .btn-primary {
       background: white;
@@ -555,6 +746,7 @@
       border-color: white;
     }
 
+
     .btn-primary:hover {
       transform:
         translateY(-4px);
@@ -562,11 +754,13 @@
       background: #ddd;
     }
 
+
     .btn-secondary {
       color: white;
 
       background: #0c0c0c;
     }
+
 
     .btn-secondary:hover {
       background: #181818;
@@ -574,6 +768,7 @@
       transform:
         translateY(-4px);
     }
+
 
     /* =====================================================
        HERO
@@ -596,9 +791,11 @@
       position: relative;
     }
 
+
     .hero-content {
       max-width: 850px;
     }
+
 
     .hero-tag {
       display: inline-flex;
@@ -630,7 +827,9 @@
       opacity: 0;
     }
 
+
     @keyframes heroTagIn {
+
       from {
         opacity: 0;
         transform:
@@ -642,7 +841,9 @@
         transform:
           translateY(0);
       }
+
     }
+
 
     .status-dot {
       width: 7px;
@@ -661,7 +862,9 @@
         infinite;
     }
 
+
     @keyframes pulseDot {
+
       0%,100% {
         opacity: 0.45;
         transform: scale(0.85);
@@ -671,7 +874,9 @@
         opacity: 1;
         transform: scale(1.2);
       }
+
     }
+
 
     .hero h1 {
       font-size:
@@ -694,7 +899,9 @@
       opacity: 0;
     }
 
+
     @keyframes heroTitleIn {
+
       from {
         opacity: 0;
 
@@ -710,7 +917,9 @@
           translateY(0)
           scale(1);
       }
+
     }
+
 
     .hero h2 {
       font-size:
@@ -729,6 +938,7 @@
       opacity: 0;
     }
 
+
     .hero p {
       max-width: 650px;
 
@@ -742,6 +952,7 @@
 
       opacity: 0;
     }
+
 
     .hero-buttons {
       display: flex;
@@ -759,7 +970,9 @@
       opacity: 0;
     }
 
+
     @keyframes fadeUp {
+
       from {
         opacity: 0;
 
@@ -773,7 +986,9 @@
         transform:
           translateY(0);
       }
+
     }
+
 
     /* =====================================================
        ABOUT
@@ -791,6 +1006,7 @@
 
       align-items: start;
     }
+
 
     .about-profile {
       border:
@@ -815,6 +1031,7 @@
         0.4s ease;
     }
 
+
     .about-profile:hover {
       transform:
         translateY(-6px);
@@ -822,6 +1039,7 @@
       border-color:
         var(--line-hover);
     }
+
 
     .profile-symbol {
       width: 85px;
@@ -847,11 +1065,13 @@
         0.5s ease;
     }
 
+
     .about-profile:hover
     .profile-symbol {
       transform:
         rotate(360deg);
     }
+
 
     .profile-name {
       font-size: 2rem;
@@ -861,11 +1081,13 @@
       margin-bottom: 5px;
     }
 
+
     .profile-role {
       color: #888;
 
       margin-bottom: 25px;
     }
+
 
     .profile-line {
       border-top:
@@ -878,6 +1100,7 @@
       font-size: 0.9rem;
     }
 
+
     .about-content {
       display: flex;
 
@@ -885,6 +1108,7 @@
 
       gap: 30px;
     }
+
 
     .about-intro {
       font-size:
@@ -895,6 +1119,7 @@
       color: #eee;
     }
 
+
     .about-text {
       color: var(--muted);
 
@@ -902,6 +1127,7 @@
 
       max-width: 720px;
     }
+
 
     .about-cards {
       display: grid;
@@ -911,6 +1137,7 @@
 
       gap: 15px;
     }
+
 
     .about-card {
       border:
@@ -926,6 +1153,7 @@
         0.35s ease;
     }
 
+
     .about-card:hover {
       transform:
         translateY(-7px);
@@ -937,17 +1165,20 @@
         var(--line-hover);
     }
 
+
     .about-card h3 {
       margin-bottom: 8px;
 
       font-size: 1rem;
     }
 
+
     .about-card p {
       color: var(--muted);
 
       font-size: 0.88rem;
     }
+
 
     /* =====================================================
        SKILLS
@@ -962,6 +1193,7 @@
 
       gap: 10px;
     }
+
 
     .skill {
       padding:
@@ -982,6 +1214,7 @@
         0.3s ease;
     }
 
+
     .skill:hover {
       color: black;
 
@@ -993,6 +1226,7 @@
         translateY(-4px)
         scale(1.03);
     }
+
 
     /* =====================================================
        PROJECTS
@@ -1011,6 +1245,7 @@
       margin-bottom: 45px;
     }
 
+
     .projects-count {
       color: #777;
 
@@ -1018,6 +1253,7 @@
 
       white-space: nowrap;
     }
+
 
     .projects-grid {
       display: grid;
@@ -1027,6 +1263,7 @@
 
       gap: 20px;
     }
+
 
     .project-card {
       min-height: 390px;
@@ -1061,11 +1298,13 @@
       position: relative;
     }
 
+
     .project-card:nth-child(3) {
       grid-column: 1 / -1;
 
       min-height: 350px;
     }
+
 
     .project-card::before {
       content: "";
@@ -1086,6 +1325,7 @@
       transition:
         0.6s ease;
     }
+
 
     .project-card::after {
       content: "";
@@ -1111,6 +1351,7 @@
       pointer-events: none;
     }
 
+
     .project-card:hover {
       transform:
         translateY(-10px)
@@ -1120,15 +1361,18 @@
         var(--line-hover);
     }
 
+
     .project-card:hover::before {
       transform:
         scale(1.5);
     }
 
+
     .project-card:hover::after {
       transform:
         translateX(100%);
     }
+
 
     .project-number {
       color: #666;
@@ -1142,11 +1386,13 @@
       z-index: 1;
     }
 
+
     .project-content {
       position: relative;
 
       z-index: 1;
     }
+
 
     .project-title {
       font-size: 2rem;
@@ -1158,11 +1404,13 @@
         0.3s ease;
     }
 
+
     .project-card:hover
     .project-title {
       transform:
         translateX(5px);
     }
+
 
     .project-description {
       color: var(--muted);
@@ -1171,6 +1419,7 @@
 
       font-size: 0.92rem;
     }
+
 
     .project-tags {
       display: flex;
@@ -1181,6 +1430,7 @@
 
       margin-top: 20px;
     }
+
 
     .project-tag {
       border:
@@ -1196,6 +1446,7 @@
       font-size: 0.7rem;
     }
 
+
     .project-actions {
       position: relative;
 
@@ -1209,6 +1460,7 @@
 
       margin-top: 30px;
     }
+
 
     .project-btn {
       padding:
@@ -1231,6 +1483,7 @@
         0.3s ease;
     }
 
+
     .project-btn:hover {
       transform:
         translateY(-4px);
@@ -1242,6 +1495,7 @@
       border-color: white;
     }
 
+
     .project-btn.live {
       background: white;
 
@@ -1250,9 +1504,11 @@
       border-color: white;
     }
 
+
     .project-btn.live:hover {
       background: #ddd;
     }
+
 
     /* =====================================================
        CONTACT
@@ -1261,6 +1517,7 @@
     .contact-section {
       padding-bottom: 70px;
     }
+
 
     .contact-box {
       margin-top: 50px;
@@ -1288,10 +1545,12 @@
         0.4s ease;
     }
 
+
     .contact-box:hover {
       border-color:
         var(--line-hover);
     }
+
 
     .contact-box h3 {
       font-size:
@@ -1304,6 +1563,7 @@
       letter-spacing: -2px;
     }
 
+
     .contact-box > p {
       color: var(--muted);
 
@@ -1311,6 +1571,7 @@
 
       margin-bottom: 35px;
     }
+
 
     .contact-grid {
       display: grid;
@@ -1320,6 +1581,7 @@
 
       gap: 14px;
     }
+
 
     .contact-card {
       display: flex;
@@ -1342,6 +1604,7 @@
         0.35s ease;
     }
 
+
     .contact-card:hover {
       background:
         rgba(255,255,255,0.07);
@@ -1352,6 +1615,7 @@
       border-color:
         var(--line-hover);
     }
+
 
     .contact-icon {
       width: 43px;
@@ -1375,6 +1639,7 @@
         0.3s ease;
     }
 
+
     .contact-card:hover
     .contact-icon {
       background: white;
@@ -1385,6 +1650,7 @@
         rotate(-5deg)
         scale(1.08);
     }
+
 
     .contact-info span {
       display: block;
@@ -1400,6 +1666,7 @@
       margin-bottom: 3px;
     }
 
+
     .contact-info strong {
       font-size: 0.9rem;
 
@@ -1407,6 +1674,7 @@
 
       word-break: break-word;
     }
+
 
     /* =====================================================
        FOOTER
@@ -1435,6 +1703,7 @@
       font-size: 0.8rem;
     }
 
+
     .footer-links {
       display: flex;
 
@@ -1443,14 +1712,17 @@
       flex-wrap: wrap;
     }
 
+
     .footer-links a {
       transition:
         0.3s ease;
     }
 
+
     .footer-links a:hover {
       color: white;
     }
+
 
     /* =====================================================
        SCROLL REVEAL
@@ -1468,12 +1740,14 @@
         cubic-bezier(.16,1,.3,1);
     }
 
+
     .reveal.visible {
       opacity: 1;
 
       transform:
         translateY(0);
     }
+
 
     /* =====================================================
        MOBILE
@@ -1485,9 +1759,11 @@
         height: 68px;
       }
 
+
       .menu-btn {
         display: block;
       }
+
 
       .nav-links {
         display: none;
@@ -1512,6 +1788,7 @@
         gap: 20px;
       }
 
+
       .nav-links.active {
         display: flex;
 
@@ -1519,7 +1796,9 @@
           mobileMenuIn 0.3s ease;
       }
 
+
       @keyframes mobileMenuIn {
+
         from {
           opacity: 0;
 
@@ -1533,11 +1812,14 @@
           transform:
             translateY(0);
         }
+
       }
+
 
       .nav-links a {
         font-size: 1rem;
       }
+
 
       .hero {
         min-height: 92vh;
@@ -1545,9 +1827,11 @@
         padding-top: 90px;
       }
 
+
       .hero h1 {
         letter-spacing: -4px;
       }
+
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -1555,13 +1839,16 @@
         gap: 35px;
       }
 
+
       .about-profile {
         position: static;
       }
 
+
       .projects-head {
         display: block;
       }
+
 
       .projects-count {
         display: block;
@@ -1569,31 +1856,39 @@
         margin-top: 15px;
       }
 
+
       .projects-grid {
         grid-template-columns: 1fr;
       }
+
 
       .project-card:nth-child(3) {
         grid-column: auto;
       }
 
+
       .project-card {
         min-height: 360px;
       }
+
 
       .contact-box {
         padding:
           35px 28px;
       }
 
+
       .contact-grid {
         grid-template-columns: 1fr;
       }
 
+
       footer {
         flex-direction: column;
       }
+
     }
+
 
     /* =====================================================
        SMALL MOBILE
@@ -1606,9 +1901,11 @@
           80px 0;
       }
 
+
       .hero {
         min-height: 90vh;
       }
+
 
       .hero h1 {
         font-size: 4rem;
@@ -1616,13 +1913,16 @@
         letter-spacing: -4px;
       }
 
+
       .hero h2 {
         font-size: 1.25rem;
       }
 
+
       .hero p {
         font-size: 0.95rem;
       }
+
 
       .hero-buttons {
         flex-direction: column;
@@ -1630,13 +1930,16 @@
         align-items: stretch;
       }
 
+
       .hero-buttons .btn {
         width: 100%;
       }
 
+
       .about-cards {
         grid-template-columns: 1fr;
       }
+
 
       .project-card {
         min-height: 350px;
@@ -1644,13 +1947,16 @@
         padding: 24px;
       }
 
+
       .project-title {
         font-size: 1.7rem;
       }
 
+
       .project-actions {
         flex-direction: column;
       }
+
 
       .project-btn {
         width: 100%;
@@ -1658,28 +1964,35 @@
         justify-content: center;
       }
 
+
       .contact-box {
         padding:
           28px 20px;
       }
 
+
       .contact-box h3 {
         font-size: 2.4rem;
       }
 
+
       .contact-card {
         padding: 16px;
       }
+
 
       footer {
         padding:
           25px 0;
       }
 
+
       .footer-links {
         gap: 14px;
       }
+
     }
+
 
     /* =====================================================
        REDUCED MOTION
@@ -1690,6 +2003,7 @@
       *,
       *::before,
       *::after {
+
         animation-duration:
           0.01ms !important;
 
@@ -1703,15 +2017,18 @@
           auto !important;
       }
 
+
       .reveal {
         opacity: 1;
 
         transform: none;
       }
 
+
       #loader {
         transition: none;
       }
+
     }
 
   </style>
@@ -1725,7 +2042,10 @@
        INTRO LOADER
   ===================================================== -->
 
-  <div id="loader">
+  <div
+    id="loader"
+    aria-hidden="true"
+  >
 
     <div class="loader-content">
 
@@ -1746,7 +2066,10 @@
 
   <!-- BACKGROUND -->
 
-  <div class="background-glow"></div>
+  <div
+    class="background-glow"
+    aria-hidden="true"
+  ></div>
 
 
   <!-- =====================================================
@@ -1755,11 +2078,15 @@
 
   <header id="header">
 
-    <nav class="nav">
+    <nav
+      class="nav"
+      aria-label="Main navigation"
+    >
 
       <a
         href="#home"
         class="logo"
+        aria-label="HADI home"
       >
         HADI
       </a>
@@ -1768,8 +2095,10 @@
       <button
         class="menu-btn"
         id="menuBtn"
+        type="button"
         aria-label="Open navigation menu"
         aria-expanded="false"
+        aria-controls="navLinks"
       >
         ☰
       </button>
@@ -1825,20 +2154,24 @@
     <section
       class="hero"
       id="home"
+      aria-labelledby="hero-title"
     >
 
       <div class="hero-content">
 
         <div class="hero-tag">
 
-          <span class="status-dot"></span>
+          <span
+            class="status-dot"
+            aria-hidden="true"
+          ></span>
 
           Building & Exploring
 
         </div>
 
 
-        <h1>
+        <h1 id="hero-title">
           HADI
         </h1>
 
@@ -1883,14 +2216,20 @@
          ABOUT
     =================================================== -->
 
-    <section id="about">
+    <section
+      id="about"
+      aria-labelledby="about-title"
+    >
 
       <div class="section-label reveal">
         01 / About
       </div>
 
 
-      <h2 class="section-title reveal">
+      <h2
+        class="section-title reveal"
+        id="about-title"
+      >
         More than<br>
         just code.
       </h2>
@@ -1907,7 +2246,10 @@
 
         <div class="about-profile reveal">
 
-          <div class="profile-symbol">
+          <div
+            class="profile-symbol"
+            aria-hidden="true"
+          >
             H
           </div>
 
@@ -2069,8 +2411,10 @@
          PROJECTS
     =================================================== -->
 
-    <section id="projects">
-
+    <section
+      id="projects"
+      aria-labelledby="projects-title"
+    >
 
       <div class="projects-head">
 
@@ -2081,7 +2425,10 @@
           </div>
 
 
-          <h2 class="section-title reveal">
+          <h2
+            class="section-title reveal"
+            id="projects-title"
+          >
             Things I've<br>
             built.
           </h2>
@@ -2095,7 +2442,10 @@
         </div>
 
 
-        <div class="projects-count reveal">
+        <div
+          class="projects-count reveal"
+          aria-label="Three projects"
+        >
           03 Projects
         </div>
 
@@ -2107,7 +2457,10 @@
 
         <!-- ROOT HUB -->
 
-        <article class="project-card reveal">
+        <article
+          class="project-card reveal"
+          aria-labelledby="root-hub-title"
+        >
 
           <div>
 
@@ -2118,7 +2471,10 @@
 
             <div class="project-content">
 
-              <h3 class="project-title">
+              <h3
+                class="project-title"
+                id="root-hub-title"
+              >
                 ROOT HUB
               </h3>
 
@@ -2159,6 +2515,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
+              aria-label="Open ROOT HUB live website"
             >
               ◉ Live Website
             </a>
@@ -2169,6 +2526,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
+              aria-label="Open ROOT HUB GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -2180,7 +2538,10 @@
 
         <!-- ROOT OS -->
 
-        <article class="project-card reveal">
+        <article
+          class="project-card reveal"
+          aria-labelledby="root-os-title"
+        >
 
           <div>
 
@@ -2191,7 +2552,10 @@
 
             <div class="project-content">
 
-              <h3 class="project-title">
+              <h3
+                class="project-title"
+                id="root-os-title"
+              >
                 ROOT OS
               </h3>
 
@@ -2232,6 +2596,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
+              aria-label="Open ROOT OS live website"
             >
               ◉ Live Website
             </a>
@@ -2242,6 +2607,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
+              aria-label="Open ROOT OS GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -2253,7 +2619,10 @@
 
         <!-- ROOT TERMINAL HUB -->
 
-        <article class="project-card reveal">
+        <article
+          class="project-card reveal"
+          aria-labelledby="root-terminal-title"
+        >
 
           <div>
 
@@ -2264,7 +2633,10 @@
 
             <div class="project-content">
 
-              <h3 class="project-title">
+              <h3
+                class="project-title"
+                id="root-terminal-title"
+              >
                 ROOT TERMINAL HUB
               </h3>
 
@@ -2309,6 +2681,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
+              aria-label="Open ROOT TERMINAL HUB live website"
             >
               ◉ Live Website
             </a>
@@ -2319,6 +2692,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
+              aria-label="Open ROOT TERMINAL HUB GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -2340,6 +2714,7 @@
     <section
       id="contact"
       class="contact-section"
+      aria-labelledby="contact-title"
     >
 
       <div class="section-label reveal">
@@ -2347,7 +2722,10 @@
       </div>
 
 
-      <h2 class="section-title reveal">
+      <h2
+        class="section-title reveal"
+        id="contact-title"
+      >
         Let's connect.
       </h2>
 
@@ -2382,9 +2760,13 @@
           <a
             href="mailto:hadivga@gmail.com"
             class="contact-card"
+            aria-label="Send email to HADI"
           >
 
-            <div class="contact-icon">
+            <div
+              class="contact-icon"
+              aria-hidden="true"
+            >
               @
             </div>
 
@@ -2411,9 +2793,13 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
+            aria-label="Open HADI GitHub profile"
           >
 
-            <div class="contact-icon">
+            <div
+              class="contact-icon"
+              aria-hidden="true"
+            >
               &lt;/&gt;
             </div>
 
@@ -2440,9 +2826,13 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
+            aria-label="Open HADI Instagram profile"
           >
 
-            <div class="contact-icon">
+            <div
+              class="contact-icon"
+              aria-hidden="true"
+            >
               ◎
             </div>
 
@@ -2469,9 +2859,13 @@
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
+            aria-label="Open The Real Toolkit Instagram"
           >
 
-            <div class="contact-icon">
+            <div
+              class="contact-icon"
+              aria-hidden="true"
+            >
               ◎
             </div>
 
@@ -2550,12 +2944,16 @@
 
   <script>
 
+    "use strict";
+
+
     /* =====================================================
        LOADER
     ===================================================== */
 
     const loader =
       document.getElementById("loader");
+
 
     const prefersReducedMotion =
       window.matchMedia(
@@ -2565,13 +2963,11 @@
 
     function hideLoader() {
 
-      loader.classList.add(
-        "hidden"
-      );
+      if (!loader) return;
 
-      document.body.classList.remove(
-        "loading"
-      );
+      loader.classList.add("hidden");
+
+      document.body.classList.remove("loading");
 
     }
 
@@ -2586,15 +2982,30 @@
         "load",
         () => {
 
-          setTimeout(
+          window.setTimeout(
             hideLoader,
             900
           );
 
+        },
+        {
+          once: true
         }
       );
 
     }
+
+
+    /*
+      Fallback:
+      prevents the page from remaining locked if
+      the load event is unexpectedly delayed.
+    */
+
+    window.setTimeout(
+      hideLoader,
+      4000
+    );
 
 
     /* =====================================================
@@ -2602,14 +3013,49 @@
     ===================================================== */
 
     const menuBtn =
-      document.getElementById(
-        "menuBtn"
-      );
+      document.getElementById("menuBtn");
+
 
     const navLinks =
-      document.getElementById(
-        "navLinks"
+      document.getElementById("navLinks");
+
+
+    function closeMobileMenu() {
+
+      navLinks.classList.remove("active");
+
+      menuBtn.textContent = "☰";
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
       );
+
+      menuBtn.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+      );
+
+    }
+
+
+    function openMobileMenu() {
+
+      navLinks.classList.add("active");
+
+      menuBtn.textContent = "✕";
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      menuBtn.setAttribute(
+        "aria-label",
+        "Close navigation menu"
+      );
+
+    }
 
 
     menuBtn.addEventListener(
@@ -2617,54 +3063,59 @@
       () => {
 
         const isOpen =
-          navLinks.classList.toggle(
-            "active"
-          );
+          navLinks.classList.contains("active");
 
-        menuBtn.setAttribute(
-          "aria-expanded",
-          isOpen
-        );
+        if (isOpen) {
 
-        menuBtn.textContent =
-          isOpen
-            ? "✕"
-            : "☰";
+          closeMobileMenu();
+
+        } else {
+
+          openMobileMenu();
+
+        }
 
       }
     );
 
 
     /* =====================================================
-       CLOSE MOBILE MENU
+       CLOSE MOBILE MENU ON LINK CLICK
     ===================================================== */
 
     document
-      .querySelectorAll(
-        ".nav-links a"
-      )
+      .querySelectorAll(".nav-links a")
       .forEach(link => {
 
         link.addEventListener(
           "click",
-          () => {
-
-            navLinks.classList.remove(
-              "active"
-            );
-
-            menuBtn.textContent =
-              "☰";
-
-            menuBtn.setAttribute(
-              "aria-expanded",
-              "false"
-            );
-
-          }
+          closeMobileMenu
         );
 
       });
+
+
+    /* =====================================================
+       CLOSE MENU WHEN CLICKING OUTSIDE
+    ===================================================== */
+
+    document.addEventListener(
+      "click",
+      event => {
+
+        if (
+          window.innerWidth <= 800 &&
+          navLinks.classList.contains("active") &&
+          !navLinks.contains(event.target) &&
+          !menuBtn.contains(event.target)
+        ) {
+
+          closeMobileMenu();
+
+        }
+
+      }
+    );
 
 
     /* =====================================================
@@ -2672,24 +3123,18 @@
     ===================================================== */
 
     const header =
-      document.getElementById(
-        "header"
-      );
+      document.getElementById("header");
 
 
     function updateHeader() {
 
       if (window.scrollY > 30) {
 
-        header.classList.add(
-          "scrolled"
-        );
+        header.classList.add("scrolled");
 
       } else {
 
-        header.classList.remove(
-          "scrolled"
-        );
+        header.classList.remove("scrolled");
 
       }
 
@@ -2713,13 +3158,12 @@
     ===================================================== */
 
     const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
+      document.querySelectorAll(".reveal");
 
 
     if (
-      !prefersReducedMotion
+      !prefersReducedMotion &&
+      "IntersectionObserver" in window
     ) {
 
       const revealObserver =
@@ -2786,9 +3230,8 @@
     ===================================================== */
 
     const sections =
-      document.querySelectorAll(
-        "section"
-      );
+      document.querySelectorAll("section");
+
 
     const navigationLinks =
       document.querySelectorAll(
@@ -2796,127 +3239,144 @@
       );
 
 
-    const sectionObserver =
-      new IntersectionObserver(
+    if (
+      "IntersectionObserver" in window
+    ) {
 
-        entries => {
+      const sectionObserver =
+        new IntersectionObserver(
 
-          entries.forEach(
-            entry => {
+          entries => {
 
-              if (
-                entry.isIntersecting
-              ) {
+            entries.forEach(
+              entry => {
 
-                navigationLinks
-                  .forEach(link => {
+                if (
+                  entry.isIntersecting
+                ) {
 
-                    link.style.color =
-                      "#aaa";
+                  navigationLinks
+                    .forEach(link => {
 
-                  });
+                      link.style.color =
+                        "#aaa";
 
-
-                const activeLink =
-                  document.querySelector(
-                    `.nav-links a[href="#${entry.target.id}"]`
-                  );
+                    });
 
 
-                if (activeLink) {
+                  const activeLink =
+                    document.querySelector(
+                      `.nav-links a[href="#${entry.target.id}"]`
+                    );
 
-                  activeLink.style.color =
-                    "white";
+
+                  if (activeLink) {
+
+                    activeLink.style.color =
+                      "white";
+
+                  }
 
                 }
 
               }
+            );
 
-            }
-          );
+          },
 
-        },
+          {
+            threshold: 0.35
+          }
 
-        {
-          threshold: 0.35
-        }
-
-      );
-
-
-    sections.forEach(
-      section => {
-
-        sectionObserver.observe(
-          section
         );
 
-      }
-    );
+
+      sections.forEach(
+        section => {
+
+          sectionObserver.observe(
+            section
+          );
+
+        }
+      );
+
+    }
 
 
     /* =====================================================
        DESKTOP CURSOR GLOW
     ===================================================== */
 
-    const cursorGlow =
-      document.createElement(
-        "div"
-      );
+    const isCoarsePointer =
+      window.matchMedia(
+        "(pointer: coarse)"
+      ).matches;
 
 
-    cursorGlow.style.position =
-      "fixed";
-
-    cursorGlow.style.width =
-      "180px";
-
-    cursorGlow.style.height =
-      "180px";
-
-    cursorGlow.style.borderRadius =
-      "50%";
-
-    cursorGlow.style.pointerEvents =
-      "none";
-
-    cursorGlow.style.zIndex =
-      "-1";
-
-    cursorGlow.style.background =
-      "rgba(255,255,255,0.025)";
-
-    cursorGlow.style.filter =
-      "blur(45px)";
-
-    cursorGlow.style.transform =
-      "translate(-50%, -50%)";
-
-    cursorGlow.style.opacity =
-      "0";
-
-    cursorGlow.style.transition =
-      "opacity 0.3s ease";
-
-
-    document.body.appendChild(
-      cursorGlow
-    );
-
-
-    let cursorX = 0;
-    let cursorY = 0;
-
-    let glowX = 0;
-    let glowY = 0;
+    let cursorGlow = null;
 
 
     if (
       !prefersReducedMotion &&
-      !window.matchMedia(
-        "(pointer: coarse)"
-      ).matches
+      !isCoarsePointer
     ) {
+
+      cursorGlow =
+        document.createElement("div");
+
+
+      cursorGlow.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      cursorGlow.style.position =
+        "fixed";
+
+      cursorGlow.style.width =
+        "180px";
+
+      cursorGlow.style.height =
+        "180px";
+
+      cursorGlow.style.borderRadius =
+        "50%";
+
+      cursorGlow.style.pointerEvents =
+        "none";
+
+      cursorGlow.style.zIndex =
+        "-1";
+
+      cursorGlow.style.background =
+        "rgba(255,255,255,0.025)";
+
+      cursorGlow.style.filter =
+        "blur(45px)";
+
+      cursorGlow.style.transform =
+        "translate(-50%, -50%)";
+
+      cursorGlow.style.opacity =
+        "0";
+
+      cursorGlow.style.transition =
+        "opacity 0.3s ease";
+
+
+      document.body.appendChild(
+        cursorGlow
+      );
+
+
+      let cursorX = 0;
+      let cursorY = 0;
+
+      let glowX = 0;
+      let glowY = 0;
+
 
       window.addEventListener(
         "mousemove",
@@ -2954,7 +3414,7 @@
           glowY + "px";
 
 
-        requestAnimationFrame(
+        window.requestAnimationFrame(
           animateCursor
         );
 
@@ -2962,10 +3422,6 @@
 
 
       animateCursor();
-
-    } else {
-
-      cursorGlow.remove();
 
     }
 
@@ -2982,20 +3438,33 @@
           event.key === "Escape"
         ) {
 
-          navLinks.classList.remove(
-            "active"
-          );
-
-          menuBtn.textContent =
-            "☰";
-
-          menuBtn.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+          closeMobileMenu();
 
         }
 
+      }
+    );
+
+
+    /* =====================================================
+       CLOSE MENU WHEN RESIZING TO DESKTOP
+    ===================================================== */
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        if (
+          window.innerWidth > 800
+        ) {
+
+          closeMobileMenu();
+
+        }
+
+      },
+      {
+        passive: true
       }
     );
 
