@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HADI — Developer Portfolio</title>
+    <title>HADI — Developer</title>
 
-    <meta name="description"
-          content="HADI — Developer, builder and technology enthusiast. Explore projects, skills and work.">
+    <meta
+        name="description"
+        content="HADI — Developer, builder and technology enthusiast."
+    >
 
     <meta name="theme-color" content="#050505">
 
     <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -24,9 +31,17 @@
 
         body {
             background: #050505;
-            color: #ffffff;
-            font-family: Arial, Helvetica, sans-serif;
+            color: #f5f5f5;
+            font-family:
+                Inter,
+                Arial,
+                Helvetica,
+                sans-serif;
             overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         a {
@@ -35,94 +50,154 @@
         }
 
         button {
-            font-family: inherit;
+            font: inherit;
         }
 
-        /* =========================
-           BACKGROUND
-        ========================= */
+        ::selection {
+            background: #fff;
+            color: #000;
+        }
 
-        body::before {
-            content: "";
+
+        /* =========================================================
+           BACKGROUND
+        ========================================================= */
+
+        .background {
             position: fixed;
             inset: 0;
             pointer-events: none;
+            z-index: -10;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(255,255,255,0.045),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 50%,
+                    rgba(255,255,255,0.035),
+                    transparent 30%
+                ),
+                #050505;
+        }
+
+        .grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.28;
+
             background-image:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: linear-gradient(to bottom, black, transparent);
-            z-index: -3;
+                linear-gradient(
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 85%
+                );
         }
 
-        .orb {
-            position: fixed;
-            width: 500px;
-            height: 500px;
+        .glow {
+            position: absolute;
+            width: 450px;
+            height: 450px;
             border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(120,120,255,0.10),
-                transparent 70%
-            );
-            filter: blur(20px);
-            pointer-events: none;
-            z-index: -2;
+            filter: blur(100px);
+            opacity: 0.08;
+            animation: floatGlow 10s ease-in-out infinite;
         }
 
-        .orb.one {
+        .glow.one {
             top: -200px;
-            left: -200px;
+            left: -150px;
+            background: white;
         }
 
-        .orb.two {
+        .glow.two {
             right: -200px;
-            top: 35%;
+            top: 40%;
+            background: #777;
+            animation-delay: -4s;
         }
 
-        /* =========================
-           NAVBAR
-        ========================= */
+        @keyframes floatGlow {
+
+            0%,
+            100% {
+                transform: translate(0,0);
+            }
+
+            50% {
+                transform: translate(35px,25px);
+            }
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
 
         header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
+
             z-index: 1000;
-            padding: 20px 7%;
-            background: rgba(5,5,5,0.72);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+
+            padding: 18px 6%;
+
+            background:
+                rgba(5,5,5,0.72);
+
+            backdrop-filter: blur(20px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.06);
         }
 
         nav {
-            max-width: 1250px;
+            max-width: 1300px;
             margin: auto;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 24px;
             font-weight: 900;
             letter-spacing: 5px;
         }
 
-        .logo span {
-            opacity: 0.4;
+        .logo-dot {
+            opacity: 0.35;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            align-items: center;
+            gap: 34px;
+
             list-style: none;
         }
 
         .nav-links a {
-            color: #aaa;
-            font-size: 14px;
+            color: #888;
+            font-size: 13px;
             transition: 0.3s;
         }
 
@@ -130,422 +205,986 @@
             color: #fff;
         }
 
-        .nav-button {
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 10px 18px;
+        .nav-contact {
+            padding: 10px 17px;
+
+            border: 1px solid
+                rgba(255,255,255,0.15);
+
             border-radius: 30px;
-            font-size: 13px;
+
+            color: #ddd !important;
+
             transition: 0.3s;
         }
 
-        .nav-button:hover {
-            background: white;
-            color: black;
+        .nav-contact:hover {
+            background: #fff;
+            color: #000 !important;
         }
 
-        /* =========================
+        .menu-button {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border:
+                1px solid rgba(255,255,255,0.12);
+
+            border-radius: 10px;
+
+            background: transparent;
+            color: white;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
            HERO
-        ========================= */
+        ========================================================= */
 
         .hero {
             min-height: 100vh;
-            max-width: 1250px;
+
+            max-width: 1300px;
             margin: auto;
-            padding: 170px 7% 100px;
-            display: flex;
+
+            padding:
+                170px 6%
+                100px;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.15fr)
+                minmax(320px, 0.85fr);
+
+            gap: 70px;
+
             align-items: center;
         }
 
-        .hero-content {
-            max-width: 850px;
+        .hero-left {
+            min-width: 0;
         }
 
-        .status {
+        .availability {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 14px;
-            border: 1px solid rgba(255,255,255,0.12);
+
+            padding: 8px 13px;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
             border-radius: 30px;
-            color: #aaa;
-            font-size: 12px;
-            margin-bottom: 30px;
-            background: rgba(255,255,255,0.025);
+
+            color: #999;
+
+            font-size: 11px;
+            letter-spacing: 0.5px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            margin-bottom: 28px;
         }
 
-        .status-dot {
+        .availability-dot {
             width: 7px;
             height: 7px;
+
             border-radius: 50%;
+
             background: #fff;
-            box-shadow: 0 0 15px white;
+
+            box-shadow:
+                0 0 12px
+                rgba(255,255,255,0.9);
+
+            animation: pulse 2s infinite;
         }
 
-        .hero h1 {
-            font-size: clamp(65px, 12vw, 150px);
-            line-height: 0.82;
-            letter-spacing: -8px;
-            font-weight: 900;
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
         }
 
-        .hero h1 span {
+        .hero-title {
+            font-size:
+                clamp(
+                    75px,
+                    13vw,
+                    170px
+                );
+
+            line-height: 0.8;
+
+            letter-spacing: -10px;
+
+            font-weight: 950;
+        }
+
+        .hero-title .outline {
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255,255,255,0.5);
+
+            -webkit-text-stroke:
+                1px rgba(255,255,255,0.42);
         }
 
-        .hero-subtitle {
+        .hero-role {
             margin-top: 35px;
-            max-width: 650px;
-            color: #999;
-            font-size: 19px;
-            line-height: 1.7;
-        }
 
-        .hero-buttons {
             display: flex;
+            align-items: center;
             gap: 14px;
-            margin-top: 35px;
+
+            color: #aaa;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size: 15px;
+        }
+
+        .hero-role::before {
+            content: ">";
+
+            color: #fff;
+
+            font-weight: bold;
+        }
+
+        .hero-description {
+            margin-top: 22px;
+
+            max-width: 650px;
+
+            color: #888;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            margin-top: 32px;
+
+            display: flex;
+            gap: 12px;
+
             flex-wrap: wrap;
         }
 
-        .btn {
+        .button {
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
-            padding: 14px 22px;
+
+            gap: 8px;
+
+            min-height: 46px;
+
+            padding:
+                0 19px;
+
             border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.15);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition:
+                transform 0.3s,
+                background 0.3s,
+                border 0.3s;
         }
 
-        .btn-primary {
-            background: white;
-            color: black;
-        }
-
-        .btn-primary:hover {
+        .button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255,255,255,0.12);
         }
 
-        .btn-secondary {
+        .button-primary {
+            color: #000;
+            background: #fff;
+        }
+
+        .button-primary:hover {
+            box-shadow:
+                0 15px 35px
+                rgba(255,255,255,0.12);
+        }
+
+        .button-secondary {
+            color: #ccc;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+        }
+
+        .button-secondary:hover {
+            background:
+                rgba(255,255,255,0.07);
+
+            border-color:
+                rgba(255,255,255,0.25);
+        }
+
+
+        /* =========================================================
+           TERMINAL CARD
+        ========================================================= */
+
+        .terminal {
+            width: 100%;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.11);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            background:
+                rgba(10,10,10,0.85);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,0.4);
+
+            transform:
+                perspective(1000px)
+                rotateY(-3deg);
+
+            transition:
+                transform 0.5s ease;
+        }
+
+        .terminal:hover {
+            transform:
+                perspective(1000px)
+                rotateY(0deg)
+                translateY(-5px);
+        }
+
+        .terminal-top {
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 0 16px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            background:
+                rgba(255,255,255,0.025);
+        }
+
+        .terminal-dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.25);
+        }
+
+        .terminal-name {
+            margin-left: 8px;
+
+            color: #666;
+
+            font-size: 11px;
+
+            font-family:
+                "Courier New",
+                monospace;
+        }
+
+        .terminal-body {
+            padding: 25px;
+
+            min-height: 390px;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size: 13px;
+
+            line-height: 2;
+
+            color: #999;
+        }
+
+        .terminal-line {
+            display: block;
+        }
+
+        .terminal-prompt {
+            color: #fff;
+        }
+
+        .terminal-command {
             color: #ddd;
-            background: rgba(255,255,255,0.03);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-3px);
+        .terminal-muted {
+            color: #555;
         }
 
-        /* =========================
-           GENERAL
-        ========================= */
+        .terminal-value {
+            color: #bbb;
+        }
+
+        .cursor {
+            display: inline-block;
+
+            width: 7px;
+            height: 15px;
+
+            background: #fff;
+
+            vertical-align: middle;
+
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            46%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================================
+           GENERAL SECTION
+        ========================================================= */
 
         section {
-            max-width: 1250px;
+            max-width: 1300px;
             margin: auto;
-            padding: 120px 7%;
+
+            padding:
+                125px 6%;
         }
 
-        .section-label {
-            color: #777;
-            font-size: 12px;
+        .section-header {
+            max-width: 800px;
+        }
+
+        .eyebrow {
+            color: #666;
+
+            font-size: 11px;
+
             letter-spacing: 4px;
+
             text-transform: uppercase;
-            margin-bottom: 18px;
+
+            margin-bottom: 17px;
         }
 
         .section-title {
-            font-size: clamp(40px, 6vw, 75px);
-            letter-spacing: -3px;
-            line-height: 1;
-            margin-bottom: 25px;
+            font-size:
+                clamp(
+                    42px,
+                    6vw,
+                    76px
+                );
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            font-weight: 900;
         }
 
         .section-description {
-            color: #888;
-            max-width: 650px;
+            margin-top: 22px;
+
+            color: #777;
+
+            max-width: 680px;
+
+            font-size: 15px;
+
             line-height: 1.8;
-            font-size: 16px;
         }
 
-        /* =========================
+
+        /* =========================================================
            ABOUT
-        ========================= */
+        ========================================================= */
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 70px;
+        .about-layout {
             margin-top: 60px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr
+                0.8fr;
+
+            gap: 22px;
         }
 
-        .about-main {
-            padding: 35px;
-            border: 1px solid rgba(255,255,255,0.09);
-            background: linear-gradient(
-                145deg,
-                rgba(255,255,255,0.045),
-                rgba(255,255,255,0.01)
-            );
+        .about-main-card,
+        .about-mini-card {
+
+            border:
+                1px solid
+                rgba(255,255,255,0.09);
+
+            background:
+                rgba(255,255,255,0.02);
+
             border-radius: 18px;
         }
 
-        .about-main h3 {
-            font-size: 28px;
+        .about-main-card {
+            padding: 40px;
+        }
+
+        .about-main-card h3 {
+            font-size: 29px;
             margin-bottom: 20px;
         }
 
-        .about-main p {
-            color: #999;
-            line-height: 1.9;
-            margin-bottom: 18px;
+        .about-main-card p {
+            color: #858585;
+
+            line-height: 1.85;
+
+            margin-bottom: 17px;
         }
 
-        .about-side {
+        .about-right {
             display: grid;
-            gap: 15px;
+            gap: 22px;
         }
 
-        .profile-card {
-            border: 1px solid rgba(255,255,255,0.09);
-            padding: 25px;
-            border-radius: 16px;
-            background: rgba(255,255,255,0.025);
+        .about-mini-card {
+            padding: 30px;
+
             transition: 0.3s;
         }
 
-        .profile-card:hover {
+        .about-mini-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255,255,255,0.2);
+
+            border-color:
+                rgba(255,255,255,0.2);
         }
 
-        .profile-card .number {
-            font-size: 30px;
-            font-weight: 800;
-            margin-bottom: 8px;
+        .mini-number {
+            color: #555;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size: 12px;
+
+            margin-bottom: 28px;
         }
 
-        .profile-card p {
-            color: #777;
+        .about-mini-card h4 {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .about-mini-card p {
+            color: #666;
             font-size: 13px;
+            line-height: 1.6;
         }
 
-        /* =========================
-           VALUES
-        ========================= */
 
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
+        /* =========================================================
+           PRINCIPLES
+        ========================================================= */
+
+        .principles {
             margin-top: 55px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
         }
 
-        .value-card {
-            padding: 32px;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            background: rgba(255,255,255,0.02);
+        .principle {
+            padding: 30px;
+
+            min-height: 210px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,0.018);
+
             transition: 0.3s;
         }
 
-        .value-card:hover {
+        .principle:hover {
             transform: translateY(-6px);
-            background: rgba(255,255,255,0.04);
+
+            background:
+                rgba(255,255,255,0.04);
         }
 
-        .value-number {
+        .principle-number {
+            color: #555;
+
+            font-family:
+                "Courier New",
+                monospace;
+
             font-size: 12px;
+
+            margin-bottom: 45px;
+        }
+
+        .principle h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .principle p {
             color: #666;
-            letter-spacing: 3px;
-            margin-bottom: 35px;
-        }
 
-        .value-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
+            font-size: 13px;
 
-        .value-card p {
-            color: #777;
             line-height: 1.7;
-            font-size: 14px;
         }
 
-        /* =========================
-           SKILLS
-        ========================= */
 
-        .skills-container {
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        .skill-groups {
             margin-top: 55px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+        .skill-group {
+            padding: 30px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,0.018);
+        }
+
+        .skill-group-title {
+            color: #999;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 22px;
+        }
+
+        .skills {
             display: flex;
+
             flex-wrap: wrap;
-            gap: 12px;
+
+            gap: 8px;
         }
 
         .skill {
-            padding: 14px 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: #bbb;
-            background: rgba(255,255,255,0.025);
-            transition: 0.3s;
+            padding: 9px 12px;
+
+            color: #999;
+
+            font-size: 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 6px;
+
+            background:
+                rgba(255,255,255,0.02);
+
+            transition: 0.25s;
         }
 
         .skill:hover {
             color: white;
-            transform: translateY(-3px);
-            border-color: rgba(255,255,255,0.25);
+
+            border-color:
+                rgba(255,255,255,0.25);
+
+            transform: translateY(-2px);
         }
 
-        /* =========================
+
+        /* =========================================================
            PROJECTS
-        ========================= */
+        ========================================================= */
 
-        .projects-grid {
+        .project-grid {
             margin-top: 60px;
+
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
         }
 
-        .project-card {
+        .project {
             position: relative;
-            min-height: 390px;
+
+            min-height: 430px;
+
             padding: 35px;
-            border-radius: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.09);
+
+            border-radius: 19px;
+
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.09);
+
             background:
                 radial-gradient(
-                    circle at top right,
-                    rgba(255,255,255,0.08),
+                    circle at 100% 0%,
+                    rgba(255,255,255,0.075),
                     transparent 35%
                 ),
-                rgba(255,255,255,0.02);
-            transition: 0.4s;
+                rgba(255,255,255,0.018);
+
+            transition:
+                transform 0.4s,
+                border 0.4s;
         }
 
-        .project-card:hover {
+        .project:hover {
             transform: translateY(-8px);
-            border-color: rgba(255,255,255,0.2);
+
+            border-color:
+                rgba(255,255,255,0.2);
+        }
+
+        .project-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
         }
 
         .project-number {
-            font-size: 12px;
-            color: #666;
-            letter-spacing: 3px;
-        }
+            color: #555;
 
-        .project-card h3 {
-            font-size: 34px;
-            margin-top: 80px;
-            margin-bottom: 15px;
-        }
+            font-family:
+                "Courier New",
+                monospace;
 
-        .project-card p {
-            color: #888;
-            line-height: 1.7;
-            max-width: 520px;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 25px;
-        }
-
-        .project-tech span {
             font-size: 11px;
-            color: #aaa;
+
+            letter-spacing: 2px;
+        }
+
+        .project-status {
+            color: #777;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            padding: 6px 9px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+        }
+
+        .project h3 {
+            margin-top: 90px;
+
+            font-size:
+                clamp(28px,4vw,42px);
+
+            letter-spacing: -2px;
+        }
+
+        .project-description {
+            margin-top: 15px;
+
+            color: #777;
+
+            max-width: 570px;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+        .project-tags {
+            margin-top: 24px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+        .project-tags span {
             padding: 7px 10px;
-            border: 1px solid rgba(255,255,255,0.08);
+
+            color: #777;
+
+            font-size: 10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
             border-radius: 5px;
         }
 
-        .project-links {
+        .project-actions {
+            position: absolute;
+
+            left: 35px;
+            bottom: 35px;
+
             display: flex;
-            gap: 10px;
-            margin-top: 28px;
+            gap: 8px;
         }
 
-        .project-link {
-            padding: 10px 15px;
+        .project-action {
+            padding: 10px 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.11);
+
             border-radius: 6px;
-            font-size: 12px;
-            border: 1px solid rgba(255,255,255,0.12);
+
+            color: #aaa;
+
+            font-size: 11px;
+
             transition: 0.3s;
         }
 
-        .project-link:hover {
-            background: white;
-            color: black;
+        .project-action:hover {
+            background: #fff;
+            color: #000;
         }
 
-        /* =========================
+        .future-project {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .future-project h3 {
+            margin-top: 0;
+        }
+
+        .future-icon {
+            width: 60px;
+            height: 60px;
+
+            display: grid;
+            place-items: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            border-radius: 50%;
+
+            color: #777;
+
+            font-size: 22px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================================================
            JOURNEY
-        ========================= */
+        ========================================================= */
 
         .timeline {
             margin-top: 60px;
-            border-left: 1px solid rgba(255,255,255,0.12);
-            padding-left: 35px;
+
+            border-left:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            padding-left: 38px;
         }
 
         .timeline-item {
             position: relative;
-            padding-bottom: 55px;
+
+            padding-bottom: 60px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
         }
 
         .timeline-item::before {
             content: "";
+
             position: absolute;
-            left: -41px;
-            top: 5px;
+
+            left: -44px;
+            top: 4px;
+
             width: 11px;
             height: 11px;
+
+            border:
+                1px solid
+                #fff;
+
             border-radius: 50%;
+
             background: #050505;
-            border: 1px solid white;
+
+            box-shadow:
+                0 0 15px
+                rgba(255,255,255,0.25);
         }
 
-        .timeline-date {
-            color: #666;
-            font-size: 12px;
+        .timeline-label {
+            color: #555;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size: 11px;
+
             letter-spacing: 2px;
-            margin-bottom: 12px;
+
+            margin-bottom: 11px;
         }
 
         .timeline-item h3 {
             font-size: 24px;
+
             margin-bottom: 10px;
         }
 
         .timeline-item p {
             color: #777;
-            line-height: 1.7;
-            max-width: 650px;
+
+            max-width: 680px;
+
+            line-height: 1.8;
+
+            font-size: 14px;
         }
 
-        /* =========================
+
+        /* =========================================================
            STATS
-        ========================= */
+        ========================================================= */
 
         .stats {
+            max-width: 1300px;
+
+            margin: 20px auto;
+
+            padding:
+                0 6%;
+
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-top: 1px solid rgba(255,255,255,0.08);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            grid-template-columns:
+                repeat(4, 1fr);
         }
 
         .stat {
             padding: 40px 25px;
-            border-right: 1px solid rgba(255,255,255,0.08);
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-right:
+                1px solid
+                rgba(255,255,255,0.08);
         }
 
         .stat:last-child {
@@ -554,246 +1193,640 @@
 
         .stat strong {
             display: block;
-            font-size: 42px;
-            margin-bottom: 8px;
+
+            font-size: 43px;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 7px;
         }
 
         .stat span {
-            color: #666;
-            font-size: 12px;
-            text-transform: uppercase;
+            color: #555;
+
+            font-size: 10px;
+
             letter-spacing: 2px;
+
+            text-transform: uppercase;
         }
 
-        /* =========================
+
+        /* =========================================================
            CONTACT
-        ========================= */
+        ========================================================= */
 
-        .contact-box {
-            margin-top: 60px;
-            padding: 55px;
+        .contact-card {
+            margin-top: 55px;
+
+            padding: 60px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
             border-radius: 22px;
-            border: 1px solid rgba(255,255,255,0.1);
+
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.05),
-                    rgba(255,255,255,0.015)
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(255,255,255,0.07),
+                    transparent 30%
+                ),
+                rgba(255,255,255,0.02);
+        }
+
+        .contact-card h3 {
+            font-size:
+                clamp(
+                    42px,
+                    7vw,
+                    85px
                 );
+
+            line-height: 0.95;
+
+            letter-spacing: -5px;
         }
 
-        .contact-box h3 {
-            font-size: clamp(35px, 6vw, 70px);
-            letter-spacing: -3px;
-            margin-bottom: 20px;
-        }
+        .contact-card p {
+            margin-top: 22px;
 
-        .contact-box p {
-            color: #888;
-            line-height: 1.7;
             max-width: 650px;
+
+            color: #777;
+
+            line-height: 1.8;
+
+            font-size: 15px;
         }
 
-        .contact-buttons {
-            display: flex;
-            gap: 12px;
+        .contact-actions {
             margin-top: 30px;
+
+            display: flex;
+
+            gap: 10px;
+
             flex-wrap: wrap;
         }
 
-        /* =========================
+
+        /* =========================================================
            FOOTER
-        ========================= */
+        ========================================================= */
 
         footer {
-            max-width: 1250px;
+            max-width: 1300px;
+
             margin: auto;
-            padding: 50px 7%;
+
+            padding:
+                50px 6%;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.07);
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.07);
+
             color: #555;
-            font-size: 12px;
+
+            font-size: 11px;
         }
 
         .footer-logo {
             color: white;
+
+            font-weight: 900;
+
             letter-spacing: 4px;
-            font-weight: bold;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
 
-        @media (max-width: 850px) {
-
-            header {
-                padding: 18px 5%;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 150px 6% 80px;
-            }
-
-            .hero h1 {
-                font-size: clamp(60px, 20vw, 110px);
-                letter-spacing: -5px;
-            }
-
-            section {
-                padding: 90px 6%;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat {
-                border-bottom: 1px solid rgba(255,255,255,0.08);
-            }
-
-            .contact-box {
-                padding: 35px 25px;
-            }
-
-            footer {
-                padding: 40px 6%;
-                gap: 20px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .hero-subtitle {
-                font-size: 16px;
-            }
-
-            .project-card {
-                min-height: 350px;
-                padding: 25px;
-            }
-
-            .project-card h3 {
-                margin-top: 60px;
-                font-size: 28px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .stat strong {
-                font-size: 30px;
-            }
-        }
-
-        /* =========================
-           REVEAL ANIMATION
-        ========================= */
+        /* =========================================================
+           REVEAL
+        ========================================================= */
 
         .reveal {
             opacity: 0;
-            transform: translateY(25px);
-            animation: reveal 0.8s ease forwards;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
         }
 
-        @keyframes reveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           MOBILE NAVIGATION
+        ========================================================= */
+
+        .mobile-menu {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 900;
+
+            background:
+                rgba(5,5,5,0.97);
+
+            backdrop-filter: blur(20px);
+
+            padding:
+                120px 8% 50px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+
+            padding: 18px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            color: #aaa;
+
+            font-size: 28px;
+
+            letter-spacing: -1px;
+        }
+
+        .mobile-menu a:hover {
+            color: white;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links,
+            .nav-contact {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                padding-top: 145px;
+            }
+
+            .terminal {
+                transform: none;
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .principles,
+            .skill-groups {
+                grid-template-columns: 1fr;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .stat {
+                border-bottom:
+                    1px solid
+                    rgba(255,255,255,0.08);
             }
         }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                padding:
+                    16px 5%;
+            }
+
+            section {
+                padding:
+                    90px 5%;
+            }
+
+            .hero {
+                padding:
+                    130px 5% 80px;
+            }
+
+            .hero-title {
+                letter-spacing: -6px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .terminal-body {
+                min-height: 340px;
+
+                padding: 20px;
+
+                font-size: 11px;
+            }
+
+            .about-main-card {
+                padding: 28px;
+            }
+
+            .project {
+                padding: 27px;
+
+                min-height: 430px;
+            }
+
+            .project-actions {
+                left: 27px;
+                bottom: 27px;
+            }
+
+            .contact-card {
+                padding: 35px 25px;
+            }
+
+            .contact-card h3 {
+                letter-spacing: -3px;
+            }
+
+            .stats {
+                padding:
+                    0 5%;
+            }
+
+            .stat {
+                padding:
+                    30px 15px;
+            }
+
+            .stat strong {
+                font-size: 32px;
+            }
+
+            footer {
+                padding:
+                    40px 5%;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <div class="orb one"></div>
-    <div class="orb two"></div>
 
-    <!-- =========================
+    <!-- =========================================================
+         BACKGROUND
+    ========================================================= -->
+
+    <div class="background">
+        <div class="grid"></div>
+        <div class="glow one"></div>
+        <div class="glow two"></div>
+    </div>
+
+
+    <!-- =========================================================
          NAVIGATION
-    ========================= -->
+    ========================================================= -->
 
     <header>
+
         <nav>
 
-            <a href="#home" class="logo">
-                HADI<span>.</span>
+            <a
+                href="#home"
+                class="logo">
+                HADI<span class="logo-dot">.</span>
             </a>
+
 
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#journey">Journey</a></li>
+
+                <li>
+                    <a href="#about">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#skills">
+                        Skills
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#projects">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#journey">
+                        Journey
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="#contact"
+                        class="nav-contact">
+                        Contact
+                    </a>
+                </li>
+
             </ul>
 
-            <a href="#contact" class="nav-button">
-                Contact
-            </a>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open menu">
+                ☰
+            </button>
 
         </nav>
+
     </header>
 
 
-    <!-- =========================
+    <!-- =========================================================
+         MOBILE MENU
+    ========================================================= -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu">
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#skills">
+            Skills
+        </a>
+
+        <a href="#projects">
+            Projects
+        </a>
+
+        <a href="#journey">
+            Journey
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </div>
+
+
+    <!-- =========================================================
          HERO
-    ========================= -->
+    ========================================================= -->
 
     <main>
 
-        <section class="hero" id="home">
+        <section
+            class="hero"
+            id="home">
 
-            <div class="hero-content reveal">
 
-                <div class="status">
-                    <span class="status-dot"></span>
-                    Building. Learning. Creating.
+            <div class="hero-left reveal">
+
+                <div class="availability">
+
+                    <span class="availability-dot"></span>
+
+                    Building • Learning • Creating
+
                 </div>
 
-                <h1>
-                    HA<span>DI</span>
+
+                <h1 class="hero-title">
+
+                    HA<span class="outline">DI</span>
+
                 </h1>
 
-                <p class="hero-subtitle">
-                    Developer and technology enthusiast focused on
-                    building digital experiences, experimenting with
-                    technology and turning ideas into real projects.
+
+                <div class="hero-role">
+                    developer & technology enthusiast
+                </div>
+
+
+                <p class="hero-description">
+
+                    I build digital experiences, experiment with
+                    technology and turn ideas into real projects.
+
+                    My goal is simple:
+                    <strong>learn, build and improve.</strong>
+
                 </p>
 
-                <div class="hero-buttons">
 
-                    <a href="#projects" class="btn btn-primary">
+                <div class="hero-actions">
+
+                    <a
+                        href="#projects"
+                        class="button button-primary">
+
                         Explore Projects →
+
                     </a>
 
-                    <a href="https://github.com/hadi-root"
-                       target="_blank"
-                       class="btn btn-secondary">
+
+                    <a
+                        href="https://github.com/hadi-root"
+                        target="_blank"
+                        class="button button-secondary">
+
                         GitHub ↗
+
                     </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- TERMINAL -->
+
+            <div class="terminal reveal">
+
+                <div class="terminal-top">
+
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+
+                    <span class="terminal-name">
+                        hadi@portfolio:~
+                    </span>
+
+                </div>
+
+
+                <div class="terminal-body">
+
+                    <span class="terminal-line">
+
+                        <span class="terminal-prompt">
+                            hadi@portfolio
+                        </span>:~$
+
+                        <span class="terminal-command">
+                            whoami
+                        </span>
+
+                    </span>
+
+
+                    <span class="terminal-line terminal-value">
+                        HADI
+                    </span>
+
+
+                    <br>
+
+
+                    <span class="terminal-line">
+
+                        <span class="terminal-prompt">
+                            hadi@portfolio
+                        </span>:~$
+
+                        <span class="terminal-command">
+                            role
+                        </span>
+
+                    </span>
+
+
+                    <span class="terminal-line terminal-value">
+                        Developer & Technology Enthusiast
+                    </span>
+
+
+                    <br>
+
+
+                    <span class="terminal-line">
+
+                        <span class="terminal-prompt">
+                            hadi@portfolio
+                        </span>:~$
+
+                        <span class="terminal-command">
+                            focus
+                        </span>
+
+                    </span>
+
+
+                    <span class="terminal-line terminal-value">
+                        Web • Software • Technology
+                    </span>
+
+
+                    <br>
+
+
+                    <span class="terminal-line">
+
+                        <span class="terminal-prompt">
+                            hadi@portfolio
+                        </span>:~$
+
+                        <span class="terminal-command">
+                            mindset
+                        </span>
+
+                    </span>
+
+
+                    <span class="terminal-line terminal-value">
+                        Learn → Build → Improve
+                    </span>
+
+
+                    <br>
+
+
+                    <span class="terminal-line">
+
+                        <span class="terminal-prompt">
+                            hadi@portfolio
+                        </span>:~$
+
+                        <span class="terminal-command">
+                            current_project
+                        </span>
+
+                    </span>
+
+
+                    <span class="terminal-line terminal-value">
+                        Root Terminal Portal
+                    </span>
+
+
+                    <br>
+
+
+                    <span class="terminal-line">
+
+                        <span class="terminal-prompt">
+                            hadi@portfolio
+                        </span>:~$
+
+                        <span class="cursor"></span>
+
+                    </span>
 
                 </div>
 
@@ -802,69 +1835,122 @@
         </section>
 
 
-        <!-- =========================
+        <!-- =====================================================
              ABOUT
-        ========================= -->
+        ====================================================== -->
 
         <section id="about">
 
-            <div class="section-label">
-                01 — About
+            <div class="section-header reveal">
+
+                <div class="eyebrow">
+                    01 — About
+                </div>
+
+                <h2 class="section-title">
+                    More than<br>
+                    just code.
+                </h2>
+
+                <p class="section-description">
+
+                    I am HADI — a developer and technology enthusiast
+                    exploring how ideas can become useful digital
+                    experiences.
+
+                </p>
+
             </div>
 
-            <h2 class="section-title">
-                More than<br>
-                just code.
-            </h2>
 
-            <p class="section-description">
-                I am HADI — a young developer exploring the world of
-                software, web development and technology.
-            </p>
+            <div class="about-layout">
 
-            <div class="about-grid">
 
-                <div class="about-main">
+                <div class="about-main-card reveal">
 
                     <h3>
                         Building ideas into reality.
                     </h3>
 
-                    <p>
-                        I enjoy taking an idea, understanding how it could
-                        work, and turning it into something people can
-                        actually use.
-                    </p>
 
                     <p>
-                        My journey is driven by curiosity. Every project
-                        gives me an opportunity to learn something new,
-                        improve my skills and understand technology better.
+                        I enjoy taking an idea, understanding the
+                        problem behind it and turning it into something
+                        real.
                     </p>
 
+
                     <p>
-                        I am especially interested in software development,
-                        modern websites, applications, artificial
-                        intelligence and the future of technology.
+                        My journey is driven by curiosity. Every
+                        project is an opportunity to learn something
+                        new, solve problems and become better at
+                        building technology.
+                    </p>
+
+
+                    <p>
+                        I am interested in software development,
+                        web development, applications, artificial
+                        intelligence and emerging technologies.
                     </p>
 
                 </div>
 
-                <div class="about-side">
 
-                    <div class="profile-card">
-                        <div class="number">01</div>
-                        <p>CURIOUS BY NATURE</p>
+                <div class="about-right">
+
+
+                    <div class="about-mini-card reveal">
+
+                        <div class="mini-number">
+                            01
+                        </div>
+
+                        <h4>
+                            Curious
+                        </h4>
+
+                        <p>
+                            Always exploring how technology works
+                            and what can be built with it.
+                        </p>
+
                     </div>
 
-                    <div class="profile-card">
-                        <div class="number">02</div>
-                        <p>PROJECT DRIVEN</p>
+
+                    <div class="about-mini-card reveal">
+
+                        <div class="mini-number">
+                            02
+                        </div>
+
+                        <h4>
+                            Project Driven
+                        </h4>
+
+                        <p>
+                            Learning becomes more meaningful when
+                            it turns into something real.
+                        </p>
+
                     </div>
 
-                    <div class="profile-card">
-                        <div class="number">03</div>
-                        <p>ALWAYS LEARNING</p>
+
+                    <div class="about-mini-card reveal">
+
+                        <div class="mini-number">
+                            03
+                        </div>
+
+                        <h4>
+                            Future Focused
+                        </h4>
+
+                        <p>
+                            Continuously learning technologies that
+                            can shape the future.
+                        </p>
+
                     </div>
 
                 </div>
@@ -874,44 +1960,55 @@
         </section>
 
 
-        <!-- =========================
-             VALUES
-        ========================= -->
+        <!-- =====================================================
+             PRINCIPLES
+        ====================================================== -->
 
         <section>
 
-            <div class="section-label">
-                02 — Mindset
+            <div class="section-header reveal">
+
+                <div class="eyebrow">
+                    02 — Mindset
+                </div>
+
+                <h2 class="section-title">
+                    How I build.
+                </h2>
+
             </div>
 
-            <h2 class="section-title">
-                How I build.
-            </h2>
 
-            <div class="values-grid">
+            <div class="principles">
 
-                <div class="value-card">
 
-                    <div class="value-number">
+                <div class="principle reveal">
+
+                    <div class="principle-number">
                         01
                     </div>
 
-                    <h3>Learn</h3>
+                    <h3>
+                        Learn
+                    </h3>
 
                     <p>
-                        Understand the technology before trying to
-                        build something with it.
+                        Understand the technology and the problem
+                        before trying to solve it.
                     </p>
 
                 </div>
 
-                <div class="value-card">
 
-                    <div class="value-number">
+                <div class="principle reveal">
+
+                    <div class="principle-number">
                         02
                     </div>
 
-                    <h3>Build</h3>
+                    <h3>
+                        Build
+                    </h3>
 
                     <p>
                         Turn concepts into working projects and
@@ -920,125 +2017,259 @@
 
                 </div>
 
-                <div class="value-card">
 
-                    <div class="value-number">
+                <div class="principle reveal">
+
+                    <div class="principle-number">
                         03
                     </div>
 
-                    <h3>Improve</h3>
+                    <h3>
+                        Improve
+                    </h3>
 
                     <p>
-                        Keep experimenting, fixing problems and
+                        Keep testing, fixing, experimenting and
                         improving every version.
                     </p>
 
                 </div>
 
+
             </div>
 
         </section>
 
 
-        <!-- =========================
+        <!-- =====================================================
              SKILLS
-        ========================= -->
+        ====================================================== -->
 
         <section id="skills">
 
-            <div class="section-label">
-                03 — Skills
+            <div class="section-header reveal">
+
+                <div class="eyebrow">
+                    03 — Skills
+                </div>
+
+                <h2 class="section-title">
+                    Tools I explore.
+                </h2>
+
+                <p class="section-description">
+
+                    A growing collection of technologies and tools
+                    I explore while learning and building.
+
+                </p>
+
             </div>
 
-            <h2 class="section-title">
-                Tools I explore.
-            </h2>
 
-            <p class="section-description">
-                A growing collection of technologies and tools that
-                I use while learning and building projects.
-            </p>
+            <div class="skill-groups">
 
-            <div class="skills-container">
 
-                <div class="skill">HTML</div>
-                <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Git</div>
-                <div class="skill">GitHub</div>
-                <div class="skill">Responsive Design</div>
-                <div class="skill">Web Development</div>
-                <div class="skill">Android Development</div>
-                <div class="skill">Firebase</div>
-                <div class="skill">UI Design</div>
-                <div class="skill">Problem Solving</div>
-                <div class="skill">AI Tools</div>
+                <div class="skill-group reveal">
+
+                    <div class="skill-group-title">
+                        Web
+                    </div>
+
+                    <div class="skills">
+
+                        <span class="skill">
+                            HTML
+                        </span>
+
+                        <span class="skill">
+                            CSS
+                        </span>
+
+                        <span class="skill">
+                            JavaScript
+                        </span>
+
+                        <span class="skill">
+                            Responsive Design
+                        </span>
+
+                        <span class="skill">
+                            UI Design
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-group reveal">
+
+                    <div class="skill-group-title">
+                        Development
+                    </div>
+
+                    <div class="skills">
+
+                        <span class="skill">
+                            Git
+                        </span>
+
+                        <span class="skill">
+                            GitHub
+                        </span>
+
+                        <span class="skill">
+                            Android
+                        </span>
+
+                        <span class="skill">
+                            Firebase
+                        </span>
+
+                        <span class="skill">
+                            Problem Solving
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-group reveal">
+
+                    <div class="skill-group-title">
+                        Exploring
+                    </div>
+
+                    <div class="skills">
+
+                        <span class="skill">
+                            AI
+                        </span>
+
+                        <span class="skill">
+                            Software
+                        </span>
+
+                        <span class="skill">
+                            Automation
+                        </span>
+
+                        <span class="skill">
+                            New Technologies
+                        </span>
+
+                    </div>
+
+                </div>
+
 
             </div>
 
         </section>
 
 
-        <!-- =========================
+        <!-- =====================================================
              PROJECTS
-        ========================= -->
+        ====================================================== -->
 
         <section id="projects">
 
-            <div class="section-label">
-                04 — Projects
+            <div class="section-header reveal">
+
+                <div class="eyebrow">
+                    04 — Projects
+                </div>
+
+                <h2 class="section-title">
+                    Things I've built.
+                </h2>
+
+                <p class="section-description">
+
+                    Real projects, experiments and ideas created
+                    while learning and exploring technology.
+
+                </p>
+
             </div>
 
-            <h2 class="section-title">
-                Things I've built.
-            </h2>
 
-            <p class="section-description">
-                Selected work and experiments created while learning,
-                developing and exploring technology.
-            </p>
+            <div class="project-grid">
 
-            <div class="projects-grid">
 
-                <!-- PROJECT -->
+                <!-- ROOT TERMINAL -->
 
-                <article class="project-card">
+                <article class="project reveal">
 
-                    <div class="project-number">
-                        PROJECT 01
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            PROJECT 01
+                        </span>
+
+                        <span class="project-status">
+                            Live
+                        </span>
+
                     </div>
+
 
                     <h3>
                         Root Terminal Portal
                     </h3>
 
-                    <p>
-                        A futuristic developer-focused web project
-                        designed around a terminal-inspired digital
-                        experience and modern interface.
+
+                    <p class="project-description">
+
+                        A futuristic developer-focused web experience
+                        built around a terminal-inspired interface,
+                        modern design and interactive digital elements.
+
                     </p>
 
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Web</span>
+
+                    <div class="project-tags">
+
+                        <span>
+                            HTML
+                        </span>
+
+                        <span>
+                            CSS
+                        </span>
+
+                        <span>
+                            JavaScript
+                        </span>
+
+                        <span>
+                            Web
+                        </span>
+
                     </div>
 
-                    <div class="project-links">
+
+                    <div class="project-actions">
 
                         <a
                             href="https://root-terminal-hub.onrender.com/"
                             target="_blank"
-                            class="project-link">
+                            class="project-action">
+
                             Live Website ↗
+
                         </a>
+
 
                         <a
                             href="https://github.com/hadi-root/root-terminal-portal"
                             target="_blank"
-                            class="project-link">
+                            class="project-action">
+
                             GitHub ↗
+
                         </a>
 
                     </div>
@@ -1046,96 +2277,105 @@
                 </article>
 
 
-                <!-- FUTURE PROJECT -->
+                <!-- FUTURE -->
 
-                <article class="project-card">
+                <article
+                    class="project future-project reveal">
 
-                    <div class="project-number">
-                        PROJECT 02
+                    <div class="future-icon">
+                        +
                     </div>
 
                     <h3>
-                        Coming Next
+                        Next Project
                     </h3>
 
-                    <p>
-                        The next project will appear here as the
-                        portfolio continues to grow.
+                    <p class="project-description">
+
+                        A new idea is being explored.
+
+                        This space will become another project
+                        as the portfolio grows.
+
                     </p>
 
-                    <div class="project-tech">
-                        <span>Future</span>
-                        <span>Experiment</span>
-                        <span>Building</span>
-                    </div>
-
                 </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- =========================
+        <!-- =====================================================
              JOURNEY
-        ========================= -->
+        ====================================================== -->
 
         <section id="journey">
 
-            <div class="section-label">
-                05 — Journey
+            <div class="section-header reveal">
+
+                <div class="eyebrow">
+                    05 — Journey
+                </div>
+
+                <h2 class="section-title">
+                    Still becoming.
+                </h2>
+
+                <p class="section-description">
+
+                    The journey is not about reaching a final
+                    destination. It is about continuously learning,
+                    building and improving.
+
+                </p>
+
             </div>
 
-            <h2 class="section-title">
-                Still becoming.
-            </h2>
-
-            <p class="section-description">
-                A technology journey is never really finished.
-                Each stage opens the door to something new.
-            </p>
 
             <div class="timeline">
 
-                <div class="timeline-item">
 
-                    <div class="timeline-date">
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-label">
                         START
                     </div>
 
                     <h3>
-                        Started Exploring Technology
+                        Exploring Technology
                     </h3>
 
                     <p>
-                        Began exploring computers, software and the
-                        possibilities of building things digitally.
+                        Started exploring computers, software and
+                        the possibilities of building things digitally.
                     </p>
 
                 </div>
 
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <div class="timeline-date">
+                    <div class="timeline-label">
                         BUILD
                     </div>
 
                     <h3>
-                        Started Building Projects
+                        Creating Projects
                     </h3>
 
                     <p>
-                        Moved from learning concepts to creating
-                        real websites and applications.
+                        Moved from simply learning concepts to
+                        creating real websites and applications.
                     </p>
 
                 </div>
 
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <div class="timeline-date">
+                    <div class="timeline-label">
                         NOW
                     </div>
 
@@ -1145,16 +2385,16 @@
 
                     <p>
                         Continuing to improve development skills,
-                        experiment with new technologies and build
+                        experiment with technologies and create
                         better projects.
                     </p>
 
                 </div>
 
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <div class="timeline-date">
+                    <div class="timeline-label">
                         NEXT
                     </div>
 
@@ -1169,81 +2409,125 @@
 
                 </div>
 
+
             </div>
 
         </section>
 
 
-        <!-- =========================
+        <!-- =====================================================
              STATS
-        ========================= -->
+        ====================================================== -->
 
-        <section>
+        <div class="stats">
 
-            <div class="stats">
 
-                <div class="stat">
-                    <strong>01+</strong>
-                    <span>Live Project</span>
-                </div>
+            <div class="stat reveal">
 
-                <div class="stat">
-                    <strong>12+</strong>
-                    <span>Technologies Explored</span>
-                </div>
+                <strong>
+                    01+
+                </strong>
 
-                <div class="stat">
-                    <strong>∞</strong>
-                    <span>Ideas</span>
-                </div>
-
-                <div class="stat">
-                    <strong>24/7</strong>
-                    <span>Learning Mindset</span>
-                </div>
+                <span>
+                    Live Project
+                </span>
 
             </div>
 
-        </section>
+
+            <div class="stat reveal">
+
+                <strong>
+                    12+
+                </strong>
+
+                <span>
+                    Technologies
+                </span>
+
+            </div>
 
 
-        <!-- =========================
+            <div class="stat reveal">
+
+                <strong>
+                    ∞
+                </strong>
+
+                <span>
+                    Ideas
+                </span>
+
+            </div>
+
+
+            <div class="stat reveal">
+
+                <strong>
+                    24/7
+                </strong>
+
+                <span>
+                    Learning
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================================
              CONTACT
-        ========================= -->
+        ====================================================== -->
 
         <section id="contact">
 
-            <div class="section-label">
+            <div class="eyebrow reveal">
                 06 — Contact
             </div>
 
-            <div class="contact-box">
+
+            <div class="contact-card reveal">
 
                 <h3>
                     Let's build<br>
                     something.
                 </h3>
 
+
                 <p>
-                    Interested in my work, projects or future
-                    collaborations? You can find me on GitHub.
+
+                    Interested in my projects or want to explore
+                    what comes next?
+
+                    Find my work and development journey on GitHub.
+
                 </p>
 
-                <div class="contact-buttons">
+
+                <div class="contact-actions">
+
 
                     <a
                         href="https://github.com/hadi-root"
                         target="_blank"
-                        class="btn btn-primary">
-                        Visit GitHub ↗
+                        class="button button-primary">
+
+                        GitHub ↗
+
                     </a>
 
+
                     <a
-                        href="https://github.com/hadi-root/root-terminal-portal"
+                        href="https://root-terminal-hub.onrender.com/"
                         target="_blank"
-                        class="btn btn-secondary">
-                        View Root Terminal ↗
+                        class="button button-secondary">
+
+                        Root Terminal ↗
+
                     </a>
+
 
                 </div>
 
@@ -1254,9 +2538,9 @@
     </main>
 
 
-    <!-- =========================
+    <!-- =========================================================
          FOOTER
-    ========================= -->
+    ========================================================= -->
 
     <footer>
 
@@ -1275,71 +2559,181 @@
     </footer>
 
 
-    <!-- =========================
+    <!-- =========================================================
          JAVASCRIPT
-    ========================= -->
+    ========================================================= -->
 
     <script>
 
-        // Smooth navigation
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
 
-            link.addEventListener("click", function(event) {
+        const menuButton =
+            document.getElementById("menuButton");
 
-                const target = document.querySelector(
-                    this.getAttribute("href")
-                );
-
-                if (target) {
-
-                    event.preventDefault();
-
-                    target.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
-            });
-
-        });
+        const mobileMenu =
+            document.getElementById("mobileMenu");
 
 
-        // Reveal sections when scrolling
-        const observer = new IntersectionObserver(
-            entries => {
+        menuButton.addEventListener(
+            "click",
+            () => {
 
-                entries.forEach(entry => {
+                mobileMenu.classList.toggle("active");
 
-                    if (entry.isIntersecting) {
+                document.body.classList.toggle("menu-open");
 
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
+                menuButton.textContent =
+                    mobileMenu.classList.contains("active")
+                        ? "×"
+                        : "☰";
 
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
             }
         );
 
 
         document
-            .querySelectorAll(
-                ".about-main, .profile-card, .value-card, .project-card, .timeline-item, .contact-box"
-            )
-            .forEach(element => {
+            .querySelectorAll(".mobile-menu a")
+            .forEach(link => {
 
-                element.style.opacity = "0";
-                element.style.transform = "translateY(25px)";
-                element.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        mobileMenu.classList.remove("active");
+
+                        document.body.classList.remove("menu-open");
+
+                        menuButton.textContent = "☰";
+
+                    }
+                );
+
+            });
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach(element => {
 
                 observer.observe(element);
 
             });
+
+
+        /* =====================================================
+           ACTIVE NAVIGATION
+        ===================================================== */
+
+        const sections =
+            document.querySelectorAll(
+                "section[id]"
+            );
+
+        const navLinks =
+            document.querySelectorAll(
+                ".nav-links a"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                let current = "";
+
+                sections.forEach(section => {
+
+                    const sectionTop =
+                        section.offsetTop - 160;
+
+                    if (
+                        window.scrollY >= sectionTop
+                    ) {
+
+                        current =
+                            section.getAttribute("id");
+
+                    }
+
+                });
+
+
+                navLinks.forEach(link => {
+
+                    link.style.color = "#888";
+
+                    if (
+                        link.getAttribute("href") ===
+                        "#" + current
+                    ) {
+
+                        link.style.color = "#fff";
+
+                    }
+
+                });
+
+            }
+        );
+
+
+        /* =====================================================
+           TERMINAL TYPING EFFECT
+        ===================================================== */
+
+        const terminalCommand =
+            document.querySelector(
+                ".terminal-command"
+            );
+
+
+        /* Small entrance effect */
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                document.body.classList.add(
+                    "loaded"
+                );
+
+            }
+        );
 
     </script>
 
