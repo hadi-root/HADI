@@ -1,2741 +1,3564 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>HADI — Developer</title>
-
-    <meta
-        name="description"
-        content="HADI — Developer, builder and technology enthusiast."
-    >
-
-    <meta name="theme-color" content="#050505">
-
-    <style>
-
-        /* =========================================================
-           RESET
-        ========================================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #050505;
-            color: #f5f5f5;
-            font-family:
-                Inter,
-                Arial,
-                Helvetica,
-                sans-serif;
-            overflow-x: hidden;
-        }
-
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font: inherit;
-        }
-
-        ::selection {
-            background: #fff;
-            color: #000;
-        }
-
-
-        /* =========================================================
-           BACKGROUND
-        ========================================================= */
-
-        .background {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: -10;
-            overflow: hidden;
-            background:
-                radial-gradient(
-                    circle at 20% 10%,
-                    rgba(255,255,255,0.045),
-                    transparent 28%
-                ),
-                radial-gradient(
-                    circle at 85% 50%,
-                    rgba(255,255,255,0.035),
-                    transparent 30%
-                ),
-                #050505;
-        }
-
-        .grid {
-            position: absolute;
-            inset: 0;
-            opacity: 0.28;
-
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.035) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.035) 1px,
-                    transparent 1px
-                );
-
-            background-size: 55px 55px;
-
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 85%
-                );
-        }
-
-        .glow {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.08;
-            animation: floatGlow 10s ease-in-out infinite;
-        }
-
-        .glow.one {
-            top: -200px;
-            left: -150px;
-            background: white;
-        }
-
-        .glow.two {
-            right: -200px;
-            top: 40%;
-            background: #777;
-            animation-delay: -4s;
-        }
-
-        @keyframes floatGlow {
-
-            0%,
-            100% {
-                transform: translate(0,0);
-            }
-
-            50% {
-                transform: translate(35px,25px);
-            }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HADI — Developer</title>
+
+<meta name="description" content="HADI — Developer, builder and technology enthusiast.">
+<meta name="theme-color" content="#050505">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#f5f5f5;
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+::selection{
+    background:#fff;
+    color:#000;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    pointer-events:none;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(255,255,255,.045),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(255,255,255,.035),
+            transparent 30%
+        ),
+        #050505;
+}
+
+.grid{
+    position:absolute;
+    inset:0;
+    opacity:.28;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
+}
+
+.glow{
+    position:absolute;
 
+    width:450px;
+    height:450px;
 
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
+    border-radius:50%;
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+    filter:blur(100px);
 
-            z-index: 1000;
+    opacity:.08;
 
-            padding: 18px 6%;
+    animation:floatGlow 10s ease-in-out infinite;
+}
 
-            background:
-                rgba(5,5,5,0.72);
+.glow.one{
+    top:-200px;
+    left:-150px;
+    background:white;
+}
 
-            backdrop-filter: blur(20px);
+.glow.two{
+    right:-200px;
+    top:40%;
+    background:#777;
+    animation-delay:-4s;
+}
 
-            border-bottom:
-                1px solid rgba(255,255,255,0.06);
-        }
+@keyframes floatGlow{
 
-        nav {
-            max-width: 1300px;
-            margin: auto;
+    0%,100%{
+        transform:translate(0,0);
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    50%{
+        transform:translate(35px,25px);
+    }
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 5px;
-        }
 
-        .logo-dot {
-            opacity: 0.35;
-        }
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 34px;
+header{
+    position:fixed;
 
-            list-style: none;
-        }
+    top:0;
+    left:0;
+    right:0;
 
-        .nav-links a {
-            color: #888;
-            font-size: 13px;
-            transition: 0.3s;
-        }
+    z-index:1000;
 
-        .nav-links a:hover {
-            color: #fff;
-        }
+    padding:18px 6%;
 
-        .nav-contact {
-            padding: 10px 17px;
+    background:rgba(5,5,5,.72);
 
-            border: 1px solid
-                rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
 
-            border-radius: 30px;
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+}
 
-            color: #ddd !important;
+nav{
+    max-width:1300px;
+    margin:auto;
 
-            transition: 0.3s;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-        .nav-contact:hover {
-            background: #fff;
-            color: #000 !important;
-        }
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:5px;
+}
 
-        .menu-button {
-            display: none;
+.logo-dot{
+    opacity:.35;
+}
 
-            width: 42px;
-            height: 42px;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
 
-            border:
-                1px solid rgba(255,255,255,0.12);
+    list-style:none;
+}
 
-            border-radius: 10px;
+.nav-links a{
+    color:#888;
+    font-size:13px;
+    transition:.3s;
+}
 
-            background: transparent;
-            color: white;
+.nav-links a:hover{
+    color:#fff;
+}
 
-            cursor: pointer;
-        }
+.nav-contact{
+    padding:10px 17px;
 
+    border:
+        1px solid
+        rgba(255,255,255,.15);
 
-        /* =========================================================
-           HERO
-        ========================================================= */
+    border-radius:30px;
 
-        .hero {
-            min-height: 100vh;
+    color:#ddd !important;
+}
 
-            max-width: 1300px;
-            margin: auto;
+.nav-contact:hover{
+    background:#fff;
+    color:#000 !important;
+}
 
-            padding:
-                170px 6%
-                100px;
+.menu-button{
+    display:none;
 
-            display: grid;
+    width:42px;
+    height:42px;
 
-            grid-template-columns:
-                minmax(0, 1.15fr)
-                minmax(320px, 0.85fr);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-            gap: 70px;
+    border-radius:10px;
 
-            align-items: center;
-        }
+    background:transparent;
 
-        .hero-left {
-            min-width: 0;
-        }
+    color:white;
 
-        .availability {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+    cursor:pointer;
+}
 
-            padding: 8px 13px;
 
-            border:
-                1px solid rgba(255,255,255,0.1);
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-            border-radius: 30px;
+.mobile-menu{
+    display:none;
 
-            color: #999;
+    position:fixed;
 
-            font-size: 11px;
-            letter-spacing: 0.5px;
+    inset:0;
 
-            background:
-                rgba(255,255,255,0.025);
+    z-index:900;
 
-            margin-bottom: 28px;
-        }
+    background:rgba(5,5,5,.97);
 
-        .availability-dot {
-            width: 7px;
-            height: 7px;
+    backdrop-filter:blur(20px);
 
-            border-radius: 50%;
+    padding:120px 8% 50px;
+}
 
-            background: #fff;
+.mobile-menu.active{
+    display:block;
+}
 
-            box-shadow:
-                0 0 12px
-                rgba(255,255,255,0.9);
+.mobile-menu a{
+    display:block;
 
-            animation: pulse 2s infinite;
-        }
+    padding:18px 0;
 
-        @keyframes pulse {
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
 
-            0%,
-            100% {
-                opacity: 1;
-            }
+    color:#aaa;
 
-            50% {
-                opacity: 0.35;
-            }
-        }
+    font-size:28px;
 
-        .hero-title {
-            font-size:
-                clamp(
-                    75px,
-                    13vw,
-                    170px
-                );
+    letter-spacing:-1px;
+}
 
-            line-height: 0.8;
+.mobile-menu a:hover{
+    color:white;
+}
 
-            letter-spacing: -10px;
 
-            font-weight: 950;
-        }
+/* =========================================================
+   HERO
+========================================================= */
 
-        .hero-title .outline {
-            color: transparent;
+.hero{
+    min-height:100vh;
 
-            -webkit-text-stroke:
-                1px rgba(255,255,255,0.42);
-        }
+    max-width:1300px;
 
-        .hero-role {
-            margin-top: 35px;
+    margin:auto;
 
-            display: flex;
-            align-items: center;
-            gap: 14px;
+    padding:
+        170px 6%
+        100px;
 
-            color: #aaa;
+    display:grid;
 
-            font-family:
-                "Courier New",
-                monospace;
+    grid-template-columns:
+        minmax(0,1.15fr)
+        minmax(320px,.85fr);
 
-            font-size: 15px;
-        }
+    gap:70px;
 
-        .hero-role::before {
-            content: ">";
+    align-items:center;
+}
 
-            color: #fff;
+.hero-left{
+    min-width:0;
+}
 
-            font-weight: bold;
-        }
+.availability{
+    display:inline-flex;
 
-        .hero-description {
-            margin-top: 22px;
+    align-items:center;
 
-            max-width: 650px;
+    gap:10px;
 
-            color: #888;
+    padding:8px 13px;
 
-            font-size: 17px;
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-            line-height: 1.8;
-        }
+    border-radius:30px;
 
-        .hero-actions {
-            margin-top: 32px;
+    color:#999;
 
-            display: flex;
-            gap: 12px;
+    font-size:11px;
 
-            flex-wrap: wrap;
-        }
+    background:rgba(255,255,255,.025);
 
-        .button {
-            display: inline-flex;
+    margin-bottom:28px;
+}
 
-            align-items: center;
-            justify-content: center;
+.availability-dot{
+    width:7px;
+    height:7px;
 
-            gap: 8px;
+    border-radius:50%;
 
-            min-height: 46px;
+    background:#fff;
 
-            padding:
-                0 19px;
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.9);
 
-            border-radius: 8px;
+    animation:pulse 2s infinite;
+}
 
-            font-size: 13px;
+@keyframes pulse{
 
-            font-weight: 700;
+    0%,100%{
+        opacity:1;
+    }
 
-            transition:
-                transform 0.3s,
-                background 0.3s,
-                border 0.3s;
-        }
+    50%{
+        opacity:.35;
+    }
+}
 
-        .button:hover {
-            transform: translateY(-3px);
-        }
+.hero-title{
+    font-size:
+        clamp(75px,13vw,170px);
 
-        .button-primary {
-            color: #000;
-            background: #fff;
-        }
+    line-height:.8;
 
-        .button-primary:hover {
-            box-shadow:
-                0 15px 35px
-                rgba(255,255,255,0.12);
-        }
+    letter-spacing:-10px;
 
-        .button-secondary {
-            color: #ccc;
+    font-weight:950;
+}
 
-            background:
-                rgba(255,255,255,0.025);
+.hero-title .outline{
+    color:transparent;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.12);
-        }
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.42);
+}
 
-        .button-secondary:hover {
-            background:
-                rgba(255,255,255,0.07);
+.hero-role{
+    margin-top:35px;
 
-            border-color:
-                rgba(255,255,255,0.25);
-        }
+    display:flex;
 
+    align-items:center;
 
-        /* =========================================================
-           TERMINAL CARD
-        ========================================================= */
+    gap:14px;
 
-        .terminal {
-            width: 100%;
+    color:#aaa;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.11);
+    font-family:"Courier New",monospace;
 
-            border-radius: 16px;
+    font-size:15px;
+}
 
-            overflow: hidden;
+.hero-role::before{
+    content:">";
+    color:#fff;
+    font-weight:bold;
+}
 
-            background:
-                rgba(10,10,10,0.85);
+.hero-description{
+    margin-top:22px;
 
-            box-shadow:
-                0 30px 80px
-                rgba(0,0,0,0.4);
+    max-width:650px;
 
-            transform:
-                perspective(1000px)
-                rotateY(-3deg);
+    color:#888;
 
-            transition:
-                transform 0.5s ease;
-        }
+    font-size:17px;
 
-        .terminal:hover {
-            transform:
-                perspective(1000px)
-                rotateY(0deg)
-                translateY(-5px);
-        }
+    line-height:1.8;
+}
 
-        .terminal-top {
-            height: 45px;
+.hero-actions{
+    margin-top:32px;
 
-            display: flex;
-            align-items: center;
+    display:flex;
 
-            gap: 7px;
+    gap:12px;
 
-            padding: 0 16px;
+    flex-wrap:wrap;
+}
 
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.07);
+.button{
+    display:inline-flex;
 
-            background:
-                rgba(255,255,255,0.025);
-        }
+    align-items:center;
 
-        .terminal-dot {
-            width: 9px;
-            height: 9px;
+    justify-content:center;
 
-            border-radius: 50%;
+    gap:8px;
 
-            background:
-                rgba(255,255,255,0.25);
-        }
+    min-height:46px;
 
-        .terminal-name {
-            margin-left: 8px;
+    padding:0 19px;
 
-            color: #666;
+    border-radius:8px;
 
-            font-size: 11px;
+    font-size:13px;
 
-            font-family:
-                "Courier New",
-                monospace;
-        }
+    font-weight:700;
 
-        .terminal-body {
-            padding: 25px;
+    transition:.3s;
+}
 
-            min-height: 390px;
+.button:hover{
+    transform:translateY(-3px);
+}
 
-            font-family:
-                "Courier New",
-                monospace;
+.button-primary{
+    color:#000;
+    background:#fff;
+}
 
-            font-size: 13px;
+.button-secondary{
+    color:#ccc;
 
-            line-height: 2;
+    background:rgba(255,255,255,.025);
 
-            color: #999;
-        }
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+}
 
-        .terminal-line {
-            display: block;
-        }
 
-        .terminal-prompt {
-            color: #fff;
-        }
+/* =========================================================
+   TERMINAL
+========================================================= */
 
-        .terminal-command {
-            color: #ddd;
-        }
+.terminal{
+    width:100%;
 
-        .terminal-muted {
-            color: #555;
-        }
+    border:
+        1px solid
+        rgba(255,255,255,.11);
 
-        .terminal-value {
-            color: #bbb;
-        }
+    border-radius:16px;
 
-        .cursor {
-            display: inline-block;
+    overflow:hidden;
 
-            width: 7px;
-            height: 15px;
+    background:rgba(10,10,10,.85);
 
-            background: #fff;
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.4);
 
-            vertical-align: middle;
+    transform:
+        perspective(1000px)
+        rotateY(-3deg);
 
-            animation: blink 1s infinite;
-        }
+    transition:.5s;
+}
 
-        @keyframes blink {
+.terminal:hover{
+    transform:
+        perspective(1000px)
+        rotateY(0deg)
+        translateY(-5px);
+}
 
-            0%,
-            45% {
-                opacity: 1;
-            }
+.terminal-top{
+    height:45px;
 
-            46%,
-            100% {
-                opacity: 0;
-            }
-        }
+    display:flex;
 
+    align-items:center;
 
-        /* =========================================================
-           GENERAL SECTION
-        ========================================================= */
+    gap:7px;
 
-        section {
-            max-width: 1300px;
-            margin: auto;
+    padding:0 16px;
 
-            padding:
-                125px 6%;
-        }
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+}
 
-        .section-header {
-            max-width: 800px;
-        }
+.terminal-dot{
+    width:9px;
+    height:9px;
 
-        .eyebrow {
-            color: #666;
+    border-radius:50%;
 
-            font-size: 11px;
+    background:rgba(255,255,255,.25);
+}
 
-            letter-spacing: 4px;
+.terminal-name{
+    margin-left:8px;
 
-            text-transform: uppercase;
+    color:#666;
 
-            margin-bottom: 17px;
-        }
+    font-size:11px;
 
-        .section-title {
-            font-size:
-                clamp(
-                    42px,
-                    6vw,
-                    76px
-                );
+    font-family:"Courier New",monospace;
+}
 
-            line-height: 0.95;
+.terminal-body{
+    padding:25px;
 
-            letter-spacing: -4px;
+    min-height:390px;
 
-            font-weight: 900;
-        }
+    font-family:"Courier New",monospace;
 
-        .section-description {
-            margin-top: 22px;
+    font-size:13px;
 
-            color: #777;
+    line-height:2;
 
-            max-width: 680px;
+    color:#999;
+}
 
-            font-size: 15px;
+.terminal-line{
+    display:block;
+}
 
-            line-height: 1.8;
-        }
+.terminal-prompt{
+    color:#fff;
+}
 
+.terminal-command{
+    color:#ddd;
+}
 
-        /* =========================================================
-           ABOUT
-        ========================================================= */
+.terminal-value{
+    color:#bbb;
+}
 
-        .about-layout {
-            margin-top: 60px;
+.cursor{
+    display:inline-block;
 
-            display: grid;
+    width:7px;
+    height:15px;
 
-            grid-template-columns:
-                1.2fr
-                0.8fr;
+    background:#fff;
 
-            gap: 22px;
-        }
+    vertical-align:middle;
 
-        .about-main-card,
-        .about-mini-card {
+    animation:blink 1s infinite;
+}
 
-            border:
-                1px solid
-                rgba(255,255,255,0.09);
+@keyframes blink{
 
-            background:
-                rgba(255,255,255,0.02);
+    0%,45%{
+        opacity:1;
+    }
 
-            border-radius: 18px;
-        }
+    46%,100%{
+        opacity:0;
+    }
+}
 
-        .about-main-card {
-            padding: 40px;
-        }
 
-        .about-main-card h3 {
-            font-size: 29px;
-            margin-bottom: 20px;
-        }
+/* =========================================================
+   SECTIONS
+========================================================= */
 
-        .about-main-card p {
-            color: #858585;
+section{
+    max-width:1300px;
 
-            line-height: 1.85;
+    margin:auto;
 
-            margin-bottom: 17px;
-        }
+    padding:
+        125px 6%;
+}
 
-        .about-right {
-            display: grid;
-            gap: 22px;
-        }
+.section-header{
+    max-width:800px;
+}
 
-        .about-mini-card {
-            padding: 30px;
+.eyebrow{
+    color:#666;
 
-            transition: 0.3s;
-        }
+    font-size:11px;
 
-        .about-mini-card:hover {
-            transform: translateY(-5px);
+    letter-spacing:4px;
 
-            border-color:
-                rgba(255,255,255,0.2);
-        }
+    text-transform:uppercase;
 
-        .mini-number {
-            color: #555;
+    margin-bottom:17px;
+}
 
-            font-family:
-                "Courier New",
-                monospace;
+.section-title{
+    font-size:
+        clamp(42px,6vw,76px);
 
-            font-size: 12px;
+    line-height:.95;
 
-            margin-bottom: 28px;
-        }
+    letter-spacing:-4px;
 
-        .about-mini-card h4 {
-            font-size: 21px;
-            margin-bottom: 9px;
-        }
+    font-weight:900;
+}
 
-        .about-mini-card p {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.6;
-        }
+.section-description{
+    margin-top:22px;
 
+    color:#777;
 
-        /* =========================================================
-           PRINCIPLES
-        ========================================================= */
+    max-width:680px;
 
-        .principles {
-            margin-top: 55px;
+    font-size:15px;
 
-            display: grid;
+    line-height:1.8;
+}
 
-            grid-template-columns:
-                repeat(3, 1fr);
 
-            gap: 16px;
-        }
+/* =========================================================
+   ABOUT
+========================================================= */
 
-        .principle {
-            padding: 30px;
+.about-layout{
+    margin-top:60px;
 
-            min-height: 210px;
+    display:grid;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
+    grid-template-columns:1.2fr .8fr;
 
-            border-radius: 15px;
+    gap:22px;
+}
 
-            background:
-                rgba(255,255,255,0.018);
+.about-main-card,
+.about-mini-card{
+    border:
+        1px solid
+        rgba(255,255,255,.09);
 
-            transition: 0.3s;
-        }
+    background:
+        rgba(255,255,255,.02);
 
-        .principle:hover {
-            transform: translateY(-6px);
+    border-radius:18px;
+}
 
-            background:
-                rgba(255,255,255,0.04);
-        }
+.about-main-card{
+    padding:40px;
+}
 
-        .principle-number {
-            color: #555;
+.about-main-card h3{
+    font-size:29px;
+    margin-bottom:20px;
+}
 
-            font-family:
-                "Courier New",
-                monospace;
+.about-main-card p{
+    color:#858585;
 
-            font-size: 12px;
+    line-height:1.85;
 
-            margin-bottom: 45px;
-        }
+    margin-bottom:17px;
+}
 
-        .principle h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
+.about-right{
+    display:grid;
+    gap:22px;
+}
 
-        .principle p {
-            color: #666;
+.about-mini-card{
+    padding:30px;
+    transition:.3s;
+}
 
-            font-size: 13px;
+.about-mini-card:hover{
+    transform:translateY(-5px);
 
-            line-height: 1.7;
-        }
+    border-color:
+        rgba(255,255,255,.2);
+}
 
+.mini-number{
+    color:#555;
 
-        /* =========================================================
-           SKILLS
-        ========================================================= */
+    font-family:"Courier New",monospace;
 
-        .skill-groups {
-            margin-top: 55px;
+    font-size:12px;
 
-            display: grid;
+    margin-bottom:28px;
+}
 
-            grid-template-columns:
-                repeat(3, 1fr);
+.about-mini-card h4{
+    font-size:21px;
+    margin-bottom:9px;
+}
 
-            gap: 16px;
-        }
+.about-mini-card p{
+    color:#666;
+    font-size:13px;
+    line-height:1.6;
+}
 
-        .skill-group {
-            padding: 30px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
+/* =========================================================
+   PRINCIPLES
+========================================================= */
 
-            border-radius: 15px;
+.principles{
+    margin-top:55px;
 
-            background:
-                rgba(255,255,255,0.018);
-        }
+    display:grid;
 
-        .skill-group-title {
-            color: #999;
+    grid-template-columns:
+        repeat(3,1fr);
 
-            font-size: 12px;
+    gap:16px;
+}
 
-            letter-spacing: 2px;
+.principle{
+    padding:30px;
 
-            text-transform: uppercase;
+    min-height:210px;
 
-            margin-bottom: 22px;
-        }
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-        .skills {
-            display: flex;
+    border-radius:15px;
 
-            flex-wrap: wrap;
+    background:
+        rgba(255,255,255,.018);
 
-            gap: 8px;
-        }
+    transition:.3s;
+}
 
-        .skill {
-            padding: 9px 12px;
+.principle:hover{
+    transform:translateY(-6px);
 
-            color: #999;
+    background:
+        rgba(255,255,255,.04);
+}
 
-            font-size: 12px;
+.principle-number{
+    color:#555;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
+    font-family:"Courier New",monospace;
 
-            border-radius: 6px;
+    font-size:12px;
 
-            background:
-                rgba(255,255,255,0.02);
+    margin-bottom:45px;
+}
 
-            transition: 0.25s;
-        }
+.principle h3{
+    font-size:21px;
+    margin-bottom:10px;
+}
 
-        .skill:hover {
-            color: white;
+.principle p{
+    color:#666;
 
-            border-color:
-                rgba(255,255,255,0.25);
+    font-size:13px;
 
-            transform: translateY(-2px);
-        }
+    line-height:1.7;
+}
 
 
-        /* =========================================================
-           PROJECTS
-        ========================================================= */
+/* =========================================================
+   SKILLS
+========================================================= */
 
-        .project-grid {
-            margin-top: 60px;
+.skill-groups{
+    margin-top:55px;
 
-            display: grid;
+    display:grid;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
-            gap: 20px;
-        }
+    gap:16px;
+}
 
-        .project {
-            position: relative;
+.skill-group{
+    padding:30px;
 
-            min-height: 430px;
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-            padding: 35px;
+    border-radius:15px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.09);
+    background:
+        rgba(255,255,255,.018);
+}
 
-            border-radius: 19px;
+.skill-group-title{
+    color:#999;
 
-            overflow: hidden;
+    font-size:12px;
 
-            background:
-                radial-gradient(
-                    circle at 100% 0%,
-                    rgba(255,255,255,0.075),
-                    transparent 35%
-                ),
-                rgba(255,255,255,0.018);
+    letter-spacing:2px;
 
-            transition:
-                transform 0.4s,
-                border 0.4s;
-        }
+    text-transform:uppercase;
 
-        .project:hover {
-            transform: translateY(-8px);
+    margin-bottom:22px;
+}
 
-            border-color:
-                rgba(255,255,255,0.2);
-        }
+.skills{
+    display:flex;
 
-        .project-top {
-            display: flex;
+    flex-wrap:wrap;
 
-            align-items: center;
+    gap:8px;
+}
 
-            justify-content: space-between;
-        }
+.skill{
+    padding:9px 12px;
 
-        .project-number {
-            color: #555;
+    color:#999;
 
-            font-family:
-                "Courier New",
-                monospace;
+    font-size:12px;
 
-            font-size: 11px;
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-            letter-spacing: 2px;
-        }
+    border-radius:6px;
 
-        .project-status {
-            color: #777;
+    background:
+        rgba(255,255,255,.02);
 
-            font-size: 10px;
+    transition:.25s;
+}
 
-            letter-spacing: 1px;
+.skill:hover{
+    color:white;
 
-            text-transform: uppercase;
+    border-color:
+        rgba(255,255,255,.25);
 
-            padding: 6px 9px;
+    transform:translateY(-2px);
+}
 
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
 
-            border-radius: 20px;
-        }
+/* =========================================================
+   PROJECT SECTION
+========================================================= */
 
-        .project h3 {
-            margin-top: 90px;
+.projects-toolbar{
+    margin-top:55px;
 
-            font-size:
-                clamp(28px,4vw,42px);
+    display:flex;
 
-            letter-spacing: -2px;
-        }
+    align-items:center;
 
-        .project-description {
-            margin-top: 15px;
+    justify-content:space-between;
 
-            color: #777;
+    gap:20px;
 
-            max-width: 570px;
+    flex-wrap:wrap;
+}
 
-            font-size: 14px;
+.project-filters{
+    display:flex;
 
-            line-height: 1.8;
-        }
+    flex-wrap:wrap;
 
-        .project-tags {
-            margin-top: 24px;
+    gap:8px;
+}
 
-            display: flex;
+.filter-button{
+    padding:10px 15px;
 
-            flex-wrap: wrap;
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-            gap: 7px;
-        }
+    border-radius:7px;
 
-        .project-tags span {
-            padding: 7px 10px;
+    color:#777;
 
-            color: #777;
+    background:
+        rgba(255,255,255,.02);
 
-            font-size: 10px;
+    cursor:pointer;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
+    font-size:11px;
 
-            border-radius: 5px;
-        }
+    transition:.3s;
+}
 
-        .project-actions {
-            position: absolute;
+.filter-button:hover,
+.filter-button.active{
+    background:#fff;
+    color:#000;
 
-            left: 35px;
-            bottom: 35px;
+    border-color:#fff;
+}
 
-            display: flex;
-            gap: 8px;
-        }
+.project-count{
+    color:#555;
 
-        .project-action {
-            padding: 10px 14px;
+    font-family:"Courier New",monospace;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.11);
+    font-size:11px;
+}
 
-            border-radius: 6px;
 
-            color: #aaa;
+/* =========================================================
+   FEATURED PROJECT
+========================================================= */
 
-            font-size: 11px;
+.featured-project{
+    position:relative;
 
-            transition: 0.3s;
-        }
+    margin-top:25px;
 
-        .project-action:hover {
-            background: #fff;
-            color: #000;
-        }
+    min-height:480px;
 
-        .future-project {
-            display: flex;
+    padding:45px;
 
-            flex-direction: column;
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-            justify-content: center;
+    border-radius:22px;
 
-            align-items: center;
+    overflow:hidden;
 
-            text-align: center;
-        }
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,255,255,.09),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 20% 90%,
+            rgba(255,255,255,.035),
+            transparent 30%
+        ),
+        rgba(255,255,255,.018);
 
-        .future-project h3 {
-            margin-top: 0;
-        }
+    transition:.4s;
+}
 
-        .future-icon {
-            width: 60px;
-            height: 60px;
+.featured-project:hover{
+    border-color:
+        rgba(255,255,255,.25);
 
-            display: grid;
-            place-items: center;
+    transform:translateY(-6px);
+}
 
-            border:
-                1px solid
-                rgba(255,255,255,0.12);
+.featured-grid{
+    display:grid;
 
-            border-radius: 50%;
+    grid-template-columns:
+        1.1fr .9fr;
 
-            color: #777;
+    gap:45px;
 
-            font-size: 22px;
+    height:100%;
+}
 
-            margin-bottom: 20px;
-        }
+.featured-content{
+    display:flex;
 
+    flex-direction:column;
 
-        /* =========================================================
-           JOURNEY
-        ========================================================= */
+    justify-content:center;
+}
 
-        .timeline {
-            margin-top: 60px;
+.featured-label{
+    display:inline-flex;
 
-            border-left:
-                1px solid
-                rgba(255,255,255,0.12);
+    width:max-content;
 
-            padding-left: 38px;
-        }
+    padding:7px 11px;
 
-        .timeline-item {
-            position: relative;
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-            padding-bottom: 60px;
-        }
+    border-radius:20px;
 
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
+    color:#888;
 
-        .timeline-item::before {
-            content: "";
+    font-size:10px;
 
-            position: absolute;
+    letter-spacing:1px;
 
-            left: -44px;
-            top: 4px;
+    text-transform:uppercase;
 
-            width: 11px;
-            height: 11px;
+    margin-bottom:24px;
+}
 
-            border:
-                1px solid
-                #fff;
+.featured-project h3{
+    font-size:
+        clamp(42px,6vw,72px);
 
-            border-radius: 50%;
+    line-height:.9;
 
-            background: #050505;
+    letter-spacing:-4px;
 
-            box-shadow:
-                0 0 15px
-                rgba(255,255,255,0.25);
-        }
+    margin-bottom:23px;
+}
 
-        .timeline-label {
-            color: #555;
+.featured-project-description{
+    max-width:600px;
 
-            font-family:
-                "Courier New",
-                monospace;
+    color:#777;
 
-            font-size: 11px;
+    font-size:14px;
 
-            letter-spacing: 2px;
+    line-height:1.8;
+}
 
-            margin-bottom: 11px;
-        }
+.featured-tech{
+    margin-top:25px;
 
-        .timeline-item h3 {
-            font-size: 24px;
+    display:flex;
 
-            margin-bottom: 10px;
-        }
+    flex-wrap:wrap;
 
-        .timeline-item p {
-            color: #777;
+    gap:8px;
+}
 
-            max-width: 680px;
+.tech-badge{
+    padding:8px 11px;
 
-            line-height: 1.8;
+    color:#888;
 
-            font-size: 14px;
-        }
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
+    border-radius:5px;
 
-        /* =========================================================
-           STATS
-        ========================================================= */
+    font-size:10px;
 
-        .stats {
-            max-width: 1300px;
+    background:
+        rgba(255,255,255,.02);
+}
 
-            margin: 20px auto;
+.featured-actions{
+    margin-top:30px;
 
-            padding:
-                0 6%;
+    display:flex;
 
-            display: grid;
+    flex-wrap:wrap;
 
-            grid-template-columns:
-                repeat(4, 1fr);
-        }
+    gap:9px;
+}
 
-        .stat {
-            padding: 40px 25px;
 
-            border-top:
-                1px solid
-                rgba(255,255,255,0.08);
+/* =========================================================
+   PROJECT VISUAL
+========================================================= */
 
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.08);
+.project-preview{
+    position:relative;
 
-            border-right:
-                1px solid
-                rgba(255,255,255,0.08);
-        }
+    display:flex;
 
-        .stat:last-child {
-            border-right: none;
-        }
+    align-items:center;
 
-        .stat strong {
-            display: block;
+    justify-content:center;
 
-            font-size: 43px;
+    min-height:320px;
 
-            letter-spacing: -2px;
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-            margin-bottom: 7px;
-        }
+    border-radius:17px;
 
-        .stat span {
-            color: #555;
+    background:
+        #080808;
 
-            font-size: 10px;
+    overflow:hidden;
+}
 
-            letter-spacing: 2px;
+.preview-grid{
+    position:absolute;
 
-            text-transform: uppercase;
-        }
+    inset:0;
 
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        );
 
-        /* =========================================================
-           CONTACT
-        ========================================================= */
+    background-size:25px 25px;
 
-        .contact-card {
-            margin-top: 55px;
+    opacity:.7;
+}
 
-            padding: 60px;
+.preview-terminal{
+    position:relative;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.1);
+    width:78%;
 
-            border-radius: 22px;
+    padding:25px;
 
-            background:
-                radial-gradient(
-                    circle at 90% 10%,
-                    rgba(255,255,255,0.07),
-                    transparent 30%
-                ),
-                rgba(255,255,255,0.02);
-        }
+    border:
+        1px solid
+        rgba(255,255,255,.13);
 
-        .contact-card h3 {
-            font-size:
-                clamp(
-                    42px,
-                    7vw,
-                    85px
-                );
+    border-radius:12px;
 
-            line-height: 0.95;
+    background:
+        rgba(0,0,0,.88);
 
-            letter-spacing: -5px;
-        }
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.65);
 
-        .contact-card p {
-            margin-top: 22px;
+    font-family:
+        "Courier New",
+        monospace;
 
-            max-width: 650px;
+    font-size:11px;
 
-            color: #777;
+    color:#777;
 
-            line-height: 1.8;
+    transform:
+        perspective(800px)
+        rotateX(5deg)
+        rotateY(-7deg);
 
-            font-size: 15px;
-        }
+    transition:.5s;
+}
 
-        .contact-actions {
-            margin-top: 30px;
+.featured-project:hover
+.preview-terminal{
+    transform:
+        perspective(800px)
+        rotateX(0)
+        rotateY(0)
+        translateY(-5px);
+}
 
-            display: flex;
+.preview-top{
+    display:flex;
 
-            gap: 10px;
+    gap:5px;
 
-            flex-wrap: wrap;
-        }
+    margin-bottom:20px;
+}
 
+.preview-dot{
+    width:6px;
+    height:6px;
 
-        /* =========================================================
-           FOOTER
-        ========================================================= */
+    border-radius:50%;
 
-        footer {
-            max-width: 1300px;
+    background:#555;
+}
 
-            margin: auto;
+.preview-line{
+    margin:7px 0;
+}
 
-            padding:
-                50px 6%;
+.preview-highlight{
+    color:#ddd;
+}
 
-            border-top:
-                1px solid
-                rgba(255,255,255,0.07);
 
-            display: flex;
+/* =========================================================
+   PROJECT GRID
+========================================================= */
 
-            justify-content: space-between;
+.project-grid{
+    margin-top:20px;
 
-            align-items: center;
+    display:grid;
 
-            color: #555;
+    grid-template-columns:
+        repeat(2,1fr);
 
-            font-size: 11px;
-        }
+    gap:20px;
+}
 
-        .footer-logo {
-            color: white;
+.project-card{
+    position:relative;
 
-            font-weight: 900;
+    min-height:390px;
 
-            letter-spacing: 4px;
-        }
+    padding:32px;
 
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-        /* =========================================================
-           REVEAL
-        ========================================================= */
+    border-radius:18px;
 
-        .reveal {
-            opacity: 0;
+    overflow:hidden;
 
-            transform:
-                translateY(25px);
+    background:
+        rgba(255,255,255,.018);
 
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
-        }
+    transition:
+        transform .35s,
+        border .35s,
+        opacity .3s;
+}
 
-        .reveal.visible {
-            opacity: 1;
+.project-card:hover{
+    transform:translateY(-7px);
 
-            transform:
-                translateY(0);
-        }
+    border-color:
+        rgba(255,255,255,.2);
+}
 
+.project-card.hidden{
+    display:none;
+}
 
-        /* =========================================================
-           MOBILE NAVIGATION
-        ========================================================= */
+.project-card-top{
+    display:flex;
 
-        .mobile-menu {
-            display: none;
+    justify-content:space-between;
 
-            position: fixed;
+    align-items:center;
+}
 
-            inset: 0;
+.project-number{
+    color:#555;
 
-            z-index: 900;
+    font-family:
+        "Courier New",
+        monospace;
 
-            background:
-                rgba(5,5,5,0.97);
+    font-size:10px;
 
-            backdrop-filter: blur(20px);
+    letter-spacing:2px;
+}
 
-            padding:
-                120px 8% 50px;
-        }
+.project-status{
+    padding:6px 9px;
 
-        .mobile-menu.active {
-            display: block;
-        }
+    color:#777;
 
-        .mobile-menu a {
-            display: block;
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-            padding: 18px 0;
+    border-radius:20px;
 
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.07);
+    font-size:9px;
 
-            color: #aaa;
+    text-transform:uppercase;
 
-            font-size: 28px;
+    letter-spacing:1px;
+}
 
-            letter-spacing: -1px;
-        }
+.project-card h3{
+    margin-top:70px;
 
-        .mobile-menu a:hover {
-            color: white;
-        }
+    font-size:30px;
 
+    letter-spacing:-2px;
+}
 
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
+.project-card-description{
+    margin-top:13px;
 
-        @media (max-width: 900px) {
+    color:#6f6f6f;
 
-            .nav-links,
-            .nav-contact {
-                display: none;
-            }
+    font-size:13px;
 
-            .menu-button {
-                display: block;
-            }
+    line-height:1.75;
+}
 
-            .hero {
-                grid-template-columns: 1fr;
+.project-card-tech{
+    margin-top:20px;
 
-                padding-top: 145px;
-            }
+    display:flex;
 
-            .terminal {
-                transform: none;
-            }
+    flex-wrap:wrap;
 
-            .about-layout {
-                grid-template-columns: 1fr;
-            }
+    gap:7px;
+}
 
-            .principles,
-            .skill-groups {
-                grid-template-columns: 1fr;
-            }
+.project-card-tech span{
+    padding:7px 9px;
 
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
+    color:#666;
 
-            .stats {
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
+    font-size:9px;
 
-            .stat {
-                border-bottom:
-                    1px solid
-                    rgba(255,255,255,0.08);
-            }
-        }
+    border:
+        1px solid
+        rgba(255,255,255,.07);
 
+    border-radius:4px;
+}
 
-        @media (max-width: 600px) {
+.project-card-actions{
+    position:absolute;
 
-            header {
-                padding:
-                    16px 5%;
-            }
+    left:32px;
+    bottom:30px;
 
-            section {
-                padding:
-                    90px 5%;
-            }
+    display:flex;
 
-            .hero {
-                padding:
-                    130px 5% 80px;
-            }
+    gap:8px;
+}
 
-            .hero-title {
-                letter-spacing: -6px;
-            }
+.project-card-actions a{
+    padding:9px 12px;
 
-            .hero-description {
-                font-size: 15px;
-            }
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-            .terminal-body {
-                min-height: 340px;
+    border-radius:6px;
 
-                padding: 20px;
+    color:#888;
 
-                font-size: 11px;
-            }
+    font-size:10px;
 
-            .about-main-card {
-                padding: 28px;
-            }
+    transition:.3s;
+}
 
-            .project {
-                padding: 27px;
+.project-card-actions a:hover{
+    background:#fff;
 
-                min-height: 430px;
-            }
+    color:#000;
+}
 
-            .project-actions {
-                left: 27px;
-                bottom: 27px;
-            }
 
-            .contact-card {
-                padding: 35px 25px;
-            }
+/* =========================================================
+   FUTURE PROJECT
+========================================================= */
 
-            .contact-card h3 {
-                letter-spacing: -3px;
-            }
+.future-project{
+    min-height:390px;
 
-            .stats {
-                padding:
-                    0 5%;
-            }
+    display:flex;
 
-            .stat {
-                padding:
-                    30px 15px;
-            }
+    flex-direction:column;
 
-            .stat strong {
-                font-size: 32px;
-            }
+    justify-content:center;
 
-            footer {
-                padding:
-                    40px 5%;
+    align-items:center;
 
-                flex-direction: column;
+    text-align:center;
+}
 
-                align-items: flex-start;
+.future-icon{
+    width:65px;
+    height:65px;
 
-                gap: 15px;
-            }
-        }
+    display:grid;
 
-    </style>
+    place-items:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:50%;
+
+    color:#777;
+
+    font-size:25px;
+
+    margin-bottom:20px;
+
+    transition:.3s;
+}
+
+.future-project:hover .future-icon{
+    transform:rotate(90deg);
+
+    background:#fff;
+
+    color:#000;
+}
+
+.future-project h3{
+    margin-top:0;
+
+    font-size:27px;
+}
+
+.future-project p{
+    max-width:400px;
+
+    margin-top:12px;
+
+    color:#666;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   PROJECT STATS
+========================================================= */
+
+.project-stats{
+    margin-top:20px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    overflow:hidden;
+}
+
+.project-stat{
+    padding:27px 20px;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.015);
+}
+
+.project-stat:last-child{
+    border-right:none;
+}
+
+.project-stat strong{
+    display:block;
+
+    font-size:27px;
+
+    margin-bottom:5px;
+}
+
+.project-stat span{
+    color:#555;
+
+    font-size:9px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.timeline{
+    margin-top:60px;
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.12);
+
+    padding-left:38px;
+}
+
+.timeline-item{
+    position:relative;
+
+    padding-bottom:60px;
+}
+
+.timeline-item:last-child{
+    padding-bottom:0;
+}
+
+.timeline-item::before{
+    content:"";
+
+    position:absolute;
+
+    left:-44px;
+
+    top:4px;
+
+    width:11px;
+    height:11px;
+
+    border:
+        1px solid
+        #fff;
+
+    border-radius:50%;
+
+    background:#050505;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,255,255,.25);
+}
+
+.timeline-label{
+    color:#555;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:11px;
+}
+
+.timeline-item h3{
+    font-size:24px;
+
+    margin-bottom:10px;
+}
+
+.timeline-item p{
+    color:#777;
+
+    max-width:680px;
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    max-width:1300px;
+
+    margin:20px auto;
+
+    padding:0 6%;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+}
+
+.stat{
+    padding:40px 25px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.stat:last-child{
+    border-right:none;
+}
+
+.stat strong{
+    display:block;
+
+    font-size:43px;
+
+    letter-spacing:-2px;
+
+    margin-bottom:7px;
+}
+
+.stat span{
+    color:#555;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-card{
+    margin-top:55px;
+
+    padding:60px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:22px;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(255,255,255,.07),
+            transparent 30%
+        ),
+        rgba(255,255,255,.02);
+}
+
+.contact-card h3{
+    font-size:
+        clamp(42px,7vw,85px);
+
+    line-height:.95;
+
+    letter-spacing:-5px;
+}
+
+.contact-card p{
+    margin-top:22px;
+
+    max-width:650px;
+
+    color:#777;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.contact-actions{
+    margin-top:30px;
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:
+        50px 6%;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:#555;
+
+    font-size:11px;
+}
+
+.footer-logo{
+    color:white;
+
+    font-weight:900;
+
+    letter-spacing:4px;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links,
+    .nav-contact{
+        display:none;
+    }
+
+    .menu-button{
+        display:block;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+
+        padding-top:145px;
+    }
+
+    .terminal{
+        transform:none;
+    }
+
+    .about-layout{
+        grid-template-columns:1fr;
+    }
+
+    .principles,
+    .skill-groups{
+        grid-template-columns:1fr;
+    }
+
+    .featured-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .project-stat:nth-child(2){
+        border-right:none;
+    }
+
+    .project-stat:nth-child(-n+2){
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.08);
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stat{
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.08);
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    header{
+        padding:16px 5%;
+    }
+
+    section{
+        padding:90px 5%;
+    }
+
+    .hero{
+        padding:
+            130px 5%
+            80px;
+    }
+
+    .hero-title{
+        letter-spacing:-6px;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .terminal-body{
+        min-height:340px;
+
+        padding:20px;
+
+        font-size:11px;
+    }
+
+    .about-main-card{
+        padding:28px;
+    }
+
+    .featured-project{
+        padding:27px;
+
+        min-height:auto;
+    }
+
+    .featured-project h3{
+        letter-spacing:-3px;
+    }
+
+    .project-preview{
+        min-height:260px;
+
+        margin-top:15px;
+    }
+
+    .preview-terminal{
+        width:85%;
+
+        padding:18px;
+
+        font-size:9px;
+    }
+
+    .project-card{
+        padding:27px;
+
+        min-height:400px;
+    }
+
+    .project-card-actions{
+        left:27px;
+        bottom:27px;
+    }
+
+    .project-stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .contact-card{
+        padding:35px 25px;
+    }
+
+    .contact-card h3{
+        letter-spacing:-3px;
+    }
+
+    .stats{
+        padding:0 5%;
+    }
+
+    .stat{
+        padding:30px 15px;
+    }
+
+    .stat strong{
+        font-size:32px;
+    }
+
+    footer{
+        padding:
+            40px 5%;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+    }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- =========================================================
-         BACKGROUND
-    ========================================================= -->
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
 
-    <div class="background">
-        <div class="grid"></div>
-        <div class="glow one"></div>
-        <div class="glow two"></div>
-    </div>
+<div class="background">
 
+    <div class="grid"></div>
 
-    <!-- =========================================================
-         NAVIGATION
-    ========================================================= -->
+    <div class="glow one"></div>
 
-    <header>
+    <div class="glow two"></div>
 
-        <nav>
+</div>
 
-            <a
-                href="#home"
-                class="logo">
-                HADI<span class="logo-dot">.</span>
-            </a>
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-            <ul class="nav-links">
+<header>
 
-                <li>
-                    <a href="#about">
-                        About
-                    </a>
-                </li>
+<nav>
 
-                <li>
-                    <a href="#skills">
-                        Skills
-                    </a>
-                </li>
+<a href="#home" class="logo">
+    HADI<span class="logo-dot">.</span>
+</a>
 
-                <li>
-                    <a href="#projects">
-                        Projects
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#journey">
-                        Journey
-                    </a>
-                </li>
+<ul class="nav-links">
 
-                <li>
-                    <a
-                        href="#contact"
-                        class="nav-contact">
-                        Contact
-                    </a>
-                </li>
+<li>
+    <a href="#about">About</a>
+</li>
 
-            </ul>
+<li>
+    <a href="#skills">Skills</a>
+</li>
 
+<li>
+    <a href="#projects">Projects</a>
+</li>
 
-            <button
-                class="menu-button"
-                id="menuButton"
-                aria-label="Open menu">
-                ☰
-            </button>
+<li>
+    <a href="#journey">Journey</a>
+</li>
 
-        </nav>
+<li>
+    <a href="#contact" class="nav-contact">
+        Contact
+    </a>
+</li>
 
-    </header>
+</ul>
 
 
-    <!-- =========================================================
-         MOBILE MENU
-    ========================================================= -->
+<button
+    class="menu-button"
+    id="menuButton"
+    aria-label="Open menu">
 
-    <div
-        class="mobile-menu"
-        id="mobileMenu">
+    ☰
 
-        <a href="#about">
-            About
-        </a>
+</button>
 
-        <a href="#skills">
-            Skills
-        </a>
+</nav>
 
-        <a href="#projects">
-            Projects
-        </a>
+</header>
 
-        <a href="#journey">
-            Journey
-        </a>
 
-        <a href="#contact">
-            Contact
-        </a>
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
 
-    </div>
+<div
+    class="mobile-menu"
+    id="mobileMenu">
 
+<a href="#about">
+    About
+</a>
 
-    <!-- =========================================================
-         HERO
-    ========================================================= -->
+<a href="#skills">
+    Skills
+</a>
 
-    <main>
+<a href="#projects">
+    Projects
+</a>
 
-        <section
-            class="hero"
-            id="home">
+<a href="#journey">
+    Journey
+</a>
 
+<a href="#contact">
+    Contact
+</a>
 
-            <div class="hero-left reveal">
+</div>
 
-                <div class="availability">
 
-                    <span class="availability-dot"></span>
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-                    Building • Learning • Creating
+<main>
 
-                </div>
 
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-                <h1 class="hero-title">
+<section
+    class="hero"
+    id="home">
 
-                    HA<span class="outline">DI</span>
 
-                </h1>
+<div class="hero-left reveal">
 
 
-                <div class="hero-role">
-                    developer & technology enthusiast
-                </div>
+<div class="availability">
 
+<span class="availability-dot"></span>
 
-                <p class="hero-description">
+Building • Learning • Creating
 
-                    I build digital experiences, experiment with
-                    technology and turn ideas into real projects.
+</div>
 
-                    My goal is simple:
-                    <strong>learn, build and improve.</strong>
 
-                </p>
+<h1 class="hero-title">
 
+HA<span class="outline">DI</span>
 
-                <div class="hero-actions">
+</h1>
 
-                    <a
-                        href="#projects"
-                        class="button button-primary">
 
-                        Explore Projects →
+<div class="hero-role">
 
-                    </a>
+developer & technology enthusiast
 
+</div>
 
-                    <a
-                        href="https://github.com/hadi-root"
-                        target="_blank"
-                        class="button button-secondary">
 
-                        GitHub ↗
+<p class="hero-description">
 
-                    </a>
+I build digital experiences, experiment with
+technology and turn ideas into real projects.
 
-                </div>
+My goal is simple:
+<strong>learn, build and improve.</strong>
 
-            </div>
+</p>
 
 
-            <!-- TERMINAL -->
+<div class="hero-actions">
 
-            <div class="terminal reveal">
+<a
+    href="#projects"
+    class="button button-primary">
 
-                <div class="terminal-top">
+    Explore Projects →
 
-                    <span class="terminal-dot"></span>
-                    <span class="terminal-dot"></span>
-                    <span class="terminal-dot"></span>
+</a>
 
-                    <span class="terminal-name">
-                        hadi@portfolio:~
-                    </span>
 
-                </div>
+<a
+    href="https://github.com/hadi-root"
+    target="_blank"
+    rel="noopener"
+    class="button button-secondary">
 
+    GitHub ↗
 
-                <div class="terminal-body">
+</a>
 
-                    <span class="terminal-line">
+</div>
 
-                        <span class="terminal-prompt">
-                            hadi@portfolio
-                        </span>:~$
 
-                        <span class="terminal-command">
-                            whoami
-                        </span>
+</div>
 
-                    </span>
 
+<!-- TERMINAL -->
 
-                    <span class="terminal-line terminal-value">
-                        HADI
-                    </span>
+<div class="terminal reveal">
 
+<div class="terminal-top">
 
-                    <br>
+<span class="terminal-dot"></span>
+<span class="terminal-dot"></span>
+<span class="terminal-dot"></span>
 
+<span class="terminal-name">
+    hadi@portfolio:~
+</span>
 
-                    <span class="terminal-line">
+</div>
 
-                        <span class="terminal-prompt">
-                            hadi@portfolio
-                        </span>:~$
 
-                        <span class="terminal-command">
-                            role
-                        </span>
+<div class="terminal-body">
 
-                    </span>
 
+<span class="terminal-line">
 
-                    <span class="terminal-line terminal-value">
-                        Developer & Technology Enthusiast
-                    </span>
+<span class="terminal-prompt">
+    hadi@portfolio
+</span>:~$
 
+<span class="terminal-command">
+    whoami
+</span>
 
-                    <br>
+</span>
 
 
-                    <span class="terminal-line">
+<span class="terminal-line terminal-value">
+    HADI
+</span>
 
-                        <span class="terminal-prompt">
-                            hadi@portfolio
-                        </span>:~$
 
-                        <span class="terminal-command">
-                            focus
-                        </span>
+<br>
 
-                    </span>
 
+<span class="terminal-line">
 
-                    <span class="terminal-line terminal-value">
-                        Web • Software • Technology
-                    </span>
+<span class="terminal-prompt">
+    hadi@portfolio
+</span>:~$
 
+<span class="terminal-command">
+    role
+</span>
 
-                    <br>
+</span>
 
 
-                    <span class="terminal-line">
+<span class="terminal-line terminal-value">
+    Developer & Technology Enthusiast
+</span>
 
-                        <span class="terminal-prompt">
-                            hadi@portfolio
-                        </span>:~$
 
-                        <span class="terminal-command">
-                            mindset
-                        </span>
+<br>
 
-                    </span>
 
+<span class="terminal-line">
 
-                    <span class="terminal-line terminal-value">
-                        Learn → Build → Improve
-                    </span>
+<span class="terminal-prompt">
+    hadi@portfolio
+</span>:~$
 
+<span class="terminal-command">
+    focus
+</span>
 
-                    <br>
+</span>
 
 
-                    <span class="terminal-line">
+<span class="terminal-line terminal-value">
+    Web • Software • Technology
+</span>
 
-                        <span class="terminal-prompt">
-                            hadi@portfolio
-                        </span>:~$
 
-                        <span class="terminal-command">
-                            current_project
-                        </span>
+<br>
 
-                    </span>
 
+<span class="terminal-line">
 
-                    <span class="terminal-line terminal-value">
-                        Root Terminal Portal
-                    </span>
+<span class="terminal-prompt">
+    hadi@portfolio
+</span>:~$
 
+<span class="terminal-command">
+    mindset
+</span>
 
-                    <br>
+</span>
 
 
-                    <span class="terminal-line">
+<span class="terminal-line terminal-value">
+    Learn → Build → Improve
+</span>
 
-                        <span class="terminal-prompt">
-                            hadi@portfolio
-                        </span>:~$
 
-                        <span class="cursor"></span>
+<br>
 
-                    </span>
 
-                </div>
+<span class="terminal-line">
 
-            </div>
+<span class="terminal-prompt">
+    hadi@portfolio
+</span>:~$
 
-        </section>
+<span class="terminal-command">
+    current_project
+</span>
 
+</span>
 
-        <!-- =====================================================
-             ABOUT
-        ====================================================== -->
 
-        <section id="about">
+<span class="terminal-line terminal-value">
+    Root Terminal Portal
+</span>
 
-            <div class="section-header reveal">
 
-                <div class="eyebrow">
-                    01 — About
-                </div>
+<br>
 
-                <h2 class="section-title">
-                    More than<br>
-                    just code.
-                </h2>
 
-                <p class="section-description">
+<span class="terminal-line">
 
-                    I am HADI — a developer and technology enthusiast
-                    exploring how ideas can become useful digital
-                    experiences.
+<span class="terminal-prompt">
+    hadi@portfolio
+</span>:~$
 
-                </p>
+<span class="cursor"></span>
 
-            </div>
+</span>
 
 
-            <div class="about-layout">
+</div>
 
+</div>
 
-                <div class="about-main-card reveal">
+</section>
 
-                    <h3>
-                        Building ideas into reality.
-                    </h3>
 
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
-                    <p>
-                        I enjoy taking an idea, understanding the
-                        problem behind it and turning it into something
-                        real.
-                    </p>
+<section id="about">
 
+<div class="section-header reveal">
 
-                    <p>
-                        My journey is driven by curiosity. Every
-                        project is an opportunity to learn something
-                        new, solve problems and become better at
-                        building technology.
-                    </p>
+<div class="eyebrow">
+    01 — About
+</div>
 
+<h2 class="section-title">
+    More than<br>
+    just code.
+</h2>
 
-                    <p>
-                        I am interested in software development,
-                        web development, applications, artificial
-                        intelligence and emerging technologies.
-                    </p>
+<p class="section-description">
 
-                </div>
+I am HADI — a developer and technology enthusiast
+exploring how ideas can become useful digital
+experiences.
 
+</p>
 
-                <div class="about-right">
+</div>
 
 
-                    <div class="about-mini-card reveal">
+<div class="about-layout">
 
-                        <div class="mini-number">
-                            01
-                        </div>
 
-                        <h4>
-                            Curious
-                        </h4>
+<div class="about-main-card reveal">
 
-                        <p>
-                            Always exploring how technology works
-                            and what can be built with it.
-                        </p>
+<h3>
+    Building ideas into reality.
+</h3>
 
-                    </div>
+<p>
+    I enjoy taking an idea, understanding the
+    problem behind it and turning it into something
+    real.
+</p>
 
+<p>
+    My journey is driven by curiosity. Every
+    project is an opportunity to learn something
+    new, solve problems and become better at
+    building technology.
+</p>
 
-                    <div class="about-mini-card reveal">
+<p>
+    I am interested in software development,
+    web development, applications, artificial
+    intelligence and emerging technologies.
+</p>
 
-                        <div class="mini-number">
-                            02
-                        </div>
+</div>
 
-                        <h4>
-                            Project Driven
-                        </h4>
 
-                        <p>
-                            Learning becomes more meaningful when
-                            it turns into something real.
-                        </p>
+<div class="about-right">
 
-                    </div>
 
+<div class="about-mini-card reveal">
 
-                    <div class="about-mini-card reveal">
+<div class="mini-number">
+    01
+</div>
 
-                        <div class="mini-number">
-                            03
-                        </div>
+<h4>
+    Curious
+</h4>
 
-                        <h4>
-                            Future Focused
-                        </h4>
+<p>
+    Always exploring how technology works
+    and what can be built with it.
+</p>
 
-                        <p>
-                            Continuously learning technologies that
-                            can shape the future.
-                        </p>
+</div>
 
-                    </div>
 
-                </div>
+<div class="about-mini-card reveal">
 
-            </div>
+<div class="mini-number">
+    02
+</div>
 
-        </section>
+<h4>
+    Project Driven
+</h4>
 
+<p>
+    Learning becomes more meaningful when
+    it turns into something real.
+</p>
 
-        <!-- =====================================================
-             PRINCIPLES
-        ====================================================== -->
+</div>
 
-        <section>
 
-            <div class="section-header reveal">
+<div class="about-mini-card reveal">
 
-                <div class="eyebrow">
-                    02 — Mindset
-                </div>
+<div class="mini-number">
+    03
+</div>
 
-                <h2 class="section-title">
-                    How I build.
-                </h2>
+<h4>
+    Future Focused
+</h4>
 
-            </div>
+<p>
+    Continuously learning technologies that
+    can shape the future.
+</p>
 
+</div>
 
-            <div class="principles">
 
+</div>
 
-                <div class="principle reveal">
+</div>
 
-                    <div class="principle-number">
-                        01
-                    </div>
+</section>
 
-                    <h3>
-                        Learn
-                    </h3>
 
-                    <p>
-                        Understand the technology and the problem
-                        before trying to solve it.
-                    </p>
+<!-- =========================================================
+     PRINCIPLES
+========================================================= -->
 
-                </div>
+<section>
 
+<div class="section-header reveal">
 
-                <div class="principle reveal">
+<div class="eyebrow">
+    02 — Mindset
+</div>
 
-                    <div class="principle-number">
-                        02
-                    </div>
+<h2 class="section-title">
+    How I build.
+</h2>
 
-                    <h3>
-                        Build
-                    </h3>
+</div>
 
-                    <p>
-                        Turn concepts into working projects and
-                        practical experiences.
-                    </p>
 
-                </div>
+<div class="principles">
 
 
-                <div class="principle reveal">
+<div class="principle reveal">
 
-                    <div class="principle-number">
-                        03
-                    </div>
+<div class="principle-number">
+    01
+</div>
 
-                    <h3>
-                        Improve
-                    </h3>
+<h3>
+    Learn
+</h3>
 
-                    <p>
-                        Keep testing, fixing, experimenting and
-                        improving every version.
-                    </p>
+<p>
+    Understand the technology and the problem
+    before trying to solve it.
+</p>
 
-                </div>
+</div>
 
 
-            </div>
+<div class="principle reveal">
 
-        </section>
+<div class="principle-number">
+    02
+</div>
 
+<h3>
+    Build
+</h3>
 
-        <!-- =====================================================
-             SKILLS
-        ====================================================== -->
+<p>
+    Turn concepts into working projects and
+    practical experiences.
+</p>
 
-        <section id="skills">
+</div>
 
-            <div class="section-header reveal">
 
-                <div class="eyebrow">
-                    03 — Skills
-                </div>
+<div class="principle reveal">
 
-                <h2 class="section-title">
-                    Tools I explore.
-                </h2>
+<div class="principle-number">
+    03
+</div>
 
-                <p class="section-description">
+<h3>
+    Improve
+</h3>
 
-                    A growing collection of technologies and tools
-                    I explore while learning and building.
+<p>
+    Keep testing, fixing, experimenting and
+    improving every version.
+</p>
 
-                </p>
+</div>
 
-            </div>
 
+</div>
 
-            <div class="skill-groups">
+</section>
 
 
-                <div class="skill-group reveal">
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 
-                    <div class="skill-group-title">
-                        Web
-                    </div>
+<section id="skills">
 
-                    <div class="skills">
+<div class="section-header reveal">
 
-                        <span class="skill">
-                            HTML
-                        </span>
+<div class="eyebrow">
+    03 — Skills
+</div>
 
-                        <span class="skill">
-                            CSS
-                        </span>
+<h2 class="section-title">
+    Tools I explore.
+</h2>
 
-                        <span class="skill">
-                            JavaScript
-                        </span>
+<p class="section-description">
 
-                        <span class="skill">
-                            Responsive Design
-                        </span>
+A growing collection of technologies and tools
+I explore while learning and building.
 
-                        <span class="skill">
-                            UI Design
-                        </span>
+</p>
 
-                    </div>
+</div>
 
-                </div>
 
+<div class="skill-groups">
 
-                <div class="skill-group reveal">
 
-                    <div class="skill-group-title">
-                        Development
-                    </div>
+<div class="skill-group reveal">
 
-                    <div class="skills">
+<div class="skill-group-title">
+    Web
+</div>
 
-                        <span class="skill">
-                            Git
-                        </span>
+<div class="skills">
 
-                        <span class="skill">
-                            GitHub
-                        </span>
+<span class="skill">HTML</span>
+<span class="skill">CSS</span>
+<span class="skill">JavaScript</span>
+<span class="skill">Responsive Design</span>
+<span class="skill">UI Design</span>
 
-                        <span class="skill">
-                            Android
-                        </span>
+</div>
 
-                        <span class="skill">
-                            Firebase
-                        </span>
+</div>
 
-                        <span class="skill">
-                            Problem Solving
-                        </span>
 
-                    </div>
+<div class="skill-group reveal">
 
-                </div>
+<div class="skill-group-title">
+    Development
+</div>
 
+<div class="skills">
 
-                <div class="skill-group reveal">
+<span class="skill">Git</span>
+<span class="skill">GitHub</span>
+<span class="skill">Android</span>
+<span class="skill">Firebase</span>
+<span class="skill">Problem Solving</span>
 
-                    <div class="skill-group-title">
-                        Exploring
-                    </div>
+</div>
 
-                    <div class="skills">
+</div>
 
-                        <span class="skill">
-                            AI
-                        </span>
 
-                        <span class="skill">
-                            Software
-                        </span>
+<div class="skill-group reveal">
 
-                        <span class="skill">
-                            Automation
-                        </span>
+<div class="skill-group-title">
+    Exploring
+</div>
 
-                        <span class="skill">
-                            New Technologies
-                        </span>
+<div class="skills">
 
-                    </div>
+<span class="skill">AI</span>
+<span class="skill">Software</span>
+<span class="skill">Automation</span>
+<span class="skill">New Technologies</span>
 
-                </div>
+</div>
 
+</div>
 
-            </div>
 
-        </section>
+</div>
 
+</section>
 
-        <!-- =====================================================
-             PROJECTS
-        ====================================================== -->
 
-        <section id="projects">
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
 
-            <div class="section-header reveal">
+<section id="projects">
 
-                <div class="eyebrow">
-                    04 — Projects
-                </div>
 
-                <h2 class="section-title">
-                    Things I've built.
-                </h2>
+<div class="section-header reveal">
 
-                <p class="section-description">
+<div class="eyebrow">
+    04 — Projects
+</div>
 
-                    Real projects, experiments and ideas created
-                    while learning and exploring technology.
+<h2 class="section-title">
+    Things I've built.
+</h2>
 
-                </p>
+<p class="section-description">
 
-            </div>
+Real projects, experiments and ideas created
+while learning and exploring technology.
 
+</p>
 
-            <div class="project-grid">
+</div>
 
 
-                <!-- ROOT TERMINAL -->
+<!-- PROJECT TOOLBAR -->
 
-                <article class="project reveal">
+<div class="projects-toolbar reveal">
 
-                    <div class="project-top">
 
-                        <span class="project-number">
-                            PROJECT 01
-                        </span>
+<div class="project-filters">
 
-                        <span class="project-status">
-                            Live
-                        </span>
+<button
+    class="filter-button active"
+    data-filter="all">
 
-                    </div>
+    All
 
+</button>
 
-                    <h3>
-                        Root Terminal Portal
-                    </h3>
+<button
+    class="filter-button"
+    data-filter="web">
 
+    Web
 
-                    <p class="project-description">
+</button>
 
-                        A futuristic developer-focused web experience
-                        built around a terminal-inspired interface,
-                        modern design and interactive digital elements.
+<button
+    class="filter-button"
+    data-filter="app">
 
-                    </p>
+    Apps
 
+</button>
 
-                    <div class="project-tags">
+<button
+    class="filter-button"
+    data-filter="experiment">
 
-                        <span>
-                            HTML
-                        </span>
+    Experiments
 
-                        <span>
-                            CSS
-                        </span>
+</button>
 
-                        <span>
-                            JavaScript
-                        </span>
+</div>
 
-                        <span>
-                            Web
-                        </span>
 
-                    </div>
+<div class="project-count">
 
+01 FEATURED PROJECT
 
-                    <div class="project-actions">
+</div>
 
-                        <a
-                            href="https://root-terminal-hub.onrender.com/"
-                            target="_blank"
-                            class="project-action">
 
-                            Live Website ↗
+</div>
 
-                        </a>
 
+<!-- =========================================================
+     FEATURED ROOT TERMINAL PROJECT
+========================================================= -->
 
-                        <a
-                            href="https://github.com/hadi-root/root-terminal-portal"
-                            target="_blank"
-                            class="project-action">
+<article
+    class="featured-project reveal"
+    data-category="web">
 
-                            GitHub ↗
 
-                        </a>
+<div class="featured-grid">
 
-                    </div>
 
-                </article>
+<div class="featured-content">
 
 
-                <!-- FUTURE -->
+<div class="featured-label">
 
-                <article
-                    class="project future-project reveal">
+★ Featured Project
 
-                    <div class="future-icon">
-                        +
-                    </div>
+</div>
 
-                    <h3>
-                        Next Project
-                    </h3>
 
-                    <p class="project-description">
+<h3>
+    Root Terminal<br>
+    Portal
+</h3>
 
-                        A new idea is being explored.
 
-                        This space will become another project
-                        as the portfolio grows.
+<p class="featured-project-description">
 
-                    </p>
+A futuristic developer-focused web experience
+built around a terminal-inspired interface,
+modern visual design and interactive digital
+elements.
 
-                </article>
+The project represents the idea of building
+a digital identity around technology.
 
+</p>
 
-            </div>
 
-        </section>
+<div class="featured-tech">
 
+<span class="tech-badge">
+    HTML
+</span>
 
-        <!-- =====================================================
-             JOURNEY
-        ====================================================== -->
+<span class="tech-badge">
+    CSS
+</span>
 
-        <section id="journey">
+<span class="tech-badge">
+    JavaScript
+</span>
 
-            <div class="section-header reveal">
+<span class="tech-badge">
+    Responsive
+</span>
 
-                <div class="eyebrow">
-                    05 — Journey
-                </div>
+<span class="tech-badge">
+    Web
+</span>
 
-                <h2 class="section-title">
-                    Still becoming.
-                </h2>
+</div>
 
-                <p class="section-description">
 
-                    The journey is not about reaching a final
-                    destination. It is about continuously learning,
-                    building and improving.
+<div class="featured-actions">
 
-                </p>
+<a
+    href="https://root-terminal-hub.onrender.com/"
+    target="_blank"
+    rel="noopener"
+    class="button button-primary">
 
-            </div>
+    Open Live Website ↗
 
+</a>
 
-            <div class="timeline">
 
+<a
+    href="https://github.com/hadi-root/root-terminal-portal"
+    target="_blank"
+    rel="noopener"
+    class="button button-secondary">
 
-                <div class="timeline-item reveal">
+    View Repository ↗
 
-                    <div class="timeline-label">
-                        START
-                    </div>
+</a>
 
-                    <h3>
-                        Exploring Technology
-                    </h3>
+</div>
 
-                    <p>
-                        Started exploring computers, software and
-                        the possibilities of building things digitally.
-                    </p>
 
-                </div>
+</div>
 
 
-                <div class="timeline-item reveal">
+<!-- PROJECT PREVIEW -->
 
-                    <div class="timeline-label">
-                        BUILD
-                    </div>
+<div class="project-preview">
 
-                    <h3>
-                        Creating Projects
-                    </h3>
 
-                    <p>
-                        Moved from simply learning concepts to
-                        creating real websites and applications.
-                    </p>
+<div class="preview-grid"></div>
 
-                </div>
 
+<div class="preview-terminal">
 
-                <div class="timeline-item reveal">
 
-                    <div class="timeline-label">
-                        NOW
-                    </div>
+<div class="preview-top">
 
-                    <h3>
-                        Learning & Building
-                    </h3>
+<span class="preview-dot"></span>
+<span class="preview-dot"></span>
+<span class="preview-dot"></span>
 
-                    <p>
-                        Continuing to improve development skills,
-                        experiment with technologies and create
-                        better projects.
-                    </p>
+</div>
 
-                </div>
 
+<div class="preview-line">
 
-                <div class="timeline-item reveal">
+<span class="preview-highlight">
+    hadi@root
+</span>:~$ ls
 
-                    <div class="timeline-label">
-                        NEXT
-                    </div>
+</div>
 
-                    <h3>
-                        Bigger Ideas
-                    </h3>
 
-                    <p>
-                        Exploring more advanced software,
-                        engineering and technology projects.
-                    </p>
+<div class="preview-line">
+    index.html
+</div>
 
-                </div>
+<div class="preview-line">
+    styles.css
+</div>
 
+<div class="preview-line">
+    script.js
+</div>
 
-            </div>
 
-        </section>
+<br>
 
 
-        <!-- =====================================================
-             STATS
-        ====================================================== -->
+<div class="preview-line">
 
-        <div class="stats">
+<span class="preview-highlight">
+    hadi@root
+</span>:~$ ./launch
 
+</div>
 
-            <div class="stat reveal">
 
-                <strong>
-                    01+
-                </strong>
+<div class="preview-line">
 
-                <span>
-                    Live Project
-                </span>
+<span class="preview-highlight">
+    ROOT TERMINAL PORTAL
+</span>
 
-            </div>
+</div>
 
 
-            <div class="stat reveal">
+<div class="preview-line">
+    Initializing...
+</div>
 
-                <strong>
-                    12+
-                </strong>
 
-                <span>
-                    Technologies
-                </span>
+<div class="preview-line">
+    Loading interface...
+</div>
 
-            </div>
 
+<div class="preview-line">
 
-            <div class="stat reveal">
+<span class="preview-highlight">
+    System ready.
+</span>
 
-                <strong>
-                    ∞
-                </strong>
+</div>
 
-                <span>
-                    Ideas
-                </span>
 
-            </div>
+<br>
 
 
-            <div class="stat reveal">
+<div class="preview-line">
 
-                <strong>
-                    24/7
-                </strong>
+<span class="preview-highlight">
+    hadi@root
+</span>:~$
 
-                <span>
-                    Learning
-                </span>
+<span class="cursor"></span>
 
-            </div>
+</div>
 
 
-        </div>
+</div>
 
+</div>
 
-        <!-- =====================================================
-             CONTACT
-        ====================================================== -->
 
-        <section id="contact">
+</div>
 
-            <div class="eyebrow reveal">
-                06 — Contact
-            </div>
+</article>
 
 
-            <div class="contact-card reveal">
+<!-- =========================================================
+     SECONDARY PROJECT GRID
+========================================================= -->
 
-                <h3>
-                    Let's build<br>
-                    something.
-                </h3>
+<div class="project-grid">
 
 
-                <p>
+<!-- EXPERIMENT PROJECT -->
 
-                    Interested in my projects or want to explore
-                    what comes next?
+<article
+    class="project-card reveal"
+    data-category="experiment">
 
-                    Find my work and development journey on GitHub.
 
-                </p>
+<div class="project-card-top">
 
+<span class="project-number">
+    PROJECT 02
+</span>
 
-                <div class="contact-actions">
+<span class="project-status">
+    Experiment
+</span>
 
+</div>
 
-                    <a
-                        href="https://github.com/hadi-root"
-                        target="_blank"
-                        class="button button-primary">
 
-                        GitHub ↗
+<h3>
+    Web Experiments
+</h3>
 
-                    </a>
 
+<p class="project-card-description">
 
-                    <a
-                        href="https://root-terminal-hub.onrender.com/"
-                        target="_blank"
-                        class="button button-secondary">
+A collection of small interface experiments,
+animations and ideas created while learning
+modern web development.
 
-                        Root Terminal ↗
+</p>
 
-                    </a>
 
+<div class="project-card-tech">
 
-                </div>
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+<span>UI</span>
 
-            </div>
+</div>
 
-        </section>
 
-    </main>
+<div class="project-card-actions">
 
+<a href="#contact">
+    Coming Soon
+</a>
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
+</div>
 
-    <footer>
+</article>
 
-        <div class="footer-logo">
-            HADI.
-        </div>
 
-        <div>
-            Building Code. Creating Tomorrow.
-        </div>
+<!-- APP PROJECT -->
 
-        <div>
-            © 2026 HADI
-        </div>
+<article
+    class="project-card reveal"
+    data-category="app">
 
-    </footer>
 
+<div class="project-card-top">
 
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================= -->
+<span class="project-number">
+    PROJECT 03
+</span>
 
-    <script>
+<span class="project-status">
+    Planned
+</span>
 
-        /* =====================================================
-           MOBILE MENU
-        ===================================================== */
+</div>
 
-        const menuButton =
-            document.getElementById("menuButton");
 
-        const mobileMenu =
-            document.getElementById("mobileMenu");
+<h3>
+    Future App
+</h3>
 
 
-        menuButton.addEventListener(
+<p class="project-card-description">
+
+A future application project currently being
+explored. This space will be updated when the
+next major build begins.
+
+</p>
+
+
+<div class="project-card-tech">
+
+<span>Android</span>
+<span>Firebase</span>
+<span>Mobile</span>
+<span>Software</span>
+
+</div>
+
+
+<div class="project-card-actions">
+
+<a href="#contact">
+    In Development
+</a>
+
+</div>
+
+</article>
+
+
+<!-- FUTURE PROJECT -->
+
+<article
+    class="project-card future-project reveal"
+    data-category="web">
+
+
+<div class="future-icon">
+    +
+</div>
+
+
+<h3>
+    Next Project
+</h3>
+
+
+<p>
+
+The next idea is waiting to be built.
+
+This card will become a real project as the
+portfolio grows.
+
+</p>
+
+
+</article>
+
+
+</div>
+
+
+<!-- =========================================================
+     PROJECT STATISTICS
+========================================================= -->
+
+<div class="project-stats reveal">
+
+
+<div class="project-stat">
+
+<strong>
+    01
+</strong>
+
+<span>
+    Live Project
+</span>
+
+</div>
+
+
+<div class="project-stat">
+
+<strong>
+    03
+</strong>
+
+<span>
+    Project Concepts
+</span>
+
+</div>
+
+
+<div class="project-stat">
+
+<strong>
+    05+
+</strong>
+
+<span>
+    Technologies
+</span>
+
+</div>
+
+
+<div class="project-stat">
+
+<strong>
+    ∞
+</strong>
+
+<span>
+    Future Ideas
+</span>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =========================================================
+     JOURNEY
+========================================================= -->
+
+<section id="journey">
+
+
+<div class="section-header reveal">
+
+<div class="eyebrow">
+    05 — Journey
+</div>
+
+<h2 class="section-title">
+    Still becoming.
+</h2>
+
+<p class="section-description">
+
+The journey is not about reaching a final
+destination. It is about continuously learning,
+building and improving.
+
+</p>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-label">
+    START
+</div>
+
+<h3>
+    Exploring Technology
+</h3>
+
+<p>
+    Started exploring computers, software and
+    the possibilities of building things digitally.
+</p>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-label">
+    BUILD
+</div>
+
+<h3>
+    Creating Projects
+</h3>
+
+<p>
+    Moved from simply learning concepts to
+    creating real websites and applications.
+</p>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-label">
+    NOW
+</div>
+
+<h3>
+    Learning & Building
+</h3>
+
+<p>
+    Continuing to improve development skills,
+    experiment with technologies and create
+    better projects.
+</p>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-label">
+    NEXT
+</div>
+
+<h3>
+    Bigger Ideas
+</h3>
+
+<p>
+    Exploring more advanced software,
+    engineering and technology projects.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     GENERAL STATS
+========================================================= -->
+
+<div class="stats">
+
+
+<div class="stat reveal">
+
+<strong>
+    01+
+</strong>
+
+<span>
+    Live Project
+</span>
+
+</div>
+
+
+<div class="stat reveal">
+
+<strong>
+    12+
+</strong>
+
+<span>
+    Technologies
+</span>
+
+</div>
+
+
+<div class="stat reveal">
+
+<strong>
+    ∞
+</strong>
+
+<span>
+    Ideas
+</span>
+
+</div>
+
+
+<div class="stat reveal">
+
+<strong>
+    24/7
+</strong>
+
+<span>
+    Learning
+</span>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact">
+
+
+<div class="eyebrow reveal">
+    06 — Contact
+</div>
+
+
+<div class="contact-card reveal">
+
+
+<h3>
+    Let's build<br>
+    something.
+</h3>
+
+
+<p>
+
+Interested in my projects or want to explore
+what comes next?
+
+Find my work and development journey on GitHub.
+
+</p>
+
+
+<div class="contact-actions">
+
+
+<a
+    href="https://github.com/hadi-root"
+    target="_blank"
+    rel="noopener"
+    class="button button-primary">
+
+    GitHub ↗
+
+</a>
+
+
+<a
+    href="https://root-terminal-hub.onrender.com/"
+    target="_blank"
+    rel="noopener"
+    class="button button-secondary">
+
+    Root Terminal ↗
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="footer-logo">
+    HADI.
+</div>
+
+<div>
+    Building Code. Creating Tomorrow.
+</div>
+
+<div>
+    © 2026 HADI
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+menuButton.addEventListener(
+    "click",
+    () => {
+
+        mobileMenu.classList.toggle("active");
+
+        document.body.classList.toggle("menu-open");
+
+        menuButton.textContent =
+            mobileMenu.classList.contains("active")
+                ? "×"
+                : "☰";
+
+    }
+);
+
+
+document
+    .querySelectorAll(".mobile-menu a")
+    .forEach(link => {
+
+        link.addEventListener(
             "click",
             () => {
 
-                mobileMenu.classList.toggle("active");
+                mobileMenu.classList.remove("active");
 
-                document.body.classList.toggle("menu-open");
+                document.body.classList.remove("menu-open");
 
-                menuButton.textContent =
-                    mobileMenu.classList.contains("active")
-                        ? "×"
-                        : "☰";
+                menuButton.textContent = "☰";
 
             }
         );
 
+    });
 
-        document
-            .querySelectorAll(".mobile-menu a")
-            .forEach(link => {
 
-                link.addEventListener(
-                    "click",
-                    () => {
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-                        mobileMenu.classList.remove("active");
+const observer =
+    new IntersectionObserver(
+        entries => {
 
-                        document.body.classList.remove("menu-open");
+            entries.forEach(entry => {
 
-                        menuButton.textContent = "☰";
+                if(entry.isIntersecting){
 
-                    }
-                );
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
 
             });
 
+        },
+        {
+            threshold:.12
+        }
+    );
 
-        /* =====================================================
-           SCROLL REVEAL
-        ===================================================== */
 
-        const observer =
-            new IntersectionObserver(
-                entries => {
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
 
-                    entries.forEach(entry => {
+        observer.observe(element);
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+    });
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
 
-                            observer.unobserve(
-                                entry.target
-                            );
+/* =========================================================
+   PROJECT FILTER
+========================================================= */
 
-                        }
+const filterButtons =
+    document.querySelectorAll(
+        ".filter-button"
+    );
 
-                    });
+const projectCards =
+    document.querySelectorAll(
+        ".project-card"
+    );
 
-                },
-                {
-                    threshold: 0.12
+const featuredProject =
+    document.querySelector(
+        ".featured-project"
+    );
+
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const filter =
+                button.dataset.filter;
+
+
+            filterButtons.forEach(
+                item => {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
                 }
             );
 
 
-        document
-            .querySelectorAll(".reveal")
-            .forEach(element => {
+            button.classList.add(
+                "active"
+            );
 
-                observer.observe(element);
+
+            /* Featured project */
+
+            if(
+                filter === "all" ||
+                featuredProject.dataset.category === filter
+            ){
+
+                featuredProject.style.display =
+                    "block";
+
+            }else{
+
+                featuredProject.style.display =
+                    "none";
+
+            }
+
+
+            /* Other projects */
+
+            projectCards.forEach(card => {
+
+                const category =
+                    card.dataset.category;
+
+
+                if(
+                    filter === "all" ||
+                    category === filter
+                ){
+
+                    card.classList.remove(
+                        "hidden"
+                    );
+
+                }else{
+
+                    card.classList.add(
+                        "hidden"
+                    );
+
+                }
 
             });
 
+        }
+    );
 
-        /* =====================================================
-           ACTIVE NAVIGATION
-        ===================================================== */
-
-        const sections =
-            document.querySelectorAll(
-                "section[id]"
-            );
-
-        const navLinks =
-            document.querySelectorAll(
-                ".nav-links a"
-            );
+});
 
 
-        window.addEventListener(
-            "scroll",
-            () => {
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
 
-                let current = "";
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
 
-                sections.forEach(section => {
-
-                    const sectionTop =
-                        section.offsetTop - 160;
-
-                    if (
-                        window.scrollY >= sectionTop
-                    ) {
-
-                        current =
-                            section.getAttribute("id");
-
-                    }
-
-                });
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
 
 
-                navLinks.forEach(link => {
+window.addEventListener(
+    "scroll",
+    () => {
 
-                    link.style.color = "#888";
+        let current = "";
 
-                    if (
-                        link.getAttribute("href") ===
-                        "#" + current
-                    ) {
+        sections.forEach(section => {
 
-                        link.style.color = "#fff";
+            const sectionTop =
+                section.offsetTop - 160;
 
-                    }
 
-                });
+            if(
+                window.scrollY >= sectionTop
+            ){
+
+                current =
+                    section.getAttribute("id");
 
             }
-        );
+
+        });
 
 
-        /* =====================================================
-           TERMINAL TYPING EFFECT
-        ===================================================== */
+        navLinks.forEach(link => {
 
-        const terminalCommand =
-            document.querySelector(
-                ".terminal-command"
-            );
+            link.style.color = "#888";
 
 
-        /* Small entrance effect */
+            if(
+                link.getAttribute("href") ===
+                "#" + current
+            ){
 
-        window.addEventListener(
-            "load",
-            () => {
-
-                document.body.classList.add(
-                    "loaded"
-                );
+                link.style.color = "#fff";
 
             }
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        document.body.classList.add(
+            "loaded"
         );
 
-    </script>
+    }
+);
+
+</script>
 
 </body>
 </html>
