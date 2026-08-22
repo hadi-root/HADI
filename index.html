@@ -14,9 +14,8 @@
   <title>HADI — Developer Portfolio</title>
 
   <style>
-
     /* =====================================================
-       RESET
+       RESET & VARIABLES
     ===================================================== */
 
     * {
@@ -29,20 +28,25 @@
     :root {
       --bg: #050505;
       --bg-soft: #090909;
-      --card: #101010;
+      --card: #0d0d0d;
       --card-hover: #151515;
+
       --text: #f5f5f5;
       --muted: #999;
       --muted-dark: #666;
+
       --line: rgba(255,255,255,0.10);
-      --line-hover: rgba(255,255,255,0.22);
+      --line-hover: rgba(255,255,255,0.25);
+
       --white: #fff;
       --black: #000;
+
       --max-width: 1180px;
     }
 
     html {
       background: var(--bg);
+      overflow-x: hidden;
     }
 
     body {
@@ -50,9 +54,12 @@
         Arial,
         Helvetica,
         sans-serif;
+
       background: var(--bg);
       color: var(--text);
+
       line-height: 1.6;
+
       overflow-x: hidden;
     }
 
@@ -79,85 +86,216 @@
     }
 
     /* =====================================================
+       ANIMATED BACKGROUND
+    ===================================================== */
+
+    .background-glow {
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      z-index: -1;
+
+      overflow: hidden;
+    }
+
+    .background-glow::before,
+    .background-glow::after {
+      content: "";
+
+      position: absolute;
+
+      width: 380px;
+      height: 380px;
+
+      border-radius: 50%;
+
+      filter: blur(100px);
+
+      opacity: 0.08;
+
+      background: white;
+
+      animation:
+        floatingGlow 12s ease-in-out infinite alternate;
+    }
+
+    .background-glow::before {
+      top: 5%;
+      left: -180px;
+    }
+
+    .background-glow::after {
+      right: -180px;
+      top: 55%;
+
+      animation-delay: -5s;
+    }
+
+    @keyframes floatingGlow {
+      from {
+        transform:
+          translate3d(0,0,0)
+          scale(1);
+      }
+
+      to {
+        transform:
+          translate3d(100px,70px,0)
+          scale(1.25);
+      }
+    }
+
+    /* =====================================================
        HEADER
     ===================================================== */
 
     header {
       position: fixed;
+
       top: 0;
       left: 0;
+
       width: 100%;
+
       z-index: 1000;
 
       background:
-        rgba(5,5,5,0.82);
+        rgba(5,5,5,0.72);
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
 
       border-bottom:
-        1px solid var(--line);
+        1px solid transparent;
+
+      transition:
+        0.35s ease;
+    }
+
+    header.scrolled {
+      background:
+        rgba(5,5,5,0.92);
+
+      border-bottom-color:
+        var(--line);
     }
 
     .nav {
       width: min(92%, var(--max-width));
+
       height: 76px;
+
       margin: auto;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
     }
 
     .logo {
       font-size: 1.5rem;
+
       font-weight: 900;
+
       letter-spacing: 4px;
-      transition: 0.3s ease;
+
+      transition:
+        0.3s ease;
     }
 
     .logo:hover {
       opacity: 0.6;
+      transform: translateX(3px);
     }
 
     .nav-links {
       display: flex;
+
       gap: 30px;
+
       list-style: none;
     }
 
     .nav-links a {
+      position: relative;
+
       color: #aaa;
+
       font-size: 0.92rem;
-      transition: 0.3s ease;
+
+      transition:
+        color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -7px;
+
+      width: 0;
+      height: 1px;
+
+      background: white;
+
+      transition:
+        width 0.3s ease;
     }
 
     .nav-links a:hover {
       color: white;
     }
 
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
     .menu-btn {
       display: none;
 
       background: transparent;
-      border: 1px solid var(--line);
+
+      border:
+        1px solid var(--line);
 
       color: white;
 
-      padding: 8px 11px;
-      border-radius: 8px;
+      width: 42px;
+      height: 42px;
+
+      border-radius: 9px;
 
       cursor: pointer;
+
       font-size: 1.1rem;
+
+      transition:
+        0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background: white;
+      color: black;
     }
 
     /* =====================================================
-       GLOBAL SECTIONS
+       GLOBAL
     ===================================================== */
 
     section {
       width: min(92%, var(--max-width));
+
       margin: auto;
+
       padding: 110px 0;
     }
 
@@ -165,6 +303,7 @@
       color: #777;
 
       text-transform: uppercase;
+
       letter-spacing: 4px;
 
       font-size: 0.75rem;
@@ -196,43 +335,88 @@
     ===================================================== */
 
     .btn {
-      padding: 13px 20px;
+      position: relative;
+
+      overflow: hidden;
+
+      padding:
+        13px 20px;
 
       border-radius: 9px;
 
       border:
         1px solid var(--line);
 
-      transition: 0.3s ease;
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
 
       font-size: 0.9rem;
 
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
 
       cursor: pointer;
     }
 
+    .btn::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: -120%;
+
+      width: 80%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.35),
+          transparent
+        );
+
+      transform: skewX(-20deg);
+
+      transition:
+        left 0.6s ease;
+    }
+
+    .btn:hover::before {
+      left: 140%;
+    }
+
     .btn-primary {
       background: white;
+
       color: black;
+
       border-color: white;
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
+      transform:
+        translateY(-4px);
+
       background: #ddd;
     }
 
     .btn-secondary {
       color: white;
+
       background: #0c0c0c;
     }
 
     .btn-secondary:hover {
       background: #181818;
-      transform: translateY(-3px);
+
+      transform:
+        translateY(-4px);
     }
 
     /* =====================================================
@@ -243,9 +427,11 @@
       min-height: 100vh;
 
       width: min(92%, var(--max-width));
+
       margin: auto;
 
       display: flex;
+
       align-items: center;
 
       padding-top: 100px;
@@ -259,10 +445,13 @@
 
     .hero-tag {
       display: inline-flex;
+
       align-items: center;
+
       gap: 9px;
 
-      padding: 8px 13px;
+      padding:
+        8px 13px;
 
       border:
         1px solid var(--line);
@@ -277,6 +466,25 @@
 
       background:
         rgba(255,255,255,0.025);
+
+      animation:
+        heroTagIn 0.8s ease forwards;
+
+      opacity: 0;
+    }
+
+    @keyframes heroTagIn {
+      from {
+        opacity: 0;
+        transform:
+          translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
     }
 
     .status-dot {
@@ -289,6 +497,21 @@
 
       box-shadow:
         0 0 10px white;
+
+      animation:
+        pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%,100% {
+        opacity: 0.45;
+        transform: scale(0.85);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
     }
 
     .hero h1 {
@@ -302,6 +525,32 @@
       font-weight: 900;
 
       margin-bottom: 30px;
+
+      animation:
+        heroTitleIn 1s
+        cubic-bezier(.16,1,.3,1)
+        0.15s
+        forwards;
+
+      opacity: 0;
+    }
+
+    @keyframes heroTitleIn {
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(50px)
+          scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
     }
 
     .hero h2 {
@@ -313,6 +562,12 @@
       font-weight: 400;
 
       margin-bottom: 18px;
+
+      animation:
+        fadeUp 0.8s ease
+        0.55s forwards;
+
+      opacity: 0;
     }
 
     .hero p {
@@ -321,6 +576,12 @@
       color: var(--muted);
 
       font-size: 1.05rem;
+
+      animation:
+        fadeUp 0.8s ease
+        0.7s forwards;
+
+      opacity: 0;
     }
 
     .hero-buttons {
@@ -331,6 +592,28 @@
       margin-top: 35px;
 
       flex-wrap: wrap;
+
+      animation:
+        fadeUp 0.8s ease
+        0.85s forwards;
+
+      opacity: 0;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
     }
 
     /* =====================================================
@@ -366,7 +649,19 @@
       border-radius: 18px;
 
       position: sticky;
+
       top: 110px;
+
+      transition:
+        0.4s ease;
+    }
+
+    .about-profile:hover {
+      transform:
+        translateY(-6px);
+
+      border-color:
+        var(--line-hover);
     }
 
     .profile-symbol {
@@ -374,6 +669,7 @@
       height: 85px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -387,6 +683,15 @@
       font-weight: 900;
 
       margin-bottom: 25px;
+
+      transition:
+        0.5s ease;
+    }
+
+    .about-profile:hover
+    .profile-symbol {
+      transform:
+        rotate(360deg);
     }
 
     .profile-name {
@@ -458,11 +763,13 @@
 
       border-radius: 14px;
 
-      transition: 0.3s ease;
+      transition:
+        0.35s ease;
     }
 
     .about-card:hover {
-      transform: translateY(-5px);
+      transform:
+        translateY(-7px);
 
       background:
         var(--card-hover);
@@ -498,7 +805,8 @@
     }
 
     .skill {
-      padding: 11px 17px;
+      padding:
+        11px 17px;
 
       border:
         1px solid var(--line);
@@ -511,7 +819,8 @@
 
       font-size: 0.85rem;
 
-      transition: 0.3s ease;
+      transition:
+        0.3s ease;
     }
 
     .skill:hover {
@@ -522,7 +831,8 @@
       border-color: white;
 
       transform:
-        translateY(-2px);
+        translateY(-4px)
+        scale(1.03);
     }
 
     /* =====================================================
@@ -582,7 +892,10 @@
 
       justify-content: space-between;
 
-      transition: 0.4s ease;
+      transition:
+        transform 0.45s
+        cubic-bezier(.16,1,.3,1),
+        border-color 0.3s ease;
 
       overflow: hidden;
 
@@ -611,12 +924,38 @@
       top: -110px;
       right: -110px;
 
-      transition: 0.5s ease;
+      transition:
+        0.6s ease;
+    }
+
+    .project-card::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          120deg,
+          transparent 20%,
+          rgba(255,255,255,0.04),
+          transparent 80%
+        );
+
+      transform:
+        translateX(-100%);
+
+      transition:
+        transform 0.8s ease;
+
+      pointer-events: none;
     }
 
     .project-card:hover {
       transform:
-        translateY(-8px);
+        translateY(-10px)
+        rotateX(1deg);
 
       border-color:
         var(--line-hover);
@@ -624,7 +963,12 @@
 
     .project-card:hover::before {
       transform:
-        scale(1.4);
+        scale(1.5);
+    }
+
+    .project-card:hover::after {
+      transform:
+        translateX(100%);
     }
 
     .project-number {
@@ -633,6 +977,10 @@
       font-size: 0.8rem;
 
       letter-spacing: 2px;
+
+      position: relative;
+
+      z-index: 1;
     }
 
     .project-content {
@@ -646,6 +994,15 @@
 
       margin:
         20px 0 12px;
+
+      transition:
+        0.3s ease;
+    }
+
+    .project-card:hover
+    .project-title {
+      transform:
+        translateX(5px);
     }
 
     .project-description {
@@ -711,12 +1068,13 @@
 
       gap: 7px;
 
-      transition: 0.3s ease;
+      transition:
+        0.3s ease;
     }
 
     .project-btn:hover {
       transform:
-        translateY(-3px);
+        translateY(-4px);
 
       background: white;
 
@@ -766,6 +1124,14 @@
         );
 
       padding: 55px;
+
+      transition:
+        0.4s ease;
+    }
+
+    .contact-box:hover {
+      border-color:
+        var(--line-hover);
     }
 
     .contact-box h3 {
@@ -813,7 +1179,8 @@
 
       border-radius: 13px;
 
-      transition: 0.3s ease;
+      transition:
+        0.35s ease;
     }
 
     .contact-card:hover {
@@ -821,7 +1188,7 @@
         rgba(255,255,255,0.07);
 
       transform:
-        translateY(-4px);
+        translateY(-5px);
 
       border-color:
         var(--line-hover);
@@ -844,6 +1211,20 @@
       border-radius: 10px;
 
       font-size: 1rem;
+
+      transition:
+        0.3s ease;
+    }
+
+    .contact-card:hover
+    .contact-icon {
+      background: white;
+
+      color: black;
+
+      transform:
+        rotate(-5deg)
+        scale(1.08);
     }
 
     .contact-info span {
@@ -902,23 +1283,29 @@
       flex-wrap: wrap;
     }
 
+    .footer-links a {
+      transition:
+        0.3s ease;
+    }
+
     .footer-links a:hover {
       color: white;
     }
 
     /* =====================================================
-       REVEAL ANIMATION
+       SCROLL REVEAL
     ===================================================== */
 
     .reveal {
       opacity: 0;
 
       transform:
-        translateY(25px);
+        translateY(30px);
 
       transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+        opacity 0.8s ease,
+        transform 0.8s
+        cubic-bezier(.16,1,.3,1);
     }
 
     .reveal.visible {
@@ -929,7 +1316,7 @@
     }
 
     /* =====================================================
-       RESPONSIVE
+       MOBILE
     ===================================================== */
 
     @media (max-width: 800px) {
@@ -958,15 +1345,42 @@
         border-bottom:
           1px solid var(--line);
 
-        padding: 20px 4%;
+        padding: 22px 4%;
 
         flex-direction: column;
 
-        gap: 18px;
+        gap: 20px;
       }
 
       .nav-links.active {
         display: flex;
+
+        animation:
+          mobileMenuIn 0.3s ease;
+      }
+
+      @keyframes mobileMenuIn {
+        from {
+          opacity: 0;
+          transform:
+            translateY(-10px);
+        }
+
+        to {
+          opacity: 1;
+          transform:
+            translateY(0);
+        }
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+      }
+
+      .hero {
+        min-height: 92vh;
+
+        padding-top: 90px;
       }
 
       .hero h1 {
@@ -1001,8 +1415,12 @@
         grid-column: auto;
       }
 
+      .project-card {
+        min-height: 360px;
+      }
+
       .contact-box {
-        padding: 30px;
+        padding: 35px 28px;
       }
 
       .contact-grid {
@@ -1014,10 +1432,15 @@
       }
     }
 
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
+
     @media (max-width: 520px) {
 
       section {
-        padding: 80px 0;
+        padding:
+          80px 0;
       }
 
       .hero {
@@ -1026,6 +1449,26 @@
 
       .hero h1 {
         font-size: 4rem;
+
+        letter-spacing: -4px;
+      }
+
+      .hero h2 {
+        font-size: 1.25rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
       }
 
       .about-cards {
@@ -1033,18 +1476,72 @@
       }
 
       .project-card {
-        min-height: 330px;
+        min-height: 350px;
 
         padding: 24px;
       }
 
+      .project-title {
+        font-size: 1.7rem;
+      }
+
+      .project-actions {
+        flex-direction: column;
+      }
+
+      .project-btn {
+        width: 100%;
+
+        justify-content: center;
+      }
+
       .contact-box {
-        padding: 25px 20px;
+        padding:
+          28px 20px;
       }
 
       .contact-box h3 {
         font-size: 2.4rem;
       }
+
+      .contact-card {
+        padding: 16px;
+      }
+
+      footer {
+        padding:
+          25px 0;
+      }
+
+      .footer-links {
+        gap: 14px;
+      }
+    }
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+
+        transform: none;
+      }
+
     }
 
   </style>
@@ -1052,11 +1549,15 @@
 
 <body>
 
+  <!-- Background animation -->
+  <div class="background-glow"></div>
+
+
   <!-- =====================================================
        HEADER
   ===================================================== -->
 
-  <header>
+  <header id="header">
 
     <nav class="nav">
 
@@ -1067,13 +1568,16 @@
         HADI
       </a>
 
+
       <button
         class="menu-btn"
         id="menuBtn"
         aria-label="Open navigation menu"
+        aria-expanded="false"
       >
         ☰
       </button>
+
 
       <ul
         class="nav-links"
@@ -1127,7 +1631,7 @@
       id="home"
     >
 
-      <div class="hero-content reveal">
+      <div class="hero-content">
 
         <div class="hero-tag">
 
@@ -1137,18 +1641,23 @@
 
         </div>
 
+
         <h1>
           HADI
         </h1>
+
 
         <h2>
           Developer. Creator. Builder.
         </h2>
 
+
         <p>
-          I build digital experiences, experiment with
-          technology, and turn ideas into real projects.
+          I build digital experiences, experiment
+          with technology, and turn ideas into
+          real projects.
         </p>
+
 
         <div class="hero-buttons">
 
@@ -1158,6 +1667,7 @@
           >
             Explore Projects
           </a>
+
 
           <a
             href="#contact"
@@ -1183,10 +1693,12 @@
         01 / About
       </div>
 
+
       <h2 class="section-title reveal">
         More than<br>
         just code.
       </h2>
+
 
       <p class="section-description reveal">
         A look at who I am, what I enjoy building,
@@ -1225,12 +1737,14 @@
             that actually work.
           </div>
 
+
           <p class="about-text reveal">
             I'm HADI, a developer and technology
             enthusiast interested in software,
             web development and creating useful
             digital experiences.
           </p>
+
 
           <p class="about-text reveal">
             My approach is simple:
@@ -1315,6 +1829,7 @@
           Skills & Interests
         </div>
 
+
         <div class="skills-wrapper">
 
           <span class="skill reveal">
@@ -1371,10 +1886,12 @@
             02 / Projects
           </div>
 
+
           <h2 class="section-title reveal">
             Things I've<br>
             built.
           </h2>
+
 
           <p class="section-description reveal">
             A collection of projects, experiments
@@ -1382,6 +1899,7 @@
           </p>
 
         </div>
+
 
         <div class="projects-count reveal">
           03 Projects
@@ -1393,9 +1911,7 @@
       <div class="projects-grid">
 
 
-        <!-- =================================================
-             PROJECT 01 — ROOT HUB
-        ================================================== -->
+        <!-- ROOT HUB -->
 
         <article class="project-card reveal">
 
@@ -1405,11 +1921,13 @@
               PROJECT / 01
             </div>
 
+
             <div class="project-content">
 
               <h3 class="project-title">
                 ROOT HUB
               </h3>
+
 
               <p class="project-description">
                 A technology-focused project created
@@ -1451,6 +1969,7 @@
               ◉ Live Website
             </a>
 
+
             <a
               href="https://github.com/hadi-root/root-hub"
               target="_blank"
@@ -1465,9 +1984,7 @@
         </article>
 
 
-        <!-- =================================================
-             PROJECT 02 — ROOT OS
-        ================================================== -->
+        <!-- ROOT OS -->
 
         <article class="project-card reveal">
 
@@ -1477,11 +1994,13 @@
               PROJECT / 02
             </div>
 
+
             <div class="project-content">
 
               <h3 class="project-title">
                 ROOT OS
               </h3>
+
 
               <p class="project-description">
                 An experimental operating-system-inspired
@@ -1523,6 +2042,7 @@
               ◉ Live Website
             </a>
 
+
             <a
               href="https://github.com/hadi-root/root-os"
               target="_blank"
@@ -1537,9 +2057,7 @@
         </article>
 
 
-        <!-- =================================================
-             PROJECT 03 — ROOT TERMINAL HUB
-        ================================================== -->
+        <!-- ROOT TERMINAL HUB -->
 
         <article class="project-card reveal">
 
@@ -1549,11 +2067,13 @@
               PROJECT / 03
             </div>
 
+
             <div class="project-content">
 
               <h3 class="project-title">
                 ROOT TERMINAL HUB
               </h3>
+
 
               <p class="project-description">
                 A technology and development-focused
@@ -1599,6 +2119,7 @@
               ◉ Live Website
             </a>
 
+
             <a
               href="https://github.com/hadi-root/root-terminal-portal"
               target="_blank"
@@ -1631,9 +2152,11 @@
         03 / Contact
       </div>
 
+
       <h2 class="section-title reveal">
         Let's connect.
       </h2>
+
 
       <p class="section-description reveal">
         Interested in my work, want to discuss
@@ -1648,6 +2171,7 @@
           Have an idea?<br>
           Let's talk.
         </h3>
+
 
         <p>
           The easiest way to reach me is through
@@ -1669,6 +2193,7 @@
             <div class="contact-icon">
               @
             </div>
+
 
             <div class="contact-info">
 
@@ -1698,6 +2223,7 @@
               &lt;/&gt;
             </div>
 
+
             <div class="contact-info">
 
               <span>
@@ -1726,6 +2252,7 @@
               ◎
             </div>
 
+
             <div class="contact-info">
 
               <span>
@@ -1753,6 +2280,7 @@
             <div class="contact-icon">
               ◎
             </div>
+
 
             <div class="contact-info">
 
@@ -1789,6 +2317,7 @@
       © 2026 HADI. Built with code.
     </div>
 
+
     <div class="footer-links">
 
       <a
@@ -1799,6 +2328,7 @@
         GitHub
       </a>
 
+
       <a
         href="https://www.instagram.com/hadi_bin_yoosuf/"
         target="_blank"
@@ -1806,6 +2336,7 @@
       >
         @hadi_bin_yoosuf
       </a>
+
 
       <a
         href="https://www.instagram.com/the_real_toolkit/"
@@ -1841,12 +2372,18 @@
       "click",
       () => {
 
-        navLinks.classList.toggle(
-          "active"
+        const isOpen =
+          navLinks.classList.toggle(
+            "active"
+          );
+
+        menuBtn.setAttribute(
+          "aria-expanded",
+          isOpen
         );
 
         menuBtn.textContent =
-          navLinks.classList.contains("active")
+          isOpen
             ? "✕"
             : "☰";
 
@@ -1855,7 +2392,7 @@
 
 
     /* =====================================================
-       CLOSE MOBILE MENU
+       CLOSE MENU WHEN LINK CLICKED
     ===================================================== */
 
     document
@@ -1870,12 +2407,55 @@
               "active"
             );
 
-            menuBtn.textContent = "☰";
+            menuBtn.textContent =
+              "☰";
+
+            menuBtn.setAttribute(
+              "aria-expanded",
+              "false"
+            );
 
           }
         );
 
       });
+
+
+    /* =====================================================
+       NAVBAR SCROLL EFFECT
+    ===================================================== */
+
+    const header =
+      document.getElementById("header");
+
+
+    function updateHeader() {
+
+      if (window.scrollY > 30) {
+
+        header.classList.add(
+          "scrolled"
+        );
+
+      } else {
+
+        header.classList.remove(
+          "scrolled"
+        );
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateHeader,
+      { passive: true }
+    );
+
+
+    updateHeader();
 
 
     /* =====================================================
@@ -1904,6 +2484,10 @@
                   "visible"
                 );
 
+                revealObserver.unobserve(
+                  entry.target
+                );
+
               }
 
             }
@@ -1912,7 +2496,7 @@
         },
 
         {
-          threshold: 0.12
+          threshold: 0.10
         }
 
       );
@@ -2002,6 +2586,147 @@
       }
     );
 
+
+    /* =====================================================
+       DESKTOP CURSOR GLOW
+    ===================================================== */
+
+    const cursorGlow =
+      document.createElement("div");
+
+    cursorGlow.style.position =
+      "fixed";
+
+    cursorGlow.style.width =
+      "180px";
+
+    cursorGlow.style.height =
+      "180px";
+
+    cursorGlow.style.borderRadius =
+      "50%";
+
+    cursorGlow.style.pointerEvents =
+      "none";
+
+    cursorGlow.style.zIndex =
+      "-1";
+
+    cursorGlow.style.background =
+      "rgba(255,255,255,0.025)";
+
+    cursorGlow.style.filter =
+      "blur(45px)";
+
+    cursorGlow.style.transform =
+      "translate(-50%, -50%)";
+
+    cursorGlow.style.opacity =
+      "0";
+
+    cursorGlow.style.transition =
+      "opacity 0.3s ease";
+
+    document.body.appendChild(
+      cursorGlow
+    );
+
+
+    let cursorX = 0;
+    let cursorY = 0;
+
+    let glowX = 0;
+    let glowY = 0;
+
+
+    window.addEventListener(
+      "mousemove",
+      event => {
+
+        cursorX =
+          event.clientX;
+
+        cursorY =
+          event.clientY;
+
+        cursorGlow.style.opacity =
+          "1";
+
+      },
+      { passive: true }
+    );
+
+
+    function animateCursor() {
+
+      glowX +=
+        (cursorX - glowX) * 0.08;
+
+      glowY +=
+        (cursorY - glowY) * 0.08;
+
+
+      cursorGlow.style.left =
+        glowX + "px";
+
+      cursorGlow.style.top =
+        glowY + "px";
+
+
+      requestAnimationFrame(
+        animateCursor
+      );
+
+    }
+
+
+    animateCursor();
+
+
+    /* =====================================================
+       DISABLE CURSOR EFFECT ON TOUCH DEVICES
+    ===================================================== */
+
+    if (
+      window.matchMedia(
+        "(pointer: coarse)"
+      ).matches
+    ) {
+
+      cursorGlow.style.display =
+        "none";
+
+    }
+
+
+    /* =====================================================
+       ESCAPE KEY CLOSES MOBILE MENU
+    ===================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          navLinks.classList.remove(
+            "active"
+          );
+
+          menuBtn.textContent =
+            "☰";
+
+          menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+
+      }
+    );
 
   </script>
 
