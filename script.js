@@ -1,18 +1,47 @@
+```javascript
 /* =========================================================
    HADI PORTFOLIO
-   SCRIPT.JS
+   JAVASCRIPT
 ========================================================= */
+
+"use strict";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loader =
+  document.getElementById("loader");
+
+const header =
+  document.getElementById("header");
+
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const navLinks =
+  document.getElementById("navLinks");
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+const navigationLinks =
+  document.querySelectorAll(".nav-links a");
+
+const sections =
+  document.querySelectorAll("main section");
+
+
+const prefersReducedMotion =
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
 
 /* =========================================================
    LOADER
 ========================================================= */
-
-const loader = document.getElementById("loader");
-
-const prefersReducedMotion =
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 
 function hideLoader() {
 
@@ -21,6 +50,7 @@ function hideLoader() {
   loader.classList.add("hidden");
 
   document.body.classList.remove("loading");
+
 }
 
 
@@ -30,95 +60,119 @@ if (prefersReducedMotion) {
 
 } else {
 
-  window.addEventListener("load", () => {
+  window.addEventListener(
+    "load",
+    () => {
 
-    setTimeout(() => {
-      hideLoader();
-    }, 900);
+      setTimeout(
+        hideLoader,
+        800
+      );
 
-  });
+    },
+    { once: true }
+  );
 
 }
 
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE NAVIGATION
 ========================================================= */
 
-const menuBtn =
-  document.getElementById("menuBtn");
-
-const navLinks =
-  document.getElementById("navLinks");
-
-
-function closeMobileMenu() {
+function closeMenu() {
 
   if (!navLinks || !menuBtn) return;
 
   navLinks.classList.remove("active");
 
-  menuBtn.textContent = "☰";
-
   menuBtn.setAttribute(
     "aria-expanded",
     "false"
   );
+
+  menuBtn.setAttribute(
+    "aria-label",
+    "Open navigation menu"
+  );
+
+  menuBtn.textContent = "☰";
+
 }
 
 
-if (menuBtn && navLinks) {
+function toggleMenu() {
 
-  menuBtn.addEventListener("click", () => {
+  if (!navLinks || !menuBtn) return;
 
-    const isOpen =
-      navLinks.classList.toggle("active");
+  const isOpen =
+    navLinks.classList.toggle("active");
 
-    menuBtn.textContent =
-      isOpen ? "✕" : "☰";
+  menuBtn.setAttribute(
+    "aria-expanded",
+    String(isOpen)
+  );
 
-    menuBtn.setAttribute(
-      "aria-expanded",
-      String(isOpen)
+  menuBtn.setAttribute(
+    "aria-label",
+    isOpen
+      ? "Close navigation menu"
+      : "Open navigation menu"
+  );
+
+  menuBtn.textContent =
+    isOpen
+      ? "✕"
+      : "☰";
+
+}
+
+
+if (menuBtn) {
+
+  menuBtn.addEventListener(
+    "click",
+    toggleMenu
+  );
+
+}
+
+
+navigationLinks.forEach(
+  link => {
+
+    link.addEventListener(
+      "click",
+      closeMenu
     );
 
-  });
-
-
-  document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        closeMobileMenu
-      );
-
-    });
-
-}
-
-
-/* =========================================================
-   ESCAPE CLOSES MENU
-========================================================= */
-
-document.addEventListener("keydown", event => {
-
-  if (event.key === "Escape") {
-    closeMobileMenu();
   }
-
-});
+);
 
 
 /* =========================================================
-   HEADER SCROLL
+   ESCAPE CLOSE
 ========================================================= */
 
-const header =
-  document.getElementById("header");
+document.addEventListener(
+  "keydown",
+  event => {
 
+    if (
+      event.key === "Escape"
+    ) {
+
+      closeMenu();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   HEADER SCROLL EFFECT
+========================================================= */
 
 function updateHeader() {
 
@@ -126,11 +180,15 @@ function updateHeader() {
 
   if (window.scrollY > 30) {
 
-    header.classList.add("scrolled");
+    header.classList.add(
+      "scrolled"
+    );
 
   } else {
 
-    header.classList.remove("scrolled");
+    header.classList.remove(
+      "scrolled"
+    );
 
   }
 
@@ -140,7 +198,9 @@ function updateHeader() {
 window.addEventListener(
   "scroll",
   updateHeader,
-  { passive: true }
+  {
+    passive: true
+  }
 );
 
 updateHeader();
@@ -150,15 +210,19 @@ updateHeader();
    SCROLL REVEAL
 ========================================================= */
 
-const revealElements =
-  document.querySelectorAll(".reveal");
+if (
+  prefersReducedMotion
+) {
 
+  revealElements.forEach(
+    element => {
 
-if (prefersReducedMotion) {
+      element.classList.add(
+        "visible"
+      );
 
-  revealElements.forEach(element => {
-    element.classList.add("visible");
-  });
+    }
+  );
 
 } else {
 
@@ -167,36 +231,45 @@ if (prefersReducedMotion) {
 
       entries => {
 
-        entries.forEach(entry => {
+        entries.forEach(
+          entry => {
 
-          if (entry.isIntersecting) {
+            if (
+              entry.isIntersecting
+            ) {
 
-            entry.target.classList.add(
-              "visible"
-            );
+              entry.target.classList.add(
+                "visible"
+              );
 
-            revealObserver.unobserve(
-              entry.target
-            );
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
 
           }
-
-        });
+        );
 
       },
 
       {
-        threshold: 0.10
+        threshold: 0.10,
+        rootMargin: "0px 0px -30px 0px"
       }
 
     );
 
 
-  revealElements.forEach(element => {
+  revealElements.forEach(
+    element => {
 
-    revealObserver.observe(element);
+      revealObserver.observe(
+        element
+      );
 
-  });
+    }
+  );
 
 }
 
@@ -205,96 +278,169 @@ if (prefersReducedMotion) {
    ACTIVE NAVIGATION
 ========================================================= */
 
-const sections =
-  document.querySelectorAll("main section");
-
-const navigationLinks =
-  document.querySelectorAll(".nav-links a");
-
-
-if (sections.length && navigationLinks.length) {
+if (
+  !prefersReducedMotion &&
+  sections.length
+) {
 
   const sectionObserver =
     new IntersectionObserver(
 
       entries => {
 
-        entries.forEach(entry => {
+        entries.forEach(
+          entry => {
 
-          if (!entry.isIntersecting) return;
+            if (
+              entry.isIntersecting
+            ) {
 
-          navigationLinks.forEach(link => {
-            link.classList.remove("active");
-          });
+              navigationLinks.forEach(
+                link => {
+
+                  link.style.color =
+                    "#aaa";
+
+                }
+              );
 
 
-          const activeLink =
-            document.querySelector(
-              `.nav-links a[href="#${entry.target.id}"]`
-            );
+              const activeLink =
+                document.querySelector(
+                  `.nav-links a[href="#${entry.target.id}"]`
+                );
 
 
-          if (activeLink) {
-            activeLink.classList.add("active");
+              if (activeLink) {
+
+                activeLink.style.color =
+                  "white";
+
+              }
+
+            }
+
           }
-
-        });
+        );
 
       },
 
       {
-        rootMargin: "-35% 0px -55% 0px"
+        threshold: 0.35
       }
 
     );
 
 
-  sections.forEach(section => {
-    sectionObserver.observe(section);
-  });
+  sections.forEach(
+    section => {
+
+      sectionObserver.observe(
+        section
+      );
+
+    }
+  );
 
 }
+
+
+/* =========================================================
+   SMOOTH ANCHOR FALLBACK
+========================================================= */
+
+document
+  .querySelectorAll(
+    'a[href^="#"]'
+  )
+  .forEach(
+    link => {
+
+      link.addEventListener(
+        "click",
+        event => {
+
+          const targetId =
+            link.getAttribute("href");
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) return;
+
+          const target =
+            document.querySelector(
+              targetId
+            );
+
+          if (!target) return;
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior:
+              prefersReducedMotion
+                ? "auto"
+                : "smooth",
+            block: "start"
+          });
+
+        }
+      );
+
+    }
+  );
 
 
 /* =========================================================
    DESKTOP CURSOR GLOW
 ========================================================= */
 
-const isCoarsePointer =
+const isTouchDevice =
   window.matchMedia(
     "(pointer: coarse)"
   ).matches;
 
 
-if (!prefersReducedMotion && !isCoarsePointer) {
+if (
+  !prefersReducedMotion &&
+  !isTouchDevice
+) {
 
   const cursorGlow =
     document.createElement("div");
 
 
-  cursorGlow.style.position = "fixed";
-  cursorGlow.style.width = "180px";
-  cursorGlow.style.height = "180px";
-  cursorGlow.style.borderRadius = "50%";
-  cursorGlow.style.pointerEvents = "none";
-  cursorGlow.style.zIndex = "-1";
-
-  cursorGlow.style.background =
-    "rgba(255,255,255,0.025)";
-
-  cursorGlow.style.filter =
-    "blur(45px)";
-
-  cursorGlow.style.transform =
-    "translate(-50%, -50%)";
-
-  cursorGlow.style.opacity = "0";
-
-  cursorGlow.style.transition =
-    "opacity .3s ease";
+  cursorGlow.setAttribute(
+    "aria-hidden",
+    "true"
+  );
 
 
-  document.body.appendChild(cursorGlow);
+  Object.assign(
+    cursorGlow.style,
+    {
+      position: "fixed",
+      width: "180px",
+      height: "180px",
+      borderRadius: "50%",
+      pointerEvents: "none",
+      zIndex: "-1",
+      background:
+        "rgba(255,255,255,0.025)",
+      filter: "blur(45px)",
+      transform:
+        "translate(-50%, -50%)",
+      opacity: "0",
+      transition:
+        "opacity .3s ease"
+    }
+  );
+
+
+  document.body.appendChild(
+    cursorGlow
+  );
 
 
   let cursorX = 0;
@@ -308,23 +454,29 @@ if (!prefersReducedMotion && !isCoarsePointer) {
     "mousemove",
     event => {
 
-      cursorX = event.clientX;
-      cursorY = event.clientY;
+      cursorX =
+        event.clientX;
 
-      cursorGlow.style.opacity = "1";
+      cursorY =
+        event.clientY;
+
+      cursorGlow.style.opacity =
+        "1";
 
     },
-    { passive: true }
+    {
+      passive: true
+    }
   );
 
 
   function animateCursor() {
 
     glowX +=
-      (cursorX - glowX) * .08;
+      (cursorX - glowX) * 0.08;
 
     glowY +=
-      (cursorY - glowY) * .08;
+      (cursorY - glowY) * 0.08;
 
 
     cursorGlow.style.left =
@@ -350,152 +502,81 @@ if (!prefersReducedMotion && !isCoarsePointer) {
    PROJECT CARD POINTER EFFECT
 ========================================================= */
 
-if (!prefersReducedMotion && !isCoarsePointer) {
+if (
+  !prefersReducedMotion &&
+  !isTouchDevice
+) {
 
   const projectCards =
-    document.querySelectorAll(".project-card");
-
-
-  projectCards.forEach(card => {
-
-    card.addEventListener(
-      "mousemove",
-      event => {
-
-        const rect =
-          card.getBoundingClientRect();
-
-        const x =
-          event.clientX - rect.left;
-
-        const y =
-          event.clientY - rect.top;
-
-
-        const rotateX =
-          ((y / rect.height) - .5) * -2;
-
-        const rotateY =
-          ((x / rect.width) - .5) * 2;
-
-
-        card.style.transform =
-          `translateY(-10px)
-           perspective(900px)
-           rotateX(${rotateX}deg)
-           rotateY(${rotateY}deg)`;
-
-      }
+    document.querySelectorAll(
+      ".project-card"
     );
 
 
-    card.addEventListener(
-      "mouseleave",
-      () => {
+  projectCards.forEach(
+    card => {
 
-        card.style.transform = "";
+      card.addEventListener(
+        "mousemove",
+        event => {
 
-      }
-    );
+          const rect =
+            card.getBoundingClientRect();
 
-  });
+          const x =
+            event.clientX -
+            rect.left;
+
+          const y =
+            event.clientY -
+            rect.top;
+
+          const rotateY =
+            ((x / rect.width) - .5) * 3;
+
+          const rotateX =
+            ((y / rect.height) - .5) * -3;
+
+
+          card.style.transform =
+            `translateY(-10px)
+             perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+
+        }
+      );
+
+
+      card.addEventListener(
+        "mouseleave",
+        () => {
+
+          card.style.transform =
+            "";
+
+        }
+      );
+
+    }
+  );
 
 }
 
 
 /* =========================================================
-   SMOOTH ANCHOR FALLBACK
+   RESIZE SAFETY
 ========================================================= */
 
-document
-  .querySelectorAll('a[href^="#"]')
-  .forEach(anchor => {
-
-    anchor.addEventListener(
-      "click",
-      event => {
-
-        const targetId =
-          anchor.getAttribute("href");
-
-        if (
-          !targetId ||
-          targetId === "#"
-        ) {
-          return;
-        }
-
-
-        const target =
-          document.querySelector(targetId);
-
-
-        if (!target) {
-          return;
-        }
-
-
-        event.preventDefault();
-
-
-        target.scrollIntoView({
-          behavior:
-            prefersReducedMotion
-              ? "auto"
-              : "smooth",
-          block: "start"
-        });
-
-      }
-    );
-
-  });
-
-
-/* =========================================================
-   EXTERNAL LINKS
-========================================================= */
-
-document
-  .querySelectorAll(
-    'a[target="_blank"]'
-  )
-  .forEach(link => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        link.setAttribute(
-          "rel",
-          "noopener noreferrer"
-        );
-
-      }
-    );
-
-  });
-
-
-/* =========================================================
-   PAGE VISIBILITY
-========================================================= */
-
-document.addEventListener(
-  "visibilitychange",
+window.addEventListener(
+  "resize",
   () => {
 
     if (
-      document.visibilityState === "visible"
+      window.innerWidth > 900
     ) {
 
-      document.title =
-        "HADI — Developer Portfolio";
-
-    } else {
-
-      document.title =
-        "HADI — Come back soon";
+      closeMenu();
 
     }
 
@@ -504,16 +585,11 @@ document.addEventListener(
 
 
 /* =========================================================
-   INITIAL STATE
+   PAGE READY
 ========================================================= */
 
-window.addEventListener(
-  "load",
-  () => {
-
-    document.body.classList.add(
-      "page-ready"
-    );
-
-  }
-);
+document.documentElement
+  .classList.add(
+    "js-enabled"
+  );
+```
