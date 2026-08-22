@@ -6,7 +6,7 @@
 
   <meta
     name="description"
-    content="HADI — Developer, Creator and Builder. Explore projects, skills and ways to connect."
+    content="HADI — Developer, Creator and Builder. Explore my projects, skills and contact information."
   >
 
   <meta name="theme-color" content="#050505">
@@ -14,6 +14,10 @@
   <title>HADI — Developer Portfolio</title>
 
   <style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
 
     * {
       margin: 0;
@@ -24,13 +28,16 @@
 
     :root {
       --bg: #050505;
+      --bg-soft: #090909;
       --card: #101010;
       --card-hover: #151515;
       --text: #f5f5f5;
-      --muted: #9b9b9b;
+      --muted: #999;
+      --muted-dark: #666;
       --line: rgba(255,255,255,0.10);
-      --white: #ffffff;
-      --black: #000000;
+      --line-hover: rgba(255,255,255,0.22);
+      --white: #fff;
+      --black: #000;
       --max-width: 1180px;
     }
 
@@ -39,7 +46,10 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -68,9 +78,9 @@
       font-family: inherit;
     }
 
-    /* =========================
+    /* =====================================================
        HEADER
-    ========================= */
+    ===================================================== */
 
     header {
       position: fixed;
@@ -78,16 +88,22 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(5,5,5,0.82);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
+
+      background:
+        rgba(5,5,5,0.82);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom:
+        1px solid var(--line);
     }
 
     .nav {
       width: min(92%, var(--max-width));
       height: 76px;
       margin: auto;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -101,7 +117,7 @@
     }
 
     .logo:hover {
-      opacity: 0.65;
+      opacity: 0.6;
     }
 
     .nav-links {
@@ -122,18 +138,22 @@
 
     .menu-btn {
       display: none;
+
       background: transparent;
       border: 1px solid var(--line);
+
       color: white;
+
       padding: 8px 11px;
       border-radius: 8px;
+
       cursor: pointer;
       font-size: 1.1rem;
     }
 
-    /* =========================
-       GENERAL
-    ========================= */
+    /* =====================================================
+       GLOBAL SECTIONS
+    ===================================================== */
 
     section {
       width: min(92%, var(--max-width));
@@ -143,101 +163,54 @@
 
     .section-label {
       color: #777;
+
       text-transform: uppercase;
       letter-spacing: 4px;
+
       font-size: 0.75rem;
+
       margin-bottom: 12px;
     }
 
     .section-title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size:
+        clamp(2.2rem, 5vw, 3.8rem);
+
       line-height: 1.05;
+
+      letter-spacing: -1.5px;
+
       margin-bottom: 20px;
-      letter-spacing: -1px;
     }
 
     .section-description {
       color: var(--muted);
+
       max-width: 700px;
+
       font-size: 1rem;
     }
 
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 100vh;
-      width: min(92%, var(--max-width));
-      margin: auto;
-      display: flex;
-      align-items: center;
-      padding-top: 100px;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 13px;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      color: #aaa;
-      font-size: 0.8rem;
-      margin-bottom: 25px;
-      background: rgba(255,255,255,0.025);
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 10px white;
-    }
-
-    .hero h1 {
-      font-size: clamp(4rem, 12vw, 9rem);
-      line-height: 0.85;
-      letter-spacing: -7px;
-      font-weight: 900;
-      margin-bottom: 30px;
-    }
-
-    .hero h2 {
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      color: #c8c8c8;
-      font-weight: 400;
-      margin-bottom: 18px;
-    }
-
-    .hero p {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 35px;
-      flex-wrap: wrap;
-    }
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
 
     .btn {
       padding: 13px 20px;
+
       border-radius: 9px;
-      border: 1px solid var(--line);
+
+      border:
+        1px solid var(--line);
+
       transition: 0.3s ease;
+
       font-size: 0.9rem;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       cursor: pointer;
     }
 
@@ -262,23 +235,136 @@
       transform: translateY(-3px);
     }
 
-    /* =========================
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      min-height: 100vh;
+
+      width: min(92%, var(--max-width));
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 100px;
+
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 8px 13px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 30px;
+
+      color: #aaa;
+
+      font-size: 0.8rem;
+
+      margin-bottom: 25px;
+
+      background:
+        rgba(255,255,255,0.025);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      box-shadow:
+        0 0 10px white;
+    }
+
+    .hero h1 {
+      font-size:
+        clamp(4rem, 12vw, 9rem);
+
+      line-height: 0.85;
+
+      letter-spacing: -7px;
+
+      font-weight: 900;
+
+      margin-bottom: 30px;
+    }
+
+    .hero h2 {
+      font-size:
+        clamp(1.2rem, 3vw, 2rem);
+
+      color: #c8c8c8;
+
+      font-weight: 400;
+
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 650px;
+
+      color: var(--muted);
+
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 35px;
+
+      flex-wrap: wrap;
+    }
+
+    /* =====================================================
        ABOUT
-    ========================= */
+    ===================================================== */
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
+
+      grid-template-columns:
+        1fr 1.5fr;
+
       gap: 70px;
+
       margin-top: 50px;
+
       align-items: start;
     }
 
     .about-profile {
-      border: 1px solid var(--line);
-      background: linear-gradient(145deg,#111,#080808);
+      border:
+        1px solid var(--line);
+
+      background:
+        linear-gradient(
+          145deg,
+          #111,
+          #080808
+        );
+
       padding: 35px;
+
       border-radius: 18px;
+
       position: sticky;
       top: 110px;
     }
@@ -286,240 +372,364 @@
     .profile-symbol {
       width: 85px;
       height: 85px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--line);
+
+      border:
+        1px solid var(--line);
+
       border-radius: 50%;
+
       font-size: 1.8rem;
+
       font-weight: 900;
+
       margin-bottom: 25px;
     }
 
     .profile-name {
       font-size: 2rem;
+
       font-weight: 800;
+
       margin-bottom: 5px;
     }
 
     .profile-role {
       color: #888;
+
       margin-bottom: 25px;
     }
 
     .profile-line {
-      border-top: 1px solid var(--line);
+      border-top:
+        1px solid var(--line);
+
       padding-top: 20px;
+
       color: #aaa;
+
       font-size: 0.9rem;
     }
 
     .about-content {
       display: flex;
+
       flex-direction: column;
-      gap: 35px;
+
+      gap: 30px;
     }
 
     .about-intro {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-size:
+        clamp(1.5rem, 3vw, 2.2rem);
+
       line-height: 1.3;
+
       color: #eee;
     }
 
     .about-text {
       color: var(--muted);
+
       font-size: 1rem;
+
       max-width: 720px;
     }
 
     .about-cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 15px;
     }
 
     .about-card {
-      border: 1px solid var(--line);
+      border:
+        1px solid var(--line);
+
       background: var(--card);
+
       padding: 25px;
+
       border-radius: 14px;
+
       transition: 0.3s ease;
     }
 
     .about-card:hover {
       transform: translateY(-5px);
-      background: var(--card-hover);
+
+      background:
+        var(--card-hover);
+
+      border-color:
+        var(--line-hover);
     }
 
     .about-card h3 {
       margin-bottom: 8px;
+
       font-size: 1rem;
     }
 
     .about-card p {
       color: var(--muted);
+
       font-size: 0.88rem;
     }
 
-    /* =========================
+    /* =====================================================
        SKILLS
-    ========================= */
+    ===================================================== */
 
     .skills-wrapper {
       margin-top: 45px;
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 10px;
     }
 
     .skill {
       padding: 11px 17px;
-      border: 1px solid var(--line);
+
+      border:
+        1px solid var(--line);
+
       border-radius: 30px;
+
       background: #0d0d0d;
+
       color: #c7c7c7;
+
       font-size: 0.85rem;
+
       transition: 0.3s ease;
     }
 
     .skill:hover {
       color: black;
+
       background: white;
+
       border-color: white;
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
     }
 
-    /* =========================
+    /* =====================================================
        PROJECTS
-    ========================= */
+    ===================================================== */
 
     .projects-head {
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 30px;
+
       align-items: end;
+
       margin-bottom: 45px;
     }
 
     .projects-count {
       color: #777;
+
       font-size: 0.85rem;
+
       white-space: nowrap;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 20px;
     }
 
     .project-card {
       min-height: 390px;
-      border: 1px solid var(--line);
-      background: linear-gradient(145deg,#111,#080808);
+
+      border:
+        1px solid var(--line);
+
+      background:
+        linear-gradient(
+          145deg,
+          #111,
+          #080808
+        );
+
       border-radius: 18px;
+
       padding: 30px;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: space-between;
+
       transition: 0.4s ease;
+
       overflow: hidden;
+
       position: relative;
     }
 
     .project-card:nth-child(3) {
       grid-column: 1 / -1;
+
       min-height: 350px;
     }
 
     .project-card::before {
       content: "";
+
       position: absolute;
+
       width: 240px;
       height: 240px;
+
       border-radius: 50%;
-      background: rgba(255,255,255,0.04);
+
+      background:
+        rgba(255,255,255,0.04);
+
       top: -110px;
       right: -110px;
+
       transition: 0.5s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,255,255,0.22);
+      transform:
+        translateY(-8px);
+
+      border-color:
+        var(--line-hover);
     }
 
     .project-card:hover::before {
-      transform: scale(1.4);
+      transform:
+        scale(1.4);
     }
 
     .project-number {
       color: #666;
+
       font-size: 0.8rem;
+
       letter-spacing: 2px;
     }
 
     .project-content {
       position: relative;
+
       z-index: 1;
     }
 
     .project-title {
       font-size: 2rem;
-      margin: 20px 0 12px;
+
+      margin:
+        20px 0 12px;
     }
 
     .project-description {
       color: var(--muted);
+
       max-width: 650px;
+
       font-size: 0.92rem;
     }
 
     .project-tags {
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 7px;
+
       margin-top: 20px;
     }
 
     .project-tag {
-      border: 1px solid var(--line);
-      padding: 5px 9px;
+      border:
+        1px solid var(--line);
+
+      padding:
+        5px 9px;
+
       border-radius: 5px;
+
       color: #888;
+
       font-size: 0.7rem;
     }
 
     .project-actions {
       position: relative;
+
       z-index: 2;
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 10px;
+
       margin-top: 30px;
     }
 
     .project-btn {
-      padding: 10px 15px;
-      border: 1px solid var(--line);
+      padding:
+        10px 15px;
+
+      border:
+        1px solid var(--line);
+
       border-radius: 8px;
+
       font-size: 0.8rem;
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 7px;
+
       transition: 0.3s ease;
     }
 
     .project-btn:hover {
-      transform: translateY(-3px);
+      transform:
+        translateY(-3px);
+
       background: white;
+
       color: black;
+
       border-color: white;
     }
 
     .project-btn.live {
       background: white;
+
       color: black;
+
       border-color: white;
     }
 
@@ -527,9 +737,9 @@
       background: #ddd;
     }
 
-    /* =========================
+    /* =====================================================
        CONTACT
-    ========================= */
+    ===================================================== */
 
     .contact-section {
       padding-bottom: 70px;
@@ -537,99 +747,158 @@
 
     .contact-box {
       margin-top: 50px;
-      border: 1px solid var(--line);
+
+      border:
+        1px solid var(--line);
+
       border-radius: 22px;
+
       background:
         radial-gradient(
           circle at top right,
           rgba(255,255,255,0.07),
           transparent 35%
         ),
-        linear-gradient(145deg,#111,#070707);
+        linear-gradient(
+          145deg,
+          #111,
+          #070707
+        );
+
       padding: 55px;
     }
 
     .contact-box h3 {
-      font-size: clamp(2rem, 5vw, 4rem);
+      font-size:
+        clamp(2rem, 5vw, 4rem);
+
       line-height: 1;
+
       margin-bottom: 18px;
+
       letter-spacing: -2px;
     }
 
     .contact-box > p {
       color: var(--muted);
+
       max-width: 650px;
+
       margin-bottom: 35px;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 14px;
     }
 
     .contact-card {
       display: flex;
+
       align-items: center;
+
       gap: 17px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.025);
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.025);
+
       padding: 20px;
+
       border-radius: 13px;
+
       transition: 0.3s ease;
     }
 
     .contact-card:hover {
-      background: rgba(255,255,255,0.07);
-      transform: translateY(-4px);
+      background:
+        rgba(255,255,255,0.07);
+
+      transform:
+        translateY(-4px);
+
+      border-color:
+        var(--line-hover);
     }
 
     .contact-icon {
       width: 43px;
       height: 43px;
+
       flex-shrink: 0;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--line);
+
+      border:
+        1px solid var(--line);
+
       border-radius: 10px;
+
       font-size: 1rem;
     }
 
     .contact-info span {
       display: block;
+
       color: #777;
+
       font-size: 0.7rem;
+
       text-transform: uppercase;
+
       letter-spacing: 2px;
+
       margin-bottom: 3px;
     }
 
     .contact-info strong {
       font-size: 0.9rem;
+
       font-weight: 500;
+
       word-break: break-word;
     }
 
-    /* =========================
+    /* =====================================================
        FOOTER
-    ========================= */
+    ===================================================== */
 
     footer {
       width: min(92%, var(--max-width));
+
       margin: auto;
-      border-top: 1px solid var(--line);
+
+      border-top:
+        1px solid var(--line);
+
       padding: 28px 0;
+
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 20px;
+
       color: #666;
+
       font-size: 0.8rem;
     }
 
     .footer-links {
       display: flex;
+
       gap: 20px;
+
       flex-wrap: wrap;
     }
 
@@ -637,13 +906,16 @@
       color: white;
     }
 
-    /* =========================
-       ANIMATION
-    ========================= */
+    /* =====================================================
+       REVEAL ANIMATION
+    ===================================================== */
 
     .reveal {
       opacity: 0;
-      transform: translateY(25px);
+
+      transform:
+        translateY(25px);
+
       transition:
         opacity 0.7s ease,
         transform 0.7s ease;
@@ -651,12 +923,14 @@
 
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+
+      transform:
+        translateY(0);
     }
 
-    /* =========================
+    /* =====================================================
        RESPONSIVE
-    ========================= */
+    ===================================================== */
 
     @media (max-width: 800px) {
 
@@ -670,14 +944,24 @@
 
       .nav-links {
         display: none;
+
         position: absolute;
+
         top: 68px;
         left: 0;
+
         width: 100%;
-        background: rgba(5,5,5,0.97);
-        border-bottom: 1px solid var(--line);
+
+        background:
+          rgba(5,5,5,0.97);
+
+        border-bottom:
+          1px solid var(--line);
+
         padding: 20px 4%;
+
         flex-direction: column;
+
         gap: 18px;
       }
 
@@ -691,6 +975,7 @@
 
       .about-grid {
         grid-template-columns: 1fr;
+
         gap: 35px;
       }
 
@@ -704,6 +989,7 @@
 
       .projects-count {
         display: block;
+
         margin-top: 15px;
       }
 
@@ -748,6 +1034,7 @@
 
       .project-card {
         min-height: 330px;
+
         padding: 24px;
       }
 
@@ -758,7 +1045,6 @@
       .contact-box h3 {
         font-size: 2.4rem;
       }
-
     }
 
   </style>
@@ -766,15 +1052,18 @@
 
 <body>
 
-  <!-- =========================
+  <!-- =====================================================
        HEADER
-  ========================= -->
+  ===================================================== -->
 
   <header>
 
     <nav class="nav">
 
-      <a href="#home" class="logo">
+      <a
+        href="#home"
+        class="logo"
+      >
         HADI
       </a>
 
@@ -786,22 +1075,33 @@
         ☰
       </button>
 
-      <ul class="nav-links" id="navLinks">
+      <ul
+        class="nav-links"
+        id="navLinks"
+      >
 
         <li>
-          <a href="#home">Home</a>
+          <a href="#home">
+            Home
+          </a>
         </li>
 
         <li>
-          <a href="#about">About</a>
+          <a href="#about">
+            About
+          </a>
         </li>
 
         <li>
-          <a href="#projects">Projects</a>
+          <a href="#projects">
+            Projects
+          </a>
         </li>
 
         <li>
-          <a href="#contact">Contact</a>
+          <a href="#contact">
+            Contact
+          </a>
         </li>
 
       </ul>
@@ -811,13 +1111,21 @@
   </header>
 
 
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
+
   <main>
 
-    <!-- =========================
-         HERO
-    ========================= -->
 
-    <section class="hero" id="home">
+    <!-- ===================================================
+         HERO
+    =================================================== -->
+
+    <section
+      class="hero"
+      id="home"
+    >
 
       <div class="hero-content reveal">
 
@@ -838,8 +1146,8 @@
         </h2>
 
         <p>
-          I build digital experiences, experiment with technology,
-          and turn ideas into real projects.
+          I build digital experiences, experiment with
+          technology, and turn ideas into real projects.
         </p>
 
         <div class="hero-buttons">
@@ -865,9 +1173,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ===================================================
          ABOUT
-    ========================= -->
+    =================================================== -->
 
     <section id="about">
 
@@ -881,11 +1189,13 @@
       </h2>
 
       <p class="section-description reveal">
-        A look at who I am, what I enjoy building, and the mindset
-        behind my projects.
+        A look at who I am, what I enjoy building,
+        and the mindset behind my projects.
       </p>
 
+
       <div class="about-grid">
+
 
         <div class="about-profile reveal">
 
@@ -907,25 +1217,32 @@
 
         </div>
 
+
         <div class="about-content">
 
           <div class="about-intro reveal">
-            I like turning ideas into things that actually work.
+            I like turning ideas into things
+            that actually work.
           </div>
 
           <p class="about-text reveal">
-            I'm HADI, a young developer and technology enthusiast
-            interested in software, web development and creating
-            useful digital experiences.
+            I'm HADI, a developer and technology
+            enthusiast interested in software,
+            web development and creating useful
+            digital experiences.
           </p>
 
           <p class="about-text reveal">
-            My approach is simple: learn, experiment, build,
-            improve and repeat. Every project is an opportunity
-            to understand something new and push my skills further.
+            My approach is simple:
+            learn, experiment, build, improve
+            and repeat. Every project is an
+            opportunity to understand something
+            new and push my skills further.
           </p>
 
+
           <div class="about-cards">
+
 
             <div class="about-card reveal">
 
@@ -934,11 +1251,12 @@
               </h3>
 
               <p>
-                Constantly exploring new technologies, tools and
-                development concepts.
+                Exploring new technologies,
+                tools and development concepts.
               </p>
 
             </div>
+
 
             <div class="about-card reveal">
 
@@ -947,11 +1265,12 @@
               </h3>
 
               <p>
-                Turning ideas into functional websites,
-                applications and experiments.
+                Turning ideas into functional
+                websites and digital projects.
               </p>
 
             </div>
+
 
             <div class="about-card reveal">
 
@@ -960,11 +1279,12 @@
               </h3>
 
               <p>
-                Testing ideas and discovering better ways to
-                solve problems.
+                Testing ideas and discovering
+                better ways to solve problems.
               </p>
 
             </div>
+
 
             <div class="about-card reveal">
 
@@ -973,11 +1293,12 @@
               </h3>
 
               <p>
-                Refining projects and continuously developing
+                Refining projects and developing
                 my technical skills.
               </p>
 
             </div>
+
 
           </div>
 
@@ -985,6 +1306,8 @@
 
       </div>
 
+
+      <!-- SKILLS -->
 
       <div style="margin-top:90px;">
 
@@ -994,14 +1317,37 @@
 
         <div class="skills-wrapper">
 
-          <span class="skill reveal">HTML</span>
-          <span class="skill reveal">CSS</span>
-          <span class="skill reveal">JavaScript</span>
-          <span class="skill reveal">Web Development</span>
-          <span class="skill reveal">GitHub</span>
-          <span class="skill reveal">UI Design</span>
-          <span class="skill reveal">Problem Solving</span>
-          <span class="skill reveal">Technology</span>
+          <span class="skill reveal">
+            HTML
+          </span>
+
+          <span class="skill reveal">
+            CSS
+          </span>
+
+          <span class="skill reveal">
+            JavaScript
+          </span>
+
+          <span class="skill reveal">
+            Web Development
+          </span>
+
+          <span class="skill reveal">
+            GitHub
+          </span>
+
+          <span class="skill reveal">
+            UI Design
+          </span>
+
+          <span class="skill reveal">
+            Problem Solving
+          </span>
+
+          <span class="skill reveal">
+            Technology
+          </span>
 
         </div>
 
@@ -1010,11 +1356,12 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ===================================================
          PROJECTS
-    ========================= -->
+    =================================================== -->
 
     <section id="projects">
+
 
       <div class="projects-head">
 
@@ -1030,8 +1377,8 @@
           </h2>
 
           <p class="section-description reveal">
-            A collection of projects, experiments and digital
-            work I've created.
+            A collection of projects, experiments
+            and digital work I've created.
           </p>
 
         </div>
@@ -1046,9 +1393,9 @@
       <div class="projects-grid">
 
 
-        <!-- =========================
-             ROOT HUB
-        ========================= -->
+        <!-- =================================================
+             PROJECT 01 — ROOT HUB
+        ================================================== -->
 
         <article class="project-card reveal">
 
@@ -1065,10 +1412,12 @@
               </h3>
 
               <p class="project-description">
-                A technology-focused project created as part of
-                my ongoing exploration of development, digital
-                experiences and creative ideas.
+                A technology-focused project created
+                as part of my ongoing exploration of
+                development, digital experiences and
+                creative ideas.
               </p>
+
 
               <div class="project-tags">
 
@@ -1089,6 +1438,7 @@
             </div>
 
           </div>
+
 
           <div class="project-actions">
 
@@ -1115,9 +1465,9 @@
         </article>
 
 
-        <!-- =========================
-             ROOT OS
-        ========================= -->
+        <!-- =================================================
+             PROJECT 02 — ROOT OS
+        ================================================== -->
 
         <article class="project-card reveal">
 
@@ -1135,9 +1485,11 @@
 
               <p class="project-description">
                 An experimental operating-system-inspired
-                project focused on creating a unique digital
-                interface and exploring software design.
+                project focused on creating a unique
+                digital interface and exploring software
+                design.
               </p>
+
 
               <div class="project-tags">
 
@@ -1158,6 +1510,7 @@
             </div>
 
           </div>
+
 
           <div class="project-actions">
 
@@ -1184,9 +1537,9 @@
         </article>
 
 
-        <!-- =========================
-             ROOT TERMINAL HUB
-        ========================= -->
+        <!-- =================================================
+             PROJECT 03 — ROOT TERMINAL HUB
+        ================================================== -->
 
         <article class="project-card reveal">
 
@@ -1203,10 +1556,12 @@
               </h3>
 
               <p class="project-description">
-                A technology and development-focused project
-                built around a terminal-inspired digital
-                experience and a collection of development work.
+                A technology and development-focused
+                project built around a terminal-inspired
+                digital experience and a collection of
+                development work.
               </p>
+
 
               <div class="project-tags">
 
@@ -1231,6 +1586,7 @@
             </div>
 
           </div>
+
 
           <div class="project-actions">
 
@@ -1262,9 +1618,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ===================================================
          CONTACT
-    ========================= -->
+    =================================================== -->
 
     <section
       id="contact"
@@ -1280,9 +1636,11 @@
       </h2>
 
       <p class="section-description reveal">
-        Interested in my work, want to discuss an idea, or simply
-        want to connect? You can find me here.
+        Interested in my work, want to discuss
+        an idea, or simply want to connect?
+        You can find me here.
       </p>
+
 
       <div class="contact-box reveal">
 
@@ -1292,9 +1650,11 @@
         </h3>
 
         <p>
-          The easiest way to reach me is through email or one of
-          my developer and social profiles.
+          The easiest way to reach me is through
+          email or one of my developer and
+          social profiles.
         </p>
+
 
         <div class="contact-grid">
 
@@ -1408,18 +1768,20 @@
 
           </a>
 
+
         </div>
 
       </div>
 
     </section>
 
+
   </main>
 
 
-  <!-- =========================
+  <!-- =====================================================
        FOOTER
-  ========================= -->
+  ===================================================== -->
 
   <footer>
 
@@ -1458,9 +1820,15 @@
   </footer>
 
 
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
   <script>
 
-    /* MOBILE MENU */
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
 
     const menuBtn =
       document.getElementById("menuBtn");
@@ -1468,56 +1836,78 @@
     const navLinks =
       document.getElementById("navLinks");
 
-    menuBtn.addEventListener("click", () => {
 
-      navLinks.classList.toggle("active");
+    menuBtn.addEventListener(
+      "click",
+      () => {
 
-      menuBtn.textContent =
-        navLinks.classList.contains("active")
-          ? "✕"
-          : "☰";
+        navLinks.classList.toggle(
+          "active"
+        );
 
-    });
+        menuBtn.textContent =
+          navLinks.classList.contains("active")
+            ? "✕"
+            : "☰";
+
+      }
+    );
 
 
-    /* CLOSE MENU AFTER CLICK */
+    /* =====================================================
+       CLOSE MOBILE MENU
+    ===================================================== */
 
     document
       .querySelectorAll(".nav-links a")
       .forEach(link => {
 
-        link.addEventListener("click", () => {
+        link.addEventListener(
+          "click",
+          () => {
 
-          navLinks.classList.remove("active");
+            navLinks.classList.remove(
+              "active"
+            );
 
-          menuBtn.textContent = "☰";
+            menuBtn.textContent = "☰";
 
-        });
+          }
+        );
 
       });
 
 
-    /* SCROLL REVEAL */
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
 
     const revealElements =
-      document.querySelectorAll(".reveal");
+      document.querySelectorAll(
+        ".reveal"
+      );
+
 
     const revealObserver =
       new IntersectionObserver(
 
         entries => {
 
-          entries.forEach(entry => {
+          entries.forEach(
+            entry => {
 
-            if (entry.isIntersecting) {
+              if (
+                entry.isIntersecting
+              ) {
 
-              entry.target.classList.add(
-                "visible"
-              );
+                entry.target.classList.add(
+                  "visible"
+                );
+
+              }
 
             }
-
-          });
+          );
 
         },
 
@@ -1528,53 +1918,70 @@
       );
 
 
-    revealElements.forEach(element => {
+    revealElements.forEach(
+      element => {
 
-      revealObserver.observe(element);
+        revealObserver.observe(
+          element
+        );
 
-    });
+      }
+    );
 
 
-    /* ACTIVE NAVIGATION */
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
 
     const sections =
-      document.querySelectorAll("section");
+      document.querySelectorAll(
+        "section"
+      );
 
     const navigationLinks =
       document.querySelectorAll(
         ".nav-links a"
       );
 
+
     const sectionObserver =
       new IntersectionObserver(
 
         entries => {
 
-          entries.forEach(entry => {
+          entries.forEach(
+            entry => {
 
-            if (entry.isIntersecting) {
+              if (
+                entry.isIntersecting
+              ) {
 
-              navigationLinks.forEach(link => {
+                navigationLinks
+                  .forEach(link => {
 
-                link.style.color = "#aaa";
+                    link.style.color =
+                      "#aaa";
 
-              });
+                  });
 
-              const activeLink =
-                document.querySelector(
-                  `.nav-links a[href="#${entry.target.id}"]`
-                );
 
-              if (activeLink) {
+                const activeLink =
+                  document.querySelector(
+                    `.nav-links a[href="#${entry.target.id}"]`
+                  );
 
-                activeLink.style.color =
-                  "white";
+
+                if (activeLink) {
+
+                  activeLink.style.color =
+                    "white";
+
+                }
 
               }
 
             }
-
-          });
+          );
 
         },
 
@@ -1585,11 +1992,16 @@
       );
 
 
-    sections.forEach(section => {
+    sections.forEach(
+      section => {
 
-      sectionObserver.observe(section);
+        sectionObserver.observe(
+          section
+        );
 
-    });
+      }
+    );
+
 
   </script>
 
