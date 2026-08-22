@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="Personal developer portfolio — projects, skills, experiments and technology."
+        content="HADI — Developer, builder and technology enthusiast."
     >
 
     <style>
@@ -23,10 +23,10 @@
             --bg-soft: #0a0d12;
             --panel: rgba(13, 17, 24, 0.72);
             --border: rgba(255, 255, 255, 0.09);
+            --border-hover: rgba(255, 255, 255, 0.18);
             --text: #f4f7fb;
             --muted: #8d98a8;
-            --accent: #ffffff;
-            --accent-soft: rgba(255, 255, 255, 0.08);
+            --muted-light: #b6bfcb;
         }
 
         html {
@@ -37,9 +37,9 @@
             min-height: 100vh;
             background:
                 radial-gradient(
-                    circle at 50% 20%,
-                    rgba(255, 255, 255, 0.055),
-                    transparent 32%
+                    circle at 50% 10%,
+                    rgba(255,255,255,0.055),
+                    transparent 30%
                 ),
                 var(--bg);
             color: var(--text);
@@ -60,12 +60,12 @@
             pointer-events: none;
             background-image:
                 linear-gradient(
-                    rgba(255,255,255,0.025) 1px,
+                    rgba(255,255,255,0.022) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(255,255,255,0.025) 1px,
+                    rgba(255,255,255,0.022) 1px,
                     transparent 1px
                 );
             background-size: 60px 60px;
@@ -82,11 +82,11 @@
             position: fixed;
             width: 500px;
             height: 500px;
-            top: -180px;
+            top: -200px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255,255,255,0.035);
-            filter: blur(100px);
+            filter: blur(110px);
             border-radius: 50%;
             pointer-events: none;
             z-index: -3;
@@ -115,9 +115,11 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            background: rgba(5, 7, 10, 0.62);
+
+            background: rgba(5, 7, 10, 0.68);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
+
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
@@ -133,18 +135,22 @@
             align-items: center;
             gap: 11px;
             font-weight: 800;
-            letter-spacing: -0.5px;
             font-size: 18px;
+            letter-spacing: 1px;
         }
 
         .logo-mark {
             width: 34px;
             height: 34px;
+
             display: grid;
             place-items: center;
+
             border: 1px solid var(--border);
             border-radius: 10px;
+
             background: rgba(255,255,255,0.04);
+
             font-family: monospace;
             font-size: 14px;
         }
@@ -172,14 +178,78 @@
 
         .nav-contact {
             padding: 10px 16px;
+
             border: 1px solid var(--border);
             border-radius: 10px;
+
             background: rgba(255,255,255,0.04);
+
             color: var(--text) !important;
         }
 
         .nav-contact:hover {
             background: rgba(255,255,255,0.08);
+        }
+
+        .menu-button {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: rgba(255,255,255,0.04);
+            color: white;
+
+            cursor: pointer;
+        }
+
+        /* =========================
+           MOBILE MENU
+        ========================== */
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* =========================
+           GENERAL
+        ========================== */
+
+        .section {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            margin-bottom: 15px;
+
+            color: #707b89;
+
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            max-width: 650px;
+
+            color: var(--muted);
+
+            line-height: 1.8;
+            font-size: 16px;
         }
 
         /* =========================
@@ -188,38 +258,58 @@
 
         .hero {
             min-height: 100vh;
+
             width: min(1180px, calc(100% - 40px));
+
             margin: 0 auto;
+
             padding-top: 78px;
+
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
+
             align-items: center;
+
             gap: 70px;
+
+            position: relative;
         }
 
         .hero-content {
-            padding-top: 30px;
+            padding-top: 25px;
         }
 
         .status {
             display: inline-flex;
             align-items: center;
             gap: 9px;
+
             padding: 8px 13px;
+
             border-radius: 999px;
+
             border: 1px solid var(--border);
+
             background: rgba(255,255,255,0.035);
+
             color: #b7c0cd;
+
             font-size: 12px;
+
             margin-bottom: 25px;
         }
 
         .status-dot {
             width: 7px;
             height: 7px;
+
             border-radius: 50%;
-            background: #cfd5dc;
-            box-shadow: 0 0 12px rgba(255,255,255,0.5);
+
+            background: #d5dae0;
+
+            box-shadow:
+                0 0 12px rgba(255,255,255,0.5);
+
             animation: pulse 2s infinite;
         }
 
@@ -236,43 +326,63 @@
         }
 
         .hero h1 {
-            font-size: clamp(52px, 7vw, 92px);
-            line-height: 0.95;
-            letter-spacing: -5px;
+            font-size: clamp(60px, 8vw, 105px);
+
+            line-height: 0.9;
+
+            letter-spacing: -6px;
+
             font-weight: 850;
+
             max-width: 800px;
         }
 
         .hero h1 span {
-            color: #7f8998;
+            color: #7d8795;
         }
 
         .hero-description {
             max-width: 590px;
-            margin-top: 27px;
+
+            margin-top: 28px;
+
             color: var(--muted);
+
             font-size: 17px;
+
             line-height: 1.75;
         }
 
         .hero-buttons {
             display: flex;
+
             gap: 13px;
+
             margin-top: 35px;
+
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
+
             gap: 9px;
+
             min-height: 48px;
+
             padding: 0 20px;
+
             border-radius: 11px;
+
             border: 1px solid var(--border);
+
             font-size: 14px;
+
             font-weight: 650;
+
             transition:
                 transform 0.25s ease,
                 background 0.25s ease,
@@ -281,7 +391,8 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            border-color: rgba(255,255,255,0.18);
+
+            border-color: var(--border-hover);
         }
 
         .btn-primary {
@@ -290,7 +401,7 @@
         }
 
         .btn-primary:hover {
-            background: #ffffff;
+            background: white;
         }
 
         .btn-secondary {
@@ -299,7 +410,7 @@
         }
 
         /* =========================
-           TERMINAL CARD
+           TERMINAL
         ========================== */
 
         .terminal-wrap {
@@ -309,8 +420,11 @@
 
         .terminal {
             width: min(100%, 470px);
+
             border: 1px solid var(--border);
+
             border-radius: 18px;
+
             background:
                 linear-gradient(
                     145deg,
@@ -318,47 +432,71 @@
                     rgba(255,255,255,0.015)
                 ),
                 var(--panel);
+
             box-shadow:
                 0 35px 80px rgba(0,0,0,0.4),
                 inset 0 1px 0 rgba(255,255,255,0.04);
+
             overflow: hidden;
-            transform: perspective(1000px) rotateY(-4deg);
-            transition: transform 0.5s ease;
+
+            transform:
+                perspective(1000px)
+                rotateY(-4deg);
+
+            transition:
+                transform 0.5s ease;
         }
 
         .terminal:hover {
-            transform: perspective(1000px) rotateY(0deg) translateY(-5px);
+            transform:
+                perspective(1000px)
+                rotateY(0deg)
+                translateY(-5px);
         }
 
         .terminal-header {
             height: 46px;
+
             display: flex;
             align-items: center;
+
             gap: 7px;
+
             padding: 0 16px;
+
             border-bottom: 1px solid var(--border);
+
             background: rgba(255,255,255,0.025);
         }
 
         .terminal-dot {
             width: 9px;
             height: 9px;
+
             border-radius: 50%;
+
             background: #707985;
         }
 
         .terminal-title {
             margin-left: 8px;
+
             color: #6f7987;
+
             font-family: monospace;
+
             font-size: 11px;
         }
 
         .terminal-body {
             padding: 27px;
-            min-height: 345px;
+
+            min-height: 350px;
+
             font-family: "Courier New", monospace;
+
             font-size: 13px;
+
             line-height: 2;
         }
 
@@ -374,21 +512,22 @@
             color: #f0f2f5;
         }
 
-        .comment {
-            color: #687381;
-        }
-
         .output {
             color: #a8b1bd;
         }
 
         .terminal-cursor {
             display: inline-block;
+
             width: 7px;
             height: 15px;
+
             margin-left: 3px;
+
             vertical-align: middle;
+
             background: #dce1e7;
+
             animation: cursor 1s infinite;
         }
 
@@ -403,32 +542,43 @@
         }
 
         /* =========================
-           SCROLL INDICATOR
+           SCROLL
         ========================== */
 
         .scroll-indicator {
             position: absolute;
+
             bottom: 28px;
             left: 50%;
+
             transform: translateX(-50%);
+
             display: flex;
             flex-direction: column;
             align-items: center;
+
             gap: 9px;
+
             color: #596270;
+
             font-size: 10px;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
         }
 
         .scroll-line {
             width: 1px;
             height: 35px;
-            background: linear-gradient(
-                to bottom,
-                #747d89,
-                transparent
-            );
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #747d89,
+                    transparent
+                );
+
             animation: scrollMove 1.7s infinite;
         }
 
@@ -449,72 +599,268 @@
         }
 
         /* =========================
-           QUICK INFO
+           QUICK CARDS
         ========================== */
 
         .quick-section {
-            width: min(1180px, calc(100% - 40px));
-            margin: 0 auto;
-            padding: 30px 0 110px;
+            padding: 0 0 130px;
         }
 
         .quick-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 15px;
         }
 
         .quick-card {
             min-height: 145px;
+
             padding: 25px;
+
             border: 1px solid var(--border);
+
             border-radius: 16px;
-            background: rgba(255,255,255,0.025);
+
+            background:
+                rgba(255,255,255,0.025);
+
             transition:
                 transform 0.3s ease,
-                background 0.3s ease;
+                background 0.3s ease,
+                border-color 0.3s ease;
         }
 
         .quick-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255,255,255,0.045);
+            transform: translateY(-5px);
+
+            background:
+                rgba(255,255,255,0.045);
+
+            border-color:
+                var(--border-hover);
         }
 
         .quick-number {
             color: #697482;
+
             font-family: monospace;
+
             font-size: 12px;
+
             margin-bottom: 18px;
         }
 
         .quick-card h3 {
             font-size: 17px;
+
             margin-bottom: 8px;
         }
 
         .quick-card p {
             color: var(--muted);
+
             font-size: 13px;
+
             line-height: 1.6;
         }
 
         /* =========================
-           MOBILE MENU
+           ABOUT
         ========================== */
 
-        .menu-button {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.04);
-            color: white;
-            cursor: pointer;
+        .about-section {
+            padding: 130px 0;
+
+            border-top:
+                1px solid rgba(255,255,255,0.05);
         }
 
-        .mobile-menu {
-            display: none;
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                0.8fr 1.2fr;
+
+            gap: 80px;
+
+            align-items: start;
+        }
+
+        .about-left {
+            position: sticky;
+
+            top: 120px;
+        }
+
+        .about-card {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.015)
+                );
+        }
+
+        .about-symbol {
+            width: 65px;
+            height: 65px;
+
+            display: grid;
+            place-items: center;
+
+            margin-bottom: 25px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            font-family: monospace;
+
+            font-size: 22px;
+        }
+
+        .about-card h3 {
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .about-content p {
+            color: var(--muted-light);
+
+            font-size: 17px;
+
+            line-height: 1.9;
+
+            margin-bottom: 22px;
+        }
+
+        .about-highlight {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+        .highlight {
+            padding: 20px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,0.025);
+        }
+
+        .highlight strong {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+        }
+
+        .highlight span {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+        /* =========================
+           PLACEHOLDER SECTIONS
+        ========================== */
+
+        .future-section {
+            padding: 130px 0;
+
+            border-top:
+                1px solid rgba(255,255,255,0.05);
+        }
+
+        .future-box {
+            padding: 45px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,255,255,0.025);
+        }
+
+        .future-box p {
+            color: var(--muted);
+
+            line-height: 1.7;
+
+            max-width: 650px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            border-top:
+                1px solid rgba(255,255,255,0.06);
+
+            padding: 35px 0;
+        }
+
+        .footer-inner {
+            width: min(1180px, calc(100% - 40px));
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-brand {
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .footer-text {
+            color: #66717f;
+
+            font-size: 12px;
         }
 
         /* =========================
@@ -525,8 +871,11 @@
 
             .hero {
                 grid-template-columns: 1fr;
+
                 gap: 50px;
+
                 padding-top: 120px;
+
                 padding-bottom: 100px;
             }
 
@@ -540,7 +889,8 @@
             }
 
             .hero h1 {
-                margin: auto;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .hero-description {
@@ -564,8 +914,14 @@
                 transform: translateY(-5px);
             }
 
-            .scroll-indicator {
-                display: none;
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .about-left {
+                position: static;
             }
         }
 
@@ -576,7 +932,8 @@
             }
 
             .nav-inner {
-                width: calc(100% - 28px);
+                width:
+                    calc(100% - 28px);
             }
 
             .nav-links {
@@ -593,58 +950,99 @@
 
             .mobile-menu.active {
                 position: fixed;
+
                 top: 70px;
+
                 left: 14px;
                 right: 14px;
+
                 display: flex;
+
                 flex-direction: column;
+
                 padding: 12px;
-                border: 1px solid var(--border);
+
+                border:
+                    1px solid var(--border);
+
                 border-radius: 14px;
-                background: rgba(10,13,18,0.96);
-                backdrop-filter: blur(20px);
+
+                background:
+                    rgba(10,13,18,0.96);
+
+                backdrop-filter:
+                    blur(20px);
+
                 z-index: 999;
             }
 
             .mobile-menu a {
                 padding: 14px;
+
                 color: var(--muted);
+
                 border-radius: 9px;
             }
 
             .mobile-menu a:hover {
                 color: white;
-                background: rgba(255,255,255,0.05);
+
+                background:
+                    rgba(255,255,255,0.05);
             }
 
             .hero {
-                width: calc(100% - 28px);
+                width:
+                    calc(100% - 28px);
+
                 padding-top: 110px;
+
                 gap: 40px;
             }
 
             .hero h1 {
-                font-size: clamp(48px, 15vw, 70px);
-                letter-spacing: -3px;
+                font-size:
+                    clamp(54px, 16vw, 78px);
+
+                letter-spacing: -4px;
             }
 
             .hero-description {
                 font-size: 15px;
+
                 line-height: 1.65;
             }
 
             .terminal-body {
                 padding: 21px;
+
                 font-size: 11px;
             }
 
-            .quick-section {
-                width: calc(100% - 28px);
-                padding-bottom: 70px;
+            .section {
+                width:
+                    calc(100% - 28px);
             }
 
             .quick-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .about-highlight {
+                grid-template-columns: 1fr;
+            }
+
+            .future-box {
+                padding: 28px;
+            }
+
+            .footer-inner {
+                width:
+                    calc(100% - 28px);
+
+                flex-direction: column;
+
+                align-items: flex-start;
             }
         }
 
@@ -675,22 +1073,44 @@
 
         <div class="nav-inner">
 
-            <a href="#" class="logo">
+            <a href="#home" class="logo">
                 <span class="logo-mark"></span>
                 <span>HADI</span>
             </a>
 
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
+
+                    <li>
+                        <a href="#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#projects">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#skills">
+                            Skills
+                        </a>
+                    </li>
+
                     <li>
                         <a href="#contact" class="nav-contact">
                             Contact
                         </a>
                     </li>
+
                 </ul>
             </nav>
 
@@ -706,51 +1126,98 @@
 
     </header>
 
+
+    <!-- MOBILE MENU -->
+
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#projects">
+            Projects
+        </a>
+
+        <a href="#skills">
+            Skills
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
     </div>
 
 
     <!-- =========================
-         HERO
+         MAIN
     ========================== -->
 
     <main>
+
+        <!-- =========================
+             HOME
+        ========================== -->
 
         <section class="hero" id="home">
 
             <div class="hero-content">
 
                 <div class="status">
+
                     <span class="status-dot"></span>
+
                     Building the future, one project at a time
+
                 </div>
 
+
                 <h1>
+
                     Build.<br>
+
                     Create.<br>
+
                     <span>Innovate.</span>
+
                 </h1>
 
+
                 <p class="hero-description">
-                    I'm a developer who enjoys turning ideas into
-                    real digital experiences — from websites and
-                    applications to experimental technology projects.
+
+                    I'm HADI — a developer and technology enthusiast
+                    who enjoys turning ideas into real digital
+                    experiences, applications and experiments.
+
                 </p>
+
 
                 <div class="hero-buttons">
 
-                    <a href="#projects" class="btn btn-primary">
+                    <a
+                        href="#projects"
+                        class="btn btn-primary"
+                    >
+
                         View Projects
+
                         <span>↗</span>
+
                     </a>
 
-                    <a href="#contact" class="btn btn-secondary">
+
+                    <a
+                        href="#contact"
+                        class="btn btn-secondary"
+                    >
+
                         Let's Connect
+
                     </a>
 
                 </div>
@@ -767,32 +1234,53 @@
                     <div class="terminal-header">
 
                         <span class="terminal-dot"></span>
+
                         <span class="terminal-dot"></span>
+
                         <span class="terminal-dot"></span>
 
                         <span class="terminal-title">
-                            developer@portfolio:~
+                            hadi@portfolio:~
                         </span>
 
                     </div>
 
+
                     <div class="terminal-body">
 
                         <span class="line">
-                            <span class="prompt">visitor@web:~$</span>
-                            <span class="command"> whoami</span>
+
+                            <span class="prompt">
+                                visitor@web:~$
+                            </span>
+
+                            <span class="command">
+                                whoami
+                            </span>
+
                         </span>
 
+
                         <span class="line output">
-                            → developer
+                            → HADI
                         </span>
+
 
                         <br>
 
+
                         <span class="line">
-                            <span class="prompt">visitor@web:~$</span>
-                            <span class="command"> skills</span>
+
+                            <span class="prompt">
+                                visitor@web:~$
+                            </span>
+
+                            <span class="command">
+                                skills
+                            </span>
+
                         </span>
+
 
                         <span class="line output">
                             → Web Development
@@ -806,12 +1294,22 @@
                             → Problem Solving
                         </span>
 
+
                         <br>
 
+
                         <span class="line">
-                            <span class="prompt">visitor@web:~$</span>
-                            <span class="command"> mission</span>
+
+                            <span class="prompt">
+                                visitor@web:~$
+                            </span>
+
+                            <span class="command">
+                                mission
+                            </span>
+
                         </span>
+
 
                         <span class="line output">
                             → Learn.
@@ -825,17 +1323,38 @@
                             → Improve.
                         </span>
 
+
                         <br>
 
+
                         <span class="line">
-                            <span class="prompt">visitor@web:~$</span>
-                            <span class="command"> _</span>
+
+                            <span class="prompt">
+                                visitor@web:~$
+                            </span>
+
+                            <span class="command">
+                                _
+                            </span>
+
                             <span class="terminal-cursor"></span>
+
                         </span>
 
                     </div>
 
                 </div>
+
+            </div>
+
+
+            <!-- SCROLL -->
+
+            <div class="scroll-indicator">
+
+                Scroll
+
+                <span class="scroll-line"></span>
 
             </div>
 
@@ -846,15 +1365,19 @@
              QUICK INFO
         ========================== -->
 
-        <section class="quick-section">
+        <section class="section quick-section">
 
             <div class="quick-grid">
 
                 <div class="quick-card">
 
-                    <div class="quick-number">01 / FOCUS</div>
+                    <div class="quick-number">
+                        01 / FOCUS
+                    </div>
 
-                    <h3>Technology</h3>
+                    <h3>
+                        Technology
+                    </h3>
 
                     <p>
                         Exploring modern technologies and
@@ -866,9 +1389,13 @@
 
                 <div class="quick-card">
 
-                    <div class="quick-number">02 / APPROACH</div>
+                    <div class="quick-number">
+                        02 / APPROACH
+                    </div>
 
-                    <h3>Learn by Building</h3>
+                    <h3>
+                        Learn by Building
+                    </h3>
 
                     <p>
                         Turning concepts into working projects
@@ -880,9 +1407,13 @@
 
                 <div class="quick-card">
 
-                    <div class="quick-number">03 / VISION</div>
+                    <div class="quick-number">
+                        03 / VISION
+                    </div>
 
-                    <h3>Build Tomorrow</h3>
+                    <h3>
+                        Build Tomorrow
+                    </h3>
 
                     <p>
                         Creating useful, creative and
@@ -895,7 +1426,252 @@
 
         </section>
 
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section
+            class="section about-section"
+            id="about"
+        >
+
+            <div class="about-grid">
+
+                <div class="about-left">
+
+                    <span class="section-label">
+                        01 / About
+                    </span>
+
+                    <h2 class="section-title">
+                        Who is HADI?
+                    </h2>
+
+                    <div class="about-card">
+
+                        <div class="about-symbol">
+                            &lt;/&gt;
+                        </div>
+
+                        <h3>
+                            Developer
+                        </h3>
+
+                        <p>
+                            Building ideas into digital
+                            experiences through code,
+                            creativity and continuous learning.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <p>
+                        I'm HADI, a technology enthusiast who
+                        enjoys exploring how software can turn
+                        ideas into something people can actually
+                        use.
+                    </p>
+
+                    <p>
+                        My interests include web development,
+                        application development and experimenting
+                        with new technologies. I like learning
+                        by creating projects rather than only
+                        studying concepts.
+                    </p>
+
+                    <p>
+                        Every project is an opportunity to learn
+                        something new, solve a problem and make
+                        the next project better.
+                    </p>
+
+
+                    <div class="about-highlight">
+
+                        <div class="highlight">
+
+                            <strong>
+                                Build
+                            </strong>
+
+                            <span>
+                                Turn ideas into working projects.
+                            </span>
+
+                        </div>
+
+
+                        <div class="highlight">
+
+                            <strong>
+                                Learn
+                            </strong>
+
+                            <span>
+                                Explore technologies and improve
+                                continuously.
+                            </span>
+
+                        </div>
+
+
+                        <div class="highlight">
+
+                            <strong>
+                                Experiment
+                            </strong>
+
+                            <span>
+                                Try new concepts and discover
+                                better solutions.
+                            </span>
+
+                        </div>
+
+
+                        <div class="highlight">
+
+                            <strong>
+                                Create
+                            </strong>
+
+                            <span>
+                                Build digital experiences with
+                                purpose.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section
+            class="section future-section"
+            id="projects"
+        >
+
+            <span class="section-label">
+                02 / Projects
+            </span>
+
+            <h2 class="section-title">
+                Things I've Built
+            </h2>
+
+            <div class="future-box">
+
+                <p>
+                    Projects will be added here next — including
+                    ROOT Terminal Hub, SpotShare Location and
+                    future experiments.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILLS
+        ========================== -->
+
+        <section
+            class="section future-section"
+            id="skills"
+        >
+
+            <span class="section-label">
+                03 / Skills
+            </span>
+
+            <h2 class="section-title">
+                My Toolkit
+            </h2>
+
+            <div class="future-box">
+
+                <p>
+                    Your technology stack and skills will be
+                    added here in the next stage.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section
+            class="section future-section"
+            id="contact"
+        >
+
+            <span class="section-label">
+                04 / Contact
+            </span>
+
+            <h2 class="section-title">
+                Let's Connect.
+            </h2>
+
+            <div class="future-box">
+
+                <p>
+                    Contact links and social profiles will be
+                    added here when we build the final contact
+                    section.
+                </p>
+
+            </div>
+
+        </section>
+
     </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+                HADI
+            </div>
+
+            <div class="footer-text">
+                Building Code. Creating Tomorrow.
+            </div>
+
+            <div class="footer-text">
+                © 2026 HADI
+            </div>
+
+        </div>
+
+    </footer>
 
 
     <!-- =========================
@@ -904,65 +1680,124 @@
 
     <script>
 
-        const menuButton = document.getElementById("menuButton");
-        const mobileMenu = document.getElementById("mobileMenu");
+        /* =========================
+           MOBILE MENU
+        ========================== */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
 
         menuButton.addEventListener("click", () => {
+
             mobileMenu.classList.toggle("active");
 
-            if (mobileMenu.classList.contains("active")) {
+
+            if (
+                mobileMenu.classList.contains("active")
+            ) {
+
                 menuButton.textContent = "×";
+
             } else {
+
                 menuButton.textContent = "☰";
+
             }
-        });
-
-
-        document.querySelectorAll(".mobile-menu a").forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                mobileMenu.classList.remove("active");
-                menuButton.textContent = "☰";
-
-            });
 
         });
 
 
-        /* Small reveal animation */
+        document
+            .querySelectorAll(".mobile-menu a")
+            .forEach(link => {
 
-        const cards = document.querySelectorAll(".quick-card");
+                link.addEventListener("click", () => {
 
-        const observer = new IntersectionObserver(
-            entries => {
+                    mobileMenu.classList.remove("active");
 
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
-
-                    }
+                    menuButton.textContent = "☰";
 
                 });
 
-            },
-            {
-                threshold: 0.15
+            });
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".quick-card, .about-card, .highlight, .future-box"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.style.opacity = "1";
+
+                            entry.target.style.transform =
+                                "translateY(0)";
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(element => {
+
+            element.style.opacity = "0";
+
+            element.style.transform =
+                "translateY(25px)";
+
+            element.style.transition =
+                "opacity 0.7s ease, transform 0.7s ease";
+
+            observer.observe(element);
+
+        });
+
+
+        /* =========================
+           NAVBAR SCROLL EFFECT
+        ========================== */
+
+        const navbar =
+            document.querySelector(".navbar");
+
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 30) {
+
+                navbar.style.background =
+                    "rgba(5, 7, 10, 0.88)";
+
+            } else {
+
+                navbar.style.background =
+                    "rgba(5, 7, 10, 0.68)";
+
             }
-        );
-
-
-        cards.forEach(card => {
-
-            card.style.opacity = "0";
-            card.style.transform = "translateY(20px)";
-            card.style.transition =
-                "opacity 0.6s ease, transform 0.6s ease";
-
-            observer.observe(card);
 
         });
 
