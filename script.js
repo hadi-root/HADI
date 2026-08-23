@@ -1,14 +1,7 @@
-```js
 /* =========================================================
    HADI — PORTFOLIO
-   COMPLETE JAVASCRIPT
-========================================================= */
-
-"use strict";
-
-/* =========================================================
-   DOM READY
-========================================================= */
+   script.js
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -21,49 +14,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
   const header = document.getElementById("header");
-
   const navItems = document.querySelectorAll(".nav-links a");
   const revealElements = document.querySelectorAll(".reveal");
 
 
   /* =======================================================
-     LOADER
+     PAGE LOADER
   ======================================================= */
 
-  function hideLoader() {
-
-    if (!loader) {
-      body.classList.remove("loading");
-      return;
-    }
-
-    loader.classList.add("hidden");
-    body.classList.remove("loading");
-
-    /* Completely remove it after the transition */
+  const finishLoading = () => {
     setTimeout(() => {
-      loader.style.display = "none";
+
+      if (loader) {
+        loader.classList.add("hidden");
+      }
+
+      body.classList.remove("loading");
+      body.classList.add("loaded");
+
     }, 900);
+  };
+
+  if (document.readyState === "complete") {
+    finishLoading();
+  } else {
+    window.addEventListener("load", finishLoading, { once: true });
   }
-
-
-  /*
-    Do NOT wait only for window.load.
-
-    The loader will disappear after 1.8 seconds even if
-    another resource is slow or fails to load.
-  */
-
-  setTimeout(hideLoader, 1800);
-
-
-  /*
-    Extra fallback in case the page loads normally.
-  */
-
-  window.addEventListener("load", () => {
-    setTimeout(hideLoader, 500);
-  });
 
 
   /* =======================================================
@@ -75,6 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     menuBtn.addEventListener("click", () => {
 
       const isOpen = navLinks.classList.toggle("active");
+
+      menuBtn.classList.toggle("active", isOpen);
 
       menuBtn.setAttribute(
         "aria-expanded",
@@ -91,15 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /*
-      Close menu after clicking a navigation link.
-    */
+    /* Close menu after clicking a navigation link */
 
     navItems.forEach((link) => {
 
       link.addEventListener("click", () => {
 
         navLinks.classList.remove("active");
+        menuBtn.classList.remove("active");
 
         menuBtn.setAttribute(
           "aria-expanded",
@@ -116,9 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /*
-      Close menu when clicking outside.
-    */
+    /* Close menu when clicking outside */
 
     document.addEventListener("click", (event) => {
 
@@ -129,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
 
         navLinks.classList.remove("active");
+        menuBtn.classList.remove("active");
 
         menuBtn.setAttribute(
           "aria-expanded",
@@ -148,8 +124,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
+     HEADER SCROLL EFFECT
+     ======================================================= */
+
+  const updateHeader = () => {
+
+    if (!header) return;
+
+    if (window.scrollY > 40) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+
+  };
+
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
+
+  updateHeader();
+
+
+  /* =======================================================
      SMOOTH SCROLL
-  ======================================================= */
+     ======================================================= */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
@@ -157,21 +158,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const targetId = link.getAttribute("href");
 
-      if (!targetId || targetId === "#") {
+      if (
+        !targetId ||
+        targetId === "#" ||
+        targetId.length <= 1
+      ) {
         return;
       }
 
       const target = document.querySelector(targetId);
 
-      if (!target) {
-        return;
-      }
+      if (!target) return;
 
       event.preventDefault();
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+      const headerHeight = header
+        ? header.offsetHeight
+        : 0;
+
+      const targetPosition =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        headerHeight -
+        10;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
       });
 
     });
@@ -180,35 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     HEADER SCROLL EFFECT
-  ======================================================= */
-
-  function updateHeader() {
-
-    if (!header) {
-      return;
-    }
-
-    if (window.scrollY > 40) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-
-  }
-
-  updateHeader();
-
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-  );
-
-
-  /* =======================================================
-     REVEAL ANIMATIONS
-  ======================================================= */
+     SCROLL REVEAL
+     ======================================================= */
 
   if ("IntersectionObserver" in window) {
 
@@ -241,10 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   } else {
 
-    /*
-      Fallback for browsers without IntersectionObserver.
-    */
-
     revealElements.forEach((element) => {
       element.classList.add("visible");
     });
@@ -254,16 +236,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =======================================================
      ACTIVE NAVIGATION
-  ======================================================= */
+     ======================================================= */
 
   const sections = document.querySelectorAll(
     "main section[id]"
   );
 
-
   if (
-    "IntersectionObserver" in window &&
-    sections.length > 0
+    sections.length &&
+    navItems.length &&
+    "IntersectionObserver" in window
   ) {
 
     const sectionObserver = new IntersectionObserver(
@@ -271,20 +253,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         entries.forEach((entry) => {
 
-          if (!entry.isIntersecting) {
-            return;
-          }
+          if (!entry.isIntersecting) return;
 
-          const currentId = entry.target.getAttribute("id");
+          const currentId = entry.target.id;
 
           navItems.forEach((link) => {
 
-            const linkTarget =
-              link.getAttribute("href");
+            const href = link.getAttribute("href");
 
             link.classList.toggle(
               "active",
-              linkTarget === `#${currentId}`
+              href === `#${currentId}`
             );
 
           });
@@ -293,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       },
       {
-        threshold: 0.35,
+        threshold: 0.25,
         rootMargin: "-20% 0px -55% 0px"
       }
     );
@@ -308,114 +287,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =======================================================
      PROJECT CARD INTERACTION
-  ======================================================= */
+     ======================================================= */
 
-  const projectCards =
-    document.querySelectorAll(".project-card");
-
+  const projectCards = document.querySelectorAll(
+    ".project-card"
+  );
 
   projectCards.forEach((card) => {
 
     card.addEventListener("mouseenter", () => {
-      card.classList.add("project-hover");
+      card.classList.add("hovered");
     });
 
-
     card.addEventListener("mouseleave", () => {
-      card.classList.remove("project-hover");
+      card.classList.remove("hovered");
     });
 
   });
 
 
   /* =======================================================
-     BUTTON RIPPLE EFFECT
-  ======================================================= */
+     BUTTON PRESS FEEDBACK
+     ======================================================= */
 
   const buttons = document.querySelectorAll(
     ".btn, .project-btn"
   );
 
-
   buttons.forEach((button) => {
 
-    button.addEventListener("click", function (event) {
+    button.addEventListener("mousedown", () => {
+      button.classList.add("pressed");
+    });
 
-      const ripple =
-        document.createElement("span");
+    button.addEventListener("mouseup", () => {
+      button.classList.remove("pressed");
+    });
 
-      ripple.className = "button-ripple";
-
-      const rect =
-        this.getBoundingClientRect();
-
-      const size =
-        Math.max(rect.width, rect.height);
-
-      ripple.style.width = `${size}px`;
-      ripple.style.height = `${size}px`;
-
-      ripple.style.left =
-        `${event.clientX - rect.left - size / 2}px`;
-
-      ripple.style.top =
-        `${event.clientY - rect.top - size / 2}px`;
-
-      this.appendChild(ripple);
-
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
-
+    button.addEventListener("mouseleave", () => {
+      button.classList.remove("pressed");
     });
 
   });
 
 
   /* =======================================================
-     CURRENT YEAR
-  ======================================================= */
-
-  const yearElements =
-    document.querySelectorAll("[data-year]");
-
-  yearElements.forEach((element) => {
-    element.textContent =
-      new Date().getFullYear();
-  });
-
-
-  /* =======================================================
      KEYBOARD ACCESSIBILITY
-  ======================================================= */
+     ======================================================= */
 
   document.addEventListener("keydown", (event) => {
 
-    /*
-      Escape closes mobile navigation.
-    */
+    /* Escape closes mobile menu */
 
-    if (
-      event.key === "Escape" &&
-      navLinks &&
-      navLinks.classList.contains("active")
-    ) {
+    if (event.key === "Escape") {
 
-      navLinks.classList.remove("active");
+      if (
+        navLinks &&
+        navLinks.classList.contains("active")
+      ) {
 
-      if (menuBtn) {
+        navLinks.classList.remove("active");
 
-        menuBtn.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+        if (menuBtn) {
+          menuBtn.classList.remove("active");
 
-        menuBtn.setAttribute(
-          "aria-label",
-          "Open navigation menu"
-        );
+          menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+          );
 
-        menuBtn.focus();
+          menuBtn.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+
+          menuBtn.focus();
+        }
 
       }
 
@@ -425,96 +372,179 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
+     EXTERNAL LINK SECURITY
+     ======================================================= */
+
+  document
+    .querySelectorAll('a[target="_blank"]')
+    .forEach((link) => {
+
+      const rel = link.getAttribute("rel") || "";
+
+      if (!rel.includes("noopener")) {
+        link.setAttribute(
+          "rel",
+          `${rel} noopener`.trim()
+        );
+      }
+
+      if (!rel.includes("noreferrer")) {
+        link.setAttribute(
+          "rel",
+          `${link.getAttribute("rel")} noreferrer`.trim()
+        );
+      }
+
+    });
+
+
+  /* =======================================================
      REDUCED MOTION SUPPORT
-  ======================================================= */
+     ======================================================= */
 
   const prefersReducedMotion =
     window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     );
 
+  const handleReducedMotion = () => {
 
-  if (prefersReducedMotion.matches) {
+    if (prefersReducedMotion.matches) {
 
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
+      document.documentElement.classList.add(
+        "reduce-motion"
+      );
 
+      revealElements.forEach((element) => {
+        element.classList.add("visible");
+      });
+
+    } else {
+
+      document.documentElement.classList.remove(
+        "reduce-motion"
+      );
+
+    }
+
+  };
+
+  handleReducedMotion();
+
+  if (prefersReducedMotion.addEventListener) {
+    prefersReducedMotion.addEventListener(
+      "change",
+      handleReducedMotion
+    );
   }
 
 
   /* =======================================================
-     BACKGROUND POINTER EFFECT
-  ======================================================= */
+     CURRENT YEAR
+     ======================================================= */
+
+  const yearElements = document.querySelectorAll(
+    "[data-current-year]"
+  );
+
+  yearElements.forEach((element) => {
+    element.textContent = new Date().getFullYear();
+  });
+
+
+  /* =======================================================
+     SCROLL PROGRESS
+     ======================================================= */
+
+  const progressBar =
+    document.querySelector(".scroll-progress");
+
+  const updateScrollProgress = () => {
+
+    if (!progressBar) return;
+
+    const scrollTop = window.scrollY;
+
+    const documentHeight =
+      document.documentElement.scrollHeight -
+      window.innerHeight;
+
+    if (documentHeight <= 0) {
+      progressBar.style.width = "0%";
+      return;
+    }
+
+    const progress =
+      (scrollTop / documentHeight) * 100;
+
+    progressBar.style.width =
+      `${Math.min(100, Math.max(0, progress))}%`;
+
+  };
+
+  window.addEventListener(
+    "scroll",
+    updateScrollProgress,
+    { passive: true }
+  );
+
+  updateScrollProgress();
+
+
+  /* =======================================================
+     BACKGROUND PARALLAX
+     ======================================================= */
 
   const backgroundGlow =
     document.querySelector(".background-glow");
 
+  if (backgroundGlow && !prefersReducedMotion.matches) {
 
-  if (
-    backgroundGlow &&
-    !prefersReducedMotion.matches
-  ) {
+    let ticking = false;
 
-    let mouseX = 50;
-    let mouseY = 50;
+    const updateGlow = () => {
 
-    let currentX = 50;
-    let currentY = 50;
+      const scrollY = window.scrollY;
 
+      backgroundGlow.style.transform =
+        `translate3d(0, ${scrollY * 0.04}px, 0)`;
 
-    document.addEventListener(
-      "mousemove",
-      (event) => {
+      ticking = false;
 
-        mouseX =
-          (event.clientX / window.innerWidth) * 100;
+    };
 
-        mouseY =
-          (event.clientY / window.innerHeight) * 100;
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (!ticking) {
+
+          window.requestAnimationFrame(
+            updateGlow
+          );
+
+          ticking = true;
+
+        }
 
       },
       { passive: true }
     );
 
-
-    function animateGlow() {
-
-      currentX +=
-        (mouseX - currentX) * 0.05;
-
-      currentY +=
-        (mouseY - currentY) * 0.05;
-
-      backgroundGlow.style.setProperty(
-        "--mouse-x",
-        `${currentX}%`
-      );
-
-      backgroundGlow.style.setProperty(
-        "--mouse-y",
-        `${currentY}%`
-      );
-
-      requestAnimationFrame(animateGlow);
-
-    }
-
-
-    animateGlow();
-
   }
 
 
   /* =======================================================
-     PAGE INITIALIZATION
-  ======================================================= */
-
-  body.classList.add("js-ready");
+     CONSOLE MESSAGE
+     ======================================================= */
 
   console.log(
-    "HADI Portfolio initialized successfully."
+    "%cHADI — Developer • Creator • Builder",
+    "font-size:16px;font-weight:bold;"
+  );
+
+  console.log(
+    "Portfolio loaded successfully."
   );
 
 });
-```
