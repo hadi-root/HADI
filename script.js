@@ -1,7 +1,7 @@
 /* =========================================================
-   HADI — PORTFOLIO
-   script.js
-   ========================================================= */
+   HADI PORTFOLIO
+   AI WEB DESIGNER • DEVELOPER • CREATOR
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -9,36 +9,57 @@ document.addEventListener("DOMContentLoaded", () => {
      ELEMENTS
   ======================================================= */
 
-  const body = document.body;
   const loader = document.getElementById("loader");
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
   const header = document.getElementById("header");
-  const navItems = document.querySelectorAll(".nav-links a");
-  const revealElements = document.querySelectorAll(".reveal");
+
+  const prefersReducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+  const isTouchDevice =
+    window.matchMedia(
+      "(pointer: coarse)"
+    ).matches;
 
 
   /* =======================================================
-     PAGE LOADER
+     LOADER
   ======================================================= */
 
-  const finishLoading = () => {
-    setTimeout(() => {
+  function hideLoader() {
 
-      if (loader) {
-        loader.classList.add("hidden");
-      }
+    if (!loader) return;
 
-      body.classList.remove("loading");
-      body.classList.add("loaded");
+    loader.classList.add("hidden");
 
-    }, 900);
-  };
+    document.body.classList.remove("loading");
+  }
 
-  if (document.readyState === "complete") {
-    finishLoading();
+
+  if (prefersReducedMotion) {
+
+    hideLoader();
+
   } else {
-    window.addEventListener("load", finishLoading, { once: true });
+
+    window.addEventListener(
+      "load",
+      () => {
+
+        setTimeout(
+          hideLoader,
+          900
+        );
+
+      },
+      {
+        once: true
+      }
+    );
+
   }
 
 
@@ -46,505 +67,603 @@ document.addEventListener("DOMContentLoaded", () => {
      MOBILE MENU
   ======================================================= */
 
-  if (menuBtn && navLinks) {
+  function closeMenu() {
 
-    menuBtn.addEventListener("click", () => {
+    if (!navLinks || !menuBtn) return;
 
-      const isOpen = navLinks.classList.toggle("active");
+    navLinks.classList.remove("active");
 
-      menuBtn.classList.toggle("active", isOpen);
+    menuBtn.setAttribute(
+      "aria-expanded",
+      "false"
+    );
 
-      menuBtn.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
+    menuBtn.setAttribute(
+      "aria-label",
+      "Open navigation menu"
+    );
 
-      menuBtn.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Close navigation menu"
-          : "Open navigation menu"
-      );
-
-    });
+    menuBtn.textContent = "☰";
+  }
 
 
-    /* Close menu after clicking a navigation link */
+  function toggleMenu() {
 
-    navItems.forEach((link) => {
+    if (!navLinks || !menuBtn) return;
 
-      link.addEventListener("click", () => {
+    const isOpen =
+      navLinks.classList.toggle("active");
 
-        navLinks.classList.remove("active");
-        menuBtn.classList.remove("active");
+    menuBtn.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
 
-        menuBtn.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+    menuBtn.setAttribute(
+      "aria-label",
+      isOpen
+        ? "Close navigation menu"
+        : "Open navigation menu"
+    );
 
-        menuBtn.setAttribute(
-          "aria-label",
-          "Open navigation menu"
+    menuBtn.textContent =
+      isOpen
+        ? "✕"
+        : "☰";
+  }
+
+
+  if (menuBtn) {
+
+    menuBtn.addEventListener(
+      "click",
+      toggleMenu
+    );
+
+  }
+
+
+  if (navLinks) {
+
+    navLinks
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          closeMenu
         );
 
       });
-
-    });
-
-
-    /* Close menu when clicking outside */
-
-    document.addEventListener("click", (event) => {
-
-      if (
-        navLinks.classList.contains("active") &&
-        !navLinks.contains(event.target) &&
-        !menuBtn.contains(event.target)
-      ) {
-
-        navLinks.classList.remove("active");
-        menuBtn.classList.remove("active");
-
-        menuBtn.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        menuBtn.setAttribute(
-          "aria-label",
-          "Open navigation menu"
-        );
-
-      }
-
-    });
 
   }
 
 
   /* =======================================================
-     HEADER SCROLL EFFECT
-     ======================================================= */
+     ESCAPE CLOSE
+  ======================================================= */
 
-  const updateHeader = () => {
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     HEADER SCROLL
+  ======================================================= */
+
+  function updateHeader() {
 
     if (!header) return;
 
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
+
       header.classList.add("scrolled");
+
     } else {
+
       header.classList.remove("scrolled");
+
     }
 
-  };
+  }
+
 
   window.addEventListener(
     "scroll",
     updateHeader,
-    { passive: true }
+    {
+      passive: true
+    }
   );
 
   updateHeader();
 
 
   /* =======================================================
-     SMOOTH SCROLL
-     ======================================================= */
-
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-
-    link.addEventListener("click", (event) => {
-
-      const targetId = link.getAttribute("href");
-
-      if (
-        !targetId ||
-        targetId === "#" ||
-        targetId.length <= 1
-      ) {
-        return;
-      }
-
-      const target = document.querySelector(targetId);
-
-      if (!target) return;
-
-      event.preventDefault();
-
-      const headerHeight = header
-        ? header.offsetHeight
-        : 0;
-
-      const targetPosition =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        headerHeight -
-        10;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-      });
-
-    });
-
-  });
-
-
-  /* =======================================================
      SCROLL REVEAL
-     ======================================================= */
+  ======================================================= */
 
-  if ("IntersectionObserver" in window) {
-
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-
-        entries.forEach((entry) => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("visible");
-
-            observer.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
-      }
+  const revealElements =
+    document.querySelectorAll(
+      ".reveal"
     );
 
 
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
+  if (
+    prefersReducedMotion ||
+    !("IntersectionObserver" in window)
+  ) {
+
+    revealElements.forEach(
+      element => {
+
+        element.classList.add(
+          "visible"
+        );
+
+      }
+    );
 
   } else {
 
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
+    const revealObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+
+        {
+          threshold: 0.08,
+          rootMargin: "0px 0px -30px 0px"
+        }
+
+      );
+
+
+    revealElements.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
 
   }
 
 
   /* =======================================================
      ACTIVE NAVIGATION
-     ======================================================= */
+  ======================================================= */
 
-  const sections = document.querySelectorAll(
-    "main section[id]"
-  );
+  const sections =
+    document.querySelectorAll(
+      "main section[id]"
+    );
+
+  const navigationLinks =
+    document.querySelectorAll(
+      ".nav-links a"
+    );
+
 
   if (
     sections.length &&
-    navItems.length &&
+    navigationLinks.length &&
     "IntersectionObserver" in window
   ) {
 
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
+    const sectionObserver =
+      new IntersectionObserver(
 
-        entries.forEach((entry) => {
+        entries => {
 
-          if (!entry.isIntersecting) return;
+          entries.forEach(
+            entry => {
 
-          const currentId = entry.target.id;
+              if (
+                entry.isIntersecting
+              ) {
 
-          navItems.forEach((link) => {
+                navigationLinks.forEach(
+                  link => {
 
-            const href = link.getAttribute("href");
+                    link.style.color = "#aaa";
 
-            link.classList.toggle(
-              "active",
-              href === `#${currentId}`
+                  }
+                );
+
+
+                const activeLink =
+                  document.querySelector(
+                    `.nav-links a[href="#${entry.target.id}"]`
+                  );
+
+
+                if (activeLink) {
+
+                  activeLink.style.color =
+                    "white";
+
+                }
+
+              }
+
+            }
+          );
+
+        },
+
+        {
+          threshold: 0.3
+        }
+
+      );
+
+
+    sections.forEach(
+      section => {
+
+        sectionObserver.observe(
+          section
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     SMOOTH ANCHOR FALLBACK
+  ======================================================= */
+
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach(anchor => {
+
+      anchor.addEventListener(
+        "click",
+        event => {
+
+          const targetId =
+            anchor.getAttribute("href");
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
+
+          const target =
+            document.querySelector(
+              targetId
             );
 
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          const headerHeight =
+            header
+              ? header.offsetHeight
+              : 0;
+
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight -
+            15;
+
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior:
+              prefersReducedMotion
+                ? "auto"
+                : "smooth"
           });
 
-        });
+        }
+      );
+
+    });
+
+
+  /* =======================================================
+     DESKTOP CURSOR GLOW
+  ======================================================= */
+
+  if (
+    !prefersReducedMotion &&
+    !isTouchDevice
+  ) {
+
+    const cursorGlow =
+      document.createElement(
+        "div"
+      );
+
+
+    cursorGlow.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    Object.assign(
+      cursorGlow.style,
+      {
+        position: "fixed",
+        width: "180px",
+        height: "180px",
+        borderRadius: "50%",
+        pointerEvents: "none",
+        zIndex: "-1",
+        background: "rgba(255,255,255,0.025)",
+        filter: "blur(45px)",
+        transform: "translate(-50%, -50%)",
+        opacity: "0",
+        transition: "opacity .3s ease"
+      }
+    );
+
+
+    document.body.appendChild(
+      cursorGlow
+    );
+
+
+    let cursorX = 0;
+    let cursorY = 0;
+
+    let glowX = 0;
+    let glowY = 0;
+
+
+    window.addEventListener(
+      "mousemove",
+      event => {
+
+        cursorX =
+          event.clientX;
+
+        cursorY =
+          event.clientY;
+
+        cursorGlow.style.opacity =
+          "1";
 
       },
       {
-        threshold: 0.25,
-        rootMargin: "-20% 0px -55% 0px"
+        passive: true
       }
     );
 
-
-    sections.forEach((section) => {
-      sectionObserver.observe(section);
-    });
-
-  }
-
-
-  /* =======================================================
-     PROJECT CARD INTERACTION
-     ======================================================= */
-
-  const projectCards = document.querySelectorAll(
-    ".project-card"
-  );
-
-  projectCards.forEach((card) => {
-
-    card.addEventListener("mouseenter", () => {
-      card.classList.add("hovered");
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.classList.remove("hovered");
-    });
-
-  });
-
-
-  /* =======================================================
-     BUTTON PRESS FEEDBACK
-     ======================================================= */
-
-  const buttons = document.querySelectorAll(
-    ".btn, .project-btn"
-  );
-
-  buttons.forEach((button) => {
-
-    button.addEventListener("mousedown", () => {
-      button.classList.add("pressed");
-    });
-
-    button.addEventListener("mouseup", () => {
-      button.classList.remove("pressed");
-    });
-
-    button.addEventListener("mouseleave", () => {
-      button.classList.remove("pressed");
-    });
-
-  });
-
-
-  /* =======================================================
-     KEYBOARD ACCESSIBILITY
-     ======================================================= */
-
-  document.addEventListener("keydown", (event) => {
-
-    /* Escape closes mobile menu */
-
-    if (event.key === "Escape") {
-
-      if (
-        navLinks &&
-        navLinks.classList.contains("active")
-      ) {
-
-        navLinks.classList.remove("active");
-
-        if (menuBtn) {
-          menuBtn.classList.remove("active");
-
-          menuBtn.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-          menuBtn.setAttribute(
-            "aria-label",
-            "Open navigation menu"
-          );
-
-          menuBtn.focus();
-        }
-
-      }
-
-    }
-
-  });
-
-
-  /* =======================================================
-     EXTERNAL LINK SECURITY
-     ======================================================= */
-
-  document
-    .querySelectorAll('a[target="_blank"]')
-    .forEach((link) => {
-
-      const rel = link.getAttribute("rel") || "";
-
-      if (!rel.includes("noopener")) {
-        link.setAttribute(
-          "rel",
-          `${rel} noopener`.trim()
-        );
-      }
-
-      if (!rel.includes("noreferrer")) {
-        link.setAttribute(
-          "rel",
-          `${link.getAttribute("rel")} noreferrer`.trim()
-        );
-      }
-
-    });
-
-
-  /* =======================================================
-     REDUCED MOTION SUPPORT
-     ======================================================= */
-
-  const prefersReducedMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    );
-
-  const handleReducedMotion = () => {
-
-    if (prefersReducedMotion.matches) {
-
-      document.documentElement.classList.add(
-        "reduce-motion"
-      );
-
-      revealElements.forEach((element) => {
-        element.classList.add("visible");
-      });
-
-    } else {
-
-      document.documentElement.classList.remove(
-        "reduce-motion"
-      );
-
-    }
-
-  };
-
-  handleReducedMotion();
-
-  if (prefersReducedMotion.addEventListener) {
-    prefersReducedMotion.addEventListener(
-      "change",
-      handleReducedMotion
-    );
-  }
-
-
-  /* =======================================================
-     CURRENT YEAR
-     ======================================================= */
-
-  const yearElements = document.querySelectorAll(
-    "[data-current-year]"
-  );
-
-  yearElements.forEach((element) => {
-    element.textContent = new Date().getFullYear();
-  });
-
-
-  /* =======================================================
-     SCROLL PROGRESS
-     ======================================================= */
-
-  const progressBar =
-    document.querySelector(".scroll-progress");
-
-  const updateScrollProgress = () => {
-
-    if (!progressBar) return;
-
-    const scrollTop = window.scrollY;
-
-    const documentHeight =
-      document.documentElement.scrollHeight -
-      window.innerHeight;
-
-    if (documentHeight <= 0) {
-      progressBar.style.width = "0%";
-      return;
-    }
-
-    const progress =
-      (scrollTop / documentHeight) * 100;
-
-    progressBar.style.width =
-      `${Math.min(100, Math.max(0, progress))}%`;
-
-  };
-
-  window.addEventListener(
-    "scroll",
-    updateScrollProgress,
-    { passive: true }
-  );
-
-  updateScrollProgress();
-
-
-  /* =======================================================
-     BACKGROUND PARALLAX
-     ======================================================= */
-
-  const backgroundGlow =
-    document.querySelector(".background-glow");
-
-  if (backgroundGlow && !prefersReducedMotion.matches) {
-
-    let ticking = false;
-
-    const updateGlow = () => {
-
-      const scrollY = window.scrollY;
-
-      backgroundGlow.style.transform =
-        `translate3d(0, ${scrollY * 0.04}px, 0)`;
-
-      ticking = false;
-
-    };
 
     window.addEventListener(
-      "scroll",
+      "mouseleave",
       () => {
 
-        if (!ticking) {
+        cursorGlow.style.opacity =
+          "0";
 
-          window.requestAnimationFrame(
-            updateGlow
-          );
+      }
+    );
 
-          ticking = true;
 
-        }
+    function animateCursor() {
 
-      },
-      { passive: true }
+      glowX +=
+        (cursorX - glowX) * 0.08;
+
+      glowY +=
+        (cursorY - glowY) * 0.08;
+
+
+      cursorGlow.style.left =
+        `${glowX}px`;
+
+      cursorGlow.style.top =
+        `${glowY}px`;
+
+
+      requestAnimationFrame(
+        animateCursor
+      );
+
+    }
+
+
+    animateCursor();
+
+  }
+
+
+  /* =======================================================
+     PROJECT CARD TILT
+  ======================================================= */
+
+  if (
+    !prefersReducedMotion &&
+    !isTouchDevice
+  ) {
+
+    const projectCards =
+      document.querySelectorAll(
+        ".project-card"
+      );
+
+
+    projectCards.forEach(
+      card => {
+
+        card.addEventListener(
+          "mousemove",
+          event => {
+
+            const rect =
+              card.getBoundingClientRect();
+
+            const x =
+              event.clientX -
+              rect.left;
+
+            const y =
+              event.clientY -
+              rect.top;
+
+
+            const centerX =
+              rect.width / 2;
+
+            const centerY =
+              rect.height / 2;
+
+
+            const rotateX =
+              ((y - centerY) /
+                centerY) * -1.5;
+
+            const rotateY =
+              ((x - centerX) /
+                centerX) * 1.5;
+
+
+            card.style.transform =
+              `translateY(-10px)
+               perspective(900px)
+               rotateX(${rotateX}deg)
+               rotateY(${rotateY}deg)`;
+
+          }
+        );
+
+
+        card.addEventListener(
+          "mouseleave",
+          () => {
+
+            card.style.transform =
+              "";
+
+          }
+        );
+
+      }
     );
 
   }
 
 
   /* =======================================================
-     CONSOLE MESSAGE
-     ======================================================= */
+     EXTERNAL LINK SAFETY
+  ======================================================= */
 
-  console.log(
-    "%cHADI — Developer • Creator • Builder",
-    "font-size:16px;font-weight:bold;"
+  document
+    .querySelectorAll(
+      'a[target="_blank"]'
+    )
+    .forEach(link => {
+
+      link.setAttribute(
+        "rel",
+        "noopener noreferrer"
+      );
+
+    });
+
+
+  /* =======================================================
+     SERVICE CTA TRACKING
+     Lightweight visual feedback only.
+  ======================================================= */
+
+  const serviceLinks =
+    document.querySelectorAll(
+      'a[href*="buildwithroothub"]'
+    );
+
+
+  serviceLinks.forEach(
+    link => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          link.classList.add(
+            "clicked"
+          );
+
+        }
+      );
+
+    }
   );
 
-  console.log(
-    "Portfolio loaded successfully."
+
+  /* =======================================================
+     YEAR
+     Keeps footer current automatically.
+  ======================================================= */
+
+  const footerYear =
+    document.querySelector(
+      "[data-year]"
+    );
+
+
+  if (footerYear) {
+
+    footerYear.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  /* =======================================================
+     PAGE READY
+  ======================================================= */
+
+  document.body.classList.add(
+    "portfolio-ready"
   );
 
 });
+```
