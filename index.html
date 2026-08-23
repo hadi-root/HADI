@@ -1,106 +1,56 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
-    content="HADI — AI Web Designer, Developer, Creator and Builder. Explore projects, skills and digital work."
+    content="HADI — AI Web Designer, Developer and Creator. Explore websites, digital projects and AI-assisted web design."
   >
 
   <meta
     name="keywords"
-    content="HADI, AI Web Designer, Web Designer, Web Developer, Portfolio, Website Design, AI Website"
+    content="HADI, AI web designer, web designer, website design, web development, AI website, developer, creator"
   >
 
+  <meta name="author" content="HADI">
+  <meta name="theme-color" content="#050505">
+
+  <meta property="og:title" content="HADI — AI Web Designer • Developer • Creator">
   <meta
-    name="author"
-    content="HADI"
+    property="og:description"
+    content="Modern websites and digital experiences built with web technologies and AI-assisted workflows."
   >
+  <meta property="og:type" content="website">
 
-  <meta
-    name="theme-color"
-    content="#050505"
-  >
+  <title>HADI — AI Web Designer • Developer • Creator</title>
 
-  <meta
-    name="robots"
-    content="index, follow"
-  >
-
-  <title>HADI — AI Web Designer & Developer</title>
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body class="loading">
 
-
-  <!-- =====================================================
-       INTRO LOADER
-  ====================================================== -->
-
-  <div
-    id="loader"
-    aria-label="Loading portfolio"
-  >
-
+  <!-- LOADER -->
+  <div id="loader" aria-label="Loading portfolio">
     <div class="loader-content">
-
-      <div class="loader-logo">
-        HADI
-      </div>
-
-      <div class="loader-subtitle">
-        AI Web Designer • Developer • Creator
-      </div>
-
+      <div class="loader-logo">HADI</div>
+      <div class="loader-subtitle">AI Web Designer • Developer • Creator</div>
       <div class="loader-line"></div>
-
     </div>
-
   </div>
 
-
-  <!-- =====================================================
-       BACKGROUND
-  ====================================================== -->
-
+  <!-- BACKGROUND -->
   <div class="background-glow"></div>
+  <div class="background-grid"></div>
 
-
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
-
+  <!-- HEADER -->
   <header id="header">
+    <nav class="nav" aria-label="Main navigation">
 
-    <nav
-      class="nav"
-      aria-label="Main navigation"
-    >
-
-      <a
-        href="#home"
-        class="logo"
-        aria-label="HADI Home"
-      >
+      <a href="#home" class="logo" aria-label="HADI Home">
         HADI
       </a>
-
 
       <button
         class="menu-btn"
@@ -113,319 +63,166 @@
         ☰
       </button>
 
-
-      <ul
-        class="nav-links"
-        id="navLinks"
-      >
-
-        <li>
-          <a href="#home">
-            Home
-          </a>
-        </li>
-
-        <li>
-          <a href="#about">
-            About
-          </a>
-        </li>
-
-        <li>
-          <a href="#projects">
-            Projects
-          </a>
-        </li>
-
-        <li>
-          <a href="#services">
-            Websites
-          </a>
-        </li>
-
-        <li>
-          <a href="#contact">
-            Contact
-          </a>
-        </li>
-
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Websites</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
 
     </nav>
-
   </header>
-
-
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
 
   <main>
 
-
-    <!-- ===================================================
-         HERO
-    ==================================================== -->
-
-    <section
-      class="hero"
-      id="home"
-    >
+    <!-- HERO -->
+    <section class="hero" id="home">
 
       <div class="hero-content">
 
         <div class="hero-tag">
-
-          <span
-            class="status-dot"
-            aria-hidden="true"
-          ></span>
-
-          AI Web Designer • Building & Exploring
-
+          <span class="status-dot" aria-hidden="true"></span>
+          AI Web Designer
         </div>
 
-
-        <h1>
-          HADI
-        </h1>
-
+        <h1>HADI</h1>
 
         <h2>
-          AI Web Designer. Developer. Creator.
+          AI Web Designer <span>•</span> Developer <span>•</span> Creator
         </h2>
 
-
         <p>
-          I design and build modern websites using
-          AI-assisted workflows, creative ideas and
-          modern web technologies.
+          I design and build modern websites using web technologies
+          and AI-assisted workflows, turning ideas into digital
+          experiences that actually work.
         </p>
-
 
         <div class="hero-buttons">
 
-          <a
-            href="#projects"
-            class="btn btn-primary"
-          >
+          <a href="#projects" class="btn btn-primary">
             Explore Projects
           </a>
 
-
-          <a
-            href="#services"
-            class="btn btn-secondary"
-          >
+          <a href="#services" class="btn btn-secondary">
             Need a Website?
           </a>
 
+        </div>
+
+        <div class="hero-meta">
+          <span>Web Design</span>
+          <span>AI-Assisted Development</span>
+          <span>Digital Experiences</span>
         </div>
 
       </div>
 
     </section>
 
-
-    <!-- ===================================================
-         ABOUT
-    ==================================================== -->
-
+    <!-- ABOUT -->
     <section id="about">
 
       <div class="section-label reveal">
         01 / About
       </div>
 
-
       <h2 class="section-title reveal">
-        More than<br>
-        just code.
+        Designing with<br>
+        code & AI.
       </h2>
 
-
       <p class="section-description reveal">
-        A look at who I am, what I enjoy building,
-        and the mindset behind my work.
+        I combine web-design knowledge, development skills and
+        AI-assisted workflows to turn ideas into modern digital
+        experiences.
       </p>
-
 
       <div class="about-grid">
 
-
-        <!-- PROFILE -->
-
         <div class="about-profile reveal">
 
-          <div
-            class="profile-symbol"
-            aria-hidden="true"
-          >
+          <div class="profile-symbol" aria-hidden="true">
             H
           </div>
-
 
           <div class="profile-name">
             HADI
           </div>
 
-
           <div class="profile-role">
-            AI Web Designer & Developer
+            AI Web Designer
           </div>
 
-
           <div class="profile-line">
-            Curious by nature. Builder by choice.
+            Designer by mindset. Builder by choice.
+          </div>
+
+          <div class="profile-status">
+            <span></span>
+            Open to website projects
           </div>
 
         </div>
-
-
-        <!-- ABOUT CONTENT -->
 
         <div class="about-content">
 
           <div class="about-intro reveal">
-            I like turning ideas into websites
-            that actually work.
+            I don't just use AI to generate code.
+            I use it as a tool to build better ideas.
           </div>
 
-
           <p class="about-text reveal">
-            I'm HADI, an AI web designer, developer
-            and technology enthusiast interested in
-            creating modern websites and useful
-            digital experiences.
+            I have studied web designing and enjoy creating
+            websites, interfaces and digital projects. I use
+            HTML, CSS, JavaScript and modern AI tools as part
+            of my development workflow.
           </p>
 
-
           <p class="about-text reveal">
-            I combine AI-assisted tools with web
-            development, design and experimentation
-            to turn ideas into polished digital
-            projects.
+            My process combines learning, designing,
+            experimenting, building and improving. AI helps
+            me explore ideas faster, while web-development
+            knowledge helps me turn those ideas into working
+            experiences.
           </p>
-
 
           <div class="about-cards">
 
-
             <div class="about-card reveal">
-
-              <h3>
-                01 — Learn
-              </h3>
-
+              <h3>01 — Design</h3>
               <p>
-                Exploring new technologies,
-                AI tools and development concepts.
+                Creating clean, modern and responsive website
+                layouts with attention to user experience.
               </p>
-
             </div>
 
-
             <div class="about-card reveal">
-
-              <h3>
-                02 — Build
-              </h3>
-
+              <h3>02 — Build</h3>
               <p>
-                Turning ideas into functional,
-                responsive websites.
+                Turning designs and ideas into functional
+                websites using modern web technologies.
               </p>
-
             </div>
 
-
             <div class="about-card reveal">
-
-              <h3>
-                03 — Experiment
-              </h3>
-
+              <h3>03 — AI Assist</h3>
               <p>
-                Testing new ideas and discovering
-                better ways to create digital products.
+                Using AI tools to explore concepts, improve
+                workflows and accelerate development.
               </p>
-
             </div>
 
-
             <div class="about-card reveal">
-
-              <h3>
-                04 — Improve
-              </h3>
-
+              <h3>04 — Improve</h3>
               <p>
-                Refining designs, performance
-                and user experiences.
+                Testing, refining and continuously improving
+                every project I create.
               </p>
-
             </div>
-
 
           </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- =================================================
-           SKILLS
-      ================================================== -->
-
-      <div class="skills-section">
-
-        <div class="section-label reveal">
-          Skills & Interests
-        </div>
-
-
-        <div class="skills-wrapper">
-
-          <span class="skill reveal">
-            HTML
-          </span>
-
-          <span class="skill reveal">
-            CSS
-          </span>
-
-          <span class="skill reveal">
-            JavaScript
-          </span>
-
-          <span class="skill reveal">
-            AI Web Design
-          </span>
-
-          <span class="skill reveal">
-            Web Development
-          </span>
-
-          <span class="skill reveal">
-            GitHub
-          </span>
-
-          <span class="skill reveal">
-            UI Design
-          </span>
-
-          <span class="skill reveal">
-            Responsive Design
-          </span>
-
-          <span class="skill reveal">
-            Problem Solving
-          </span>
-
-          <span class="skill reveal">
-            AI Tools
-          </span>
 
         </div>
 
@@ -433,36 +230,100 @@
 
     </section>
 
+    <!-- SKILLS -->
+    <section id="skills">
 
-    <!-- ===================================================
-         PROJECTS
-    ==================================================== -->
+      <div class="section-label reveal">
+        02 / Skills
+      </div>
 
+      <h2 class="section-title reveal">
+        Tools for<br>
+        building ideas.
+      </h2>
+
+      <p class="section-description reveal">
+        A combination of web technologies, design skills,
+        development tools and AI-assisted workflows.
+      </p>
+
+      <div class="skill-categories">
+
+        <div class="skill-category reveal">
+
+          <div class="skill-category-number">01</div>
+
+          <h3>Web</h3>
+
+          <div class="skills-wrapper">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Responsive Design</span>
+            <span class="skill">UI Design</span>
+          </div>
+
+        </div>
+
+        <div class="skill-category reveal">
+
+          <div class="skill-category-number">02</div>
+
+          <h3>Development</h3>
+
+          <div class="skills-wrapper">
+            <span class="skill">GitHub</span>
+            <span class="skill">Git</span>
+            <span class="skill">Web Development</span>
+            <span class="skill">Problem Solving</span>
+            <span class="skill">Deployment</span>
+          </div>
+
+        </div>
+
+        <div class="skill-category reveal">
+
+          <div class="skill-category-number">03</div>
+
+          <h3>AI Workflow</h3>
+
+          <div class="skills-wrapper">
+            <span class="skill">AI-Assisted Coding</span>
+            <span class="skill">AI Design</span>
+            <span class="skill">Prompting</span>
+            <span class="skill">Idea Exploration</span>
+            <span class="skill">Rapid Prototyping</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROJECTS -->
     <section id="projects">
-
 
       <div class="projects-head">
 
         <div>
 
           <div class="section-label reveal">
-            02 / Projects
+            03 / Projects
           </div>
-
 
           <h2 class="section-title reveal">
             Things I've<br>
             built.
           </h2>
 
-
           <p class="section-description reveal">
-            A collection of projects, experiments
-            and digital work I've created.
+            Personal projects and experiments where I explore
+            web development, interfaces, technology and AI-assisted
+            creation.
           </p>
 
         </div>
-
 
         <div class="projects-count reveal">
           03 Projects
@@ -470,57 +331,37 @@
 
       </div>
 
-
       <div class="projects-grid">
 
-
-        <!-- =================================================
-             ROOT HUB
-        ================================================== -->
-
+        <!-- ROOT HUB -->
         <article class="project-card reveal">
 
-          <div>
+          <div class="project-top">
+            <div class="project-number">PROJECT / 01</div>
+            <div class="project-type">WEB PROJECT</div>
+          </div>
 
-            <div class="project-number">
-              PROJECT / 01
-            </div>
+          <div class="project-content">
 
+            <div class="project-icon">RH</div>
 
-            <div class="project-content">
+            <h3 class="project-title">
+              ROOT HUB
+            </h3>
 
-              <h3 class="project-title">
-                ROOT HUB
-              </h3>
+            <p class="project-description">
+              A technology-focused web project created to explore
+              digital tools, interfaces and modern web experiences.
+            </p>
 
-
-              <p class="project-description">
-                A technology-focused digital project
-                created around development, useful
-                tools and modern web experiences.
-              </p>
-
-
-              <div class="project-tags">
-
-                <span class="project-tag">
-                  Web
-                </span>
-
-                <span class="project-tag">
-                  Development
-                </span>
-
-                <span class="project-tag">
-                  GitHub
-                </span>
-
-              </div>
-
+            <div class="project-tags">
+              <span class="project-tag">Web</span>
+              <span class="project-tag">UI</span>
+              <span class="project-tag">Development</span>
+              <span class="project-tag">GitHub</span>
             </div>
 
           </div>
-
 
           <div class="project-actions">
 
@@ -529,18 +370,15 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
-              aria-label="Open ROOT HUB live website"
             >
               ◉ Live Website
             </a>
-
 
             <a
               href="https://github.com/hadi-root/root-hub"
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
-              aria-label="Open ROOT HUB GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -549,54 +387,35 @@
 
         </article>
 
-
-        <!-- =================================================
-             ROOT OS
-        ================================================== -->
-
+        <!-- ROOT OS -->
         <article class="project-card reveal">
 
-          <div>
+          <div class="project-top">
+            <div class="project-number">PROJECT / 02</div>
+            <div class="project-type">EXPERIMENT</div>
+          </div>
 
-            <div class="project-number">
-              PROJECT / 02
-            </div>
+          <div class="project-content">
 
+            <div class="project-icon">OS</div>
 
-            <div class="project-content">
+            <h3 class="project-title">
+              ROOT OS
+            </h3>
 
-              <h3 class="project-title">
-                ROOT OS
-              </h3>
+            <p class="project-description">
+              An operating-system-inspired web experience focused
+              on interface design, interaction and software concepts.
+            </p>
 
-
-              <p class="project-description">
-                An experimental operating-system-inspired
-                digital interface focused on software
-                design and interactive web experiences.
-              </p>
-
-
-              <div class="project-tags">
-
-                <span class="project-tag">
-                  OS Concept
-                </span>
-
-                <span class="project-tag">
-                  UI
-                </span>
-
-                <span class="project-tag">
-                  Development
-                </span>
-
-              </div>
-
+            <div class="project-tags">
+              <span class="project-tag">OS Concept</span>
+              <span class="project-tag">UI</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Development</span>
             </div>
 
           </div>
-
 
           <div class="project-actions">
 
@@ -605,18 +424,15 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
-              aria-label="Open ROOT OS live website"
             >
               ◉ Live Website
             </a>
-
 
             <a
               href="https://github.com/hadi-root/root-os"
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
-              aria-label="Open ROOT OS GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -625,58 +441,35 @@
 
         </article>
 
-
-        <!-- =================================================
-             ROOT TERMINAL HUB
-        ================================================== -->
-
+        <!-- ROOT TERMINAL HUB -->
         <article class="project-card reveal">
 
-          <div>
+          <div class="project-top">
+            <div class="project-number">PROJECT / 03</div>
+            <div class="project-type">WEB PROJECT</div>
+          </div>
 
-            <div class="project-number">
-              PROJECT / 03
-            </div>
+          <div class="project-content">
 
+            <div class="project-icon">RT</div>
 
-            <div class="project-content">
+            <h3 class="project-title">
+              ROOT TERMINAL HUB
+            </h3>
 
-              <h3 class="project-title">
-                ROOT TERMINAL HUB
-              </h3>
+            <p class="project-description">
+              A terminal-inspired digital experience built around
+              technology, development and interactive web concepts.
+            </p>
 
-
-              <p class="project-description">
-                A terminal-inspired digital experience
-                built around development, technology
-                and interactive web concepts.
-              </p>
-
-
-              <div class="project-tags">
-
-                <span class="project-tag">
-                  Web
-                </span>
-
-                <span class="project-tag">
-                  Terminal
-                </span>
-
-                <span class="project-tag">
-                  JavaScript
-                </span>
-
-                <span class="project-tag">
-                  GitHub
-                </span>
-
-              </div>
-
+            <div class="project-tags">
+              <span class="project-tag">Web</span>
+              <span class="project-tag">Terminal</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">GitHub</span>
             </div>
 
           </div>
-
 
           <div class="project-actions">
 
@@ -685,18 +478,15 @@
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn live"
-              aria-label="Open ROOT TERMINAL HUB live website"
             >
               ◉ Live Website
             </a>
-
 
             <a
               href="https://github.com/hadi-root/root-terminal-portal"
               target="_blank"
               rel="noopener noreferrer"
               class="project-btn"
-              aria-label="Open ROOT TERMINAL HUB GitHub repository"
             >
               &lt;/&gt; GitHub
             </a>
@@ -705,165 +495,97 @@
 
         </article>
 
-
       </div>
 
     </section>
 
-
-    <!-- ===================================================
-         WEBSITE DESIGN / SERVICES
-    ==================================================== -->
-
-    <section
-      id="services"
-      class="services-section"
-    >
+    <!-- WEBSITE SERVICE -->
+    <section id="services" class="service-section">
 
       <div class="section-label reveal">
-        03 / Website Design
+        04 / Website Design
       </div>
-
-
-      <h2 class="section-title reveal">
-        Need a<br>
-        website?
-      </h2>
-
-
-      <p class="section-description reveal">
-        Have an idea, project or business that
-        needs a website? I can turn your idea
-        into a modern digital experience.
-      </p>
-
 
       <div class="service-box reveal">
 
         <div class="service-content">
 
           <div class="service-badge">
-            AI + WEB DESIGN
+            <span></span>
+            WEBSITE PROJECTS
           </div>
 
-
-          <h3>
-            Your idea.<br>
-            Your website.
-          </h3>
-
+          <h2>
+            Need a<br>
+            <span>website?</span>
+          </h2>
 
           <p>
-            I create modern, responsive websites
-            using AI-assisted design and development
-            workflows. From the first idea to the
-            final website, the goal is to create
-            something clean, useful and professional.
+            Have an idea, project, personal brand or small business
+            that needs a website? I can design and build a modern,
+            responsive website using web technologies and
+            AI-assisted development workflows.
           </p>
 
+          <div class="service-features">
 
-          <div class="service-grid">
-
-
-            <div class="service-card">
-
-              <span class="service-number">
-                01
-              </span>
-
-              <h4>
-                Personal Websites
-              </h4>
-
-              <p>
-                Portfolios, personal brands and
-                profile websites.
-              </p>
-
+            <div>
+              <strong>01</strong>
+              <span>Modern Design</span>
             </div>
 
-
-            <div class="service-card">
-
-              <span class="service-number">
-                02
-              </span>
-
-              <h4>
-                Business Websites
-              </h4>
-
-              <p>
-                Modern websites for businesses,
-                brands and projects.
-              </p>
-
+            <div>
+              <strong>02</strong>
+              <span>Responsive Layout</span>
             </div>
 
-
-            <div class="service-card">
-
-              <span class="service-number">
-                03
-              </span>
-
-              <h4>
-                Landing Pages
-              </h4>
-
-              <p>
-                Focused landing pages designed
-                around a specific idea or product.
-              </p>
-
+            <div>
+              <strong>03</strong>
+              <span>AI-Assisted Workflow</span>
             </div>
 
-
-            <div class="service-card">
-
-              <span class="service-number">
-                04
-              </span>
-
-              <h4>
-                Custom Websites
-              </h4>
-
-              <p>
-                Unique digital experiences built
-                around your requirements.
-              </p>
-
+            <div>
+              <strong>04</strong>
+              <span>Website Deployment</span>
             </div>
-
 
           </div>
 
+          <a
+            href="https://www.instagram.com/buildwithroothub/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="service-btn"
+          >
+            Contact for a Website
+            <span>↗</span>
+          </a>
 
-          <div class="service-cta">
+        </div>
 
-            <div>
+        <div class="service-visual" aria-hidden="true">
 
-              <span>
-                Want me to build your website?
-              </span>
+          <div class="browser-window">
 
-              <strong>
-                Let's discuss your idea.
-              </strong>
-
+            <div class="browser-bar">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
 
+            <div class="browser-content">
 
-            <a
-              href="https://www.instagram.com/buildwithroothub/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-primary"
-              aria-label="Contact HADI on Instagram for website design"
-            >
-              Request a Website →
-            </a>
+              <div class="browser-line large"></div>
+              <div class="browser-line"></div>
+              <div class="browser-line short"></div>
+
+              <div class="browser-cards">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+
+            </div>
 
           </div>
 
@@ -873,176 +595,93 @@
 
     </section>
 
-
-    <!-- ===================================================
-         CONTACT
-    ==================================================== -->
-
-    <section
-      id="contact"
-      class="contact-section"
-    >
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
 
       <div class="section-label reveal">
-        04 / Contact
+        05 / Contact
       </div>
-
 
       <h2 class="section-title reveal">
         Let's connect.
       </h2>
 
-
       <p class="section-description reveal">
-        Interested in my work, want to discuss
-        an idea, or want to connect?
-        You can find me here.
+        Whether you want to discuss my work, collaborate on an idea,
+        or build a website, you can find me here.
       </p>
-
 
       <div class="contact-box reveal">
 
         <h3>
           Have an idea?<br>
-          Let's talk.
+          Let's build it.
         </h3>
 
-
         <p>
-          The easiest way to reach me is through
-          email or one of my developer and
-          social profiles.
+          For website projects and web-design requests,
+          contact me through Build With ROOT HUB.
         </p>
-
 
         <div class="contact-grid">
 
-
           <!-- EMAIL -->
-
           <a
             href="mailto:hadivga@gmail.com"
             class="contact-card"
           >
-
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
-              @
-            </div>
-
+            <div class="contact-icon">@</div>
 
             <div class="contact-info">
-
-              <span>
-                Email
-              </span>
-
-              <strong>
-                hadivga@gmail.com
-              </strong>
-
+              <span>Email</span>
+              <strong>hadivga@gmail.com</strong>
             </div>
-
           </a>
 
-
           <!-- GITHUB -->
-
           <a
             href="https://github.com/hadi-root"
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
           >
-
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
-              &lt;/&gt;
-            </div>
-
+            <div class="contact-icon">&lt;/&gt;</div>
 
             <div class="contact-info">
-
-              <span>
-                GitHub
-              </span>
-
-              <strong>
-                github.com/hadi-root
-              </strong>
-
+              <span>GitHub</span>
+              <strong>github.com/hadi-root</strong>
             </div>
-
           </a>
 
-
-          <!-- INSTAGRAM -->
-
+          <!-- PERSONAL INSTAGRAM -->
           <a
             href="https://www.instagram.com/hadi_bin_yoosuf/"
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
           >
-
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
-              ◎
-            </div>
-
+            <div class="contact-icon">◎</div>
 
             <div class="contact-info">
-
-              <span>
-                Instagram
-              </span>
-
-              <strong>
-                @hadi_bin_yoosuf
-              </strong>
-
+              <span>Instagram</span>
+              <strong>@hadi_bin_yoosuf</strong>
             </div>
-
           </a>
 
-
-          <!-- BUILD WITH ROOT HUB -->
-
+          <!-- WEBSITE SERVICE INSTAGRAM -->
           <a
             href="https://www.instagram.com/buildwithroothub/"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-card"
+            class="contact-card service-contact"
           >
-
-            <div
-              class="contact-icon"
-              aria-hidden="true"
-            >
-              ◎
-            </div>
-
+            <div class="contact-icon">↗</div>
 
             <div class="contact-info">
-
-              <span>
-                Website Design
-              </span>
-
-              <strong>
-                @buildwithroothub
-              </strong>
-
+              <span>Website Projects</span>
+              <strong>@buildwithroothub</strong>
             </div>
-
           </a>
-
 
         </div>
 
@@ -1052,58 +691,63 @@
 
   </main>
 
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
+  <!-- FOOTER -->
   <footer>
 
-    <div>
-      © 2026 HADI. Built with code & AI.
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <strong>HADI</strong>
+        <span>AI Web Designer • Developer • Creator</span>
+      </div>
+
+      <div class="footer-status">
+        <span></span>
+        Building digital experiences
+      </div>
+
     </div>
 
+    <div class="footer-bottom">
 
-    <div class="footer-links">
+      <div>
+        © 2026 HADI. Built with code & AI-assisted workflows.
+      </div>
 
-      <a
-        href="https://github.com/hadi-root"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
+      <div class="footer-links">
 
+        <a
+          href="https://github.com/hadi-root"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
 
-      <a
-        href="https://www.instagram.com/hadi_bin_yoosuf/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @hadi_bin_yoosuf
-      </a>
+        <a
+          href="https://www.instagram.com/hadi_bin_yoosuf/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @hadi_bin_yoosuf
+        </a>
 
+        <a
+          href="https://www.instagram.com/buildwithroothub/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @buildwithroothub
+        </a>
 
-      <a
-        href="https://www.instagram.com/buildwithroothub/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @buildwithroothub
-      </a>
+      </div>
 
     </div>
 
   </footer>
 
-
-  <!-- =====================================================
-       JAVASCRIPT
-  ====================================================== -->
-
   <script src="script.js"></script>
 
 </body>
-
 </html>
 ```
