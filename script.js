@@ -1,6 +1,6 @@
 /* =========================================================
    HADI PORTFOLIO — SCRIPT.JS
-   Stable loader + navigation + animations
+   Stable loader + navigation + animations + accessibility
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loader = document.getElementById("loader");
 
-  // Always release the page from loading state
   const finishLoading = () => {
     document.body.classList.remove("loading");
 
     if (loader) {
-      loader.classList.add("loaded");
+      // Matches the CSS '#loader.hidden' rule
+      loader.classList.add("hidden");
 
       setTimeout(() => {
         loader.style.display = "none";
@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Small intro animation, but never allow it to get stuck
+  // Small intro animation delay with stuck-loader fallback
   setTimeout(finishLoading, 1200);
 
 
   /* =======================================================
-     MOBILE MENU
+     MOBILE MENU & NAVIGATION
   ======================================================= */
 
   const menuBtn = document.getElementById("menuBtn");
@@ -37,80 +37,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (menuBtn && navLinks) {
 
-    menuBtn.addEventListener("click", () => {
+    const closeMenu = () => {
+      navLinks.classList.remove("active");
+      document.body.style.overflow = ""; // Restores background scrolling
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-label", "Open navigation menu");
+    };
 
+    menuBtn.addEventListener("click", () => {
       const isOpen = navLinks.classList.toggle("active");
 
-      menuBtn.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-      );
+      // Locks scrolling on the main page while mobile menu is open
+      document.body.style.overflow = isOpen ? "hidden" : "";
 
+      menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
       menuBtn.setAttribute(
         "aria-label",
-        isOpen
-          ? "Close navigation menu"
-          : "Open navigation menu"
+        isOpen ? "Close navigation menu" : "Open navigation menu"
       );
-
     });
 
-
-    // Close menu after clicking a navigation link
+    // Close menu when tapping any navigation link
     navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
 
-      link.addEventListener("click", () => {
-
-        navLinks.classList.remove("active");
-
-        menuBtn.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        menuBtn.setAttribute(
-          "aria-label",
-          "Open navigation menu"
-        );
-
-      });
-
+    // Close menu when pressing the Escape key
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && navLinks.classList.contains("active")) {
+        closeMenu();
+      }
     });
 
   }
 
 
   /* =======================================================
-     SCROLL REVEAL
+     SCROLL REVEAL ANIMATIONS
   ======================================================= */
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+  const revealElements = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
 
-    const revealObserver =
-      new IntersectionObserver(
-        (entries, observer) => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("visible");
-
-              observer.unobserve(entry.target);
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -50px 0px"
-        }
-      );
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    );
 
     revealElements.forEach(element => {
       revealObserver.observe(element);
@@ -118,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   } else {
 
-    // Fallback for older browsers
+    // Fallback for older web browsers
     revealElements.forEach(element => {
       element.classList.add("visible");
     });
@@ -135,86 +118,69 @@ document.addEventListener("DOMContentLoaded", () => {
   if (header) {
 
     const updateHeader = () => {
-
       if (window.scrollY > 40) {
         header.classList.add("scrolled");
       } else {
         header.classList.remove("scrolled");
       }
-
     };
 
-    window.addEventListener(
-      "scroll",
-      updateHeader,
-      { passive: true }
-    );
-
+    window.addEventListener("scroll", updateHeader, { passive: true });
     updateHeader();
 
   }
 
 
   /* =======================================================
-     SMOOTH SCROLL
+     SMOOTH SCROLLING
   ======================================================= */
 
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-      link.addEventListener("click", event => {
+    link.addEventListener("click", event => {
 
-        const targetId =
-          link.getAttribute("href");
+      const targetId = link.getAttribute("href");
 
-        if (
-          !targetId ||
-          targetId === "#"
-        ) {
-          return;
-        }
+      if (!targetId || targetId === "#") {
+        return;
+      }
 
-        const target =
-          document.querySelector(targetId);
+      const target = document.querySelector(targetId);
 
-        if (!target) {
-          return;
-        }
+      if (!target) {
+        return;
+      }
 
-        event.preventDefault();
+      event.preventDefault();
 
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
 
     });
 
+  });
+
 
   /* =======================================================
-     CURRENT YEAR
+     DYNAMIC CURRENT YEAR
   ======================================================= */
 
-  const yearElements =
-    document.querySelectorAll("[data-year]");
+  const yearElements = document.querySelectorAll("[data-year]");
 
   yearElements.forEach(element => {
-    element.textContent =
-      new Date().getFullYear();
+    element.textContent = new Date().getFullYear();
   });
 
 
   /* =======================================================
-     PROJECT CARD INTERACTION
+     CARD INTERACTION HOVERS
   ======================================================= */
 
-  const projectCards =
-    document.querySelectorAll(".project-card");
+  const interactiveCards = document.querySelectorAll(".project-card, .contact-card");
 
-  projectCards.forEach(card => {
+  interactiveCards.forEach(card => {
 
     card.addEventListener("mouseenter", () => {
       card.classList.add("hovered");
@@ -228,57 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     CONTACT CARD INTERACTION
-  ======================================================= */
-
-  const contactCards =
-    document.querySelectorAll(".contact-card");
-
-  contactCards.forEach(card => {
-
-    card.addEventListener("mouseenter", () => {
-      card.classList.add("hovered");
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.classList.remove("hovered");
-    });
-
-  });
-
-
-  /* =======================================================
-     KEYBOARD ACCESSIBILITY
-  ======================================================= */
-
-  document.addEventListener("keydown", event => {
-
-    // Escape closes mobile navigation
-    if (
-      event.key === "Escape" &&
-      navLinks &&
-      menuBtn
-    ) {
-
-      navLinks.classList.remove("active");
-
-      menuBtn.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      menuBtn.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-      );
-
-    }
-
-  });
-
-
-  /* =======================================================
-     PAGE READY
+     PAGE READY STATE
   ======================================================= */
 
   document.documentElement.classList.add("js-ready");
