@@ -1,1 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>HADI Admin</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="script.js"></script>
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <main id="loginScreen" class="screen">
+
+        <div class="login-card">
+
+            <div class="logo">
+                HADI<span>.</span>
+            </div>
+
+            <h1>Admin Panel</h1>
+
+            <p class="subtitle">
+                Sign in to control your website.
+            </p>
+
+            <form id="loginForm">
+
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Admin email"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button type="submit" id="loginButton">
+                    Sign In
+                </button>
+
+                <p id="loginMessage" class="message"></p>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- DASHBOARD -->
+    <main id="dashboardScreen" class="dashboard hidden">
+
+        <header class="topbar">
+
+            <div>
+                <div class="brand">HADI<span>.</span></div>
+                <div class="admin-label">Website Control Center</div>
+            </div>
+
+            <button id="logoutButton" class="logout">
+                Logout
+            </button>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <div class="welcome">
+                <p class="eyebrow">ADMIN DASHBOARD</p>
+
+                <h1>
+                    Welcome back.
+                </h1>
+
+                <p>
+                    Control your HADI portfolio from one place.
+                </p>
+            </div>
+
+
+            <!-- WEBSITE STATUS -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>Website</h2>
+                        <p>Basic website configuration</p>
+                    </div>
+
+                    <span id="statusBadge" class="badge">
+                        Loading...
+                    </span>
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label for="siteName">
+                            Website Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="siteName"
+                            placeholder="HADI"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Website Status
+                        </label>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="siteEnabled"
+                            >
+
+                            <span class="slider"></span>
+
+                            <span class="switch-text">
+                                Website enabled
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <button id="saveSiteButton" class="primary">
+                    Save Changes
+                </button>
+
+                <p id="saveMessage" class="message"></p>
+
+            </div>
+
+
+            <!-- FUTURE CONTROL SECTIONS -->
+
+            <div class="control-grid">
+
+                <div class="control-card">
+                    <div class="icon">🏠</div>
+                    <h3>Home</h3>
+                    <p>Hero text, buttons and homepage settings.</p>
+                    <span>Coming next</span>
+                </div>
+
+
+                <div class="control-card">
+                    <div class="icon">👤</div>
+                    <h3>About</h3>
+                    <p>Manage your profile and about section.</p>
+                    <span>Coming next</span>
+                </div>
+
+
+                <div class="control-card">
+                    <div class="icon">🛠️</div>
+                    <h3>Skills</h3>
+                    <p>Add, edit and remove your skills.</p>
+                    <span>Coming next</span>
+                </div>
+
+
+                <div class="control-card">
+                    <div class="icon">🚀</div>
+                    <h3>Projects</h3>
+                    <p>Manage portfolio projects and links.</p>
+                    <span>Coming next</span>
+                </div>
+
+
+                <div class="control-card">
+                    <div class="icon">🔗</div>
+                    <h3>Social Links</h3>
+                    <p>Manage your social-media links.</p>
+                    <span>Coming next</span>
+                </div>
+
+
+                <div class="control-card">
+                    <div class="icon">📩</div>
+                    <h3>Messages</h3>
+                    <p>View messages submitted through your website.</p>
+                    <span>Coming next</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
