@@ -49,7 +49,7 @@ const db = getFirestore(app);
 // ADMIN UID
 // ================================
 
-const ADMIN_UID = "Zs8OdCCwUXXB8LfNhZnJWSfRMO02";
+const ADMIN_UID = "vxqEEYTcZMUvJ6kSuuS57IQ6Noo1";
 
 
 // ================================
