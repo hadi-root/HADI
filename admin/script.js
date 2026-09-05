@@ -1,310 +1,654 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
-import {
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signOut
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-import {
-    getFirestore,
-    doc,
-    getDoc,
-    setDoc
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-
-// ================================
-// FIREBASE CONFIG
-// ================================
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBUBGAWZ7sdQ8rnyMN9uhng9P6InAjnzYs",
-    authDomain: "hadi-portfolio-236ef.firebaseapp.com",
-    projectId: "hadi-portfolio-236ef",
-    storageBucket: "hadi-portfolio-236ef.firebasestorage.app",
-    messagingSenderId: "417673820671",
-    appId: "1:417673820671:web:f798cf24a9394135b44fca",
-    measurementId: "G-BLQ6T6J3FG"
+const state = {
+  projects: []
 };
 
+const $ = (id) => document.getElementById(id);
 
-// ================================
-// FIREBASE
-// ================================
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-
-// ================================
-// ADMIN UID
-// ================================
-
-const ADMIN_UID = "vxqEEYTcZMUvJ6kSuuS57IQ6Noo1";
-
-
-// ================================
-// ELEMENTS
-// ================================
-
-const loginScreen = document.getElementById("loginScreen");
-const dashboardScreen = document.getElementById("dashboardScreen");
-
-const loginForm = document.getElementById("loginForm");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-
-const loginButton = document.getElementById("loginButton");
-const loginMessage = document.getElementById("loginMessage");
-
-const siteNameInput = document.getElementById("siteName");
-const siteEnabledInput = document.getElementById("siteEnabled");
-
-const saveSiteButton = document.getElementById("saveSiteButton");
-const saveMessage = document.getElementById("saveMessage");
-
-const statusBadge = document.getElementById("statusBadge");
-
-const logoutButton = document.getElementById("logoutButton");
-
-
-// ================================
-// SHOW LOGIN
-// ================================
-
-function showLogin() {
-    loginScreen.classList.remove("hidden");
-    dashboardScreen.classList.add("hidden");
+function setStatus(text) {
+  const status = $("saveStatus");
+  if (status) status.textContent = text;
 }
-
-
-// ================================
-// SHOW DASHBOARD
-// ================================
 
 function showDashboard() {
-    loginScreen.classList.add("hidden");
-    dashboardScreen.classList.remove("hidden");
+  $("loginPage").classList.add("hidden");
+  $("dashboardPage").classList.remove("hidden");
+}
+
+function showLogin() {
+  $("dashboardPage").classList.add("hidden");
+  $("loginPage").classList.remove("hidden");
+}
+
+async function loadSection(section) {
+  const { db, doc, getDoc } = window.firebaseAdmin;
+
+  const ref = doc(db, "portfolio", section);
+  const snapshot = await getDoc(ref);
+
+  if (!snapshot.exists()) return null;
+
+  return snapshot.data();
+}
+
+async function saveSection(section, data) {
+  const { db, doc, setDoc } = window.firebaseAdmin;
+
+  await setDoc(
+    doc(db, "portfolio", section),
+    data,
+    { merge: true }
+  );
+}
+
+function fillField(id, value = "") {
+  const element = $(id);
+
+  if (element) {
+    element.value = value;
+  }
+}
+
+function renderProjects() {
+  const container = $("projectsContainer");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  state.projects.forEach((project, index) => {
+
+    const wrapper = document.createElement("div");
+
+    wrapper.className = "project-admin";
+
+    wrapper.innerHTML = `
+      <div class="project-admin-header">
+        <strong>Project ${String(index + 1).padStart(2, "0")}</strong>
+
+        <button
+          type="button"
+          class="delete-project"
+          data-index="${index}"
+        >
+          Delete
+        </button>
+      </div>
+
+      <label>Project Name</label>
+
+      <input
+        class="project-name"
+        type="text"
+        value="${escapeHTML(project.name || "")}"
+        placeholder="Project name"
+      >
+
+      <label>Description</label>
+
+      <textarea
+        class="project-description"
+        rows="4"
+        placeholder="Project description"
+      >${escapeHTML(project.description || "")}</textarea>
+
+      <label>Live Website</label>
+
+      <input
+        class="project-live"
+        type="url"
+        value="${escapeHTML(project.live || "")}"
+        placeholder="https://example.com"
+      >
+
+      <label>GitHub</label>
+
+      <input
+        class="project-github"
+        type="url"
+        value="${escapeHTML(project.github || "")}"
+        placeholder="https://github.com/..."
+      >
+
+      <label>Tags</label>
+
+      <input
+        class="project-tags"
+        type="text"
+        value="${escapeHTML(project.tags || "")}"
+        placeholder="Web, UI, JavaScript"
+      >
+    `;
+
+    container.appendChild(wrapper);
+  });
+
+  document
+    .querySelectorAll(".delete-project")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const index = Number(button.dataset.index);
+
+        state.projects.splice(index, 1);
+
+        renderProjects();
+      });
+    });
+}
+
+function collectProjects() {
+  const cards =
+    document.querySelectorAll(".project-admin");
+
+  return Array.from(cards).map(card => ({
+    name:
+      card.querySelector(".project-name")?.value.trim() || "",
+
+    description:
+      card.querySelector(".project-description")?.value.trim() || "",
+
+    live:
+      card.querySelector(".project-live")?.value.trim() || "",
+
+    github:
+      card.querySelector(".project-github")?.value.trim() || "",
+
+    tags:
+      card.querySelector(".project-tags")?.value.trim() || ""
+  }));
+}
+
+function escapeHTML(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+async function loadDashboard() {
+
+  setStatus("Loading...");
+
+  try {
+
+    const about = await loadSection("about");
+
+    if (about) {
+
+      fillField("aboutIntro", about.intro);
+
+      fillField(
+        "aboutDescription",
+        about.description
+      );
+
+      fillField(
+        "aboutTools",
+        about.workflow
+      );
+    }
+
+
+    const skills = await loadSection("skills");
+
+    if (skills) {
+
+      fillField("skillWeb", skills.web);
+
+      fillField(
+        "skillDesign",
+        skills.design
+      );
+
+      fillField(
+        "skillTools",
+        skills.tools
+      );
+    }
+
+
+    const services = await loadSection("services");
+
+    if (services) {
+
+      fillField(
+        "service1Title",
+        services.service1?.title
+      );
+
+      fillField(
+        "service1Description",
+        services.service1?.description
+      );
+
+      fillField(
+        "service2Title",
+        services.service2?.title
+      );
+
+      fillField(
+        "service2Description",
+        services.service2?.description
+      );
+
+      fillField(
+        "service3Title",
+        services.service3?.title
+      );
+
+      fillField(
+        "service3Description",
+        services.service3?.description
+      );
+    }
+
+
+    const contact = await loadSection("contact");
+
+    if (contact) {
+
+      fillField(
+        "contactEmail",
+        contact.email
+      );
+
+      fillField(
+        "contactGithub",
+        contact.github
+      );
+
+      fillField(
+        "contactInstagram",
+        contact.instagram
+      );
+
+      fillField(
+        "contactRootHub",
+        contact.rootHub
+      );
+    }
+
+
+    const projects = await loadSection("projects");
+
+    state.projects =
+      Array.isArray(projects?.items)
+        ? projects.items
+        : [];
+
+    renderProjects();
+
+    setStatus("Ready");
+
+  } catch (error) {
+
+    console.error(error);
+
+    setStatus("Error");
+
+    alert(
+      "Could not load portfolio data. Check your Firebase configuration and Firestore rules."
+    );
+  }
 }
 
 
-// ================================
-// AUTH STATE
-// ================================
+/* =========================
+   LOGIN
+========================= */
 
-onAuthStateChanged(auth, async (user) => {
+function setupLogin() {
 
-    if (!user) {
-        showLogin();
-        return;
-    }
+  $("loginForm").addEventListener(
+    "submit",
+    async (event) => {
 
-    if (user.uid !== ADMIN_UID) {
+      event.preventDefault();
 
-        await signOut(auth);
+      const email =
+        $("email").value.trim();
 
-        loginMessage.textContent =
-            "Access denied. This account is not an admin account.";
+      const password =
+        $("password").value;
 
-        showLogin();
+      const message =
+        $("loginMessage");
 
-        return;
-    }
+      message.textContent = "";
 
-    showDashboard();
+      try {
 
-    await loadSiteConfig();
-});
-
-
-// ================================
-// LOGIN
-// ================================
-
-loginForm.addEventListener("submit", async (event) => {
-
-    event.preventDefault();
-
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-
-    loginMessage.textContent = "";
-
-    loginButton.disabled = true;
-    loginButton.textContent = "Signing in...";
-
-    try {
-
-        await signInWithEmailAndPassword(
-            auth,
+        await window.firebaseAdmin
+          .signInWithEmailAndPassword(
+            window.firebaseAdmin.auth,
             email,
             password
+          );
+
+      } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+          "Invalid email or password.";
+      }
+    }
+  );
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function setupLogout() {
+
+  $("logoutBtn").addEventListener(
+    "click",
+    async () => {
+
+      await window.firebaseAdmin.signOut(
+        window.firebaseAdmin.auth
+      );
+    }
+  );
+}
+
+
+/* =========================
+   SAVE ABOUT
+========================= */
+
+function setupAboutSave() {
+
+  document
+    .querySelector('[data-section="about"]')
+    .addEventListener("click", async () => {
+
+      setStatus("Saving...");
+
+      try {
+
+        await saveSection("about", {
+
+          intro:
+            $("aboutIntro").value.trim(),
+
+          description:
+            $("aboutDescription").value.trim(),
+
+          workflow:
+            $("aboutTools").value.trim()
+        });
+
+        setStatus("About saved");
+
+      } catch (error) {
+
+        console.error(error);
+
+        setStatus("Save failed");
+
+        alert(
+          "Could not save About."
         );
-
-    } catch (error) {
-
-        console.error(error);
-
-        if (error.code === "auth/invalid-credential") {
-
-            loginMessage.textContent =
-                "Incorrect email or password.";
-
-        } else if (error.code === "auth/too-many-requests") {
-
-            loginMessage.textContent =
-                "Too many attempts. Try again later.";
-
-        } else {
-
-            loginMessage.textContent =
-                "Login failed. Please try again.";
-        }
-    }
-
-    loginButton.disabled = false;
-    loginButton.textContent = "Sign In";
-});
-
-
-// ================================
-// LOAD SITE CONFIG
-// ================================
-
-async function loadSiteConfig() {
-
-    try {
-
-        const configRef = doc(db, "site", "config");
-
-        const snapshot = await getDoc(configRef);
-
-        if (!snapshot.exists()) {
-
-            statusBadge.textContent = "No Config";
-
-            return;
-        }
-
-        const data = snapshot.data();
-
-        siteNameInput.value =
-            data.siteName || "HADI";
-
-        siteEnabledInput.checked =
-            data.siteEnabled === true;
-
-        updateStatusBadge();
-
-    } catch (error) {
-
-        console.error(error);
-
-        statusBadge.textContent = "Error";
-
-        saveMessage.textContent =
-            "Could not load website settings.";
-    }
+      }
+    });
 }
 
 
-// ================================
-// STATUS BADGE
-// ================================
+/* =========================
+   SAVE SKILLS
+========================= */
 
-function updateStatusBadge() {
+function setupSkillsSave() {
 
-    if (siteEnabledInput.checked) {
+  document
+    .querySelector('[data-section="skills"]')
+    .addEventListener("click", async () => {
 
-        statusBadge.textContent = "Online";
+      setStatus("Saving...");
 
-    } else {
+      try {
 
-        statusBadge.textContent = "Offline";
-    }
+        await saveSection("skills", {
+
+          web:
+            $("skillWeb").value.trim(),
+
+          design:
+            $("skillDesign").value.trim(),
+
+          tools:
+            $("skillTools").value.trim()
+        });
+
+        setStatus("Skills saved");
+
+      } catch (error) {
+
+        console.error(error);
+
+        setStatus("Save failed");
+
+        alert(
+          "Could not save Skills."
+        );
+      }
+    });
 }
 
 
-siteEnabledInput.addEventListener(
-    "change",
-    updateStatusBadge
+/* =========================
+   SAVE SERVICES
+========================= */
+
+function setupServicesSave() {
+
+  document
+    .querySelector('[data-section="services"]')
+    .addEventListener("click", async () => {
+
+      setStatus("Saving...");
+
+      try {
+
+        await saveSection("services", {
+
+          service1: {
+            title:
+              $("service1Title").value.trim(),
+
+            description:
+              $("service1Description")
+                .value
+                .trim()
+          },
+
+          service2: {
+            title:
+              $("service2Title").value.trim(),
+
+            description:
+              $("service2Description")
+                .value
+                .trim()
+          },
+
+          service3: {
+            title:
+              $("service3Title").value.trim(),
+
+            description:
+              $("service3Description")
+                .value
+                .trim()
+          }
+
+        });
+
+        setStatus("Services saved");
+
+      } catch (error) {
+
+        console.error(error);
+
+        setStatus("Save failed");
+
+        alert(
+          "Could not save Services."
+        );
+      }
+    });
+}
+
+
+/* =========================
+   SAVE CONTACT
+========================= */
+
+function setupContactSave() {
+
+  document
+    .querySelector('[data-section="contact"]')
+    .addEventListener("click", async () => {
+
+      setStatus("Saving...");
+
+      try {
+
+        await saveSection("contact", {
+
+          email:
+            $("contactEmail").value.trim(),
+
+          github:
+            $("contactGithub").value.trim(),
+
+          instagram:
+            $("contactInstagram").value.trim(),
+
+          rootHub:
+            $("contactRootHub").value.trim()
+        });
+
+        setStatus("Contact saved");
+
+      } catch (error) {
+
+        console.error(error);
+
+        setStatus("Save failed");
+
+        alert(
+          "Could not save Contact."
+        );
+      }
+    });
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+function setupProjects() {
+
+  $("addProjectBtn")
+    .addEventListener("click", () => {
+
+      state.projects.push({
+
+        name: "",
+
+        description: "",
+
+        live: "",
+
+        github: "",
+
+        tags: ""
+      });
+
+      renderProjects();
+    });
+
+
+  $("saveProjectsBtn")
+    .addEventListener("click", async () => {
+
+      setStatus("Saving...");
+
+      try {
+
+        const projects =
+          collectProjects();
+
+        await saveSection("projects", {
+          items: projects
+        });
+
+        state.projects = projects;
+
+        setStatus("Projects saved");
+
+      } catch (error) {
+
+        console.error(error);
+
+        setStatus("Save failed");
+
+        alert(
+          "Could not save Projects."
+        );
+      }
+    });
+}
+
+
+/* =========================
+   FIREBASE READY
+========================= */
+
+window.addEventListener(
+  "firebase-ready",
+  () => {
+
+    setupLogin();
+
+    setupLogout();
+
+    setupAboutSave();
+
+    setupSkillsSave();
+
+    setupServicesSave();
+
+    setupContactSave();
+
+    setupProjects();
+
+
+    window.firebaseAdmin
+      .onAuthStateChanged(
+        window.firebaseAdmin.auth,
+        async (user) => {
+
+          if (user) {
+
+            showDashboard();
+
+            await loadDashboard();
+
+          } else {
+
+            showLogin();
+
+          }
+        }
+      );
+  }
 );
-
-
-// ================================
-// SAVE SETTINGS
-// ================================
-
-saveSiteButton.addEventListener("click", async () => {
-
-    const siteName =
-        siteNameInput.value.trim();
-
-    const siteEnabled =
-        siteEnabledInput.checked;
-
-    if (!siteName) {
-
-        saveMessage.textContent =
-            "Website name cannot be empty.";
-
-        return;
-    }
-
-    saveSiteButton.disabled = true;
-    saveSiteButton.textContent = "Saving...";
-    saveMessage.textContent = "";
-
-    try {
-
-        const configRef =
-            doc(db, "site", "config");
-
-        await setDoc(
-            configRef,
-            {
-                siteName: siteName,
-                siteEnabled: siteEnabled
-            },
-            {
-                merge: true
-            }
-        );
-
-        updateStatusBadge();
-
-        saveMessage.textContent =
-            "✓ Changes saved successfully.";
-
-    } catch (error) {
-
-        console.error(error);
-
-        saveMessage.textContent =
-            "Could not save changes.";
-    }
-
-    saveSiteButton.disabled = false;
-    saveSiteButton.textContent = "Save Changes";
-});
-
-
-// ================================
-// LOGOUT
-// ================================
-
-logoutButton.addEventListener("click", async () => {
-
-    try {
-
-        await signOut(auth);
-
-    } catch (error) {
-
-        console.error(error);
-    }
-});
