@@ -1,308 +1,387 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-import {
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signOut
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    <title>HADI Admin</title>
 
-import {
-    getFirestore,
-    doc,
-    getDoc,
-    setDoc
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+    <link rel="stylesheet" href="style.css">
 
+    <script type="module" src="script.js"></script>
+</head>
 
-// ================================
-// FIREBASE CONFIG
-// ================================
+<body>
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBUBGAWZ7sdQ8rnyMN9uhng9P6InAjnzYs",
-    authDomain: "hadi-portfolio-236ef.firebaseapp.com",
-    projectId: "hadi-portfolio-236ef",
-    storageBucket: "hadi-portfolio-236ef.firebasestorage.app",
-    messagingSenderId: "417673820671",
-    appId: "1:417673820671:web:f798cf24a9394135b44fca",
-    measurementId: "G-BLQ6T6J3FG"
-};
+    <!-- ================================ -->
+    <!-- LOGIN SCREEN -->
+    <!-- ================================ -->
 
+    <main id="loginScreen" class="screen">
 
-// ================================
-// FIREBASE
-// ================================
+        <div class="login-card">
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+            <div class="logo">
+                HADI<span>.</span>
+            </div>
 
+            <h1>Admin Panel</h1>
 
-// ================================
-// ADMIN UID
-// ================================
+            <p class="subtitle">
+                Sign in to control your website.
+            </p>
 
-const ADMIN_UID = "Zs8OdCCwUXXB8LfNhZnJWSfRMO02";
+            <form id="loginForm">
 
+                <label for="email">
+                    Email
+                </label>
 
-// ================================
-// ELEMENTS
-// ================================
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Admin email"
+                    autocomplete="email"
+                    required
+                >
 
-const loginScreen = document.getElementById("loginScreen");
-const dashboardScreen = document.getElementById("dashboardScreen");
+                <label for="password">
+                    Password
+                </label>
 
-const loginForm = document.getElementById("loginForm");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    required
+                >
 
-const loginButton = document.getElementById("loginButton");
-const loginMessage = document.getElementById("loginMessage");
+                <button
+                    type="submit"
+                    id="loginButton"
+                >
+                    Sign In
+                </button>
 
-const siteNameInput = document.getElementById("siteName");
-const siteEnabledInput = document.getElementById("siteEnabled");
+                <p
+                    id="loginMessage"
+                    class="message"
+                ></p>
 
-const saveSiteButton = document.getElementById("saveSiteButton");
-const saveMessage = document.getElementById("saveMessage");
+            </form>
 
-const statusBadge = document.getElementById("statusBadge");
+        </div>
 
-const logoutButton = document.getElementById("logoutButton");
+    </main>
 
 
-// ================================
-// LOGIN SCREEN
-// ================================
+    <!-- ================================ -->
+    <!-- ADMIN DASHBOARD -->
+    <!-- ================================ -->
 
-function showLogin() {
-    loginScreen.classList.remove("hidden");
-    dashboardScreen.classList.add("hidden");
-}
+    <main
+        id="dashboardScreen"
+        class="dashboard hidden"
+    >
 
+        <!-- TOP BAR -->
 
-// ================================
-// DASHBOARD
-// ================================
+        <header class="topbar">
 
-function showDashboard() {
-    loginScreen.classList.add("hidden");
-    dashboardScreen.classList.remove("hidden");
-}
+            <div>
 
+                <div class="brand">
+                    HADI<span>.</span>
+                </div>
 
-// ================================
-// AUTH STATE
-// ================================
+                <div class="admin-label">
+                    Website Control Center
+                </div>
 
-onAuthStateChanged(auth, async (user) => {
+            </div>
 
-    if (!user) {
-        showLogin();
-        return;
-    }
+            <button
+                id="logoutButton"
+                class="logout"
+                type="button"
+            >
+                Logout
+            </button>
 
-    // Only allow the admin account
-    if (user.uid !== ADMIN_UID) {
+        </header>
 
-        await signOut(auth);
 
-        loginMessage.textContent =
-            "Access denied. This account is not an admin account.";
+        <!-- DASHBOARD CONTENT -->
 
-        showLogin();
+        <section class="dashboard-content">
 
-        return;
-    }
 
-    showDashboard();
+            <!-- WELCOME -->
 
-    await loadSiteConfig();
-});
+            <div class="welcome">
 
+                <p class="eyebrow">
+                    ADMIN DASHBOARD
+                </p>
 
-// ================================
-// LOGIN
-// ================================
+                <h1>
+                    Welcome back.
+                </h1>
 
-loginForm.addEventListener("submit", async (event) => {
+                <p>
+                    Control your HADI portfolio from one place.
+                </p>
 
-    event.preventDefault();
+            </div>
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
 
-    loginMessage.textContent = "";
+            <!-- ================================ -->
+            <!-- WEBSITE SETTINGS -->
+            <!-- ================================ -->
 
-    loginButton.disabled = true;
-    loginButton.textContent = "Signing in...";
+            <div class="card">
 
-    try {
+                <div class="card-header">
 
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
+                    <div>
 
-    } catch (error) {
+                        <h2>
+                            Website
+                        </h2>
 
-        console.error(error);
+                        <p>
+                            Basic website configuration
+                        </p>
 
-        if (
-            error.code === "auth/invalid-credential" ||
-            error.code === "auth/wrong-password" ||
-            error.code === "auth/user-not-found"
-        ) {
+                    </div>
 
-            loginMessage.textContent =
-                "Incorrect email or password.";
+                    <span
+                        id="statusBadge"
+                        class="badge"
+                    >
+                        Loading...
+                    </span>
 
-        } else if (error.code === "auth/too-many-requests") {
+                </div>
 
-            loginMessage.textContent =
-                "Too many attempts. Try again later.";
 
-        } else {
+                <div class="form-grid">
 
-            loginMessage.textContent =
-                "Login failed. Please try again.";
-        }
-    }
 
-    loginButton.disabled = false;
-    loginButton.textContent = "Sign In";
-});
+                    <!-- WEBSITE NAME -->
 
+                    <div class="field">
 
-// ================================
-// LOAD SITE CONFIG
-// ================================
+                        <label for="siteName">
+                            Website Name
+                        </label>
 
-async function loadSiteConfig() {
+                        <input
+                            type="text"
+                            id="siteName"
+                            placeholder="HADI"
+                        >
 
-    try {
+                    </div>
 
-        const configRef = doc(db, "site", "config");
 
-        const snapshot = await getDoc(configRef);
+                    <!-- WEBSITE STATUS -->
 
-        if (!snapshot.exists()) {
+                    <div class="field">
 
-            statusBadge.textContent = "No Config";
+                        <label>
+                            Website Status
+                        </label>
 
-            return;
-        }
+                        <label class="switch">
 
-        const data = snapshot.data();
+                            <input
+                                type="checkbox"
+                                id="siteEnabled"
+                            >
 
-        siteNameInput.value =
-            data.siteName || "HADI";
+                            <span class="slider"></span>
 
-        siteEnabledInput.checked =
-            data.siteEnabled === true;
+                            <span class="switch-text">
+                                Website enabled
+                            </span>
 
-        updateStatusBadge();
+                        </label>
 
-    } catch (error) {
+                    </div>
 
-        console.error(error);
+                </div>
 
-        statusBadge.textContent = "Error";
 
-        saveMessage.textContent =
-            "Could not load website settings.";
-    }
-}
+                <!-- SAVE BUTTON -->
 
+                <button
+                    id="saveSiteButton"
+                    class="primary"
+                    type="button"
+                >
+                    Save Changes
+                </button>
 
-// ================================
-// STATUS BADGE
-// ================================
 
-function updateStatusBadge() {
+                <p
+                    id="saveMessage"
+                    class="message"
+                ></p>
 
-    if (siteEnabledInput.checked) {
+            </div>
 
-        statusBadge.textContent = "Online";
 
-    } else {
+            <!-- ================================ -->
+            <!-- CONTROL SECTIONS -->
+            <!-- ================================ -->
 
-        statusBadge.textContent = "Offline";
-    }
-}
+            <div class="control-grid">
 
 
-// Update badge when switch changes
-siteEnabledInput.addEventListener(
-    "change",
-    updateStatusBadge
-);
+                <!-- HOME -->
 
+                <div class="control-card">
 
-// ================================
-// SAVE SETTINGS
-// ================================
+                    <div class="icon">
+                        🏠
+                    </div>
 
-saveSiteButton.addEventListener("click", async () => {
+                    <h3>
+                        Home
+                    </h3>
 
-    const siteName =
-        siteNameInput.value.trim();
+                    <p>
+                        Hero text, buttons and homepage settings.
+                    </p>
 
-    const siteEnabled =
-        siteEnabledInput.checked;
+                    <span>
+                        Coming next
+                    </span>
 
-    if (!siteName) {
+                </div>
 
-        saveMessage.textContent =
-            "Website name cannot be empty.";
 
-        return;
-    }
+                <!-- ABOUT -->
 
-    saveSiteButton.disabled = true;
-    saveSiteButton.textContent = "Saving...";
-    saveMessage.textContent = "";
+                <div class="control-card">
 
-    try {
+                    <div class="icon">
+                        👤
+                    </div>
 
-        const configRef =
-            doc(db, "site", "config");
+                    <h3>
+                        About
+                    </h3>
 
-        await setDoc(
-            configRef,
-            {
-                siteName: siteName,
-                siteEnabled: siteEnabled
-            },
-            {
-                merge: true
-            }
-        );
+                    <p>
+                        Manage your profile and about section.
+                    </p>
 
-        updateStatusBadge();
+                    <span>
+                        Coming next
+                    </span>
 
-        saveMessage.textContent =
-            "✓ Changes saved successfully.";
+                </div>
 
-    } catch (error) {
 
-        console.error(error);
+                <!-- SKILLS -->
 
-        saveMessage.textContent =
-            "Could not save changes.";
-    }
+                <div class="control-card">
 
-    saveSiteButton.disabled = false;
-    saveSiteButton.textContent = "Save Changes";
-});
+                    <div class="icon">
+                        🛠️
+                    </div>
 
+                    <h3>
+                        Skills
+                    </h3>
 
-// ================================
-// LOGOUT
-// ================================
+                    <p>
+                        Add, edit and remove your skills.
+                    </p>
 
-logoutButton.addEventListener("click", async () => {
+                    <span>
+                        Coming next
+                    </span>
 
-    await signOut(auth);
-});
+                </div>
+
+
+                <!-- PROJECTS -->
+
+                <div class="control-card">
+
+                    <div class="icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Projects
+                    </h3>
+
+                    <p>
+                        Manage portfolio projects and links.
+                    </p>
+
+                    <span>
+                        Coming next
+                    </span>
+
+                </div>
+
+
+                <!-- SOCIAL LINKS -->
+
+                <div class="control-card">
+
+                    <div class="icon">
+                        🔗
+                    </div>
+
+                    <h3>
+                        Social Links
+                    </h3>
+
+                    <p>
+                        Manage your social-media links.
+                    </p>
+
+                    <span>
+                        Coming next
+                    </span>
+
+                </div>
+
+
+                <!-- MESSAGES -->
+
+                <div class="control-card">
+
+                    <div class="icon">
+                        📩
+                    </div>
+
+                    <h3>
+                        Messages
+                    </h3>
+
+                    <p>
+                        View messages submitted through your website.
+                    </p>
+
+                    <span>
+                        Coming next
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
