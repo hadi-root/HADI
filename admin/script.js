@@ -1,8 +1,3 @@
-
-// ================================
-// FIREBASE IMPORTS
-// ================================
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
@@ -36,7 +31,7 @@ const firebaseConfig = {
 
 
 // ================================
-// INITIALIZE FIREBASE
+// FIREBASE
 // ================================
 
 const app = initializeApp(firebaseConfig);
@@ -57,7 +52,7 @@ const ADMIN_UID = "vxqEEYTcZMUvJ6kSuuS57IQ6Noo1";
 // ================================
 
 const loginScreen = document.getElementById("loginScreen");
-const dashboard = document.getElementById("dashboard");
+const dashboardScreen = document.getElementById("dashboardScreen");
 
 const loginForm = document.getElementById("loginForm");
 const emailInput = document.getElementById("email");
@@ -69,8 +64,10 @@ const loginMessage = document.getElementById("loginMessage");
 const siteNameInput = document.getElementById("siteName");
 const siteEnabledInput = document.getElementById("siteEnabled");
 
-const saveButton = document.getElementById("saveButton");
+const saveSiteButton = document.getElementById("saveSiteButton");
 const saveMessage = document.getElementById("saveMessage");
+
+const statusBadge = document.getElementById("statusBadge");
 
 const logoutButton = document.getElementById("logoutButton");
 
@@ -81,7 +78,7 @@ const logoutButton = document.getElementById("logoutButton");
 
 function showLogin() {
     loginScreen.classList.remove("hidden");
-    dashboard.classList.add("hidden");
+    dashboardScreen.classList.add("hidden");
 }
 
 
@@ -91,7 +88,7 @@ function showLogin() {
 
 function showDashboard() {
     loginScreen.classList.add("hidden");
-    dashboard.classList.remove("hidden");
+    dashboardScreen.classList.remove("hidden");
 }
 
 
@@ -106,7 +103,6 @@ onAuthStateChanged(auth, async (user) => {
         return;
     }
 
-    // Make sure only your admin account can use the dashboard
     if (user.uid !== ADMIN_UID) {
 
         await signOut(auth);
@@ -136,17 +132,10 @@ loginForm.addEventListener("submit", async (event) => {
     const email = emailInput.value.trim();
     const password = passwordInput.value;
 
-    if (!email || !password) {
-
-        loginMessage.textContent =
-            "Please enter your email and password.";
-
-        return;
-    }
+    loginMessage.textContent = "";
 
     loginButton.disabled = true;
     loginButton.textContent = "Signing in...";
-    loginMessage.textContent = "";
 
     try {
 
@@ -155,8 +144,6 @@ loginForm.addEventListener("submit", async (event) => {
             email,
             password
         );
-
-        loginMessage.textContent = "";
 
     } catch (error) {
 
@@ -170,23 +157,22 @@ loginForm.addEventListener("submit", async (event) => {
         } else if (error.code === "auth/too-many-requests") {
 
             loginMessage.textContent =
-                "Too many attempts. Please try again later.";
+                "Too many attempts. Try again later.";
 
         } else {
 
             loginMessage.textContent =
-                "Login failed. Please check your details.";
-
+                "Login failed. Please try again.";
         }
     }
 
     loginButton.disabled = false;
-    loginButton.textContent = "Login";
+    loginButton.textContent = "Sign In";
 });
 
 
 // ================================
-// LOAD WEBSITE CONFIG
+// LOAD SITE CONFIG
 // ================================
 
 async function loadSiteConfig() {
@@ -195,17 +181,16 @@ async function loadSiteConfig() {
 
         const configRef = doc(db, "site", "config");
 
-        const configSnapshot = await getDoc(configRef);
+        const snapshot = await getDoc(configRef);
 
-        if (!configSnapshot.exists()) {
+        if (!snapshot.exists()) {
 
-            saveMessage.textContent =
-                "Website configuration does not exist yet.";
+            statusBadge.textContent = "No Config";
 
             return;
         }
 
-        const data = configSnapshot.data();
+        const data = snapshot.data();
 
         siteNameInput.value =
             data.siteName || "HADI";
@@ -213,9 +198,13 @@ async function loadSiteConfig() {
         siteEnabledInput.checked =
             data.siteEnabled === true;
 
+        updateStatusBadge();
+
     } catch (error) {
 
         console.error(error);
+
+        statusBadge.textContent = "Error";
 
         saveMessage.textContent =
             "Could not load website settings.";
@@ -224,10 +213,33 @@ async function loadSiteConfig() {
 
 
 // ================================
-// SAVE WEBSITE CONFIG
+// STATUS BADGE
 // ================================
 
-saveButton.addEventListener("click", async () => {
+function updateStatusBadge() {
+
+    if (siteEnabledInput.checked) {
+
+        statusBadge.textContent = "Online";
+
+    } else {
+
+        statusBadge.textContent = "Offline";
+    }
+}
+
+
+siteEnabledInput.addEventListener(
+    "change",
+    updateStatusBadge
+);
+
+
+// ================================
+// SAVE SETTINGS
+// ================================
+
+saveSiteButton.addEventListener("click", async () => {
 
     const siteName =
         siteNameInput.value.trim();
@@ -243,8 +255,8 @@ saveButton.addEventListener("click", async () => {
         return;
     }
 
-    saveButton.disabled = true;
-    saveButton.textContent = "Saving...";
+    saveSiteButton.disabled = true;
+    saveSiteButton.textContent = "Saving...";
     saveMessage.textContent = "";
 
     try {
@@ -263,8 +275,10 @@ saveButton.addEventListener("click", async () => {
             }
         );
 
+        updateStatusBadge();
+
         saveMessage.textContent =
-            "Changes saved successfully.";
+            "✓ Changes saved successfully.";
 
     } catch (error) {
 
@@ -274,8 +288,8 @@ saveButton.addEventListener("click", async () => {
             "Could not save changes.";
     }
 
-    saveButton.disabled = false;
-    saveButton.textContent = "Save Changes";
+    saveSiteButton.disabled = false;
+    saveSiteButton.textContent = "Save Changes";
 });
 
 
@@ -292,8 +306,5 @@ logoutButton.addEventListener("click", async () => {
     } catch (error) {
 
         console.error(error);
-
-        loginMessage.textContent =
-            "Could not log out.";
     }
 });
